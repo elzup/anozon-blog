@@ -124,7 +124,7 @@ google_analytics: UA-49286104-10
 gauges_analytics:
 baidu_analytics:
 tencent_analytics:
-busuanzi_analytics: true
+busuanzi_analytics:
 twitter:
 google_plus:
 fb_admins:

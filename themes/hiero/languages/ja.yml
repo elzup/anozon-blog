@@ -1,0 +1,37 @@
+home: ホーム
+archives: アーカイブ
+about: あのぞんびよりについて
+categories: カテゴリー
+search: 検索
+tags: タグ
+tagcloud: タグクラウド
+tweets: ツイート
+prev: 前
+next: 次
+comment: コメント
+archive_a: アーカイブ
+archive_b: 'アーカイブ: %s'
+page: '%d ページ'
+recent_posts: 過去の投稿
+newer: 最新
+older: 最古
+share: 共有
+theme_by: Theme by
+rss_feed: RSS Feed
+category: カテゴリー
+tag: タグ
+connect: 'コンタクト'
+post_total_count: '投稿数: %d'
+read_more: もっと読む →
+contents: コンテンツ
+none: なし
+posted_on: 投稿日時
+donation:
+  button_text: 'Donate'
+insight:
+  hint: '何か入力...'
+  posts: 'Posts'
+  pages: 'Pages'
+  categories: 'Categories'
+  tags: 'Tags'
+  untitled: '(Untitled)'

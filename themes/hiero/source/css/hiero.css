@@ -30,8 +30,7 @@ h6 {
 	margin: 1.25em 0 0.5em;
 	color: #222;
 	font-weight: normal;
-	font-family: 'Yanone Kaffeesatz', 'Microsoft YaHei Light', Arial, Helvetica,
-		sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	line-height: 1.2em;
 }
 h1 {
@@ -141,9 +140,8 @@ input[type='submit'] {
 	color: #fff;
 	font-size: 1.2em;
 	font-weight: 400;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	line-height: 30px;
-	text-transform: uppercase;
 	background: #060608;
 	border: 1px solid #060608;
 }
@@ -266,9 +264,7 @@ object {
 .site-title {
 	margin: 0;
 	font-size: 4.25em;
-	font-family: 'Yanone Kaffeesatz', 'Microsoft YaHei Light', Arial, Helvetica,
-		sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	line-height: 1;
 }
 .site-title a {
@@ -277,9 +273,8 @@ object {
 }
 .site-description {
 	color: #999;
-	font-family: 'Yanone Kaffeesatz', 'Microsoft YaHei Light', Arial, Helvetica,
-		sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+
 	letter-spacing: 1px;
 }
 
@@ -363,9 +358,8 @@ object {
 	color: #fff;
 	font-size: 1.2em;
 	font-weight: 400;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
-	text-transform: uppercase;
 	line-height: 50px;
 }
 #main-navigation li:hover ul,
@@ -415,9 +409,8 @@ object {
 	color: #eb2121;
 	font-size: 1.2em;
 	font-weight: 400;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
-	text-transform: uppercase;
 	line-height: 50px;
 	letter-spacing: 1px;
 	background: #060608;
@@ -556,7 +549,7 @@ object {
 	color: #fff;
 	font-size: 1.4em;
 	font-weight: 400;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	line-height: 1;
 	background: #ff2828;
@@ -605,7 +598,6 @@ object {
 .page-title {
 	margin: 0 0 10px;
 	font-size: 1.6em;
-	text-transform: uppercase;
 	letter-spacing: 2px;
 }
 
@@ -632,15 +624,13 @@ body.search .page .entry-footer {
 .author-info .author-content h3 {
 	margin: 0 0 10px;
 	font-size: 1.4em;
-	text-transform: uppercase;
 	letter-spacing: 1px;
 }
 .author-info .author-links a {
 	margin: 0 20px 0 0;
 	color: #999;
 	font-size: 0.9em;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	letter-spacing: 2px;
 }
@@ -714,8 +704,7 @@ body.search .page .entry-footer {
 	color: #fff;
 	font-size: 1.3em;
 	font-weight: 400;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	line-height: 26px;
 	background: #060608;
@@ -759,8 +748,7 @@ body.search .page .entry-footer {
 .comment-list li.comment .comment-author .fn {
 	color: #999;
 	font-size: 1.2em;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .comment-list li.comment .comment-author .fn a {
 	color: #333;
@@ -787,8 +775,7 @@ body.search .page .entry-footer {
 	color: #ff2828;
 	font-size: 0.9em;
 	font-weight: 300;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	letter-spacing: 1px;
 }
@@ -810,7 +797,6 @@ body.search .page .entry-footer {
 	margin: 20px 0 15px;
 	padding: 0 0 15px;
 	font-size: 1.5em;
-	text-transform: uppercase;
 	border-bottom: 1px solid #d6d6d6;
 }
 #cancel-comment-reply-link {
@@ -825,8 +811,7 @@ body.search .page .entry-footer {
 }
 #commentform label {
 	font-size: 1.2em;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 2px;
 }
 #commentform textarea {
@@ -841,7 +826,6 @@ body.search .page .entry-footer {
 .widget-title {
 	margin: 0;
 	font-size: 1.6em;
-	text-transform: uppercase;
 	letter-spacing: 2px;
 	margin: 0 0 -1px;
 	display: inline-block;
@@ -906,8 +890,7 @@ body.search .page .entry-footer {
 	padding: 5px 15px;
 	color: #999;
 	font-size: 1.3em;
-	font-family: 'Yanone Kaffeesatz', '方正姚体', Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 2px;
 	line-height: 30px;
 	background: #060608;
@@ -968,7 +951,6 @@ body.search .page .entry-footer {
 .widget_athemes_tabs .widget-entry-summary h4 {
 	margin: 0;
 	font-size: 1.3em;
-	text-transform: uppercase;
 	line-height: 1.2;
 }
 .widget_athemes_tabs .widget-entry-content h4 a,

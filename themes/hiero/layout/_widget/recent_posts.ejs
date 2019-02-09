@@ -18,7 +18,7 @@
             <% } %>
 
               <h6 style="margin: 0;"><a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h6>
-              <span><%= date(post.date, 'MMMM D, YYYY') %></span>
+              <span><%= date(post.date, 'YYYY-MM-DD') %></span>
             </div>
 
           </li>
