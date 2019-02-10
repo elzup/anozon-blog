@@ -234,11 +234,12 @@ var themeMenus = {};
             
       
         
-  <!-- Gitment START! Deploy by Z4HD -->
-	<div id="comments"></div>
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
+<!-- Gitment START! Deploy by Z4HD -->
+<div id="comments"></div>
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+```
+<script>
 	var gitment = new Gitment({
 		id: 'https://blog.anozon.me/2019/02/09/Hexo-と-gh-pages-でブログを作った/',
 		owner: 'elzup',
@@ -249,10 +250,10 @@ var themeMenus = {};
 		},
 	})
 	gitment.render('comments')
-	</script>
-	<!-- Gitment 自定义样式表 -->
-	<link rel="stylesheet" href="/css/comment-gitment.css">
-	<!-- Gitment END! -->
+</script>
+<!-- Gitment 自定义样式表 -->
+<link rel="stylesheet" href="/css/comment-gitment.css">
+<!-- Gitment END! -->
 
 
       
