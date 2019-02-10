@@ -29,7 +29,7 @@ posted_on: 投稿日時
 donation:
   button_text: 'Donate'
 insight:
-  hint: '何か入力...'
+  hint: 'text'
   posts: 'Posts'
   pages: 'Pages'
   categories: 'Categories'
