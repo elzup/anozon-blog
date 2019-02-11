@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "anozonbiyori",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "anozon's blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "anozon",
   "dependencies": {
     "gatsby": "^2.0.118",
     "gatsby-image": "^2.0.29",
@@ -25,15 +25,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
+    "deploy": "gatsby build && cp src/CNAME public && gh-pages -d public",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
