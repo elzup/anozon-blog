@@ -8,6 +8,7 @@ tags:
   - blog
   - mp3
   - podcast
+  - Anchor
 category:
   - 日記
 ---
@@ -18,4 +19,16 @@ category:
 
 ## yattecast を fork
 
-config ファイルいじって push するだけ
+Podcast には audrio と RSS が必要なになります。
+yattecast というリポジトリが podcast 向けの Jekyll を公開してたので試してみました。
+
+https://r7kamura.github.io/yattecast/
+↑ ページにわかりやすく書いてある。というかシンプル。
+config ファイルいじって push するだけでいい感じに出来ました。
+
+GitHub はファイルに 100MB 制限があって、地味に audio ファイル push するときにに躓きました。
+export の仕方が悪いのかな？
+
+## Anchor も使ってみた。
+
+Anchor の場合も RSS 生成と Hosting をしてくれるのでとても手軽だとわかったので使って見ています。
