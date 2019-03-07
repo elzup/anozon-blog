@@ -41,6 +41,10 @@
     "develop": "gatsby develop",
     "start": "yarn run develop",
     "serve": "gatsby serve",
+    "deploy": "yarn build && gh-pages -d public -b gh-pages",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
