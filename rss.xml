@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんびより]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 07 Mar 2019 07:35:33 GMT</lastBuildDate><item><title><![CDATA[はやくもブログを Hexo から Gatsby に切り替えた]]></title><description><![CDATA[移行した理由 React が使えるのが良さそうなので Gatsby に移行しました。 Before
+ After
+ さっぱりしてしまいましたがカスタマイズ前なので OK。 いじっていきたい部分 Gatsby は GraphQL…]]></description><link>https://blog.anozon.me//gatsby-blog/</link><guid isPermaLink="false">https://blog.anozon.me//gatsby-blog/</guid><pubDate>Wed, 06 Mar 2019 11:58:50 GMT</pubDate><content:encoded>&lt;h2&gt;移行した理由&lt;/h2&gt;
+&lt;p&gt;React が使えるのが良さそうなので Gatsby に移行しました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Before
+&lt;img src=&quot;https://s3.amazonaws.com/anozon-img/%E3%81%82%E3%81%AE%E3%81%9E%E3%82%93%E3%81%B3%E3%82%88%E3%82%8A.png&quot;&gt;&lt;/li&gt;
+&lt;li&gt;After
+&lt;img src=&quot;https://s3.amazonaws.com/anozon-img/All_posts___%E3%81%82%E3%81%AE%E3%81%9E%E3%82%93%E3%81%B3%E3%82%88%E3%82%8A.png&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;さっぱりしてしまいましたがカスタマイズ前なので OK。&lt;/p&gt;
+&lt;h2&gt;いじっていきたい部分&lt;/h2&gt;
+&lt;p&gt;Gatsby は GraphQL が基本っぽいのでレイアウト組んでいくのに挑戦していきたいです。
+できれば TypeScript で書きたい。&lt;/p&gt;
+&lt;p&gt;あと文章を書くときに &lt;a href=&quot;https://github.com/textlint/textlint&quot;&gt;textlint&lt;/a&gt; も入れたいです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[akispace.fm をはじめました]]></title><description><![CDATA[podcast 始めました エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。 yattecast を fork config ファイルいじって push するだけ]]></description><link>https://blog.anozon.me//build-radio/</link><guid isPermaLink="false">https://blog.anozon.me//build-radio/</guid><pubDate>Mon, 04 Mar 2019 11:28:00 GMT</pubDate><content:encoded>&lt;h2&gt;podcast 始めました&lt;/h2&gt;
+&lt;p&gt;エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。&lt;/p&gt;
+&lt;h2&gt;yattecast を fork&lt;/h2&gt;
+&lt;p&gt;config ファイルいじって push するだけ&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hexo と gh-pages でブログを作った]]></title><description><![CDATA[Hello world!. 新しくブログを立てました。 今までの使っていたブログと理由 最初はブログを作るということで WordPress を VPS サーバーに設置していました。 でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium…]]></description><link>https://blog.anozon.me//start-blog/</link><guid isPermaLink="false">https://blog.anozon.me//start-blog/</guid><pubDate>Sat, 09 Feb 2019 19:10:20 GMT</pubDate><content:encoded>&lt;p&gt;Hello world!. 新しくブログを立てました。&lt;/p&gt;
+&lt;h2&gt;今までの使っていたブログと理由&lt;/h2&gt;
+&lt;p&gt;最初はブログを作るということで WordPress を VPS サーバーに設置していました。&lt;/p&gt;
+&lt;p&gt;でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium を使っていました。&lt;/p&gt;
+&lt;p&gt;はてなブログは &lt;strong&gt;やっぱり広告が嫌&lt;/strong&gt; で、かと言って有料会員で固定費払う気にもなれず、今回久々に自分で管理するブログを立てようとはじめました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tKfTcgy1g0sw19moeqj30zk0k0ad2.jpg&quot; alt=&quot;anozonbiyori-hexo&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;ブログ構成について考えたこと&lt;/h2&gt;
+&lt;p&gt;運用: GitHub Pages + Hexo&lt;/p&gt;
+&lt;p&gt;編集: VSCode + MarkdownPreview + S3 upload&lt;/p&gt;
+&lt;p&gt;まず運用について考えたのは &lt;strong&gt;サーバー借りない(できるだけ無料で)&lt;/strong&gt; で運用したいということです。
+GitHub Pages や firebase など 低コストな  ホスティングサービスが多い時代なのでそれらを調査しました。
+結局は GitHub Pages を使うことにしました。そして js が使えるという理由で Hexo を選びました。&lt;/p&gt;
+&lt;p&gt;記事の書きやすさについては &lt;strong&gt;“マークダウンが使える”&lt;/strong&gt;、&lt;strong&gt;“画像アップロードしやすい”&lt;/strong&gt; のであれば良いなと考えました。&lt;/p&gt;
+&lt;h3&gt;画像について&lt;/h3&gt;
+&lt;p&gt;でもそれらは別問題でローカルのマークダウンエディタで対応できれば済むなと思ってます。
+iPic は良さげでしたが有料なので無料で良さげな S3 アップローダクライアントは見つかってないのでしばらくは手動アップロードしたいと思います。&lt;/p&gt;
+&lt;h2&gt;GitHub Pages についてのセットアップ&lt;/h2&gt;
+&lt;p&gt;Route53 でもっているドメインのサブドメインを振りました。
+カスタムドメインでも DNS 設定のみで https が使えるようになっていました。(それも GitHub Pages を選んだ理由のひとつでした)&lt;/p&gt;
+&lt;p&gt;あと &lt;code class=&quot;language-text&quot;&gt;gh-pages&lt;/code&gt; ブランチが build 出力先で &lt;code class=&quot;language-text&quot;&gt;master&lt;/code&gt; はリポジトリそのままの状態で管理できるようにしました。&lt;/p&gt;</content:encoded></item></channel></rss>
