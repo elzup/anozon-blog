@@ -19,6 +19,8 @@ Hello world!. 新しくブログを立てました。
 
 はてなブログは **やっぱり広告が嫌** で、かと言って有料会員で固定費払う気にもなれず、今回久々に自分で管理するブログを立てようとはじめました。
 
+![anozonbiyori-hexo](https://ws2.sinaimg.cn/large/006tKfTcgy1g0sw19moeqj30zk0k0ad2.jpg)
+
 ## ブログ構成について考えたこと
 
 運用: GitHub Pages + Hexo
