@@ -7,6 +7,7 @@ tags:
   - GitHub Pages
 category:
   - Tech
+status: 'draft'
 ---
 
 ```
