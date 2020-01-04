@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
 
@@ -35,6 +36,29 @@ const SmallTitle = ({ title }) => (
   </h3>
 )
 
+const Wrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rhythm(40)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  display: grid;
+  grid-template-areas: 'header header' 'main side';
+  grid-template-columns: ${rhythm(24)} ${rhythm(16)};
+
+  @media only screen and (min-width: 1240px) {
+    width: 1100px;
+  }
+  header {
+    grid-area: header;
+  }
+  main {
+    grid-area: main;
+  }
+  aside {
+    grid-area: side;
+  }
+`
+
 function Layout({ location, title, children }) {
   const rootPath = `${__PATH_PREFIX__}/`
   const header =
@@ -45,19 +69,19 @@ function Layout({ location, title, children }) {
     )
 
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()} あのぞんびより All Rights Reserved
-      </footer>
+    <div>
+      <Wrapper>
+        <header>{header}</header>
+        <main>{children}</main>
+        <aside>
+          <p>I'm elzup</p>
+          <p>Hello sub menu card</p>
+        </aside>
+        <footer>
+          © {new Date().getFullYear()} あのぞんびより All Rights Reserved
+        </footer>
+        <style jsx>{}</style>
+      </Wrapper>
     </div>
   )
 }
