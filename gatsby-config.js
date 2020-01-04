@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `あのぞんびより`,
+    title: `あのぞんブログ`,
     author: `anozon`,
     description: `フロントエンド中心のブログ`,
     siteUrl: `https://blog.anozon.me/`,
@@ -42,6 +42,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          'gatsby-plugin-twitter',
         ],
       },
     },
