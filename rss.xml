@@ -1,6 +1,151 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんびより]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 07 Mar 2019 07:35:33 GMT</lastBuildDate><item><title><![CDATA[はやくもブログを Hexo から Gatsby に切り替えた]]></title><description><![CDATA[移行した理由 React が使えるのが良さそうなので Gatsby に移行しました。 Before
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 05 Jan 2020 11:51:19 GMT</lastBuildDate><item><title><![CDATA[GatsbyJSでコードブロックを作成する]]></title><description><![CDATA[この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
+現状 Plain Text なので Syntax Hilight と style 調整をします。 手順 1. prismjs のプラグインを追加 gatsby-remark-prismjs…]]></description><link>https://blog.anozon.megatsby-codebrock</link><guid isPermaLink="false">https://blog.anozon.megatsby-codebrock</guid><pubDate>Sun, 05 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
+現状 Plain Text なので Syntax Hilight と style 調整をします。&lt;/p&gt;
+&lt;h2&gt;手順 1. prismjs のプラグインを追加&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gatsby-transformer-remark gatsby-remark-prismjs prismjs
+&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gatsby-remark-prismjs-title&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/?=prismjs&quot;&gt;gatsby-remark-prismjs&lt;/a&gt; と
+&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-remark-prismjs-title/&quot;&gt;gatsby-remark-prismjs-title&lt;/a&gt;を追加します。&lt;/p&gt;
+&lt;h2&gt;手順 2. config の追加&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/gatsby-config.js&lt;/code&gt; に config を追加します。
+&lt;strong&gt;root の plugins に書くのではなく &lt;code class=&quot;language-text&quot;&gt;gatsby-transformer-remark&lt;/code&gt; 以下の plugins に書くことに注意します。&lt;/strong&gt;&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-config.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff&quot;&gt;&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;&lt;span class=&quot;token unchanged&quot;&gt;    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;+          &apos;gatsby-remark-prismjs-title&apos;,
++          {
++            resolve: `gatsby-remark-prismjs`,
++            options: {
++              classPrefix: &apos;language-&apos;,
++              inlineCodeMarker: null,
++              aliases: {
++                js: &apos;javascript&apos;,
++                sh: &apos;bash&apos;,
++              },
++              showLineNumbers: false,
++              noInlineHighlight: false,
++              languageExtensions: [
++                {
++                  language: &apos;superscript&apos;,
++                  extend: &apos;javascript&apos;,
++                  definition: { superscript_types: /(SuperType)/ },
++                  insertBefore: {
++                    function: { superscript_keywords: /(superif|superelse)/ },
++                  },
++                },
++              ],
++              prompt: { user: &apos;root&apos;, host: &apos;localhost&apos;, global: false },
++              escapeEntities: {},
++            },
++          },
+&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;        ]
+      }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;aliases を使うことで &lt;code class=&quot;language-text&quot;&gt;js&lt;/code&gt; と短くことができます。&lt;/p&gt;
+&lt;p&gt;更にそれぞれの readme にあるように sample の style を書くことで
+以下のような感じになりました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/codebrock.png&quot; alt=&quot;anozon blog new codebrock&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;gatsby-remark-prismjs-title と gatsby-remark-code-titles&lt;/h2&gt;
+&lt;p&gt;この 2 つのプラグインはどちらもコードブロックの直前に title を挿入してくれるプラグインです。&lt;/p&gt;
+&lt;p&gt;今回使っていない方 &lt;code class=&quot;language-text&quot;&gt;gatsby-remark-code-titles&lt;/code&gt;では div 単体でコードが挿入されます。
+&lt;code class=&quot;language-text&quot;&gt;gatsby-remark-prismjs-title&lt;/code&gt;では div &gt; span の構造で挿入してくれるため style しやすいためこちらを選択しました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJSで記事のURLをカスタマイズする]]></title><description><![CDATA[この記事では GatsbyJS で作るブログの slug(URL のパス部分) のカスタマイズ方法を紹介します。 gatsby-source-filesystem を使用している前提で説明します(gatsby-starter-blog に入っています)。 手順. /gatsby…]]></description><link>https://blog.anozon.megatsby-customize-slug</link><guid isPermaLink="false">https://blog.anozon.megatsby-customize-slug</guid><pubDate>Sat, 04 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS で作るブログの &lt;strong&gt;slug(URL のパス部分)&lt;/strong&gt; のカスタマイズ方法を紹介します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-source-filesystem/&quot;&gt;gatsby-source-filesystem&lt;/a&gt; を使用している前提で説明します(gatsby-starter-blog に入っています)。&lt;/p&gt;
+&lt;h2&gt;手順. /gatsby-node.js を編集する&lt;/h2&gt;
+&lt;p&gt;slug は &lt;code class=&quot;language-text&quot;&gt;/gatsby-node.js&lt;/code&gt; の onCreateNode 内の createNodeField で設定しています。以下のコードでは createFilePath で作成されるパスがそのまま設定されています。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-node.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;exports&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;onCreateNode&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; actions&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; value &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createFilePath&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;createNodeField&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    value&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;createFilePath で返されるパスは &lt;code class=&quot;language-text&quot;&gt;gatsby-source-filesystem&lt;/code&gt; の path オプションをルートとした絶対パスとなっています。&lt;strong&gt;ファイルの拡張子はついていません&lt;/strong&gt;。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-config.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;  plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      resolve&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;gatsby-source-filesystem&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      options&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;__dirname&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;/content/blog&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;実装例&lt;/h2&gt;
+&lt;p&gt;今回このブログを例にカスタマイズします。&lt;/p&gt;
+&lt;p&gt;僕のブログではブログポストのファイルは以下のディレクトリに配置しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/content/blog/2020/2020-01-04___gatsby-customize-slug.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(&lt;code class=&quot;language-text&quot;&gt;/content/blog/{year}/{year}-{month}-{day}___{slug}.md&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;URL は以下のようになっています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;https://blog.anozon.me/2020/2020-01-04_gatsby-customize-slug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;この日付入り URL を、記事の ID に当たる部分のみに省略してシンプルにします。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;https://blog.anozon.me/gatsby-customize-slug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/elzup/anozonbiyori/commit/34505a0a39640ea0b2a1b60c7662412544179510#diff-fda05457e393bada716f508859bfc604&quot;&gt;実装 Commit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;変更点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;SLUG_SEPARATOR によって slug 部分をチュシュツして返す getSlug 関数の作成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLUG_SEPARATOR を含まない場合はそのまま&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;getSlug を適用して返す&lt;/li&gt;
+&lt;/ul&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-node.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SLUG_SEPARATOR&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;___&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// &apos;2020/2020-01-04___gatsby-customize-slug&apos; → &apos;gatsby-customize-slug&apos;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;getSlug&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;prefix&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; slug&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SLUG_SEPARATOR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; slug &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; path
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;node&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;internal&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;MarkdownRemark&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; createNodeField &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; actions
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; filePath &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createFilePath&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; trailingSlash&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; slug &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getSlug&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filePath&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;createNodeField&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  value&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; slug&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/gatsby-custom-slug.png&quot; alt=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/gatsby-custom-slug.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;カスタマイズできました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gatsby で Twitter 埋め込みする]]></title><description><![CDATA[if (prevJwt === nextJwt) {
+return
+}
+localStorage.removeItem(‘jwt’)
+if (nextJwt) {
+localStorage.setItem(‘jwt’, nextJwt)
+}]]></description><link>https://blog.anozon.megatsby-skill-twitter</link><guid isPermaLink="false">https://blog.anozon.megatsby-skill-twitter</guid><pubDate>Tue, 12 Mar 2019 20:47:00 GMT</pubDate><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add gatsby-plugin-twitter&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;かっけえええ&lt;br&gt;マップの現在地もちゃんと動いてクール &lt;a href=&quot;https://t.co/plYy6Oc2DN&quot;&gt;pic.twitter.com/plYy6Oc2DN&lt;/a&gt;&lt;/p&gt;&amp;mdash; あのぞん.tsx (@anozon) &lt;a href=&quot;https://twitter.com/anozon/status/1104302915647201280?ref_src=twsrc%5Etfw&quot;&gt;March 9, 2019&lt;/a&gt;&lt;/blockquote&gt;
+&lt;p&gt;if (prevJwt === nextJwt) {
+return
+}
+localStorage.removeItem(‘jwt’)
+if (nextJwt) {
+localStorage.setItem(‘jwt’, nextJwt)
+}&lt;/p&gt;</content:encoded></item><item><title><![CDATA[はやくもブログを Hexo から Gatsby に切り替えた]]></title><description><![CDATA[移行した理由 React が使えるのが良さそうなので Gatsby に移行しました。 Before
  After
- さっぱりしてしまいましたがカスタマイズ前なので OK。 いじっていきたい部分 Gatsby は GraphQL…]]></description><link>https://blog.anozon.me//gatsby-blog/</link><guid isPermaLink="false">https://blog.anozon.me//gatsby-blog/</guid><pubDate>Wed, 06 Mar 2019 11:58:50 GMT</pubDate><content:encoded>&lt;h2&gt;移行した理由&lt;/h2&gt;
+ さっぱりしてしまいましたがカスタマイズ前なので OK。 いじっていきたい部分 Gatsby は GraphQL…]]></description><link>https://blog.anozon.megatsby-blog</link><guid isPermaLink="false">https://blog.anozon.megatsby-blog</guid><pubDate>Wed, 06 Mar 2019 11:58:50 GMT</pubDate><content:encoded>&lt;h2&gt;移行した理由&lt;/h2&gt;
 &lt;p&gt;React が使えるのが良さそうなので Gatsby に移行しました。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Before
@@ -12,10 +157,19 @@
 &lt;h2&gt;いじっていきたい部分&lt;/h2&gt;
 &lt;p&gt;Gatsby は GraphQL が基本っぽいのでレイアウト組んでいくのに挑戦していきたいです。
 できれば TypeScript で書きたい。&lt;/p&gt;
-&lt;p&gt;あと文章を書くときに &lt;a href=&quot;https://github.com/textlint/textlint&quot;&gt;textlint&lt;/a&gt; も入れたいです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[akispace.fm をはじめました]]></title><description><![CDATA[podcast 始めました エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。 yattecast を fork config ファイルいじって push するだけ]]></description><link>https://blog.anozon.me//build-radio/</link><guid isPermaLink="false">https://blog.anozon.me//build-radio/</guid><pubDate>Mon, 04 Mar 2019 11:28:00 GMT</pubDate><content:encoded>&lt;h2&gt;podcast 始めました&lt;/h2&gt;
+&lt;p&gt;あと文章を書くときに &lt;a href=&quot;https://github.com/textlint/textlint&quot;&gt;textlint&lt;/a&gt; も入れたいです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[akispace.fm をはじめました]]></title><description><![CDATA[podcast 始めました エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。 yattecast を fork Podcast には audrio と RSS が必要なになります。
+yattecast というリポジトリが podcast 向けの Jekyll…]]></description><link>https://blog.anozon.mebuild-radio</link><guid isPermaLink="false">https://blog.anozon.mebuild-radio</guid><pubDate>Mon, 04 Mar 2019 11:28:00 GMT</pubDate><content:encoded>&lt;h2&gt;podcast 始めました&lt;/h2&gt;
 &lt;p&gt;エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。&lt;/p&gt;
 &lt;h2&gt;yattecast を fork&lt;/h2&gt;
-&lt;p&gt;config ファイルいじって push するだけ&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hexo と gh-pages でブログを作った]]></title><description><![CDATA[Hello world!. 新しくブログを立てました。 今までの使っていたブログと理由 最初はブログを作るということで WordPress を VPS サーバーに設置していました。 でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium…]]></description><link>https://blog.anozon.me//start-blog/</link><guid isPermaLink="false">https://blog.anozon.me//start-blog/</guid><pubDate>Sat, 09 Feb 2019 19:10:20 GMT</pubDate><content:encoded>&lt;p&gt;Hello world!. 新しくブログを立てました。&lt;/p&gt;
+&lt;p&gt;Podcast には audrio と RSS が必要なになります。
+yattecast というリポジトリが podcast 向けの Jekyll を公開してたので試してみました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://r7kamura.github.io/yattecast/&quot;&gt;https://r7kamura.github.io/yattecast/&lt;/a&gt;
+↑ ページにわかりやすく書いてある。というかシンプル。
+config ファイルいじって push するだけでいい感じに出来ました。&lt;/p&gt;
+&lt;p&gt;GitHub はファイルに 100MB 制限があって、地味に audio ファイル push するときにに躓きました。
+export の仕方が悪いのかな？&lt;/p&gt;
+&lt;h2&gt;Anchor も使ってみた。&lt;/h2&gt;
+&lt;p&gt;Anchor の場合も RSS 生成と Hosting をしてくれるのでとても手軽だとわかったので使って見ています。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hexo と gh-pages でブログを作った]]></title><description><![CDATA[Hello world!. 新しくブログを立てました。 今までの使っていたブログと理由 最初はブログを作るということで WordPress を VPS サーバーに設置していました。 でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium…]]></description><link>https://blog.anozon.mestart-blog</link><guid isPermaLink="false">https://blog.anozon.mestart-blog</guid><pubDate>Sat, 09 Feb 2019 19:10:20 GMT</pubDate><content:encoded>&lt;p&gt;Hello world!. 新しくブログを立てました。&lt;/p&gt;
 &lt;h2&gt;今までの使っていたブログと理由&lt;/h2&gt;
 &lt;p&gt;最初はブログを作るということで WordPress を VPS サーバーに設置していました。&lt;/p&gt;
 &lt;p&gt;でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium を使っていました。&lt;/p&gt;
