@@ -1,7 +1,6 @@
 ---
 title: はやくもブログを Hexo から Gatsby に切り替えた
 date: 2019-03-06 11:58:50
-id: start-blog
 tags:
   - Gatsby
   - React

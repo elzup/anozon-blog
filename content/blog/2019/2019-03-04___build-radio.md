@@ -1,7 +1,6 @@
 ---
 title: akispace.fm をはじめました
 date: 2019-03-04 11:28:00
-id: build-radio
 tags:
   - yattecast
   - github-pages
