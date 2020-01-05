@@ -16,7 +16,7 @@ category:
 
 slug は `/gatsby-node.js` の onCreateNode 内の createNodeField で設定しています。以下のコードでは createFilePath で作成されるパスがそのまま設定されています。
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const value = createFilePath({ node, getNode })
   createNodeField({
@@ -29,7 +29,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 createFilePath で返されるパスは `gatsby-source-filesystem` の path オプションをルートとした絶対パスとなっています。**ファイルの拡張子はついていません**。
 
-```js:gatsby-config.js
+```js:title=gatsby-config.js
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -66,7 +66,7 @@ URL は以下のようになっています。
   - SLUG_SEPARATOR を含まない場合はそのまま
 - getSlug を適用して返す
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 const SLUG_SEPARATOR = '___'
 
 // '2020/2020-01-04___gatsby-customize-slug' → 'gatsby-customize-slug'
