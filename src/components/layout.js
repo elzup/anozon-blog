@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
+import Bio from './bio'
 
 const LargeTitle = ({ title }) => (
   <h1
@@ -42,11 +43,21 @@ const Wrapper = styled.div`
   max-width: ${rhythm(40)};
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   display: grid;
-  grid-template-areas: 'header header' 'main side';
-  grid-template-columns: ${rhythm(24)} ${rhythm(16)};
+  grid-template-columns: 1fr ${rhythm(10)};
 
-  @media only screen and (min-width: 1240px) {
-    width: 1100px;
+  @media only screen and (min-width: 900px) {
+    max-width: 1100px;
+    grid-template-areas:
+      'header header'
+      'main side'
+      'footer footer';
+  }
+  @media only screen and (max-width: 900px) {
+    grid-template-areas:
+      'header header'
+      'main main'
+      'side side'
+      'footer footer';
   }
   header {
     grid-area: header;
@@ -56,6 +67,9 @@ const Wrapper = styled.div`
   }
   aside {
     grid-area: side;
+  }
+  footer {
+    grid-area: footer;
   }
 `
 
@@ -74,13 +88,12 @@ function Layout({ location, title, children }) {
         <header>{header}</header>
         <main>{children}</main>
         <aside>
-          <p>I'm elzup</p>
-          <p>Hello sub menu card</p>
+          <Bio />
+          <p>👷サイドバー準備中</p>
         </aside>
         <footer>
           © {new Date().getFullYear()} あのぞんびより All Rights Reserved
         </footer>
-        <style jsx>{}</style>
       </Wrapper>
     </div>
   )
