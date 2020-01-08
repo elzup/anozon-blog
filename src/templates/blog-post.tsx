@@ -7,9 +7,9 @@ import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
 type Props = {
-  location: any
-  data: any
-  pageContext: any
+  location: unknown
+  data: unknown
+  pageContext: unknown
 }
 
 function BlogPostTemplate(props: Props) {
