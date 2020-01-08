@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 const siteMetadata = {
   title: `あのぞんブログ`,
   author: `anozon`,
@@ -111,5 +112,11 @@ module.exports = {
       options: {},
     },
     `gatsby-plugin-typescript`,
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        fileName: `types/graphql-types.d.ts`,
+      },
+    },
   ],
 }

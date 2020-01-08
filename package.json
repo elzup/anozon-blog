@@ -55,14 +55,9 @@
     "start": "yarn run develop",
     "serve": "gatsby serve",
     "deploy": "yarn build && gh-pages -d public -b gh-pages",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.11.1",
-    "@graphql-codegen/introspection": "1.11.1",
-    "@graphql-codegen/typescript": "1.11.1",
-    "@graphql-codegen/typescript-operations": "1.11.1",
     "@types/react-helmet": "^5.0.15",
     "@types/styled-components": "^4.4.1",
     "@types/typography": "^0.16.3",
