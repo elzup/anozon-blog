@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
 import Bio from './bio'
 
-const LargeTitle = ({ title }) => (
+const LargeTitle = ({ title }: { title: string }) => (
   <h1
     style={{
       ...scale(1.5),
@@ -22,7 +22,7 @@ const LargeTitle = ({ title }) => (
   </h1>
 )
 
-const SmallTitle = ({ title }) => (
+const SmallTitle = ({ title }: { title: string }) => (
   <h3 style={{ fontFamily: `Montserrat, sans-serif`, marginTop: 0 }}>
     <Link
       style={{
@@ -73,7 +73,11 @@ const Wrapper = styled.div`
   }
 `
 
-function Layout({ location, title, children }) {
+const Layout: React.FC<{ location: { pathname: string }; title: string }> = ({
+  location,
+  title,
+  children,
+}) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const header =
     location.pathname === rootPath ? (

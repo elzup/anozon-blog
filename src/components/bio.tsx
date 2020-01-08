@@ -1,6 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
+import {} from '../types/graphql-types'
 
 import { rhythm } from '../utils/typography'
 
@@ -8,7 +9,7 @@ function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
-      render={data => {
+      render={(data: any) => {
         const { author, social } = data.site.siteMetadata
         return (
           <div
@@ -43,7 +44,7 @@ function Bio() {
 }
 
 const bioQuery = graphql`
-  query BioQuery {
+  query BioData {
     avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {

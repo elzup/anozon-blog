@@ -6,7 +6,7 @@ const SLUG_SEPARATOR = '___'
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   return graphql(
     `
       {

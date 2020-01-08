@@ -1,13 +1,15 @@
-module.exports = {
-  siteMetadata: {
-    title: `あのぞんブログ`,
-    author: `anozon`,
-    description: `フロントエンド中心のブログ`,
-    siteUrl: `https://blog.anozon.me/`,
-    social: {
-      twitter: `anozon`,
-    },
+const siteMetadata = {
+  title: `あのぞんブログ`,
+  author: `anozon`,
+  description: `フロントエンド中心のブログ`,
+  siteUrl: `https://blog.anozon.me/`,
+  social: {
+    twitter: `anozon`,
   },
+}
+
+module.exports = {
+  siteMetadata,
   plugins: [
     'gatsby-plugin-catch-links',
 
@@ -87,8 +89,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `あのぞんびより`,
-        short_name: `あのぞんびより`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.title,
         start_url: `/`,
         background_color: `#f9f7f7`,
         theme_color: `#112d4e`,
@@ -108,5 +110,6 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {},
     },
+    `gatsby-plugin-typescript`,
   ],
 }

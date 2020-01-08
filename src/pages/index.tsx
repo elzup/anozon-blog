@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/bio'
@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
-function BlogIndex({ data, location }) {
+function BlogIndex({ data, location }: { data: any; location: any }) {
   const siteTitle = data.site.siteMetadata.title
 
   const posts = data.allMarkdownRemark.edges
@@ -18,7 +18,7 @@ function BlogIndex({ data, location }) {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      {posts.map(({ node }) => {
+      {posts.map(({ node }: { node: any }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <div key={node.fields.slug}>
@@ -43,7 +43,7 @@ function BlogIndex({ data, location }) {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query IndexPage {
     site {
       siteMetadata {
         title
