@@ -9,7 +9,7 @@ category:
   - Tech
 ---
 
-この記事では Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。
+Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。
 
 ## firebase-admin の初期化設定する
 
