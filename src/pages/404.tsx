@@ -3,13 +3,18 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Site404Query } from '../../types/graphql-types.d'
 
-function NotFoundPage() {
-  const { data } = this.props
+type Props = {
+  data: Site404Query
+  location: Location
+}
+function NotFoundPage(props: Props) {
+  const { data } = props
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={this.props.location} title={siteTitle}>
+    <Layout location={props.location} title={siteTitle}>
       <SEO title="404: Not Found" />
       <h1>Not Found</h1>
       <p>404個のドーナッツ</p>
