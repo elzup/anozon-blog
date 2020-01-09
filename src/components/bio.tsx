@@ -5,9 +5,6 @@ import { BioDataQuery } from '../../types/graphql-types.d'
 
 import { rhythm } from '../utils/typography'
 
-type Props = {
-  data: BioDataQuery
-}
 function Bio() {
   return (
     <StaticQuery

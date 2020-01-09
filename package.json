@@ -5,11 +5,11 @@
   "version": "0.1.0",
   "author": "anozon",
   "dependencies": {
-    "@types/node": "^13.1.4",
+    "@types/node": "^13.1.5",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "babel-plugin-styled-components": "^1.10.6",
-    "gatsby": "^2.18.17",
+    "gatsby": "^2.18.18",
     "gatsby-image": "^2.2.37",
     "gatsby-plugin-catch-links": "^2.1.21",
     "gatsby-plugin-feed": "^2.3.25",
@@ -27,7 +27,7 @@
     "gatsby-remark-copy-linked-files": "^2.1.33",
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-images": "^3.1.39",
-    "gatsby-remark-prismjs": "^3.3.28",
+    "gatsby-remark-prismjs": "^3.3.29",
     "gatsby-remark-prismjs-title": "^1.0.0",
     "gatsby-remark-responsive-iframe": "^2.2.30",
     "gatsby-remark-smartypants": "^2.1.19",
@@ -61,10 +61,10 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.15",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^4.4.2",
     "@types/typography": "^0.16.3",
     "eslint": "^6.8.0",
     "eslint-config-nzap": "^1.4.4",
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^2.2.0"
   }
 }

@@ -69,7 +69,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Layout: React.FC<{ location: { pathname: string }; title: string }> = ({
+const Layout: React.FC<{ location: Location; title: string }> = ({
   location,
   title,
   children,
