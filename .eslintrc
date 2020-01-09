@@ -1,0 +1,21 @@
+{
+  "extends": ["nzap", "nzap/typescript", "nzap/react"],
+  "rules": {
+    "no-unused-vars": [
+      1,
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "args": "after-used"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      1,
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "args": "after-used"
+      }
+    ]
+  }
+}
