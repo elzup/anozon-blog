@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -7,6 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+
   return graphql(
     `
       {
@@ -36,7 +39,8 @@ exports.createPages = ({ graphql, actions }) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const previous =
+        index === posts.length - 1 ? null : posts[Number(index) + 1].node
       const next = index === 0 ? null : posts[index - 1].node
 
       createPage({
@@ -53,7 +57,8 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 const getSlug = path => {
-  const [prefix, slug] = path.split(SLUG_SEPARATOR)
+  const [_prefix, slug] = path.split(SLUG_SEPARATOR)
+
   return slug || path
 }
 
