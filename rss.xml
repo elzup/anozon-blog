@@ -1,4 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 05 Jan 2020 11:51:19 GMT</lastBuildDate><item><title><![CDATA[GatsbyJSでコードブロックを作成する]]></title><description><![CDATA[この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Jan 2020 13:49:23 GMT</lastBuildDate><item><title><![CDATA[GatsbyJS を Typescript に移行した際の Type 付け]]></title><description><![CDATA[GatsbyJS で書いているこのブログを Typescript 移行しました。 主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。 Gatsby.js を完全 TypeScript 化する - Qiita GraphQL Data…]]></description><link>https://blog.anozon.megatsby-to-typescript</link><guid isPermaLink="false">https://blog.anozon.megatsby-to-typescript</guid><pubDate>Thu, 09 Jan 2020 11:12:20 GMT</pubDate><content:encoded>&lt;p&gt;GatsbyJS で書いているこのブログを Typescript 移行しました。&lt;/p&gt;
+&lt;p&gt;主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://qiita.com/Takepepe/items/144209f860fbe4d5e9bb&quot;&gt;Gatsby.js を完全 TypeScript 化する - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;GraphQL Data, Page Component に型をつける&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-plugin-graphql-codegen&lt;/code&gt; を使用する方法と &lt;code class=&quot;language-text&quot;&gt;@graphql-codegen/typescript&lt;/code&gt; を使用する方法がありましたが前者を選びました。セットアップが簡潔に済んだので。&lt;/p&gt;
+&lt;h3&gt;PageQuery&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; IndexPageQuery &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  data&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; IndexPageQuery
+  location&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Location
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; bioQuery &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; graphql&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+  query IndexPage {
+&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;StaticQuery&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; BioDataQuery &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;StaticQuery
+      query&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;bioQuery&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      render&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;data&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; BioDataQuery&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;その他 Props&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; SitePageContext &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+location&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Location
+pageContext&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; SitePageContext&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;TypeScript を入れるとビルド周りで複雑になるフレームワークが多くて不安でしたが、あっさりと移行できてよかったです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Firebase Function 内から Cloud Messaging で通知を投げる最小コード]]></title><description><![CDATA[Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。 firebase-admin の初期化設定する アプリサーバーからの送信リクエストを作成する  |  Firebase…]]></description><link>https://blog.anozon.mefirebase-messaging-by-function</link><guid isPermaLink="false">https://blog.anozon.mefirebase-messaging-by-function</guid><pubDate>Wed, 08 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。&lt;/p&gt;
+&lt;h2&gt;firebase-admin の初期化設定する&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://firebase.google.com/docs/cloud-messaging/send-message?hl=ja&quot;&gt;アプリサーバーからの送信リクエストを作成する  |  Firebase&lt;/a&gt; (公式ドキュメント)&lt;/p&gt;
+&lt;p&gt;「&lt;code class=&quot;language-text&quot;&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; が必要なの？」とか「 ADC はどうやって承認するの？」とか「Authorization ヘッダにどの Token をセットするの？」とか少しややこしかった。&lt;/p&gt;
+&lt;p&gt;結論から言うと &lt;strong&gt;Firebase Function にデプロイする場合は何も考えなくていい&lt;/strong&gt;。
+以下のコードで暗黙的に検出される。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;admin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;initializeApp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  credential&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; admin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;credential&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;applicationDefault&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;functions/index.js のコード例&lt;/h2&gt;
+&lt;p&gt;&lt;div id=&quot;gist100450553&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-functions_index-js&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;functions&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;firebase-functions&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;firebase-admin&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;initializeApp&lt;/span&gt;({&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  credential&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-smi&quot;&gt;credential&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;applicationDefault&lt;/span&gt;(),&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; databaseURL: &amp;#39;https://hoge.firebaseio.com/&amp;#39;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;})&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;functions&lt;/span&gt;.&lt;span class=&quot;pl-smi&quot;&gt;https&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;onRequest&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;async&lt;/span&gt; (&lt;span class=&quot;pl-smi&quot;&gt;req&lt;/span&gt;, &lt;span class=&quot;pl-smi&quot;&gt;res&lt;/span&gt;) &lt;span class=&quot;pl-k&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    topic&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;TOPIC_NAME&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    notification&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      title&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;通知デモです&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      body&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;サーバーは&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pse&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;Date&lt;/span&gt;().&lt;span class=&quot;pl-c1&quot;&gt;getHours&lt;/span&gt;()&lt;span class=&quot;pl-pse&quot;&gt;}&lt;/span&gt;&lt;/span&gt;時です。&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    },&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; priority: &amp;#39;high&amp;#39;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;messaging&lt;/span&gt;().&lt;span class=&quot;pl-c1&quot;&gt;send&lt;/span&gt;(message)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;})&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/elzup/66d33599362f232dfeb6f6c802718679/raw/c1f9271f17ca1e8c2786c86773285767a9f09a5c/functions_index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/elzup/66d33599362f232dfeb6f6c802718679#file-functions_index-js&quot;&gt;functions_index.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;firestore などを使う場合は &lt;code class=&quot;language-text&quot;&gt;databaseURL&lt;/code&gt; オプションを設定する。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJSでコードブロックを作成する]]></title><description><![CDATA[この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
 現状 Plain Text なので Syntax Hilight と style 調整をします。 手順 1. prismjs のプラグインを追加 gatsby-remark-prismjs…]]></description><link>https://blog.anozon.megatsby-codebrock</link><guid isPermaLink="false">https://blog.anozon.megatsby-codebrock</guid><pubDate>Sun, 05 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
 現状 Plain Text なので Syntax Hilight と style 調整をします。&lt;/p&gt;
 &lt;h2&gt;手順 1. prismjs のプラグインを追加&lt;/h2&gt;

@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{"i6+/":function(t,e,n){"use strict";n.r(e),n.d(e,"pageQuery",(function(){return l}));var a=n("q1tI"),o=n("9Dj+"),i=n("H8eV");e.default=function(t){var e=t.data.site.siteMetadata.title;return a.createElement(o.a,{location:t.location,title:e},a.createElement(i.a,{title:"404: Not Found"}),a.createElement("h1",null,"Not Found"),a.createElement("p",null,"404個のドーナッツ"))};var l="4057260420"}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-3d52bf0fa061e9a88d40.js.map
