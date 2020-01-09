@@ -32,6 +32,13 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-embed-gist',
+            options: {
+              username: 'elzup',
+              includeDefaultCss: true,
+            },
+          },
           'gatsby-remark-prismjs-title',
           {
             resolve: `gatsby-remark-images`,
