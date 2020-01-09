@@ -5,8 +5,15 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
+import { IndexPageQuery } from '../../types/graphql-types.d'
 
-function BlogIndex({ data, location }: { data: any; location: any }) {
+function BlogIndex({
+  data,
+  location,
+}: {
+  data: IndexPageQuery
+  location: Location
+}) {
   const siteTitle = data.site.siteMetadata.title
 
   const posts = data.allMarkdownRemark.edges
@@ -18,8 +25,9 @@ function BlogIndex({ data, location }: { data: any; location: any }) {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      {posts.map(({ node }: { node: any }) => {
+      {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
+
         return (
           <div key={node.fields.slug}>
             <h3

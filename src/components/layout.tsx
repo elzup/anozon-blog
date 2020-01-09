@@ -25,11 +25,7 @@ const LargeTitle = ({ title }: { title: string }) => (
 const SmallTitle = ({ title }: { title: string }) => (
   <h3 style={{ fontFamily: `Montserrat, sans-serif`, marginTop: 0 }}>
     <Link
-      style={{
-        boxShadow: `none`,
-        textDecoration: `none`,
-        color: `inherit`,
-      }}
+      style={{ boxShadow: `none`, textDecoration: `none`, color: `inherit` }}
       to={`/`}
     >
       {title}
@@ -78,7 +74,9 @@ const Layout: React.FC<{ location: { pathname: string }; title: string }> = ({
   title,
   children,
 }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
+  // eslint-disable-next-line no-undef
+
+  const rootPath = `/`
   const header =
     location.pathname === rootPath ? (
       <LargeTitle title={title} />

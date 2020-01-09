@@ -1,15 +1,18 @@
 import * as React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
-import {} from '../types/graphql-types'
+import { BioDataQuery } from '../../types/graphql-types.d'
 
 import { rhythm } from '../utils/typography'
 
+type Props = {
+  data: BioDataQuery
+}
 function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
-      render={(data: unknown) => {
+      render={(data: BioDataQuery) => {
         const { author, social } = data.site.siteMetadata
 
         return (

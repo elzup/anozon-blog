@@ -5,11 +5,15 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
+import {
+  BlogPostBySlugQuery,
+  SitePageContext,
+} from '../../types/graphql-types.d'
 
 type Props = {
-  location: unknown
-  data: unknown
-  pageContext: unknown
+  location: Location
+  data: BlogPostBySlugQuery
+  pageContext: SitePageContext
 }
 
 function BlogPostTemplate(props: Props) {
