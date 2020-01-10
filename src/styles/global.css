@@ -11,7 +11,7 @@
 .gatsby-code-title span {
   display: inline;
   position: relative;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   color: #eee;
   background: #777;
   border-top-left-radius: 0.3em;
