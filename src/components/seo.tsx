@@ -18,6 +18,8 @@ function SEO({
   keywords = [],
   title,
 }: Props) {
+  const _a = 0
+
   return (
     <StaticQuery
       query={detailsQuery}

@@ -34,7 +34,6 @@ function Bio() {
             />
             <p>
               <strong>{author}</strong> JavaScript とアニメ好き Web エンジニア。
-              {` `}
               <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
             </p>
           </div>

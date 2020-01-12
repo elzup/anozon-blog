@@ -14,18 +14,17 @@ function BlogIndex({
   data: IndexPageQuery
   location: Location
 }) {
-  const siteTitle = data.site.siteMetadata.title
-
-  const posts = data.allMarkdownRemark.edges
+  const { title } = data.site.siteMetadata
+  const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <SEO
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Bio />
-      {posts.map(({ node }) => {
+      {edges.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
 
         return (
