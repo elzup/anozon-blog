@@ -55,12 +55,6 @@ module.exports = {
               linkImagesToOriginal: true,
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           'gatsby-plugin-twitter',
