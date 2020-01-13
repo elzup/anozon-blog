@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 10:43:43 GMT</lastBuildDate><item><title><![CDATA[【PLOP CLI】新しいファイルをテンプレートから生成するCLI]]></title><description><![CDATA[この記事では PLOP について紹介します。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 11:34:32 GMT</lastBuildDate><item><title><![CDATA[【PLOP CLI】新しいファイルをテンプレートから生成するCLI]]></title><description><![CDATA[この記事では PLOP について紹介します。
 GatsbyJS で書いている当ブログの記事作成を例に話します。 Consistency Made Simple : PLOP 手順 1. インストール npm で global…]]></description><link>https://blog.anozon.megatsby-plop-newpost</link><guid isPermaLink="false">https://blog.anozon.megatsby-plop-newpost</guid><pubDate>Sun, 12 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では PLOP について紹介します。
 GatsbyJS で書いている当ブログの記事作成を例に話します。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://plopjs.com/&quot;&gt;Consistency Made Simple : PLOP&lt;/a&gt;&lt;/p&gt;
@@ -85,28 +85,29 @@ id (slug, ファイルのパスに必要)も入力して設定、&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/SBoudrias/Inquirer.js&quot;&gt;SBoudrias/Inquirer.js: A collection of common interactive command line user interfaces.&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;手順 4. 実行してみる&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn plop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;以下のファイルが目的のパスに生成されました！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3.amazonaws.com/blog/gatsby-plop-example.png&quot; alt=&quot;plop example&quot;&gt;&lt;/p&gt;
 
         &lt;div class=&quot;gatsby-code-title&quot;&gt;
-          &lt;span&gt;content/blog/2020/2020-01-12___gatsby-plop-newpost.md&lt;/span&gt;
+          &lt;span&gt;content/blog/2020/2020-01-13___gatsby-plop-newpost.md&lt;/span&gt;
         &lt;/div&gt;
        
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
 title: 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する
-date: 2020-01-12
+date: 2020-01-13 20:00:00
 tags:
-  - a
-  - b
-category: Tech
+- a
+- b
+category: BlogOps
 ---
 
-この記事では 【PLOP】GatsbyJS で新しい記事をテンプレートから作成する について紹介します。
+この記事では 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する について紹介します。
 
 ## 手順 1. 初期化する
 
 ## 手順 2. リクエストを定義する
 
 ## xx の場合&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;目的のファイルが目的のパスに生成されました！&lt;/p&gt;
 &lt;h2&gt;感想&lt;/h2&gt;
 &lt;p&gt;今回はテンプレートからファイル生成ということでシンプルに需要ありそうですが、そういうツール聞いたこと無いなと思って探してみて見つけたものでした。&lt;/p&gt;
 &lt;p&gt;最初”file template generator cli” などでググってなかなか見つからずに自分で shell と sed で実装しようとしました。
