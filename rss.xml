@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 10:43:43 GMT</lastBuildDate><item><title><![CDATA[【PLOP CLI】新しいファイルをテンプレートから生成するCLI]]></title><description><![CDATA[この記事では PLOP について紹介します。
+GatsbyJS で書いている当ブログの記事作成を例に話します。 Consistency Made Simple : PLOP 手順 1. インストール npm で global…]]></description><link>https://blog.anozon.megatsby-plop-newpost</link><guid isPermaLink="false">https://blog.anozon.megatsby-plop-newpost</guid><pubDate>Sun, 12 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では PLOP について紹介します。
+GatsbyJS で書いている当ブログの記事作成を例に話します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://plopjs.com/&quot;&gt;Consistency Made Simple : PLOP&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;手順 1. インストール&lt;/h2&gt;
+&lt;p&gt;npm で global インストールだと何故か動かなかった。
+プロジェクト依存で入れた。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add plop -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;手順 2. テンプレートを作る&lt;/h2&gt;
+&lt;p&gt;記事のテンプレートを用意します。
+markdown でメタ情報含めて定義しました。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;post.hbs&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
+title: {{title}}
+date: {{date}} {{hms}}
+tags:
+- a
+- b
+category: {{category}}
+---
+
+この記事では {{title}} について紹介します。&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{{variable}}&lt;/code&gt; で変数を定義します。&lt;/p&gt;
+&lt;h2&gt;手順 3. plopfile.js を作る&lt;/h2&gt;
+&lt;p&gt;ファイルを生成する設定を書きます。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;テンプレートで必要となる変数&lt;/strong&gt;, &lt;strong&gt;ファイルのパス&lt;/strong&gt;が揃うように作ります。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;propfile.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;pad00&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;padStart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;0&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; date &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; year &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getFullYear&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; month &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; day &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; hms &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getHours&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;:00:00&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; datePrefix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;year&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;month&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;day&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; categories &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;日記&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Tech&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;BlogOps&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;/** @type {import(&apos;plop&apos;).NodePlopAPI} */&lt;/span&gt;
+  plop
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setHelper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;getKebabFirst&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;-&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setHelper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;hms&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; hms&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setGenerator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;post&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    description&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Write new blog post&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    prompts&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;title&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;id&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;kebab-case&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;date&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; datePrefix&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;YYYY-MM-DD&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;list&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;category&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Tech&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        choices&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; categories&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    actions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;add&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;content/blog/{{getKebabFirst date}}/{{date}}___{{id}}.md&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        templateFile&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;templates/post.hbs&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 自分のテンプレートがある path&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記のコードによって、&lt;/p&gt;
+&lt;p&gt;title は入力して設定、
+id (slug, ファイルのパスに必要)も入力して設定、&lt;/p&gt;
+&lt;p&gt;category は選択して設定、&lt;/p&gt;
+&lt;p&gt;ファイルのパスやタイムスタンプはデフォルトで自動生成するようになります。&lt;/p&gt;
+&lt;p&gt;質問の &lt;code class=&quot;language-text&quot;&gt;type&lt;/code&gt; は &lt;a href=&quot;https://github.com/SBoudrias/Inquirer.js&quot;&gt;Inquirer.js:&lt;/a&gt; の中から使えます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/SBoudrias/Inquirer.js&quot;&gt;SBoudrias/Inquirer.js: A collection of common interactive command line user interfaces.&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;手順 4. 実行してみる&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn plop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下のファイルが目的のパスに生成されました！&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;content/blog/2020/2020-01-12___gatsby-plop-newpost.md&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
+title: 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する
+date: 2020-01-12
+tags:
+  - a
+  - b
+category: Tech
+---
+
+この記事では 【PLOP】GatsbyJS で新しい記事をテンプレートから作成する について紹介します。
+
+## 手順 1. 初期化する
+
+## 手順 2. リクエストを定義する
+
+## xx の場合&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;今回はテンプレートからファイル生成ということでシンプルに需要ありそうですが、そういうツール聞いたこと無いなと思って探してみて見つけたものでした。&lt;/p&gt;
+&lt;p&gt;最初”file template generator cli” などでググってなかなか見つからずに自分で shell と sed で実装しようとしました。
+しかし、&lt;a href=&quot;https://github.com/react-boilerplate/react-boilerplate&quot;&gt;react-boilerplate/react-boilerplate&lt;/a&gt; で generator がついてたのを思い出して何が使われているのか調べたところ &lt;code class=&quot;language-text&quot;&gt;plop&lt;/code&gt; にたどり着きました。&lt;/p&gt;
+&lt;p&gt;もちろん他にも使えそうで良いものを見つけた。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJS を Typescript に移行した際の Type 付け]]></title><description><![CDATA[GatsbyJS で書いているこのブログを Typescript 移行しました。 主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。 Gatsby.js を完全 TypeScript 化する - Qiita GraphQL Data…]]></description><link>https://blog.anozon.megatsby-to-typescript</link><guid isPermaLink="false">https://blog.anozon.megatsby-to-typescript</guid><pubDate>Thu, 09 Jan 2020 11:12:20 GMT</pubDate><content:encoded>&lt;p&gt;GatsbyJS で書いているこのブログを Typescript 移行しました。&lt;/p&gt;
+&lt;p&gt;主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://qiita.com/Takepepe/items/144209f860fbe4d5e9bb&quot;&gt;Gatsby.js を完全 TypeScript 化する - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;GraphQL Data, Page Component に型をつける&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-plugin-graphql-codegen&lt;/code&gt; を使用する方法と &lt;code class=&quot;language-text&quot;&gt;@graphql-codegen/typescript&lt;/code&gt; を使用する方法がありましたが前者を選びました。セットアップが簡潔に済んだので。&lt;/p&gt;
+&lt;h3&gt;PageQuery&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; IndexPageQuery &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+type Props &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  data&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; IndexPageQuery
+  location&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Location
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; bioQuery &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; graphql&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+  query IndexPage {
+&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;StaticQuery&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; BioDataQuery &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;StaticQuery
+      query&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;bioQuery&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      render&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;data&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; BioDataQuery&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;その他 Props&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; SitePageContext &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../../types/graphql-types.d&apos;&lt;/span&gt;
+
+location&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Location
+pageContext&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; SitePageContext&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;TypeScript を入れるとビルド周りで複雑になるフレームワークが多くて不安でしたが、あっさりと移行できてよかったです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Firebase Function 内から Cloud Messaging で通知を投げる最小コード]]></title><description><![CDATA[Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。 firebase-admin の初期化設定する アプリサーバーからの送信リクエストを作成する  |  Firebase…]]></description><link>https://blog.anozon.mefirebase-messaging-by-function</link><guid isPermaLink="false">https://blog.anozon.mefirebase-messaging-by-function</guid><pubDate>Wed, 08 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。&lt;/p&gt;
+&lt;h2&gt;firebase-admin の初期化設定する&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://firebase.google.com/docs/cloud-messaging/send-message?hl=ja&quot;&gt;アプリサーバーからの送信リクエストを作成する  |  Firebase&lt;/a&gt; (公式ドキュメント)&lt;/p&gt;
+&lt;p&gt;「&lt;code class=&quot;language-text&quot;&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; が必要なの？」とか「 ADC はどうやって承認するの？」とか「Authorization ヘッダにどの Token をセットするの？」とか少しややこしかった。&lt;/p&gt;
+&lt;p&gt;結論から言うと &lt;strong&gt;Firebase Function にデプロイする場合は何も考えなくていい&lt;/strong&gt;。
+以下のコードで暗黙的に検出される。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;admin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;initializeApp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  credential&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; admin&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;credential&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;applicationDefault&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;functions/index.js のコード例&lt;/h2&gt;
+&lt;p&gt;&lt;div id=&quot;gist100450553&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-functions_index-js&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;functions&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;firebase-functions&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;firebase-admin&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;initializeApp&lt;/span&gt;({&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  credential&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-smi&quot;&gt;credential&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;applicationDefault&lt;/span&gt;(),&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; databaseURL: &amp;#39;https://hoge.firebaseio.com/&amp;#39;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;})&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;functions&lt;/span&gt;.&lt;span class=&quot;pl-smi&quot;&gt;https&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;onRequest&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;async&lt;/span&gt; (&lt;span class=&quot;pl-smi&quot;&gt;req&lt;/span&gt;, &lt;span class=&quot;pl-smi&quot;&gt;res&lt;/span&gt;) &lt;span class=&quot;pl-k&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    topic&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;TOPIC_NAME&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    notification&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      title&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;通知デモです&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      body&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;サーバーは&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pse&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;Date&lt;/span&gt;().&lt;span class=&quot;pl-c1&quot;&gt;getHours&lt;/span&gt;()&lt;span class=&quot;pl-pse&quot;&gt;}&lt;/span&gt;&lt;/span&gt;時です。&lt;span class=&quot;pl-pds&quot;&gt;`&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    },&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; priority: &amp;#39;high&amp;#39;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;admin&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;messaging&lt;/span&gt;().&lt;span class=&quot;pl-c1&quot;&gt;send&lt;/span&gt;(message)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-functions_index-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-functions_index-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;})&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/elzup/66d33599362f232dfeb6f6c802718679/raw/c1f9271f17ca1e8c2786c86773285767a9f09a5c/functions_index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/elzup/66d33599362f232dfeb6f6c802718679#file-functions_index-js&quot;&gt;functions_index.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;firestore などを使う場合は &lt;code class=&quot;language-text&quot;&gt;databaseURL&lt;/code&gt; オプションを設定する。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJSでコードブロックを作成する]]></title><description><![CDATA[この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
+現状 Plain Text なので Syntax Hilight と style 調整をします。 手順 1. prismjs のプラグインを追加 gatsby-remark-prismjs…]]></description><link>https://blog.anozon.megatsby-codebrock</link><guid isPermaLink="false">https://blog.anozon.megatsby-codebrock</guid><pubDate>Sun, 05 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。
+現状 Plain Text なので Syntax Hilight と style 調整をします。&lt;/p&gt;
+&lt;h2&gt;手順 1. prismjs のプラグインを追加&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gatsby-transformer-remark gatsby-remark-prismjs prismjs
+&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; gatsby-remark-prismjs-title&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/?=prismjs&quot;&gt;gatsby-remark-prismjs&lt;/a&gt; と
+&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-remark-prismjs-title/&quot;&gt;gatsby-remark-prismjs-title&lt;/a&gt;を追加します。&lt;/p&gt;
+&lt;h2&gt;手順 2. config の追加&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/gatsby-config.js&lt;/code&gt; に config を追加します。
+&lt;strong&gt;root の plugins に書くのではなく &lt;code class=&quot;language-text&quot;&gt;gatsby-transformer-remark&lt;/code&gt; 以下の plugins に書くことに注意します。&lt;/strong&gt;&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-config.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff&quot;&gt;&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;&lt;span class=&quot;token unchanged&quot;&gt;    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;+          &apos;gatsby-remark-prismjs-title&apos;,
++          {
++            resolve: `gatsby-remark-prismjs`,
++            options: {
++              classPrefix: &apos;language-&apos;,
++              inlineCodeMarker: null,
++              aliases: {
++                js: &apos;javascript&apos;,
++                sh: &apos;bash&apos;,
++              },
++              showLineNumbers: false,
++              noInlineHighlight: false,
++              languageExtensions: [
++                {
++                  language: &apos;superscript&apos;,
++                  extend: &apos;javascript&apos;,
++                  definition: { superscript_types: /(SuperType)/ },
++                  insertBefore: {
++                    function: { superscript_keywords: /(superif|superelse)/ },
++                  },
++                },
++              ],
++              prompt: { user: &apos;root&apos;, host: &apos;localhost&apos;, global: false },
++              escapeEntities: {},
++            },
++          },
+&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;        ]
+      }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;aliases を使うことで &lt;code class=&quot;language-text&quot;&gt;js&lt;/code&gt; と短くことができます。&lt;/p&gt;
+&lt;p&gt;更にそれぞれの readme にあるように sample の style を書くことで
+以下のような感じになりました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/codebrock.png&quot; alt=&quot;anozon blog new codebrock&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;gatsby-remark-prismjs-title と gatsby-remark-code-titles&lt;/h2&gt;
+&lt;p&gt;この 2 つのプラグインはどちらもコードブロックの直前に title を挿入してくれるプラグインです。&lt;/p&gt;
+&lt;p&gt;今回使っていない方 &lt;code class=&quot;language-text&quot;&gt;gatsby-remark-code-titles&lt;/code&gt;では div 単体でコードが挿入されます。
+&lt;code class=&quot;language-text&quot;&gt;gatsby-remark-prismjs-title&lt;/code&gt;では div &gt; span の構造で挿入してくれるため style しやすいためこちらを選択しました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJSで記事のURLをカスタマイズする]]></title><description><![CDATA[この記事では GatsbyJS で作るブログの slug(URL のパス部分) のカスタマイズ方法を紹介します。 gatsby-source-filesystem を使用している前提で説明します(gatsby-starter-blog に入っています)。 手順. /gatsby…]]></description><link>https://blog.anozon.megatsby-customize-slug</link><guid isPermaLink="false">https://blog.anozon.megatsby-customize-slug</guid><pubDate>Sat, 04 Jan 2020 23:03:38 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS で作るブログの &lt;strong&gt;slug(URL のパス部分)&lt;/strong&gt; のカスタマイズ方法を紹介します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-source-filesystem/&quot;&gt;gatsby-source-filesystem&lt;/a&gt; を使用している前提で説明します(gatsby-starter-blog に入っています)。&lt;/p&gt;
+&lt;h2&gt;手順. /gatsby-node.js を編集する&lt;/h2&gt;
+&lt;p&gt;slug は &lt;code class=&quot;language-text&quot;&gt;/gatsby-node.js&lt;/code&gt; の onCreateNode 内の createNodeField で設定しています。以下のコードでは createFilePath で作成されるパスがそのまま設定されています。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-node.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;exports&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;onCreateNode&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; actions&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; value &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createFilePath&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;createNodeField&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    value&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;createFilePath で返されるパスは &lt;code class=&quot;language-text&quot;&gt;gatsby-source-filesystem&lt;/code&gt; の path オプションをルートとした絶対パスとなっています。&lt;strong&gt;ファイルの拡張子はついていません&lt;/strong&gt;。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-config.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;  plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      resolve&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;gatsby-source-filesystem&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      options&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;__dirname&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;/content/blog&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;実装例&lt;/h2&gt;
+&lt;p&gt;今回このブログを例にカスタマイズします。&lt;/p&gt;
+&lt;p&gt;僕のブログではブログポストのファイルは以下のディレクトリに配置しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/content/blog/2020/2020-01-04___gatsby-customize-slug.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(&lt;code class=&quot;language-text&quot;&gt;/content/blog/{year}/{year}-{month}-{day}___{slug}.md&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;URL は以下のようになっています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;https://blog.anozon.me/2020/2020-01-04_gatsby-customize-slug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;この日付入り URL を、記事の ID に当たる部分のみに省略してシンプルにします。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;https://blog.anozon.me/gatsby-customize-slug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/elzup/anozonbiyori/commit/34505a0a39640ea0b2a1b60c7662412544179510#diff-fda05457e393bada716f508859bfc604&quot;&gt;実装 Commit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;変更点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;SLUG_SEPARATOR によって slug 部分をチュシュツして返す getSlug 関数の作成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLUG_SEPARATOR を含まない場合はそのまま&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;getSlug を適用して返す&lt;/li&gt;
+&lt;/ul&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;gatsby-node.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SLUG_SEPARATOR&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;___&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// &apos;2020/2020-01-04___gatsby-customize-slug&apos; → &apos;gatsby-customize-slug&apos;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;getSlug&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;prefix&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; slug&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SLUG_SEPARATOR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; slug &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; path
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;node&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;internal&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;MarkdownRemark&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; createNodeField &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; actions
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; filePath &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createFilePath&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; getNode&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; trailingSlash&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; slug &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getSlug&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filePath&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;createNodeField&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  node&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  value&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; slug&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/gatsby-custom-slug.png&quot; alt=&quot;https://elzup-image-storage.s3-ap-northeast-1.amazonaws.com/blog/gatsby-custom-slug.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;カスタマイズできました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gatsby で Twitter 埋め込みする]]></title><description><![CDATA[if (prevJwt === nextJwt) {
+return
+}
+localStorage.removeItem(‘jwt’)
+if (nextJwt) {
+localStorage.setItem(‘jwt’, nextJwt)
+}]]></description><link>https://blog.anozon.megatsby-skill-twitter</link><guid isPermaLink="false">https://blog.anozon.megatsby-skill-twitter</guid><pubDate>Tue, 12 Mar 2019 20:47:00 GMT</pubDate><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add gatsby-plugin-twitter&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;かっけえええ&lt;br&gt;マップの現在地もちゃんと動いてクール &lt;a href=&quot;https://t.co/plYy6Oc2DN&quot;&gt;pic.twitter.com/plYy6Oc2DN&lt;/a&gt;&lt;/p&gt;&amp;mdash; あのぞん.tsx (@anozon) &lt;a href=&quot;https://twitter.com/anozon/status/1104302915647201280?ref_src=twsrc%5Etfw&quot;&gt;March 9, 2019&lt;/a&gt;&lt;/blockquote&gt;
+&lt;p&gt;if (prevJwt === nextJwt) {
+return
+}
+localStorage.removeItem(‘jwt’)
+if (nextJwt) {
+localStorage.setItem(‘jwt’, nextJwt)
+}&lt;/p&gt;</content:encoded></item><item><title><![CDATA[はやくもブログを Hexo から Gatsby に切り替えた]]></title><description><![CDATA[移行した理由 React が使えるのが良さそうなので Gatsby に移行しました。 Before
+ After
+ さっぱりしてしまいましたがカスタマイズ前なので OK。 いじっていきたい部分 Gatsby は GraphQL…]]></description><link>https://blog.anozon.megatsby-blog</link><guid isPermaLink="false">https://blog.anozon.megatsby-blog</guid><pubDate>Wed, 06 Mar 2019 11:58:50 GMT</pubDate><content:encoded>&lt;h2&gt;移行した理由&lt;/h2&gt;
+&lt;p&gt;React が使えるのが良さそうなので Gatsby に移行しました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Before
+&lt;img src=&quot;https://s3.amazonaws.com/anozon-img/%E3%81%82%E3%81%AE%E3%81%9E%E3%82%93%E3%81%B3%E3%82%88%E3%82%8A.png&quot;&gt;&lt;/li&gt;
+&lt;li&gt;After
+&lt;img src=&quot;https://s3.amazonaws.com/anozon-img/All_posts___%E3%81%82%E3%81%AE%E3%81%9E%E3%82%93%E3%81%B3%E3%82%88%E3%82%8A.png&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;さっぱりしてしまいましたがカスタマイズ前なので OK。&lt;/p&gt;
+&lt;h2&gt;いじっていきたい部分&lt;/h2&gt;
+&lt;p&gt;Gatsby は GraphQL が基本っぽいのでレイアウト組んでいくのに挑戦していきたいです。
+できれば TypeScript で書きたい。&lt;/p&gt;
+&lt;p&gt;あと文章を書くときに &lt;a href=&quot;https://github.com/textlint/textlint&quot;&gt;textlint&lt;/a&gt; も入れたいです。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[akispace.fm をはじめました]]></title><description><![CDATA[podcast 始めました エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。 yattecast を fork Podcast には audrio と RSS が必要なになります。
+yattecast というリポジトリが podcast 向けの Jekyll…]]></description><link>https://blog.anozon.mebuild-radio</link><guid isPermaLink="false">https://blog.anozon.mebuild-radio</guid><pubDate>Mon, 04 Mar 2019 11:28:00 GMT</pubDate><content:encoded>&lt;h2&gt;podcast 始めました&lt;/h2&gt;
+&lt;p&gt;エンジニア 2 人でアウトプットしながら雑談したいと思いはじめました。&lt;/p&gt;
+&lt;h2&gt;yattecast を fork&lt;/h2&gt;
+&lt;p&gt;Podcast には audrio と RSS が必要なになります。
+yattecast というリポジトリが podcast 向けの Jekyll を公開してたので試してみました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://r7kamura.github.io/yattecast/&quot;&gt;https://r7kamura.github.io/yattecast/&lt;/a&gt;
+↑ ページにわかりやすく書いてある。というかシンプル。
+config ファイルいじって push するだけでいい感じに出来ました。&lt;/p&gt;
+&lt;p&gt;GitHub はファイルに 100MB 制限があって、地味に audio ファイル push するときにに躓きました。
+export の仕方が悪いのかな？&lt;/p&gt;
+&lt;h2&gt;Anchor も使ってみた。&lt;/h2&gt;
+&lt;p&gt;Anchor の場合も RSS 生成と Hosting をしてくれるのでとても手軽だとわかったので使って見ています。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hexo と gh-pages でブログを作った]]></title><description><![CDATA[Hello world!. 新しくブログを立てました。 今までの使っていたブログと理由 最初はブログを作るということで WordPress を VPS サーバーに設置していました。 でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium…]]></description><link>https://blog.anozon.mestart-blog</link><guid isPermaLink="false">https://blog.anozon.mestart-blog</guid><pubDate>Sat, 09 Feb 2019 19:10:20 GMT</pubDate><content:encoded>&lt;p&gt;Hello world!. 新しくブログを立てました。&lt;/p&gt;
+&lt;h2&gt;今までの使っていたブログと理由&lt;/h2&gt;
+&lt;p&gt;最初はブログを作るということで WordPress を VPS サーバーに設置していました。&lt;/p&gt;
+&lt;p&gt;でも自分で管理するのがだるくなって、しばらく”はてなブログ”や Qiita, Medium を使っていました。&lt;/p&gt;
+&lt;p&gt;はてなブログは &lt;strong&gt;やっぱり広告が嫌&lt;/strong&gt; で、かと言って有料会員で固定費払う気にもなれず、今回久々に自分で管理するブログを立てようとはじめました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tKfTcgy1g0sw19moeqj30zk0k0ad2.jpg&quot; alt=&quot;anozonbiyori-hexo&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;ブログ構成について考えたこと&lt;/h2&gt;
+&lt;p&gt;運用: GitHub Pages + Hexo&lt;/p&gt;
+&lt;p&gt;編集: VSCode + MarkdownPreview + S3 upload&lt;/p&gt;
+&lt;p&gt;まず運用について考えたのは &lt;strong&gt;サーバー借りない(できるだけ無料で)&lt;/strong&gt; で運用したいということです。
+GitHub Pages や firebase など 低コストな  ホスティングサービスが多い時代なのでそれらを調査しました。
+結局は GitHub Pages を使うことにしました。そして js が使えるという理由で Hexo を選びました。&lt;/p&gt;
+&lt;p&gt;記事の書きやすさについては &lt;strong&gt;“マークダウンが使える”&lt;/strong&gt;、&lt;strong&gt;“画像アップロードしやすい”&lt;/strong&gt; のであれば良いなと考えました。&lt;/p&gt;
+&lt;h3&gt;画像について&lt;/h3&gt;
+&lt;p&gt;でもそれらは別問題でローカルのマークダウンエディタで対応できれば済むなと思ってます。
+iPic は良さげでしたが有料なので無料で良さげな S3 アップローダクライアントは見つかってないのでしばらくは手動アップロードしたいと思います。&lt;/p&gt;
+&lt;h2&gt;GitHub Pages についてのセットアップ&lt;/h2&gt;
+&lt;p&gt;Route53 でもっているドメインのサブドメインを振りました。
+カスタムドメインでも DNS 設定のみで https が使えるようになっていました。(それも GitHub Pages を選んだ理由のひとつでした)&lt;/p&gt;
+&lt;p&gt;あと &lt;code class=&quot;language-text&quot;&gt;gh-pages&lt;/code&gt; ブランチが build 出力先で &lt;code class=&quot;language-text&quot;&gt;master&lt;/code&gt; はリポジトリそのままの状態で管理できるようにしました。&lt;/p&gt;</content:encoded></item></channel></rss>
