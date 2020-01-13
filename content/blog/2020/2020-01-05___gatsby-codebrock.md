@@ -3,9 +3,7 @@ title: GatsbyJSでコードブロックを作成する
 date: 2020-01-05 23:03:38
 tags:
   - GatsbyJS
-  - BlogOps
-category:
-  - Tech
+category: BlogOps
 ---
 
 この記事では GatsbyJS で作っているブログのコードブロックをカスタマイズします。

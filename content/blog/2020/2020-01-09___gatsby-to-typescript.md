@@ -3,9 +3,7 @@ title: GatsbyJS を Typescript に移行した際の Type 付け
 date: 2020-01-09 11:12:20
 tags:
   - GatsbyJS
-category:
-  - Tech
-  - BlogOps
+category: BlogOps
 ---
 
 GatsbyJS で書いているこのブログを Typescript 移行しました。

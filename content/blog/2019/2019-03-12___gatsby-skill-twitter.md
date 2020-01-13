@@ -3,10 +3,8 @@ title: Gatsby で Twitter 埋め込みする
 date: 2019-03-12 20:47:00
 tags:
   - GatsbyJS
-  - BlogOps
   - GitHub Pages
-category:
-  - Tech
+category: BlogOps
 status: 'draft'
 ---
 

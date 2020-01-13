@@ -8,8 +8,7 @@ tags:
   - mp3
   - podcast
   - Anchor
-category:
-  - 日記
+category: 日記
 ---
 
 ## podcast 始めました

@@ -4,8 +4,7 @@ date: 2019-02-09 19:10:20
 tags:
   - hexo
   - GitHub Pages
-category:
-  - 日記
+category: 日記
 ---
 
 Hello world!. 新しくブログを立てました。
