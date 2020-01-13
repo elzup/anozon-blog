@@ -5,7 +5,7 @@ tags:
   - GatsbyJS
   - GitHub Pages
 category: BlogOps
-status: 'draft'
+status: draft
 ---
 
 ```
