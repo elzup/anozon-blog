@@ -52,7 +52,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && cp CNAME public && echo '",
     "dev": "gatsby develop",
     "start": "yarn run develop",
     "serve": "gatsby serve",
