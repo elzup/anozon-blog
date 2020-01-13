@@ -20,12 +20,12 @@ module.exports = function(
     description: 'Write new blog post',
     prompts: [
       { type: 'input', name: 'title' },
-      { type: 'input', name: 'id', message: `kebab-case` },
+      { type: 'input', name: 'id', message: `id(kebab-case):` },
       {
         type: 'input',
         name: 'date',
         default: datePrefix,
-        message: `YYYY-MM-DD`,
+        message: `date(YYYY-MM-DD):`,
       },
       {
         type: 'list',

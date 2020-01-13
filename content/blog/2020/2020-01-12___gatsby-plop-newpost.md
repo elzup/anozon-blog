@@ -113,19 +113,19 @@ category は選択して設定、
 yarn plop
 ```
 
-以下のファイルが目的のパスに生成されました！
+![plop example](https://elzup-image-storage.s3.amazonaws.com/blog/gatsby-plop-example.png)
 
-```:title=content/blog/2020/2020-01-12___gatsby-plop-newpost.md
+```:title=content/blog/2020/2020-01-13___gatsby-plop-newpost.md
 ---
 title: 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する
-date: 2020-01-12
+date: 2020-01-13 20:00:00
 tags:
-  - a
-  - b
-category: Tech
+- a
+- b
+category: BlogOps
 ---
 
-この記事では 【PLOP】GatsbyJS で新しい記事をテンプレートから作成する について紹介します。
+この記事では 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する について紹介します。
 
 ## 手順 1. 初期化する
 
@@ -133,6 +133,8 @@ category: Tech
 
 ## xx の場合
 ```
+
+目的のファイルが目的のパスに生成されました！
 
 ## 感想
 
