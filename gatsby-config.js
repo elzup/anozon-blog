@@ -33,6 +33,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              usePrefix: ['oembed', 'video'],
+              providers: { exclude: [] },
+            },
+          },
+          {
             resolve: 'gatsby-remark-embed-gist',
             options: {
               username: 'elzup',
