@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Jan 2020 13:49:23 GMT</lastBuildDate><item><title><![CDATA[GatsbyJS を Typescript に移行した際の Type 付け]]></title><description><![CDATA[GatsbyJS で書いているこのブログを Typescript 移行しました。 主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。 Gatsby.js を完全 TypeScript 化する - Qiita GraphQL Data…]]></description><link>https://blog.anozon.megatsby-to-typescript</link><guid isPermaLink="false">https://blog.anozon.megatsby-to-typescript</guid><pubDate>Thu, 09 Jan 2020 11:12:20 GMT</pubDate><content:encoded>&lt;p&gt;GatsbyJS で書いているこのブログを Typescript 移行しました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 08:24:29 GMT</lastBuildDate><item><title><![CDATA[GatsbyJSでサイドバーをつけてみた]]></title><description><![CDATA[この記事では GatsbyJS でサイドバーをつけてみた について紹介します。 手順 1. 初期化する 手順 2. リクエストを定義する xx の場合]]></description><link>https://blog.anozon.megatsby-make-sidebar</link><guid isPermaLink="false">https://blog.anozon.megatsby-make-sidebar</guid><pubDate>Mon, 13 Jan 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では GatsbyJS でサイドバーをつけてみた について紹介します。&lt;/p&gt;
+&lt;h2&gt;手順 1. 初期化する&lt;/h2&gt;
+&lt;h2&gt;手順 2. リクエストを定義する&lt;/h2&gt;
+&lt;h2&gt;xx の場合&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[【PLOP CLI】新しいファイルをテンプレートから生成するCLI]]></title><description><![CDATA[この記事では PLOP について紹介します。
+GatsbyJS で書いている当ブログの記事作成を例に話します。 Consistency Made Simple : PLOP 手順 1. インストール npm で global…]]></description><link>https://blog.anozon.megatsby-plop-newpost</link><guid isPermaLink="false">https://blog.anozon.megatsby-plop-newpost</guid><pubDate>Sun, 12 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では PLOP について紹介します。
+GatsbyJS で書いている当ブログの記事作成を例に話します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://plopjs.com/&quot;&gt;Consistency Made Simple : PLOP&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;手順 1. インストール&lt;/h2&gt;
+&lt;p&gt;npm で global インストールだと何故か動かなかった。
+プロジェクト依存で入れた。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add plop -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;手順 2. テンプレートを作る&lt;/h2&gt;
+&lt;p&gt;記事のテンプレートを用意します。
+markdown でメタ情報含めて定義しました。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;post.hbs&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
+title: {{title}}
+date: {{date}} {{hms}}
+tags:
+- a
+- b
+category: {{category}}
+---
+
+この記事では {{title}} について紹介します。&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{{variable}}&lt;/code&gt; で変数を定義します。&lt;/p&gt;
+&lt;h2&gt;手順 3. plopfile.js を作る&lt;/h2&gt;
+&lt;p&gt;ファイルを生成する設定を書きます。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;テンプレートで必要となる変数&lt;/strong&gt;, &lt;strong&gt;ファイルのパス&lt;/strong&gt;が揃うように作ります。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;propfile.js&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;pad00&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;padStart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;0&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; date &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; year &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getFullYear&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; month &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; day &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; hms &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pad00&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getHours&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;:00:00&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; datePrefix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;year&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;month&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;day&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; categories &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;日記&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Tech&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;BlogOps&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;/** @type {import(&apos;plop&apos;).NodePlopAPI} */&lt;/span&gt;
+  plop
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setHelper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;getKebabFirst&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;-&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setHelper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;hms&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; hms&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  plop&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setGenerator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;post&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    description&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Write new blog post&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    prompts&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;title&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;id&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;kebab-case&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;input&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;date&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; datePrefix&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        message&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;YYYY-MM-DD&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;list&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;category&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Tech&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        choices&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; categories&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    actions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        type&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;add&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;content/blog/{{getKebabFirst date}}/{{date}}___{{id}}.md&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        templateFile&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;templates/post.hbs&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 自分のテンプレートがある path&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記のコードによって、&lt;/p&gt;
+&lt;p&gt;title は入力して設定、
+id (slug, ファイルのパスに必要)も入力して設定、&lt;/p&gt;
+&lt;p&gt;category は選択して設定、&lt;/p&gt;
+&lt;p&gt;ファイルのパスやタイムスタンプはデフォルトで自動生成するようになります。&lt;/p&gt;
+&lt;p&gt;質問の &lt;code class=&quot;language-text&quot;&gt;type&lt;/code&gt; は &lt;a href=&quot;https://github.com/SBoudrias/Inquirer.js&quot;&gt;Inquirer.js:&lt;/a&gt; の中から使えます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/SBoudrias/Inquirer.js&quot;&gt;SBoudrias/Inquirer.js: A collection of common interactive command line user interfaces.&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;手順 4. 実行してみる&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn plop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下のファイルが目的のパスに生成されました！&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;content/blog/2020/2020-01-12___gatsby-plop-newpost.md&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
+title: 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する
+date: 2020-01-12
+tags:
+  - a
+  - b
+category: Tech
+---
+
+この記事では 【PLOP】GatsbyJS で新しい記事をテンプレートから作成する について紹介します。
+
+## 手順 1. 初期化する
+
+## 手順 2. リクエストを定義する
+
+## xx の場合&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;今回はテンプレートからファイル生成ということでシンプルに需要ありそうですが、そういうツール聞いたこと無いなと思って探してみて見つけたものでした。&lt;/p&gt;
+&lt;p&gt;最初”file template generator cli” などでググってなかなか見つからずに自分で shell と sed で実装しようとしました。
+しかし、&lt;a href=&quot;https://github.com/react-boilerplate/react-boilerplate&quot;&gt;react-boilerplate/react-boilerplate&lt;/a&gt; で generator がついてたのを思い出して何が使われているのか調べたところ &lt;code class=&quot;language-text&quot;&gt;plop&lt;/code&gt; にたどり着きました。&lt;/p&gt;
+&lt;p&gt;もちろん他にも使えそうで良いものを見つけた。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GatsbyJS を Typescript に移行した際の Type 付け]]></title><description><![CDATA[GatsbyJS で書いているこのブログを Typescript 移行しました。 主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。 Gatsby.js を完全 TypeScript 化する - Qiita GraphQL Data…]]></description><link>https://blog.anozon.megatsby-to-typescript</link><guid isPermaLink="false">https://blog.anozon.megatsby-to-typescript</guid><pubDate>Thu, 09 Jan 2020 11:12:20 GMT</pubDate><content:encoded>&lt;p&gt;GatsbyJS で書いているこのブログを Typescript 移行しました。&lt;/p&gt;
 &lt;p&gt;主に以下の記事を参考に移行しました。なので今回は Type づけに焦点を当てて書きます。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://qiita.com/Takepepe/items/144209f860fbe4d5e9bb&quot;&gt;Gatsby.js を完全 TypeScript 化する - Qiita&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;GraphQL Data, Page Component に型をつける&lt;/h2&gt;
