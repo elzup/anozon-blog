@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
 import Bio from './bio'
+import SideBar from './sidebar'
 
 const LargeTitle = ({ title }: { title: string }) => (
   <h1
@@ -60,6 +61,7 @@ const Wrapper = styled.div`
   }
   main {
     grid-area: main;
+    overflow: hidden;
   }
   aside {
     grid-area: side;
@@ -91,7 +93,7 @@ const Layout: React.FC<{ location: Location; title: string }> = ({
         <main>{children}</main>
         <aside>
           <Bio />
-          <p>👷サイドバー準備中</p>
+          <SideBar />
         </aside>
         <footer>
           © {new Date().getFullYear()} あのぞんびより All Rights Reserved
