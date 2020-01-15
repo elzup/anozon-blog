@@ -1,7 +1,7 @@
-import { triggerAsyncId } from 'async_hooks'
 import * as React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { SideBarQuery } from '../../types/graphql-types.d'
+import TagChip from './tagchip'
 
 function SideBar() {
   return (
@@ -36,20 +36,9 @@ function SideBar() {
             </div>
             <div>
               <h4>タグ</h4>
-              <div style={{ display: 'grid' }}>
+              <div style={{ display: 'grid', gridGap: '4px' }}>
                 {tags.map(tag => (
-                  <Link
-                    key={tag.fieldValue}
-                    style={{
-                      boxShadow: `none`,
-                      textDecoration: `none`,
-                      color: `inherit`,
-                      width: 'max-content',
-                    }}
-                    to={`/tags/${tag.fieldValue}`}
-                  >
-                    {tag.fieldValue}({tag.totalCount})
-                  </Link>
+                  <TagChip key={tag.fieldValue} tag={tag} />
                 ))}
               </div>
             </div>

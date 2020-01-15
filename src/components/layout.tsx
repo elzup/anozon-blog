@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   display: grid;
   grid-template-columns: 1fr ${rhythm(10)};
-
+  grid-gap: ${rhythm(1)};
   @media only screen and (min-width: 900px) {
     max-width: 1100px;
     grid-template-areas:
