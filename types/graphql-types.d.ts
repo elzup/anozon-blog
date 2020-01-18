@@ -2131,12 +2131,14 @@ export type SitePageContext = {
   slug?: Maybe<Scalars['String']>,
   previous?: Maybe<SitePageContextPrevious>,
   next?: Maybe<SitePageContextNext>,
+  tag?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>,
   previous?: Maybe<SitePageContextPreviousFilterInput>,
   next?: Maybe<SitePageContextNextFilterInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageContextNext = {
@@ -2294,6 +2296,7 @@ export type SitePageFieldsEnum =
   'context___previous___frontmatter___title' |
   'context___next___fields___slug' |
   'context___next___frontmatter___title' |
+  'context___tag' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -2986,6 +2989,19 @@ export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteS
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
     & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>> }
   )> };
+
+export type TagSearchQueryVariables = {
+  tag?: Maybe<Scalars['String']>
+};
+
+
+export type TagSearchQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }>, pages: (
+    Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<{ node: (
+        Pick<MarkdownRemark, 'excerpt'>
+        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
+      ) }> }
+  ) };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

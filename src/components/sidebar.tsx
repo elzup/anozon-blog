@@ -51,7 +51,10 @@ function SideBar() {
 
 const bioQuery = graphql`
   query SideBar {
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(
+      filter: { frontmatter: { status: { ne: "draft" } } }
+      limit: 2000
+    ) {
       tags: group(field: frontmatter___tags) {
         fieldValue
         totalCount
