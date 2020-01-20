@@ -38,7 +38,11 @@ function SideBar() {
               <h4>タグ</h4>
               <div style={{ display: 'grid', gridGap: '4px' }}>
                 {tags.map(tag => (
-                  <TagChip key={tag.fieldValue} tag={tag} />
+                  <TagChip
+                    key={tag.fieldValue}
+                    value={tag.fieldValue}
+                    count={tag.totalCount}
+                  />
                 ))}
               </div>
             </div>

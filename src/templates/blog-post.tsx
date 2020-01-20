@@ -9,6 +9,7 @@ import {
   BlogPostBySlugQuery,
   SitePageContext,
 } from '../../types/graphql-types.d'
+import { TagChipGroups } from '../components/tagchip'
 
 type Props = {
   location: Location
@@ -20,20 +21,22 @@ function BlogPostTemplate(props: Props) {
   const post = props.data.markdownRemark
   const siteTitle = props.data.site.siteMetadata.title
   const { previous, next } = props.pageContext
+  const { date, title, tags } = post.frontmatter
 
   return (
     <Layout location={props.location} title={siteTitle}>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <h1>{post.frontmatter.title}</h1>
+      <SEO title={title} description={post.excerpt} />
+      <h1>{title}</h1>
+      <TagChipGroups tags={tags.map(value => ({ value }))} />
       <p
         style={{
           ...scale(-1 / 5),
           display: `block`,
           marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
+          marginTop: rhythm(0.5),
         }}
       >
-        {post.frontmatter.date}
+        {date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <hr
@@ -41,6 +44,7 @@ function BlogPostTemplate(props: Props) {
           marginBottom: rhythm(1),
         }}
       />
+      <TagChipGroups tags={tags.map(value => ({ value }))} />
       <Bio />
 
       <ul
@@ -88,6 +92,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD HH:mm:ss")
+        tags
       }
     }
   }

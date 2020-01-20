@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 import { IndexPageQuery } from '../../types/graphql-types.d'
+import { TagChipGroups } from '../components/tagchip'
 
 function BlogIndex({
   data,
@@ -40,6 +41,10 @@ function BlogIndex({
             </h3>
             <small>{node.frontmatter.date}</small>
             <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+
+            <TagChipGroups
+              tags={node.frontmatter.tags.map(value => ({ value }))}
+            />
           </div>
         )
       })}
@@ -69,6 +74,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "YYYY-MM-DD")
             title
+            tags
           }
         }
       }

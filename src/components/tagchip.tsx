@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { MarkdownRemarkGroupConnection } from '../../types/graphql-types.d'
 
-type Tag = Pick<MarkdownRemarkGroupConnection, 'fieldValue' | 'totalCount'>
+type Props = {
+  value: string
+  count?: number
+}
 
 const TagLink = styled(Link)`
   box-shadow: none;
@@ -18,7 +20,7 @@ const TagLink = styled(Link)`
   border: 3px solid #28242f;
   border-radius: 2rem;
   line-height: 1.8;
-  padding: 0.2rem 0.85rem 0.25rem;
+  padding: 0.1rem 0.5rem 0.05rem;
   background-image: none;
   &:hover {
     /* background: linear-gradient(90deg, #ff8a00, #e52e71); */
@@ -38,12 +40,33 @@ const TagLink = styled(Link)`
   }
 `
 
-function TagChip({ tag }: { tag: Tag }) {
+function TagChip({ value, count }: Props) {
   return (
-    <TagLink to={`/tags/${tag.fieldValue}`}>
-      {tag.fieldValue}({tag.totalCount})
+    <TagLink to={`/tags/${value}`}>
+      {value}
+      {count ? `(${count})` : ''}
     </TagLink>
   )
 }
+
+export function TagChipGroupsComponent({ tags }: { tags: Props[] }) {
+  return (
+    <div>
+      {tags.map(tag => (
+        <TagChip key={tag.value} value={tag.value} count={tag.count} />
+      ))}
+    </div>
+  )
+}
+
+export const TagChipGroups = styled(TagChipGroupsComponent)`
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    a:not(:first-child) {
+      margin-left: 5px;
+    }
+  }
+`
 
 export default TagChip

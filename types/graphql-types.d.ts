@@ -2977,7 +2977,7 @@ export type IndexPageQueryVariables = {};
 
 export type IndexPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allMarkdownRemark: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'excerpt'>
-        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
+        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title' | 'tags'>> }
       ) }> } };
 
 export type BlogPostBySlugQueryVariables = {
@@ -2987,7 +2987,7 @@ export type BlogPostBySlugQueryVariables = {
 
 export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }>, markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
-    & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>> }
+    & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>> }
   )> };
 
 export type TagSearchQueryVariables = {
