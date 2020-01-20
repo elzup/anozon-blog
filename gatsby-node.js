@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
+const kebabCase = require( 'lodash/kebabCase')
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -69,7 +71,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     tags.forEach(tag => {
       createPage({
-        path: `/tags/${tag.fieldValue}/`,
+        path: `/tags/${kebabCase(tag.fieldValue)}/`,
         component: tagTemplate,
         context: {
           tag: tag.fieldValue,

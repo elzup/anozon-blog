@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import kebabCase from 'lodash/kebabCase'
 
 type Props = {
   value: string
@@ -42,7 +43,7 @@ const TagLink = styled(Link)`
 
 function TagChip({ value, count }: Props) {
   return (
-    <TagLink to={`/tags/${value}`}>
+    <TagLink to={`/tags/${kebabCase(value)}`}>
       {value}
       {count ? `(${count})` : ''}
     </TagLink>
