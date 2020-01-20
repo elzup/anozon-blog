@@ -3,12 +3,10 @@ title: akispace.fm をはじめました
 date: 2019-03-04 11:28:00
 tags:
   - yattecast
-  - github-pages
-  - blog
-  - mp3
-  - podcast
+  - GitHub Pages
+  - Podcast
   - Anchor
-category: 日記
+category: Other
 ---
 
 ## podcast 始めました

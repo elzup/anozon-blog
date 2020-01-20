@@ -8,7 +8,7 @@ const day = pad00(date.getDate())
 const hms = `${pad00(date.getHours())}:00:00`
 const datePrefix = `${year}-${month}-${day}`
 
-const categories = ['日記', 'Tech', 'BlogOps']
+const categories = ['Other', 'Tech', 'BlogOps']
 
 module.exports = function(
   /** @type {import('plop').NodePlopAPI} */
