@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { SideBarQuery } from '../../types/graphql-types.d'
-import TagChip from './tagchip'
+import TagChip, { TagChipGroupsCol } from './tagchip'
 
 function SideBar() {
   return (
@@ -36,15 +36,12 @@ function SideBar() {
             </div>
             <div>
               <h4>タグ</h4>
-              <div style={{ display: 'grid', gridGap: '4px' }}>
-                {tags.map(tag => (
-                  <TagChip
-                    key={tag.fieldValue}
-                    value={tag.fieldValue}
-                    count={tag.totalCount}
-                  />
-                ))}
-              </div>
+              <TagChipGroupsCol
+                tags={tags.map(v => ({
+                  value: v.fieldValue,
+                  count: v.totalCount,
+                }))}
+              />
             </div>
           </div>
         )

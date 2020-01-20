@@ -50,24 +50,44 @@ function TagChip({ value, count }: Props) {
   )
 }
 
-export function TagChipGroupsComponent({ tags }: { tags: Props[] }) {
+type GroupProps = { tags: Props[] }
+export function TagChipGroupsComponent({ tags }: GroupProps) {
   return (
-    <div>
+    <>
       {tags.map(tag => (
         <TagChip key={tag.value} value={tag.value} count={tag.count} />
       ))}
-    </div>
+    </>
   )
 }
 
-export const TagChipGroups = styled(TagChipGroupsComponent)`
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    a:not(:first-child) {
-      margin-left: 5px;
-    }
+const TagChipGroupsStyle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  a:not(:first-child) {
+    margin-left: 4px;
   }
 `
+
+const TagChipGroupsColStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  a:not(:first-child) {
+    margin-top: 4px;
+  }
+`
+
+export const TagChipGroups = (props: GroupProps) => (
+  <TagChipGroupsStyle>
+    <TagChipGroupsComponent {...props} />
+  </TagChipGroupsStyle>
+)
+
+export const TagChipGroupsCol = (props: GroupProps) => (
+  <TagChipGroupsColStyle>
+    <TagChipGroupsComponent {...props} />
+  </TagChipGroupsColStyle>
+)
 
 export default TagChip
