@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+
 import kebabCase from 'lodash/kebabCase'
 
 type Props = {
@@ -51,7 +52,7 @@ function TagChip({ value, count }: Props) {
 }
 
 type GroupProps = { tags: Props[] }
-export function TagChipGroupsComponent({ tags }: GroupProps) {
+export function TagChipsComponent({ tags }: GroupProps) {
   return (
     <>
       {tags.map(tag => (
@@ -61,7 +62,7 @@ export function TagChipGroupsComponent({ tags }: GroupProps) {
   )
 }
 
-const TagChipGroupsStyle = styled.div`
+const TagChipsStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
   a:not(:first-child) {
@@ -69,7 +70,7 @@ const TagChipGroupsStyle = styled.div`
   }
 `
 
-const TagChipGroupsColStyle = styled.div`
+const TagChipsColStyle = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -78,16 +79,16 @@ const TagChipGroupsColStyle = styled.div`
   }
 `
 
-export const TagChipGroups = (props: GroupProps) => (
-  <TagChipGroupsStyle>
-    <TagChipGroupsComponent {...props} />
-  </TagChipGroupsStyle>
+export const TagChips = (props: GroupProps) => (
+  <TagChipsStyle>
+    <TagChipsComponent {...props} />
+  </TagChipsStyle>
 )
 
-export const TagChipGroupsCol = (props: GroupProps) => (
-  <TagChipGroupsColStyle>
-    <TagChipGroupsComponent {...props} />
-  </TagChipGroupsColStyle>
+export const TagChipsCol = (props: GroupProps) => (
+  <TagChipsColStyle>
+    <TagChipsComponent {...props} />
+  </TagChipsColStyle>
 )
 
 export default TagChip

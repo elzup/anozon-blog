@@ -9,7 +9,7 @@ import {
   BlogPostBySlugQuery,
   SitePageContext,
 } from '../../types/graphql-types.d'
-import { TagChipGroups } from '../components/tagchip'
+import { TagChips } from '../components/tagchip'
 
 type Props = {
   location: Location
@@ -27,7 +27,7 @@ function BlogPostTemplate(props: Props) {
     <Layout location={props.location} title={siteTitle}>
       <SEO title={title} description={post.excerpt} />
       <h1>{title}</h1>
-      <TagChipGroups tags={tags.map(value => ({ value }))} />
+      <TagChips tags={tags.map(value => ({ value }))} />
       <p
         style={{
           ...scale(-1 / 5),
@@ -44,7 +44,7 @@ function BlogPostTemplate(props: Props) {
           marginBottom: rhythm(1),
         }}
       />
-      <TagChipGroups tags={tags.map(value => ({ value }))} />
+      <TagChips tags={tags.map(value => ({ value }))} />
       <Bio />
 
       <ul
