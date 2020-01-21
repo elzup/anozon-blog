@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jan 2020 07:25:56 GMT</lastBuildDate><item><title><![CDATA[【Clasp】GoogleAppScript のコードをローカルで開発する]]></title><description><![CDATA[この記事では Clasp を使って GoogleAppScript のコードを手元で管理する方法を紹介します。 Clasp Command Line Interface using clasp | Google Developers 手順…]]></description><link>https://blog.anozon.meclasp-intro</link><guid isPermaLink="false">https://blog.anozon.meclasp-intro</guid><pubDate>Tue, 21 Jan 2020 14:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では &lt;strong&gt;Clasp&lt;/strong&gt; を使って GoogleAppScript のコードを手元で管理する方法を紹介します。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jan 2020 09:28:19 GMT</lastBuildDate><item><title><![CDATA[【zsh】cdr の掃除をする]]></title><description><![CDATA[この記事では cdr から不要なディレクトリを削除する方法を紹介します。 cdr は zsh に入っているコマンドで、過去に開いたディレクトリに移動できるコマンドです。 普段は  をラップした anyframe…]]></description><link>https://blog.anozon.mecdr-cleanup</link><guid isPermaLink="false">https://blog.anozon.mecdr-cleanup</guid><pubDate>Tue, 21 Jan 2020 17:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では cdr から不要なディレクトリを削除する方法を紹介します。&lt;/p&gt;
+&lt;p&gt;cdr は zsh に入っているコマンドで、過去に開いたディレクトリに移動できるコマンドです。&lt;/p&gt;
+&lt;p&gt;普段は &lt;code class=&quot;language-text&quot;&gt;cdr&lt;/code&gt; をラップした &lt;a href=&quot;https://github.com/mollifier/anyframe&quot;&gt;anyframe&lt;/a&gt; を使っています。
+過去のディレクトリに素早く移動できてはかどっています。&lt;/p&gt;
+&lt;p&gt;しかし cdr は rm や mv (rename) したディレクトリをキャッシュしていなくて残ってしまってるようです。&lt;/p&gt;
+&lt;p&gt;そこでキャッシュから存在しないディレクトリを一掃してみます。&lt;/p&gt;
+&lt;h2&gt;手順 1. キャッシュファイルの場所を確認する&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$ zstyle&lt;/code&gt; を実行して &lt;code class=&quot;language-text&quot;&gt;recent-dirs-file&lt;/code&gt; があればそこです。&lt;/p&gt;
+&lt;p&gt;デフォルトは &lt;code class=&quot;language-text&quot;&gt;~/.chpwd-recent-dirs&lt;/code&gt; です。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3.amazonaws.com/blog/chpwd-recent-dirs.png&quot; alt=&quot;chpwd-recent-dirs&quot;&gt;&lt;/p&gt;
+&lt;p&gt;なにやら見慣れぬ形式で入っていました。&lt;/p&gt;
+&lt;h2&gt;手順 2. 削除するシェル&lt;/h2&gt;
+&lt;p&gt;1 行ずつ「ディレクトリが存在するか？」を見ます。
+そして、無ければ消すシンプルなシェルを書きます。&lt;/p&gt;
+&lt;p&gt;Gist: &lt;a href=&quot;https://gist.github.com/elzup/4d36336470d18ae9e6216d5276f19cbd&quot;&gt;Clean no exists directories&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;cat&lt;/span&gt; ~/.chpwd-recent-dirs &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; -e &lt;span class=&quot;token string&quot;&gt;&apos;s/^..\(.\*\)./&lt;span class=&quot;token entity&quot; title=&quot;\1&quot;&gt;\1&lt;/span&gt;/g&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;read&lt;/span&gt; line
+&lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; -d &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$line&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;\$&apos;\&lt;span class=&quot;token variable&quot;&gt;$line&lt;/span&gt;&apos;&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; +x cdr-recent-dirs-clearn.sh
+$ &lt;span class=&quot;token function&quot;&gt;bash&lt;/span&gt; cdr-recent-dirs-clearn.sh &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; .chpwd-recent-dirs-clearn
+$ vimdiff ~/.chpwd-recent-dirs .chpwd-recent-dirs-clearn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;vimdiff で確認すると存在しないディレクトリがちゃんとなくなっていそうです。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3.amazonaws.com/blog/vimdiff-cdr-clean.png&quot; alt=&quot;vimdiff-cdr-clean.png&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;mv&lt;/span&gt; .chpwd-recent-dirs-clearn ~/.chpwd-recent-dirs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;よければ replace します。そして cdr に引っかかっていた 存在しないパスも消えました！&lt;/p&gt;</content:encoded></item><item><title><![CDATA[zstyle で現在の値を取得する]]></title><description><![CDATA[この記事では zstyle で現在の値を取得する について紹介します。 zstyle コマンドのマニュアル zsh: 22 Zsh Modules 方法 1. -g オプションを使う。 方法…]]></description><link>https://blog.anozon.mezstyle-get-current-value</link><guid isPermaLink="false">https://blog.anozon.mezstyle-get-current-value</guid><pubDate>Tue, 21 Jan 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では zstyle で現在の値を取得する について紹介します。&lt;/p&gt;
+&lt;p&gt;zstyle コマンドのマニュアル &lt;a href=&quot;http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#index-zstyle&quot;&gt;zsh: 22 Zsh Modules&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;方法 1. -g オプションを使う。&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ zstyle -g tmp &lt;span class=&quot;token string&quot;&gt;&apos;:chpwd:*&apos;&lt;/span&gt;
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$tmp&lt;/span&gt;
+recent-dirs-max
+
+$ zstyle -g tmp &lt;span class=&quot;token string&quot;&gt;&apos;:chpwd:*&apos;&lt;/span&gt; recent-dirs-max
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$tmp&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;500&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;方法 2. そのまま叩く&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;zstyle&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;デフォルト値以外設定された値が全て出ます。&lt;/p&gt;
+&lt;h2&gt;デフォルト値について&lt;/h2&gt;
+&lt;p&gt;マニュアルからたどるしかなさそうです。&lt;/p&gt;
+&lt;h2&gt;ちょっと感想&lt;/h2&gt;
+&lt;p&gt;zsh のマニュアルが少し不親切だった。リファレンス内検索もないし辿り着きにくかった。
+—help や man zstyle が無いと思ったらオプション無しだとなんか出たり。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【Clasp】GoogleAppScript のコードをローカルで開発する]]></title><description><![CDATA[この記事では Clasp を使って GoogleAppScript のコードを手元で管理する方法を紹介します。 Clasp Command Line Interface using clasp | Google Developers 手順…]]></description><link>https://blog.anozon.meclasp-intro</link><guid isPermaLink="false">https://blog.anozon.meclasp-intro</guid><pubDate>Tue, 21 Jan 2020 14:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では &lt;strong&gt;Clasp&lt;/strong&gt; を使って GoogleAppScript のコードを手元で管理する方法を紹介します。&lt;/p&gt;
 &lt;p&gt;Clasp &lt;a href=&quot;https://developers.google.com/apps-script/guides/clasp&quot;&gt;Command Line Interface using clasp | Google Developers&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;手順 1. 初期化する&lt;/h2&gt;
 &lt;p&gt;管理するディレクトリに移動してしてパッケージをインストールします。
