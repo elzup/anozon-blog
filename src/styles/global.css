@@ -19,3 +19,18 @@
   padding: 3px;
   top: 1px;
 }
+
+p {
+  margin-bottom: 0;
+}
+
+p>code[class*="language-"] {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  color: black;
+  background: -webkit-gradient(0deg, #e5ffd1, #f4ffb9);
+  background: linear-gradient(0deg, #e5ffd1, #f4ffb9);
+  font-size: 90%;
+  border-radius: .2rem;
+  padding: .1rem .3rem .2rem
+}

@@ -25,7 +25,6 @@ const TagLink = styled(Link)`
   padding: 0.1rem 0.5rem 0.05rem;
   background-image: none;
   &:hover {
-    /* background: linear-gradient(90deg, #ff8a00, #e52e71); */
     background-image: linear-gradient(
       to right top,
       #1d437f,
