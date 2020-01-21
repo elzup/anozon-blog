@@ -9,6 +9,19 @@ const siteMetadata = {
   },
 }
 
+const feedsQuery = `
+{
+  allMarkdownRemark(
+    filter: { frontmatter: { status: { ne: "draft" } } },
+    sort: { order: DESC, fields: [frontmatter___date] },
+  ) {
+    edges {
+      node { excerpt, html, fields { slug }, frontmatter { title date } }
+    }
+  }
+}
+`
+
 module.exports = {
   siteMetadata,
   plugins: [
@@ -105,6 +118,26 @@ module.exports = {
         theme_color: `#112d4e`,
         display: `minimal-ui`,
         icon: `content/assets/profile-pic.png`,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url:
+                    String(site.siteMetadata.siteUrl) +
+                    String(edge.node.fields.slug),
+                  guid:
+                    String(site.siteMetadata.siteUrl) +
+                    String(edge.node.fields.slug),
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                })
+              })
+            },
+            query: feedsQuery,
+          },
+        ],
       },
     },
     `gatsby-plugin-offline`,
