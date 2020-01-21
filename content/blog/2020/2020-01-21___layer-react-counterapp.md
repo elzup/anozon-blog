@@ -13,6 +13,8 @@ category: Tech
 
 ## コード
 
+[CodeSandbox](https://codesandbox.io/s/typescript-react-5layer-sczy6)
+
 ```js
 import React, { useState } from "react"
 import styled from "styled-components"
@@ -69,6 +71,8 @@ StyledComponent で既存 Component を Wrap する際わ className が必要に
 
 Redux の場合こんなイメージになるはず。(生に書きます)
 
+Redux hooks
+
 ```js
 import { useSelector, useDispatch } from 'redux'
 import { countUp, countDown } from './actions'
@@ -90,9 +94,26 @@ const Container = (props: ContainerProps) => {
 }
 ```
 
+Redux connect
+
+```js
+import { connect } from 'redux'
+import { countUp, countDown } from './actions'
+import { getCount } from './selectors'
+
+type OProps = {}
+type SProps = { counter: number }
+type DProps = { countUp: () => void; countDown: () => void  }
+const Container = connect<SProps, DProps, OProps, State>(
+  (state) => ({ counter: getCounter(state)}),
+  { handleCountUp: countUp, handleCountDown: countDown }
+)(StyledComponent)
+
+```
+
 ## 元記事含めて感想
 
 記事への反応でも言ってる人が多いが、同じようにロジック(DI)を分ける設計は頭にあった。
 
 StyledComponent で大胆に全体を Wrap したことがなかったが結構整理されるように感じるので良さそう。
-コード上ではきれいに分けることができるが、sytled components に依存する部分は弱く感じる。
+コード上ではきれいに分けることができるが、sytled-components に依存する部分は弱く感じる。(今の所 styled-components は好きだしよく使っている)
