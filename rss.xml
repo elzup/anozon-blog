@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jan 2020 03:26:11 GMT</lastBuildDate><item><title><![CDATA[5層 ReactComponent と TypeScript でカウンター書いてみる]]></title><description><![CDATA[経年劣化に耐える ReactComponent の書き方 - Qiita
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あのぞんブログ]]></title><description><![CDATA[フロントエンド中心のブログ]]></description><link>https://blog.anozon.me</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jan 2020 07:24:28 GMT</lastBuildDate><item><title><![CDATA[【Clasp】GoogleAppScript のコードをローカルで開発する]]></title><description><![CDATA[この記事では Clasp を使って GoogleAppScript のコードを手元で管理する方法を紹介します。 Clasp Command Line Interface using clasp | Google Developers 手順…]]></description><link>https://blog.anozon.meclasp-intro</link><guid isPermaLink="false">https://blog.anozon.meclasp-intro</guid><pubDate>Tue, 21 Jan 2020 14:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では &lt;strong&gt;Clasp&lt;/strong&gt; を使って GoogleAppScript のコードを手元で管理する方法を紹介します。&lt;/p&gt;
+&lt;p&gt;Clasp &lt;a href=&quot;https://developers.google.com/apps-script/guides/clasp&quot;&gt;Command Line Interface using clasp | Google Developers&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;手順 1. 初期化する&lt;/h2&gt;
+&lt;p&gt;管理するディレクトリに移動してしてパッケージをインストールします。
+その後 Google アカウントでログインします。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; @google/clasp -D
+clasp login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;プロジェクトのみに入れてる場合は以降の &lt;code class=&quot;language-text&quot;&gt;clasp hoge&lt;/code&gt; を &lt;code class=&quot;language-text&quot;&gt;yarn clasp hoge&lt;/code&gt; に置き換えて読んでください。&lt;/p&gt;
+&lt;p&gt;さらに下の &lt;code class=&quot;language-text&quot;&gt;gas&lt;/code&gt; ディレクトリで管理してみます。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;既存のプロジェクトの場合&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;clasp clone smartbooth-dummy --rootDir ./gas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;新規のプロジェクトの場合&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;clasp create --type standalone --rootDir ./gas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;手順 2. コードを書く&lt;/h2&gt;
+&lt;p&gt;gas ディレクトリに ファイルを作成して関数を書きます。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;&quot;gas/main.js&quot;&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* global Logger */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// eslint-disable-next-line no-unused-vars&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;timeLog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Logger&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;手順 3. デプロイする&lt;/h2&gt;
+&lt;p&gt;以下のコマンドで実行すると更新されます。(push と deploy 両方必要なので注意)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;clasp push &amp;amp;&amp;amp; clasp deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認してみる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;clasp open&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;環境変数を使いたいとき&lt;/h2&gt;
+&lt;p&gt;コードに残したくない定数は &lt;code class=&quot;language-text&quot;&gt;PropertiesService&lt;/code&gt; を使います。&lt;/p&gt;
+
+        &lt;div class=&quot;gatsby-code-title&quot;&gt;
+          &lt;span&gt;&quot;gas/main.js&quot;&lt;/span&gt;
+        &lt;/div&gt;
+       
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; token &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; PropertiesService&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getScriptProperties&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getProperty&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;API_TOKEN&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+Logger&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;token&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;値の設定は Clasp からはできなさそうでした。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;clasp open&lt;/code&gt; して &lt;code class=&quot;language-text&quot;&gt;ファイル &amp;gt; プロジェクトのプロパティ &amp;gt; スクリプトのプロパティタブ&lt;/code&gt; から設定してください。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elzup-image-storage.s3.amazonaws.com/blog/gasproperty.png&quot; alt=&quot;gas-propety&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;TypeScript の場合&lt;/h2&gt;
+&lt;p&gt;TypeScript も Clasp 公式でサポートされていて、こちらに詳しく書いてあります。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/google/clasp/blob/master/docs/typescript.md&quot;&gt;clasp/typescript.md at master · google/clasp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;@types/google-apps-script&lt;/code&gt; で Global なモジュールの Type が使えます。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[5層 ReactComponent と TypeScript でカウンター書いてみる]]></title><description><![CDATA[経年劣化に耐える ReactComponent の書き方 - Qiita
 が良さそうだったので TypeScript で書く場合を試してみた。 コード CodeSandbox 気になる部分 StyledComponent で既存 Component を Wrap…]]></description><link>https://blog.anozon.melayer-react-counterapp</link><guid isPermaLink="false">https://blog.anozon.melayer-react-counterapp</guid><pubDate>Tue, 21 Jan 2020 11:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://qiita.com/Takepepe/items/41e3e7a2f612d7eb094a#comment-9e55cb6f442777882e65&quot;&gt;経年劣化に耐える ReactComponent の書き方 - Qiita&lt;/a&gt;
 が良さそうだったので TypeScript で書く場合を試してみた。&lt;/p&gt;
 &lt;h2&gt;コード&lt;/h2&gt;
