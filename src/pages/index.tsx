@@ -16,7 +16,7 @@ function BlogIndex({
   location: Location
 }) {
   const { title } = data.site.siteMetadata
-  const { edges } = data.allMarkdownRemark
+  const { edges } = data.posts
 
   return (
     <Layout location={location} title={title}>
@@ -42,9 +42,7 @@ function BlogIndex({
             <small>{node.frontmatter.date}</small>
             <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
 
-            <TagChips
-              tags={node.frontmatter.tags.map(value => ({ value }))}
-            />
+            <TagChips tags={node.frontmatter.tags.map(value => ({ value }))} />
           </div>
         )
       })}
@@ -61,9 +59,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    posts: allMarkdownRemark(
       filter: { frontmatter: { status: { ne: "draft" } } }
       sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
     ) {
       edges {
         node {
@@ -72,6 +71,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            title
             date(formatString: "YYYY-MM-DD")
             title
             tags

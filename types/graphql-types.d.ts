@@ -1857,6 +1857,8 @@ export type QuerySiteArgs = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
+  port?: Maybe<IntQueryOperatorInput>,
+  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -1926,6 +1928,8 @@ export type Site = Node & {
   children: Array<Node>,
   internal: Internal,
   siteMetadata?: Maybe<SiteSiteMetadata>,
+  port?: Maybe<Scalars['Int']>,
+  host?: Maybe<Scalars['String']>,
   polyfill?: Maybe<Scalars['Boolean']>,
   pathPrefix?: Maybe<Scalars['String']>,
   buildTime?: Maybe<Scalars['Date']>,
@@ -2058,6 +2062,8 @@ export type SiteFieldsEnum =
   'siteMetadata___description' |
   'siteMetadata___siteUrl' |
   'siteMetadata___social___twitter' |
+  'port' |
+  'host' |
   'polyfill' |
   'pathPrefix' |
   'buildTime';
@@ -2068,6 +2074,8 @@ export type SiteFilterInput = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
+  port?: Maybe<IntQueryOperatorInput>,
+  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>,
@@ -2134,6 +2142,7 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageContextNext = {
+  excerpt?: Maybe<Scalars['String']>,
   fields?: Maybe<SitePageContextNextFields>,
   frontmatter?: Maybe<SitePageContextNextFrontmatter>,
 };
@@ -2147,6 +2156,7 @@ export type SitePageContextNextFieldsFilterInput = {
 };
 
 export type SitePageContextNextFilterInput = {
+  excerpt?: Maybe<StringQueryOperatorInput>,
   fields?: Maybe<SitePageContextNextFieldsFilterInput>,
   frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>,
 };
@@ -2160,6 +2170,7 @@ export type SitePageContextNextFrontmatterFilterInput = {
 };
 
 export type SitePageContextPrevious = {
+  excerpt?: Maybe<Scalars['String']>,
   fields?: Maybe<SitePageContextPreviousFields>,
   frontmatter?: Maybe<SitePageContextPreviousFrontmatter>,
 };
@@ -2173,6 +2184,7 @@ export type SitePageContextPreviousFieldsFilterInput = {
 };
 
 export type SitePageContextPreviousFilterInput = {
+  excerpt?: Maybe<StringQueryOperatorInput>,
   fields?: Maybe<SitePageContextPreviousFieldsFilterInput>,
   frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>,
 };
@@ -2284,8 +2296,10 @@ export type SitePageFieldsEnum =
   'componentChunkName' |
   'isCreatedByStatefulCreatePages' |
   'context___slug' |
+  'context___previous___excerpt' |
   'context___previous___fields___slug' |
   'context___previous___frontmatter___title' |
+  'context___next___excerpt' |
   'context___next___fields___slug' |
   'context___next___frontmatter___title' |
   'context___tag' |
@@ -2382,6 +2396,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___icon' |
   'pluginCreator___pluginOptions___pathToConfigModule' |
   'pluginCreator___pluginOptions___fileName' |
+  'pluginCreator___pluginOptions___documentPaths' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
@@ -2641,6 +2656,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___icon' |
   'pluginOptions___pathToConfigModule' |
   'pluginOptions___fileName' |
+  'pluginOptions___documentPaths' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
@@ -2790,6 +2806,7 @@ export type SitePluginPluginOptions = {
   icon?: Maybe<Scalars['String']>,
   pathToConfigModule?: Maybe<Scalars['String']>,
   fileName?: Maybe<Scalars['String']>,
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
 
@@ -2856,6 +2873,7 @@ export type SitePluginPluginOptionsFilterInput = {
   icon?: Maybe<StringQueryOperatorInput>,
   pathToConfigModule?: Maybe<StringQueryOperatorInput>,
   fileName?: Maybe<StringQueryOperatorInput>,
+  documentPaths?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
 
@@ -3074,9 +3092,9 @@ export type Site404Query = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMeta
 export type IndexPageQueryVariables = {};
 
 
-export type IndexPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allMarkdownRemark: { edges: Array<{ node: (
+export type IndexPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, posts: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'excerpt'>
-        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title' | 'tags'>> }
+        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>> }
       ) }> } };
 
 export type BlogPostBySlugQueryVariables = {

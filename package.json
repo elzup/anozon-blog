@@ -67,8 +67,9 @@
     "@types/styled-components": "^4.4.2",
     "@types/typography": "^0.16.3",
     "eslint": "^6.8.0",
-    "eslint-config-nzap": "^1.4.5",
+    "eslint-config-nzap": "^1.4.6",
     "gh-pages": "^2.2.0",
-    "plop": "^2.5.3"
+    "plop": "^2.5.3",
+    "ts-node": "^8.6.2"
   }
 }

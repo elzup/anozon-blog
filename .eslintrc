@@ -1,4 +1,12 @@
 {
   "extends": ["nzap", "nzap/typescript", "nzap/react"],
-  "rules": {}
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": ["gatsby-*.js"],
+        "optionalDependencies": false
+      }
+    ]
+  }
 }

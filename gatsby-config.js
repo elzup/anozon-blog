@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
+
 const siteMetadata = {
   title: `あのぞんブログ`,
   author: `anozon`,
@@ -21,6 +22,13 @@ const feedsQuery = `
   }
 }
 `
+
+// protect PCDATA invalid
+const trimXmlIllegalChar = s =>
+  s.replace(
+    /[^\x09\x0A\x0D\x20-\xFF\x85\xA0-\uD7FF\uE000-\uFDCF\uFDE0-\uFFFD]/gm,
+    ''
+  )
 
 module.exports = {
   siteMetadata,
@@ -54,19 +62,12 @@ module.exports = {
           },
           {
             resolve: 'gatsby-remark-embed-gist',
-            options: {
-              username: 'elzup',
-              includeDefaultCss: true,
-            },
+            options: { username: 'elzup', includeDefaultCss: true },
           },
           'gatsby-remark-prismjs-title',
           {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 690,
-              quality: 90,
-              linkImagesToOriginal: true,
-            },
+            options: { maxWidth: 690, quality: 90, linkImagesToOriginal: true },
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -103,9 +104,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-49286104-10',
-      },
+      options: { trackingId: 'UA-49286104-10' },
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -113,28 +112,21 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url:
-                    String(site.siteMetadata.siteUrl) +
-                    '/' +
-                    String(edge.node.fields.slug),
-                  guid:
-                    String(site.siteMetadata.siteUrl) +
-                    '/' +
-                    String(edge.node.fields.slug),
-                  custom_elements: [
-                    {
-                      'content:encoded': edge.node.html.replace(
-                        /[^\x09\x0A\x0D\x20-\xFF\x85\xA0-\uD7FF\uE000-\uFDCF\uFDE0-\uFFFD]/gm,
-                        ''
-                      ),
-                    },
-                  ],
-                })
-              })
+              return allMarkdownRemark.edges.map(
+                ({ node: { fields, html, frontmatter, excerpt } }) => {
+                  const url = `${site.siteMetadata.siteUrl}/${fields.slug}`
+
+                  return Object.assign({}, frontmatter, {
+                    description: excerpt,
+                    date: frontmatter.date,
+                    url,
+                    guid: url,
+                    custom_elements: [
+                      { 'content:encoded': trimXmlIllegalChar(html) },
+                    ],
+                  })
+                }
+              )
             },
             query: feedsQuery,
             output: '/rss.xml',
@@ -172,6 +164,12 @@ module.exports = {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: `types/graphql-types.d.ts`,
+        documentPaths: [
+          './src/**/*.{ts,tsx}',
+          './.cache/fragments/*.js',
+          './node_modules/gatsby-*/**/*.js',
+          './gatsby-node/index.ts',
+        ],
       },
     },
   ],
