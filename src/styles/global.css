@@ -1,3 +1,10 @@
+body {}
+
+body,
+a {
+  font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, "Hiragino Kaku Gothic ProN", "メイリオ";
+}
+
 .gatsby-code-title {
   display: block;
   position: relative;
@@ -20,11 +27,8 @@
   top: 1px;
 }
 
-p {
-  margin-bottom: 0;
-}
-
-p>code[class*="language-"] {
+p>code[class*="language-"],
+strong>code[class*="language-"] {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   color: black;
