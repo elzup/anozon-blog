@@ -6,29 +6,24 @@ a {
 }
 
 .gatsby-code-title {
-  display: block;
   position: relative;
-  background: #272822;
-  width: 100%;
-  top: 10px;
-  border-top-left-radius: 0.3em;
-  border-top-right-radius: 0.3em;
+  height: .5em;
+
+  >span {
+    display: inline;
+    position: relative;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: #eee;
+    background: linear-gradient(-80deg, #26224c, #1b7d47);
+    border-radius: .3em;
+    padding: 4px 12px;
+    left: .8em;
+    z-index: 1;
+  }
 }
 
-.gatsby-code-title span {
-  display: inline;
-  position: relative;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  color: #eee;
-  background: #777;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-  padding: 3px;
-  top: 1px;
-}
 
-p>code[class*="language-"],
-strong>code[class*="language-"] {
+:not(pre)>code[class*="language-"] {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   color: black;
@@ -37,4 +32,34 @@ strong>code[class*="language-"] {
   font-size: 90%;
   border-radius: .2rem;
   padding: .1rem .3rem .2rem
+}
+
+pre[class*='language-'] {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 2em;
+    padding: 0 8px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  &.language-javascript::before {
+    content: 'JS';
+    color: black;
+    background: yellow;
+  }
+
+  &.language-ts::before {
+    content: 'TS';
+    color: white;
+    background: blue;
+  }
+
+  &.language-css::before {
+    content: 'CSS';
+    color: black;
+    background: rgb(107, 191, 240);
+  }
 }
