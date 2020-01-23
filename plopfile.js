@@ -19,8 +19,13 @@ module.exports = function(
   plop.setGenerator('post', {
     description: 'Write new blog post',
     prompts: [
-      { type: 'input', name: 'title' },
-      { type: 'input', name: 'id', message: `id(kebab-case):` },
+      { type: 'input', name: 'title', validate: Boolean },
+      {
+        type: 'input',
+        name: 'id',
+        message: `id(kebab-case):`,
+        validate: Boolean,
+      },
       {
         type: 'input',
         name: 'date',
