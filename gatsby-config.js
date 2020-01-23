@@ -80,6 +80,7 @@ module.exports = {
               aliases: {
                 js: 'javascript',
                 sh: 'bash',
+                scss: 'css',
               },
               showLineNumbers: false,
               noInlineHighlight: false,

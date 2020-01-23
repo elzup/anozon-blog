@@ -49,11 +49,12 @@ pre[class*='language-'] {
     right: 2em;
     padding: 0 8px;
     border-radius: 0 0 4px 4px;
+    font-size: .8em;
+    color: black;
   }
 
   &.language-javascript::before {
     content: 'JS';
-    color: black;
     background: yellow;
   }
 
@@ -65,7 +66,18 @@ pre[class*='language-'] {
 
   &.language-css::before {
     content: 'CSS';
-    color: black;
     background: rgb(107, 191, 240);
+  }
+
+  &.language-css::before {
+    content: 'CSS';
+    color: white;
+    background: orange;
+  }
+
+  &.language-bash::before {
+    content: 'Shell';
+    color: lime;
+    background: black;
   }
 }
