@@ -1,20 +1,18 @@
 import * as React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
 import { IndexPageQuery } from '../../types/graphql-types.d'
-import { TagChips } from '../components/tagchip'
+import ArticalCard from '../components/ArticleCard'
 
-function BlogIndex({
-  data,
-  location,
-}: {
+type Props = {
   data: IndexPageQuery
   location: Location
-}) {
+}
+
+function BlogIndex({ data, location }: Props) {
   const { title } = data.site.siteMetadata
   const { edges } = data.posts
 
@@ -29,21 +27,14 @@ function BlogIndex({
         const title = node.frontmatter.title || node.fields.slug
 
         return (
-          <div key={node.fields.slug}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: `none` }} to={`/${node.fields.slug}`}>
-                {title}
-              </Link>
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-
-            <TagChips tags={node.frontmatter.tags.map(value => ({ value }))} />
-          </div>
+          <ArticalCard
+            key={node.fields.slug}
+            title={title}
+            slug={node.fields.slug}
+            excerpt={node.excerpt}
+            date={node.frontmatter.date}
+            tags={node.frontmatter.tags}
+          />
         )
       })}
     </Layout>
