@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { SideBarQuery } from '../../types/graphql-types.d'
-import { TagChipsCol } from './tagchip'
+import { TagChipsCol } from './Tagchip'
 
 function SideBar() {
   return (

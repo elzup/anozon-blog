@@ -3,8 +3,8 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
-import Bio from './bio'
-import SideBar from './sidebar'
+import Bio from './Bio'
+import SideBar from './Sidebar'
 
 const LargeTitle = ({ title }: { title: string }) => (
   <h1
