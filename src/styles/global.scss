@@ -1,8 +1,14 @@
-body {}
-
 body,
 a {
   font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, "Hiragino Kaku Gothic ProN", "メイリオ";
+}
+
+main {
+  img {
+    box-shadow: 0 0px 5px 5px #e6e6e6;
+    width: 96%;
+    margin: 0 2%;
+  }
 }
 
 .gatsby-code-title {
