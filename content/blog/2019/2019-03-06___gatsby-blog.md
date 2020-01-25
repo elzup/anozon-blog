@@ -4,7 +4,6 @@ date: 2019-03-06 11:58:50
 tags:
   - GatsbyJS
   - React
-category: BlogOps
 ---
 
 ## 移行した理由

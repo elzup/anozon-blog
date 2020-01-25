@@ -6,7 +6,6 @@ tags:
   - GitHub Pages
   - Podcast
   - Anchor
-category: Other
 ---
 
 ## podcast 始めました

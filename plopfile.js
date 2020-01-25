@@ -8,8 +8,6 @@ const day = pad00(date.getDate())
 const hms = `${pad00(date.getHours())}:00:00`
 const datePrefix = `${year}-${month}-${day}`
 
-const categories = ['Other', 'Tech', 'BlogOps']
-
 module.exports = function(
   /** @type {import('plop').NodePlopAPI} */
   plop
@@ -31,12 +29,6 @@ module.exports = function(
         name: 'date',
         default: datePrefix,
         message: `date(YYYY-MM-DD):`,
-      },
-      {
-        type: 'list',
-        name: 'category',
-        default: 'Tech',
-        choices: categories,
       },
     ],
     actions: [

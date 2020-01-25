@@ -5,8 +5,7 @@ tags:
   - PLOP
   - Node.js
   - CLI
-  - gatsby
-category: Tech
+  - GatsbyJS
 ---
 
 この記事では PLOP について紹介します。

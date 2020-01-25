@@ -4,7 +4,6 @@ date: 2020-01-21 17:00:00
 tags:
   - zsh
   - DevOps
-category: Tech
 ---
 
 この記事では cdr から不要なディレクトリを削除する方法を紹介します。

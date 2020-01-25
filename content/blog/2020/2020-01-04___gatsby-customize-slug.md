@@ -3,7 +3,6 @@ title: GatsbyJSで記事のURLをカスタマイズする
 date: 2020-01-04 23:03:38
 tags:
   - GatsbyJS
-category: BlogOps
 ---
 
 この記事では GatsbyJS で作るブログの **slug(URL のパス部分)** のカスタマイズ方法を紹介します。

@@ -3,7 +3,6 @@ title: zstyle で現在の値を取得する
 date: 2020-01-21 16:00:00
 tags:
   - zsh
-category: Tech
 ---
 
 この記事では zstyle で現在の値を取得する について紹介します。

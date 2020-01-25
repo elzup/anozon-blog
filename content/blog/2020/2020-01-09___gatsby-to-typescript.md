@@ -5,7 +5,6 @@ tags:
   - GatsbyJS
   - TypeScript
   - GraphQL
-category: BlogOps
 ---
 
 GatsbyJS で書いているこのブログを Typescript 移行しました。

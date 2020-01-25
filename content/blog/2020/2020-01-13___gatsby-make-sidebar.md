@@ -4,7 +4,6 @@ date: 2020-01-13 16:00:00
 tags:
   - a
   - b
-category: BlogOps
 status: draft
 ---
 

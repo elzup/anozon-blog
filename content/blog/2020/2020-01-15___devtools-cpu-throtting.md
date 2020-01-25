@@ -4,7 +4,6 @@ date: 2020-01-15 13:00:00
 tags:
   - a
   - b
-category: Tech
 status: draft
 ---
 

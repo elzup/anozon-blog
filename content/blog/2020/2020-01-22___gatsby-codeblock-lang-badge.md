@@ -4,7 +4,6 @@ date: 2020-01-22 12:00:00
 tags:
   - GatsbyJS
   - CSS
-category: BlogOps
 ---
 
 この記事では GatsbyJS のコードブロックに言語バッジをつける方法について紹介します。

@@ -4,7 +4,6 @@ date: 2019-03-12 20:47:00
 tags:
   - GatsbyJS
   - GitHub Pages
-category: BlogOps
 status: draft
 ---
 

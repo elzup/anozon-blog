@@ -5,7 +5,6 @@ tags:
   - React
   - TypeScript
   - Redux
-category: Tech
 ---
 
 [経年劣化に耐える ReactComponent の書き方 \- Qiita](https://qiita.com/Takepepe/items/41e3e7a2f612d7eb094a#comment-9e55cb6f442777882e65)
