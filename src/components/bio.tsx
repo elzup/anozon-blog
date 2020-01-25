@@ -1,44 +1,51 @@
 import * as React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { graphql, useStaticQuery } from 'gatsby'
+import Image, { FixedObject } from 'gatsby-image'
+import styled from 'styled-components'
 import { BioDataQuery } from '../../types/graphql-types.d'
 
 import { rhythm } from '../utils/typography'
 
-function Bio() {
+type Props = {
+  fixed: FixedObject
+  twitter: string
+  author: string
+  profile: string
+}
+function Bio({ fixed, author, profile, twitter }: Props) {
   return (
-    <StaticQuery
-      query={bioQuery}
-      render={(data: BioDataQuery) => {
-        const { author, social } = data.site.siteMetadata
+    <Style>
+      <Image fixed={fixed} alt={author} />
+      <p>
+        <strong>{author}</strong> {profile}
+        <a href={`https://twitter.com/${twitter}`}>Twitter</a>
+      </p>
+    </Style>
+  )
+}
+const Style = styled.div`
+  display: flex;
+  margin-bottom: ${rhythm(2.5)};
+  .gatsby-image-wrapper {
+    margin-right: ${rhythm(1 / 2)};
+    margin-bottom: 0;
+    min-width: 50px;
+    border-radius: 100%;
+    > img {
+      border-radius: 50%;
+    }
+  }
+`
 
-        return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
-            <p>
-              <strong>{author}</strong> JavaScript とアニメ好き Web エンジニア。
-              <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
-            </p>
-          </div>
-        )
-      }}
+function BioContainer() {
+  const data = useStaticQuery<BioDataQuery>(bioQuery)
+
+  return (
+    <Bio
+      fixed={data.avatar.childImageSharp.fixed}
+      profile={data.site.siteMetadata.profile}
+      author={data.site.siteMetadata.author}
+      twitter={data.site.siteMetadata.social.twitter}
     />
   )
 }
@@ -55,6 +62,7 @@ const bioQuery = graphql`
     site {
       siteMetadata {
         author
+        profile
         social {
           twitter
         }
@@ -63,4 +71,4 @@ const bioQuery = graphql`
   }
 `
 
-export default Bio
+export default BioContainer

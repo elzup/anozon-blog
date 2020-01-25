@@ -2,6 +2,10 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
+    "noImplicitAny": true,
     "esModuleInterop": true
-  }
+  },
+  "include": [
+    "./*"
+  ]
 }

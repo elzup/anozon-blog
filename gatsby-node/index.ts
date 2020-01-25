@@ -8,7 +8,7 @@ import kebabCase from 'lodash/kebabCase'
 
 const SLUG_SEPARATOR = '___'
 
-type QueryResult = { posts: { edges: any[] }, tags: { group: any[]} }
+type QueryResult = { posts: { edges: any[] }; tags: { group: any[] } }
 
 export const createPages: GatsbyNode['createPages'] = ({
   graphql,
@@ -16,8 +16,8 @@ export const createPages: GatsbyNode['createPages'] = ({
 }) => {
   const { createPage } = actions
 
-  const blogTemplate = path.resolve(`./src/templates/blog-post.tsx`)
-  const tagTemplate = path.resolve('./src/templates/tags.tsx')
+  const blogTemplate = path.resolve(`./src/templates/BlogPost.tsx`)
+  const tagTemplate = path.resolve('./src/templates/Tags.tsx')
 
   return graphql<QueryResult>(`
     query CreatePage {
