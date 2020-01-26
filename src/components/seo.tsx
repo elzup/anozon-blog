@@ -52,7 +52,7 @@ function Seo({
 export default Seo
 
 const detailsQuery = graphql`
-  query DefaultSEO {
+  query DefaultSeo {
     site {
       siteMetadata {
         title
