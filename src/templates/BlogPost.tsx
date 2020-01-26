@@ -9,7 +9,7 @@ import {
   BlogPostBySlugQuery,
   SitePageContext,
 } from '../../types/graphql-types.d'
-import { TagChips } from '../components/Tagchip'
+import { TagChips } from '../components/TagChip'
 
 type Props = {
   location: Location
