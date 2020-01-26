@@ -96,7 +96,7 @@ module.exports = function(
 
 上記のコードによって、
 
-title は入力して設定、
+title は入力して設定
 id (slug, ファイルのパスに必要)も入力して設定、
 
 category は選択して設定、
@@ -140,7 +140,7 @@ category: BlogOps
 
 今回はテンプレートからファイル生成ということでシンプルに需要ありそうですが、そういうツール聞いたこと無いなと思って探してみて見つけたものでした。
 
-最初"file template generator cli" などでググってなかなか見つからずに自分で shell と sed で実装しようとしました。
+最初"file template generator cli" などでググってなかなか見つからずに自分で shell や sed で実装しようとしました。
 しかし、[react\-boilerplate/react\-boilerplate](https://github.com/react-boilerplate/react-boilerplate) で generator がついてたのを思い出して何が使われているのか調べたところ `plop` にたどり着きました。
 
 もちろん他にも使えそうで良いものを見つけた。

@@ -21,7 +21,7 @@ https://r7kamura.github.io/yattecast/
 ↑ ページにわかりやすく書いてある。というかシンプル。
 config ファイルいじって push するだけでいい感じに出来ました。
 
-GitHub はファイルに 100MB 制限があって、地味に audio ファイル push するときにに躓きました。
+GitHub はファイルに 100MB 制限があって、地味に audio ファイル push するときに躓きました。
 export の仕方が悪いのかな？
 
 ## Anchor も使ってみた。

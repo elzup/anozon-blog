@@ -21,7 +21,7 @@ yarn add gatsby-remark-prismjs-title
 ## 手順 2. config の追加
 
 `/gatsby-config.js` に config を追加します。
-**root の plugins に書くのではなく `gatsby-transformer-remark` 以下の plugins に書くことに注意します。**
+**root の plugins に書くのではなく、 `gatsby-transformer-remark` 以下の plugins へ書くことに注意します。**
 
 ```diff:title=gatsby-config.js
     {

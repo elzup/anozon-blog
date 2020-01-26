@@ -8,7 +8,7 @@ tags:
 
 ## 移行した理由
 
-React が使えるのが良さそうなので Gatsby に移行しました。
+React 使えそうなので Gatsby に移行しました。
 
 - Before
   ![](https://s3.amazonaws.com/anozon-img/%E3%81%82%E3%81%AE%E3%81%9E%E3%82%93%E3%81%B3%E3%82%88%E3%82%8A.png)

@@ -61,7 +61,8 @@
     "serve": "gatsby serve",
     "lint": "eslint --ext .ts,.tsx,.js .",
     "deploy": "yarn build && gh-pages -d public -b gh-pages",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "textlint:all": "textlint content/blog/**/* --fix"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.149",
@@ -72,6 +73,9 @@
     "eslint-config-nzap": "^1.4.6",
     "gh-pages": "^2.2.0",
     "plop": "^2.5.3",
+    "textlint": "^11.6.1",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^3.1.3",
     "ts-node": "^8.6.2"
   }
 }

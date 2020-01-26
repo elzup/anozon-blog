@@ -9,11 +9,15 @@ tags:
 
 Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。
 
-## firebase-admin の初期化設定する
+## `firebase-admin` の初期化設定する
 
 [アプリサーバーからの送信リクエストを作成する  \|  Firebase](https://firebase.google.com/docs/cloud-messaging/send-message?hl=ja) (公式ドキュメント)
 
+<!-- textlint-disable ja-technical-writing/sentence-length  -->
+
 「`GOOGLE_APPLICATION_CREDENTIALS` が必要なの？」とか「 ADC はどうやって承認するの？」とか「Authorization ヘッダにどの Token をセットするの？」とか少しややこしかった。
+
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 結論から言うと **Firebase Function にデプロイする場合は何も考えなくていい**。
 以下のコードで暗黙的に検出される。

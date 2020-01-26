@@ -15,7 +15,7 @@ tags:
 
 ![graphql-name-tag.png](https://elzup-image-storage.s3.amazonaws.com/blog/graphql-name-tag.png)
 
-同じ方法で実装してみたいと思います。
+同じ方法で実装してみます。
 
 **Before**
 
@@ -56,7 +56,7 @@ pre[class*='language-'] {
 
 ついでにコードブロックタイトルの style も変えました。
 
-`::before` (疑似要素) は最後につけないといけないため scss でも
+`::before` (疑似要素) は最後につけないといけないため scss でも、下記の書き方はできないんですね。地味に。
 
 ```css
 hoge::after {
@@ -64,5 +64,3 @@ hoge::after {
   }
 }
 ```
-
-といった書き方はできないんですね。地味に。

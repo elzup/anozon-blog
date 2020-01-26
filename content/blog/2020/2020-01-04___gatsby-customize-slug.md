@@ -11,7 +11,8 @@ tags:
 
 ## 手順. /gatsby-node.js を編集する
 
-slug は `/gatsby-node.js` の onCreateNode 内の createNodeField で設定しています。以下のコードでは createFilePath で作成されるパスがそのまま設定されています。
+slug は `/gatsby-node.js` の onCreateNode 内の createNodeField で設定しています。
+以下のコードでは createFilePath により作成されるパスを、そのまま設定しています。
 
 ```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -24,7 +25,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 ```
 
-createFilePath で返されるパスは `gatsby-source-filesystem` の path オプションをルートとした絶対パスとなっています。**ファイルの拡張子はついていません**。
+createFilePath で返されるパスは `gatsby-source-filesystem` の path オプションをルートにした絶対パスとなっています。**ファイルの拡張子はついていません**。
 
 ```js:title=gatsby-config.js
   plugins: [
@@ -57,7 +58,7 @@ URL は以下のようになっています。
 
 [実装 Commit](https://github.com/elzup/anozonbiyori/commit/34505a0a39640ea0b2a1b60c7662412544179510#diff-fda05457e393bada716f508859bfc604)
 
-変更点
+**変更点**
 
 - SLUG_SEPARATOR によって slug 部分をチュシュツして返す getSlug 関数の作成
   - SLUG_SEPARATOR を含まない場合はそのまま
