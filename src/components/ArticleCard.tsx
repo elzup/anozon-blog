@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { rhythm } from '../utils/typography'
-import { TagChips } from './Tagchip'
+import { TagChips } from './TagChip'
 
 type Props = {
   tags: string[]
