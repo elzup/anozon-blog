@@ -10,6 +10,7 @@ import {
   SitePageContext,
 } from '../../types/graphql-types.d'
 import { TagChips } from '../components/TagChip'
+import ShareButtons from '../components/ShareButtons'
 
 type Props = {
   location: Location
@@ -22,6 +23,7 @@ function BlogPostTemplate(props: Props) {
   const siteTitle = props.data.site.siteMetadata.title
   const { previous, next } = props.pageContext
   const { date, title, tags } = post.frontmatter
+  // const url = props.data.site.siteMetadata.siteUrl + slug
 
   return (
     <Layout location={props.location} title={siteTitle}>
@@ -45,6 +47,7 @@ function BlogPostTemplate(props: Props) {
         }}
       />
       <TagChips tags={tags.map(value => ({ value }))} />
+      <ShareButtons title={post.frontmatter.title} url={''} />
       <Bio />
 
       <ul
