@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
-
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
@@ -21,9 +20,10 @@ type Props = {
 function BlogPostTemplate(props: Props) {
   const post = props.data.markdownRemark
   const { siteUrl } = props.data.site.siteMetadata
+  const siteTitle = props.data.site.siteMetadata.title
   const { previous, next } = props.pageContext
 
-  const { date, title, tags } = post.frontmatter
+  const { date, tags, title } = post.frontmatter
 
   const slug = props.pageContext.slug || ''
   const url = `${siteUrl}/${slug}`
@@ -50,7 +50,7 @@ function BlogPostTemplate(props: Props) {
         }}
       />
       <TagChips tags={tags.map(value => ({ value }))} />
-      <ShareButtons title={post.frontmatter.title} url={url} />
+      <ShareButtons title={title} siteTitle={siteTitle} url={url} />
       <Bio />
 
       <ul
