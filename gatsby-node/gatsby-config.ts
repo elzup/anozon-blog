@@ -173,12 +173,7 @@ export default {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: `types/graphql-types.d.ts`,
-        documentPaths: [
-          './src/**/*.{ts,tsx}',
-          './.cache/fragments/*.js',
-          './node_modules/gatsby-*/**/*.js',
-          './gatsby-node/index.ts',
-        ],
+        codegenDelay: 250,
       },
     },
     'gatsby-plugin-sass',
