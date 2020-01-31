@@ -20,13 +20,16 @@ type Props = {
 
 function BlogPostTemplate(props: Props) {
   const post = props.data.markdownRemark
-  const siteTitle = props.data.site.siteMetadata.title
+  const { siteUrl } = props.data.site.siteMetadata
   const { previous, next } = props.pageContext
+
   const { date, title, tags } = post.frontmatter
-  // const url = props.data.site.siteMetadata.siteUrl + slug
+
+  const slug = props.pageContext.slug || ''
+  const url = `${siteUrl}/${slug}`
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={props.location} title={title}>
       <SEO title={title} description={post.excerpt} />
       <h1>{title}</h1>
       <TagChips tags={tags.map(value => ({ value }))} />
@@ -47,7 +50,7 @@ function BlogPostTemplate(props: Props) {
         }}
       />
       <TagChips tags={tags.map(value => ({ value }))} />
-      <ShareButtons title={post.frontmatter.title} url={''} />
+      <ShareButtons title={post.frontmatter.title} url={url} />
       <Bio />
 
       <ul
@@ -86,6 +89,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

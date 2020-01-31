@@ -3034,7 +3034,7 @@ export type BlogPostBySlugQueryVariables = {
 };
 
 
-export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }>, markdownRemark: Maybe<(
+export type BlogPostBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'siteUrl'>> }>, markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
     & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>> }
   )> };
