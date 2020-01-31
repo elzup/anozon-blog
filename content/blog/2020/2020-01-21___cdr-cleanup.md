@@ -3,6 +3,7 @@ title: 【zsh】cdr の掃除をする
 date: 2020-01-21 17:00:00
 tags:
   - zsh
+  - ShellScript
   - DevOps
 ---
 
