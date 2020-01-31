@@ -29,7 +29,7 @@ function BlogPostTemplate(props: Props) {
   const url = `${siteUrl}/${slug}`
 
   return (
-    <Layout location={props.location} title={title}>
+    <Layout location={props.location} title={siteTitle}>
       <SEO title={title} description={post.excerpt} />
       <h1>{title}</h1>
       <TagChips tags={tags.map(value => ({ value }))} />
