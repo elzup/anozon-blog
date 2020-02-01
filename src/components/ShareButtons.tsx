@@ -8,8 +8,11 @@ import {
 } from 'react-share'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import copy from 'clipboard-copy'
+import Tooltip from 'rc-tooltip'
 import { rhythm } from '../utils/typography'
+import 'rc-tooltip/assets/bootstrap.css'
 
 type Props = {
   url: string
@@ -19,27 +22,41 @@ type Props = {
 
 function ShareButtons({ title, url, siteTitle }: Props) {
   const titleWithHashtag = `${title} #${siteTitle}`
+  const fullText = titleWithHashtag + ' ' + url
 
   return (
     <Style>
       この記事を共有する
       <div>
         <TwitterShareButton url={url} title={titleWithHashtag}>
-          <TwitterIcon size={32} round />
+          <TwitterIcon size={48} />
         </TwitterShareButton>
         <FacebookShareButton url={url} title={titleWithHashtag}>
-          <FacebookIcon size={32} round />
+          <FacebookIcon size={48} />
         </FacebookShareButton>
-        <button
-          onClick={() => {
-            const fullText = titleWithHashtag + ' ' + url
-
-            copy(fullText)
-            console.log(titleWithHashtag + ' ' + url)
-          }}
+        <a
+          href="https://b.hatena.ne.jp/entry/"
+          className="hatena-bookmark-button"
+          data-hatena-bookmark-layout="touch"
+          title="このエントリーをはてなブックマークに追加"
         >
-          <FontAwesomeIcon color={'white'} icon={faLink} />
-        </button>
+          <img
+            src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
+            alt="このエントリーをはてなブックマークに追加"
+            width="20"
+            height="20"
+          />
+        </a>
+        <Tooltip
+          placement="top"
+          trigger={'click'}
+          destroyTooltipOnHide
+          overlay={<span>Copied!!</span>}
+        >
+          <button className="link" onClick={() => copy(fullText)}>
+            <FontAwesomeIcon color={'white'} icon={faLink} />
+          </button>
+        </Tooltip>
       </div>
       <textarea value={titleWithHashtag + ' ' + url} disabled></textarea>
     </Style>
@@ -47,12 +64,24 @@ function ShareButtons({ title, url, siteTitle }: Props) {
 }
 
 const Style = styled.div`
+  margin: 1rem 0;
   padding: 4px 0;
+  border-top: solid black 4px;
+  border-bottom: solid black 4px;
+  border-image: linear-gradient(to right, #bc37b8 0%, #002dae 100%);
+  border-image-slice: 1;
+
+  button.link {
+    height: 48px;
+    width: 48px;
+    border: none;
+    background: lightgray;
+  }
   > div {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 4px;
-    grid-template-columns: max-content max-content;
+    grid-template-columns: max-content max-content max-content;
   }
   textarea {
     font-size: ${rhythm(1 / 2)};
