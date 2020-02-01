@@ -8,11 +8,11 @@ import {
 } from 'react-share'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import copy from 'clipboard-copy'
 import Tooltip from 'rc-tooltip'
 import { rhythm } from '../utils/typography'
 import 'rc-tooltip/assets/bootstrap.css'
+import HatenaShareButton from './HatenaShareButtons'
 
 type Props = {
   url: string
@@ -34,19 +34,7 @@ function ShareButtons({ title, url, siteTitle }: Props) {
         <FacebookShareButton url={url} title={titleWithHashtag}>
           <FacebookIcon size={48} />
         </FacebookShareButton>
-        <a
-          href="https://b.hatena.ne.jp/entry/"
-          className="hatena-bookmark-button"
-          data-hatena-bookmark-layout="touch"
-          title="このエントリーをはてなブックマークに追加"
-        >
-          <img
-            src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
-            alt="このエントリーをはてなブックマークに追加"
-            width="20"
-            height="20"
-          />
-        </a>
+        <HatenaShareButton url={url} title={title} />
         <Tooltip
           placement="top"
           trigger={'click'}
