@@ -6,11 +6,7 @@ import {
   FacebookShareButton,
   FacebookIcon,
 } from 'react-share'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { rhythm } from '../utils/typography'
-import { NavigatorShare } from '../../types/global.d'
-import { isEnableShareAPI } from '../utils/webShareAPI'
 
 type Props = {
   url: string
@@ -30,14 +26,6 @@ function ShareButtons({ title, url, siteTitle }: Props) {
         <FacebookShareButton url={url} title={titleWithHashtag}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        {isEnableShareAPI && (
-          <FontAwesomeIcon
-            onClick={() => {
-              console.log('share')
-            }}
-            icon={faShareAlt}
-          />
-        )}
       </div>
     </Style>
   )
