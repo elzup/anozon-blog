@@ -34,7 +34,7 @@ function ShareButtons({ title, url, siteTitle }: Props) {
         <FacebookShareButton url={url} title={titleWithHashtag}>
           <FacebookIcon size={48} />
         </FacebookShareButton>
-        <HatenaShareButton url={url} title={title} />
+        <HatenaShareButton url={url} title={title} size={48} />
         <Tooltip
           placement="top"
           trigger={'click'}

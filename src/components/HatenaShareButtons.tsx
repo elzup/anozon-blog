@@ -4,12 +4,13 @@ import styled from 'styled-components'
 type Props = {
   title: string
   url: string
+  size: number
 }
-function HatenaShareButton({ title, url }: Props) {
+function HatenaShareButton({ title, url, size = 48 }: Props) {
   const hatebuUrl = `http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`
 
   return (
-    <Style>
+    <Style size={size}>
       <a
         className="HatenaShareButton"
         href={hatebuUrl}
@@ -27,9 +28,9 @@ function HatenaShareButton({ title, url }: Props) {
   )
 }
 
-const Style = styled.div`
-  width: 48px;
-  height: 48px;
+const Style = styled.div<{ size: number }>`
+  width: ${p => p.size}px;
+  height: ${p => p.size}px;
   background: #06a4de;
 
   a {
@@ -39,10 +40,11 @@ const Style = styled.div`
     color: white;
     text-decoration: none;
     text-align: center;
+    background-image: none;
     img {
-      width: 36px;
-      height: 36px;
-      margin: 6px;
+      width: ${p => (p.size * 3) / 4}px;
+      height: ${p => (p.size * 3) / 4}px;
+      margin: ${p => (p.size - (p.size * 3) / 4) / 2}px;
       box-shadow: none;
     }
   }
