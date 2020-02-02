@@ -58,6 +58,13 @@ export default {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: '目次',
+              // tight: true,
+            },
+          },
+          {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               usePrefix: ['oembed', 'video'],
