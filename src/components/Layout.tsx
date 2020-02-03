@@ -50,11 +50,14 @@ const Wrapper = styled.div`
       'footer footer';
   }
   @media only screen and (max-width: 900px) {
+    padding: ${rhythm(1)} ${rhythm(1 / 2)};
+    grid-template-columns: 1fr;
+    grid-gap: ${rhythm(0.5)};
     grid-template-areas:
-      'header header'
-      'main main'
-      'side side'
-      'footer footer';
+      'header'
+      'main'
+      'side'
+      'footer';
   }
   header {
     grid-area: header;

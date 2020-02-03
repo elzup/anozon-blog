@@ -62,13 +62,14 @@ export default {
             options: {
               exclude: '目次',
               fromHeading: 2,
-              className: `toc-heading`,
             },
           },
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
               icon: false,
+              className: `toc-heading`,
+              offsetY: 30,
             },
           },
           {

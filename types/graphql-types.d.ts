@@ -2398,10 +2398,10 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___fileName' |
   'pluginCreator___pluginOptions___codegenDelay' |
   'pluginCreator___pluginOptions___pathCheck' |
-  'pluginCreator___pluginOptions___offsetY' |
   'pluginCreator___pluginOptions___exclude' |
   'pluginCreator___pluginOptions___fromHeading' |
   'pluginCreator___pluginOptions___className' |
+  'pluginCreator___pluginOptions___offsetY' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
   'pluginCreator___ssrAPIs' |
@@ -2593,11 +2593,11 @@ export type SitePluginFieldsEnum =
   'pluginOptions___plugins___id' |
   'pluginOptions___plugins___name' |
   'pluginOptions___plugins___version' |
-  'pluginOptions___plugins___pluginOptions___offsetY' |
   'pluginOptions___plugins___pluginOptions___exclude' |
   'pluginOptions___plugins___pluginOptions___fromHeading' |
-  'pluginOptions___plugins___pluginOptions___className' |
   'pluginOptions___plugins___pluginOptions___icon' |
+  'pluginOptions___plugins___pluginOptions___className' |
+  'pluginOptions___plugins___pluginOptions___offsetY' |
   'pluginOptions___plugins___pluginOptions___usePrefix' |
   'pluginOptions___plugins___pluginOptions___username' |
   'pluginOptions___plugins___pluginOptions___includeDefaultCss' |
@@ -2657,10 +2657,10 @@ export type SitePluginFieldsEnum =
   'pluginOptions___fileName' |
   'pluginOptions___codegenDelay' |
   'pluginOptions___pathCheck' |
-  'pluginOptions___offsetY' |
   'pluginOptions___exclude' |
   'pluginOptions___fromHeading' |
   'pluginOptions___className' |
+  'pluginOptions___offsetY' |
   'nodeAPIs' |
   'browserAPIs' |
   'ssrAPIs' |
@@ -2810,10 +2810,10 @@ export type SitePluginPluginOptions = {
   fileName?: Maybe<Scalars['String']>,
   codegenDelay?: Maybe<Scalars['Int']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
-  offsetY?: Maybe<Scalars['Int']>,
   exclude?: Maybe<Scalars['String']>,
   fromHeading?: Maybe<Scalars['Int']>,
   className?: Maybe<Scalars['String']>,
+  offsetY?: Maybe<Scalars['Int']>,
 };
 
 export type SitePluginPluginOptionsAliases = {
@@ -2882,10 +2882,10 @@ export type SitePluginPluginOptionsFilterInput = {
   fileName?: Maybe<StringQueryOperatorInput>,
   codegenDelay?: Maybe<IntQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
-  offsetY?: Maybe<IntQueryOperatorInput>,
   exclude?: Maybe<StringQueryOperatorInput>,
   fromHeading?: Maybe<IntQueryOperatorInput>,
   className?: Maybe<StringQueryOperatorInput>,
+  offsetY?: Maybe<IntQueryOperatorInput>,
 };
 
 export type SitePluginPluginOptionsLanguageExtensions = {
@@ -2931,11 +2931,11 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
-  offsetY?: Maybe<Scalars['Int']>,
   exclude?: Maybe<Scalars['String']>,
   fromHeading?: Maybe<Scalars['Int']>,
-  className?: Maybe<Scalars['String']>,
   icon?: Maybe<Scalars['Boolean']>,
+  className?: Maybe<Scalars['String']>,
+  offsetY?: Maybe<Scalars['Int']>,
   usePrefix?: Maybe<Array<Maybe<Scalars['String']>>>,
   username?: Maybe<Scalars['String']>,
   includeDefaultCss?: Maybe<Scalars['Boolean']>,
@@ -2963,11 +2963,11 @@ export type SitePluginPluginOptionsPluginsPluginOptionsAliasesFilterInput = {
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
-  offsetY?: Maybe<IntQueryOperatorInput>,
   exclude?: Maybe<StringQueryOperatorInput>,
   fromHeading?: Maybe<IntQueryOperatorInput>,
-  className?: Maybe<StringQueryOperatorInput>,
   icon?: Maybe<BooleanQueryOperatorInput>,
+  className?: Maybe<StringQueryOperatorInput>,
+  offsetY?: Maybe<IntQueryOperatorInput>,
   usePrefix?: Maybe<StringQueryOperatorInput>,
   username?: Maybe<StringQueryOperatorInput>,
   includeDefaultCss?: Maybe<BooleanQueryOperatorInput>,
