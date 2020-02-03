@@ -61,7 +61,14 @@ export default {
             resolve: `gatsby-remark-table-of-contents`,
             options: {
               exclude: '目次',
-              // tight: true,
+              fromHeading: 2,
+              className: `toc-heading`,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false,
             },
           },
           {
