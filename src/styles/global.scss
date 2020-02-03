@@ -1,6 +1,7 @@
 body,
 a {
-  font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, "Hiragino Kaku Gothic ProN", "メイリオ";
+  font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo,
+    'Hiragino Kaku Gothic ProN', 'メイリオ';
 }
 
 main {
@@ -9,35 +10,48 @@ main {
     width: 96%;
     margin: 0 2%;
   }
+
+  @media only screen and (max-width: 900px) {
+    h1 {
+      margin-top: 0;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 2rem;
+    }
+  }
 }
 
 .gatsby-code-title {
   position: relative;
-  height: .5em;
+  height: 0.5em;
 
-  >span {
+  > span {
     display: inline;
     position: relative;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     color: #eee;
     background: linear-gradient(-80deg, #26224c, #1b7d47);
-    border-radius: .3em;
+    border-radius: 0.3em;
     padding: 4px 12px;
-    left: .8em;
+    left: 0.8em;
     z-index: 1;
   }
 }
 
-
-:not(pre)>code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   color: black;
   background: -webkit-gradient(0deg, #e5ffd1, #f4ffb9);
   background: linear-gradient(0deg, #e5ffd1, #f4ffb9);
   font-size: 90%;
-  border-radius: .2rem;
-  padding: .1rem .3rem .2rem
+  border-radius: 0.2rem;
+  padding: 0.1rem 0.3rem 0.2rem;
 }
 
 pre[class*='language-'] {
@@ -49,7 +63,7 @@ pre[class*='language-'] {
     right: 2em;
     padding: 0 8px;
     border-radius: 0 0 4px 4px;
-    font-size: .8em;
+    font-size: 0.8em;
     color: black;
   }
 
@@ -79,5 +93,21 @@ pre[class*='language-'] {
     content: 'Shell';
     color: lime;
     background: black;
+  }
+}
+
+.toc {
+  border: dashed gray 1px;
+  background: white;
+  width: auto;
+  > ul {
+    margin-bottom: 0;
+    > li {
+      /* h2 */
+
+      > ul {
+        /* h3 */
+      }
+    }
   }
 }

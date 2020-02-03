@@ -58,6 +58,21 @@ export default {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: '目次',
+              fromHeading: 2,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false,
+              className: `toc-heading`,
+              offsetY: 30,
+            },
+          },
+          {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               usePrefix: ['oembed', 'video'],
@@ -174,6 +189,7 @@ export default {
       options: {
         fileName: `types/graphql-types.d.ts`,
         codegenDelay: 250,
+        codegen: false
       },
     },
     'gatsby-plugin-sass',
