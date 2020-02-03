@@ -15,7 +15,7 @@ tags:
 
 ## ローカル IP
 
-### ifconfig
+### ifconfig を使う
 
 ```sh
 ifconfig en0 | awk '$1 == "inet" {print $2}'
