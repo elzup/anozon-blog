@@ -1,3 +1,5 @@
+$pc: 1024px;
+
 body,
 a {
   font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo,
@@ -11,7 +13,7 @@ main {
     margin: 0 2%;
   }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: $pc) {
     h1 {
       margin-top: 0;
     }
@@ -26,6 +28,7 @@ main {
   }
 }
 
+
 .gatsby-code-title {
   position: relative;
   height: 0.5em;
@@ -36,10 +39,10 @@ main {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     color: #eee;
     background: linear-gradient(-80deg, #26224c, #1b7d47);
-    border-radius: 0.3em;
-    padding: 4px 12px;
     left: 0.8em;
     z-index: 1;
+    border-radius: 0.3rem;
+    padding: 0.2rem 0.6rem;
   }
 }
 
@@ -60,11 +63,15 @@ pre[class*='language-'] {
   &::before {
     position: absolute;
     top: 0;
-    right: 2em;
-    padding: 0 8px;
+    right: 2rem;
+    padding: 0.1rem 0.4rem 0;
     border-radius: 0 0 4px 4px;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: black;
+
+    @media only screen and (max-width: $pc) {
+      display: none;
+    }
   }
 
   &.language-javascript::before {
@@ -115,12 +122,12 @@ pre[class*='language-'] {
   >ul {
     margin: 1rem 1.58rem;
 
-    >li {
-      /* h2 */
+    // >li {
+    //   /* h2 */
 
-      >ul {
-        /* h3 */
-      }
-    }
+    //   >ul {
+    //     /* h3 */
+    //   }
+    // }
   }
 }
