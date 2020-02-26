@@ -17,7 +17,7 @@ export const createPages: GatsbyNode['createPages'] = ({
   const { createPage } = actions
 
   const blogTemplate = path.resolve(`./src/templates/BlogPost.tsx`)
-  const tagTemplate = path.resolve('./src/templates/Tags.tsx')
+  const tagTemplate = path.resolve('./src/templates/TagPage.tsx')
 
   return graphql<QueryResult>(`
     query CreatePage {
