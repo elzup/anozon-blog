@@ -1,12 +1,12 @@
 ---
-title: 【JavaScript】ソースコードを出力するソースコード書いた
+title: 【JavaScriptクワイン】プログラムと同じ文字列を出力するプログラム書いた
 date: 2020-02-26 21:00:00
 tags:
   - JavaScript
   - CodingChallange
 ---
 
-ソースコード自身を出力するソースコード書いてみました。
+JavaScript で ソースコード自身を出力するソースコード書いてみました。Qunie(クワイン)と言うそうです。
 
 `fs.readFile` は使いません。
 
