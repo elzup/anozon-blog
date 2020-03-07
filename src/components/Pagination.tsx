@@ -29,6 +29,8 @@ function Pagination({ current, last }: Props) {
   const prevNum = current !== 1 && current - 1
   const nextNum = current !== last && current + 1
 
+  if (last === 1) return null
+
   return (
     <Style>
       {prevNum && <PagingButton num={prevNum}>{'<<'}</PagingButton>}
