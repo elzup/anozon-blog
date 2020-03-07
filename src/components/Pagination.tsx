@@ -11,17 +11,8 @@ type Props = {
 const Button = styled(Link)`
   ${button}
   border-radius: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
-  &[data-large='true'] {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  &[data-disabled='true'] {
-    border-color: #937caf;
-  }
+  padding: 0 16px;
+  margin: 0 2px;
 `
 
 const pagePath = (n: number) => (n === 1 ? '/' : `/page/${n}`)
@@ -30,15 +21,9 @@ type ButtonProps = {
   label: string
   num: number
   large?: boolean
-  disabled?: boolean
 }
-const PagingButton = ({
-  num,
-  label,
-  large = false,
-  disabled = false,
-}: ButtonProps) => (
-  <Button to={pagePath(num)} data-large={large} data-disabled={disabled}>
+const PagingButton = ({ num, label, large = false }: ButtonProps) => (
+  <Button to={pagePath(num)} data-large={large}>
     {label}
   </Button>
 )
@@ -51,7 +36,7 @@ function Pagination({ current, last }: Props) {
   return (
     <Style>
       {prevNum && <PagingButton num={prevNum} label="<<" large />}
-      <PagingButton key={current} num={current} label={`${current}`} disabled />
+      <span>{current}</span>
       {nextNum && <PagingButton num={prevNum} label=">>" large />}
     </Style>
   )
@@ -61,6 +46,17 @@ const Style = styled.div`
   display: flex;
   margin-top: 8px;
   justify-content: flex-end;
+  > span {
+    ${button}
+    border-radius: 4px;
+    margin: 0 2px;
+    color: #937caf;
+    border-color: #937caf;
+    &:hover {
+      color: #937caf;
+      border-color: #937caf;
+    }
+  }
 `
 
 export default Pagination
