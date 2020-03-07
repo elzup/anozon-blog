@@ -4,15 +4,21 @@ import { graphql } from 'gatsby'
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
-import { IndexPageQuery } from '../../types/graphql-types.d'
+import {
+  BlogListBySlugQuery,
+  BlogListBySlugQueryVariables,
+  SitePageContext,
+} from '../../types/graphql-types.d'
 import ArticalCard from '../components/ArticleCard'
+import Pagination from '../components/Pagination'
 
 type Props = {
-  data: IndexPageQuery
+  data: BlogListBySlugQuery
   location: Location
+  pageContext: SitePageContext & BlogListBySlugQueryVariables
 }
 
-function BlogIndex({ data, location }: Props) {
+function BlogListTemplate({ data, location, pageContext }: Props) {
   const { title } = data.site.siteMetadata
   const { edges } = data.posts
 
@@ -37,14 +43,18 @@ function BlogIndex({ data, location }: Props) {
           />
         )
       })}
+      <Pagination
+        current={pageContext.currentPage || 1}
+        last={pageContext.numPages || 1}
+      />
     </Layout>
   )
 }
 
-export default BlogIndex
+export default BlogListTemplate
 
 export const pageQuery = graphql`
-  query IndexPage {
+  query BlogListBySlug($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -53,7 +63,8 @@ export const pageQuery = graphql`
     posts: allMarkdownRemark(
       filter: { frontmatter: { status: { ne: "draft" } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1000
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

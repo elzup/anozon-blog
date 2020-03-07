@@ -2127,6 +2127,10 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
+  limit?: Maybe<Scalars['Int']>,
+  skip?: Maybe<Scalars['Int']>,
+  numPages?: Maybe<Scalars['Int']>,
+  currentPage?: Maybe<Scalars['Int']>,
   slug?: Maybe<Scalars['String']>,
   previous?: Maybe<SitePageContextPrevious>,
   next?: Maybe<SitePageContextNext>,
@@ -2134,6 +2138,10 @@ export type SitePageContext = {
 };
 
 export type SitePageContextFilterInput = {
+  limit?: Maybe<IntQueryOperatorInput>,
+  skip?: Maybe<IntQueryOperatorInput>,
+  numPages?: Maybe<IntQueryOperatorInput>,
+  currentPage?: Maybe<IntQueryOperatorInput>,
   slug?: Maybe<StringQueryOperatorInput>,
   previous?: Maybe<SitePageContextPreviousFilterInput>,
   next?: Maybe<SitePageContextNextFilterInput>,
@@ -2295,6 +2303,10 @@ export type SitePageFieldsEnum =
   'internal___owner' |
   'internal___type' |
   'isCreatedByStatefulCreatePages' |
+  'context___limit' |
+  'context___skip' |
+  'context___numPages' |
+  'context___currentPage' |
   'context___slug' |
   'context___previous___excerpt' |
   'context___previous___fields___slug' |
@@ -2355,6 +2367,10 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___plugins___pluginFilepath' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___name' |
+  'pluginCreator___pluginOptions___exclude' |
+  'pluginCreator___pluginOptions___fromHeading' |
+  'pluginCreator___pluginOptions___className' |
+  'pluginCreator___pluginOptions___offsetY' |
   'pluginCreator___pluginOptions___usePrefix' |
   'pluginCreator___pluginOptions___username' |
   'pluginCreator___pluginOptions___includeDefaultCss' |
@@ -2395,13 +2411,10 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___theme_color' |
   'pluginCreator___pluginOptions___display' |
   'pluginCreator___pluginOptions___pathToConfigModule' |
+  'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___pluginOptions___fileName' |
   'pluginCreator___pluginOptions___codegenDelay' |
-  'pluginCreator___pluginOptions___pathCheck' |
-  'pluginCreator___pluginOptions___exclude' |
-  'pluginCreator___pluginOptions___fromHeading' |
-  'pluginCreator___pluginOptions___className' |
-  'pluginCreator___pluginOptions___offsetY' |
+  'pluginCreator___pluginOptions___codegen' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
   'pluginCreator___ssrAPIs' |
@@ -2604,6 +2617,17 @@ export type SitePluginFieldsEnum =
   'pluginOptions___plugins___pluginOptions___maxWidth' |
   'pluginOptions___plugins___pluginOptions___quality' |
   'pluginOptions___plugins___pluginOptions___linkImagesToOriginal' |
+  'pluginOptions___plugins___pluginOptions___pathPrefix' |
+  'pluginOptions___plugins___pluginOptions___wrapperStyle' |
+  'pluginOptions___plugins___pluginOptions___backgroundColor' |
+  'pluginOptions___plugins___pluginOptions___showCaptions' |
+  'pluginOptions___plugins___pluginOptions___markdownCaptions' |
+  'pluginOptions___plugins___pluginOptions___withWebp' |
+  'pluginOptions___plugins___pluginOptions___tracedSVG' |
+  'pluginOptions___plugins___pluginOptions___loading' |
+  'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha' |
+  'pluginOptions___plugins___pluginOptions___disableBgImage' |
+  'pluginOptions___plugins___pluginOptions___ignoreFileExtensions' |
   'pluginOptions___plugins___pluginOptions___classPrefix' |
   'pluginOptions___plugins___pluginOptions___showLineNumbers' |
   'pluginOptions___plugins___pluginOptions___noInlineHighlight' |
@@ -2614,6 +2638,10 @@ export type SitePluginFieldsEnum =
   'pluginOptions___plugins___pluginFilepath' |
   'pluginOptions___path' |
   'pluginOptions___name' |
+  'pluginOptions___exclude' |
+  'pluginOptions___fromHeading' |
+  'pluginOptions___className' |
+  'pluginOptions___offsetY' |
   'pluginOptions___usePrefix' |
   'pluginOptions___username' |
   'pluginOptions___includeDefaultCss' |
@@ -2654,13 +2682,10 @@ export type SitePluginFieldsEnum =
   'pluginOptions___theme_color' |
   'pluginOptions___display' |
   'pluginOptions___pathToConfigModule' |
+  'pluginOptions___pathCheck' |
   'pluginOptions___fileName' |
   'pluginOptions___codegenDelay' |
-  'pluginOptions___pathCheck' |
-  'pluginOptions___exclude' |
-  'pluginOptions___fromHeading' |
-  'pluginOptions___className' |
-  'pluginOptions___offsetY' |
+  'pluginOptions___codegen' |
   'nodeAPIs' |
   'browserAPIs' |
   'ssrAPIs' |
@@ -2776,6 +2801,10 @@ export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
   path?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
+  exclude?: Maybe<Scalars['String']>,
+  fromHeading?: Maybe<Scalars['Int']>,
+  className?: Maybe<Scalars['String']>,
+  offsetY?: Maybe<Scalars['Int']>,
   usePrefix?: Maybe<Array<Maybe<Scalars['String']>>>,
   username?: Maybe<Scalars['String']>,
   includeDefaultCss?: Maybe<Scalars['Boolean']>,
@@ -2807,13 +2836,10 @@ export type SitePluginPluginOptions = {
   theme_color?: Maybe<Scalars['String']>,
   display?: Maybe<Scalars['String']>,
   pathToConfigModule?: Maybe<Scalars['String']>,
+  pathCheck?: Maybe<Scalars['Boolean']>,
   fileName?: Maybe<Scalars['String']>,
   codegenDelay?: Maybe<Scalars['Int']>,
-  pathCheck?: Maybe<Scalars['Boolean']>,
-  exclude?: Maybe<Scalars['String']>,
-  fromHeading?: Maybe<Scalars['Int']>,
-  className?: Maybe<Scalars['String']>,
-  offsetY?: Maybe<Scalars['Int']>,
+  codegen?: Maybe<Scalars['Boolean']>,
 };
 
 export type SitePluginPluginOptionsAliases = {
@@ -2848,6 +2874,10 @@ export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>,
   path?: Maybe<StringQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
+  exclude?: Maybe<StringQueryOperatorInput>,
+  fromHeading?: Maybe<IntQueryOperatorInput>,
+  className?: Maybe<StringQueryOperatorInput>,
+  offsetY?: Maybe<IntQueryOperatorInput>,
   usePrefix?: Maybe<StringQueryOperatorInput>,
   username?: Maybe<StringQueryOperatorInput>,
   includeDefaultCss?: Maybe<BooleanQueryOperatorInput>,
@@ -2879,13 +2909,10 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color?: Maybe<StringQueryOperatorInput>,
   display?: Maybe<StringQueryOperatorInput>,
   pathToConfigModule?: Maybe<StringQueryOperatorInput>,
+  pathCheck?: Maybe<BooleanQueryOperatorInput>,
   fileName?: Maybe<StringQueryOperatorInput>,
   codegenDelay?: Maybe<IntQueryOperatorInput>,
-  pathCheck?: Maybe<BooleanQueryOperatorInput>,
-  exclude?: Maybe<StringQueryOperatorInput>,
-  fromHeading?: Maybe<IntQueryOperatorInput>,
-  className?: Maybe<StringQueryOperatorInput>,
-  offsetY?: Maybe<IntQueryOperatorInput>,
+  codegen?: Maybe<BooleanQueryOperatorInput>,
 };
 
 export type SitePluginPluginOptionsLanguageExtensions = {
@@ -2942,6 +2969,17 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   maxWidth?: Maybe<Scalars['Int']>,
   quality?: Maybe<Scalars['Int']>,
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  pathPrefix?: Maybe<Scalars['String']>,
+  wrapperStyle?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
+  disableBgImage?: Maybe<Scalars['Boolean']>,
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>,
   classPrefix?: Maybe<Scalars['String']>,
   aliases?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsAliases>,
   showLineNumbers?: Maybe<Scalars['Boolean']>,
@@ -2974,6 +3012,17 @@ export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>,
   quality?: Maybe<IntQueryOperatorInput>,
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
+  wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>,
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>,
   classPrefix?: Maybe<StringQueryOperatorInput>,
   aliases?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsAliasesFilterInput>,
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>,
@@ -3096,6 +3145,17 @@ export type IndexPageQueryVariables = {};
 
 
 export type IndexPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, posts: { edges: Array<{ node: (
+        Pick<MarkdownRemark, 'excerpt'>
+        & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>> }
+      ) }> } };
+
+export type BlogListBySlugQueryVariables = {
+  skip: Scalars['Int'],
+  limit: Scalars['Int']
+};
+
+
+export type BlogListBySlugQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, posts: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'excerpt'>
         & { fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>> }
       ) }> } };

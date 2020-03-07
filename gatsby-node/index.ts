@@ -55,6 +55,22 @@ export const createPages: GatsbyNode['createPages'] = ({
     // Create blog posts pages.
     const posts = result.data.posts.edges
 
+    const postsPerPage = 10
+    const numPages = Math.ceil(posts.length / postsPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/` : `/page/${i + 1}`,
+        component: path.resolve('./src/templates/BlogList.tsx'),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
+
     posts.forEach((post, index) => {
       const previous =
         index === posts.length - 1 ? null : posts[Number(index) + 1].node
