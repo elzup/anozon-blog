@@ -1,5 +1,5 @@
-import { IndexPageQuery } from './../types/graphql-types.d'
 /* eslint-disable @typescript-eslint/camelcase */
+import { BlogListBySlugQuery } from './../types/graphql-types.d'
 
 const siteMetadata = {
   title: `あのぞんブログ`,
@@ -136,7 +136,7 @@ export default {
                 posts: { edges },
               },
             }: {
-              query: IndexPageQuery
+              query: BlogListBySlugQuery
             }) => {
               return edges.map(({ node: { fields, frontmatter, excerpt } }) => {
                 const url = `${siteMetadata.siteUrl}/${fields.slug}`
