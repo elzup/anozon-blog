@@ -18,14 +18,10 @@ const Button = styled(Link)`
 const pagePath = (n: number) => (n === 1 ? '/' : `/page/${n}`)
 
 type ButtonProps = {
-  label: string
   num: number
-  large?: boolean
 }
-const PagingButton = ({ num, label, large = false }: ButtonProps) => (
-  <Button to={pagePath(num)} data-large={large}>
-    {label}
-  </Button>
+const PagingButton: React.FC<ButtonProps> = ({ num, children }) => (
+  <Button to={pagePath(num)}>{children}</Button>
 )
 
 function Pagination({ current, last }: Props) {
@@ -35,9 +31,9 @@ function Pagination({ current, last }: Props) {
 
   return (
     <Style>
-      {prevNum && <PagingButton num={prevNum} label="<<" large />}
+      {prevNum && <PagingButton num={prevNum}>{'<<'}</PagingButton>}
       <span>{current}</span>
-      {nextNum && <PagingButton num={nextNum} label=">>" large />}
+      {nextNum && <PagingButton num={nextNum}>{'>>'}</PagingButton>}
     </Style>
   )
 }
