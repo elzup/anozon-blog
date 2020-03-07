@@ -37,7 +37,7 @@ function Pagination({ current, last }: Props) {
     <Style>
       {prevNum && <PagingButton num={prevNum} label="<<" large />}
       <span>{current}</span>
-      {nextNum && <PagingButton num={prevNum} label=">>" large />}
+      {nextNum && <PagingButton num={nextNum} label=">>" large />}
     </Style>
   )
 }
