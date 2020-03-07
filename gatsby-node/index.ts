@@ -7,6 +7,8 @@ import kebabCase from 'lodash/kebabCase'
 // import { CreatePageQuery } from "./types/graphql-types.d"
 
 const SLUG_SEPARATOR = '___'
+// TODO: fix tags/:hoge/pages/:num
+const CARD_PAR_PAGE = 50
 
 type QueryResult = { posts: { edges: any[] }; tags: { group: any[] } }
 
@@ -44,6 +46,7 @@ export const createPages: GatsbyNode['createPages'] = ({
       ) {
         group(field: frontmatter___tags) {
           fieldValue
+          totalCount
         }
       }
     }
@@ -54,17 +57,15 @@ export const createPages: GatsbyNode['createPages'] = ({
 
     // Create blog posts pages.
     const posts = result.data.posts.edges
-
-    const postsPerPage = 10
-    const numPages = Math.ceil(posts.length / postsPerPage)
+    const numPages = Math.ceil(posts.length / CARD_PAR_PAGE)
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/` : `/page/${i + 1}`,
         component: path.resolve('./src/templates/BlogList.tsx'),
         context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
+          limit: CARD_PAR_PAGE,
+          skip: i * CARD_PAR_PAGE,
           numPages,
           currentPage: i + 1,
         },
@@ -91,12 +92,22 @@ export const createPages: GatsbyNode['createPages'] = ({
     const tags = result.data.tags.group
 
     tags.forEach(tag => {
-      createPage({
-        path: `/tags/${kebabCase(tag.fieldValue)}/`,
-        component: tagTemplate,
-        context: {
-          tag: tag.fieldValue,
-        },
+      const numPages = Math.ceil(tag.totalCount / CARD_PAR_PAGE)
+
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path:
+            `/tags/${kebabCase(tag.fieldValue)}/` +
+            (i === 0 ? '' : `/page/${i + 1}`),
+          component: tagTemplate,
+          context: {
+            tag: tag.fieldValue,
+            limit: CARD_PAR_PAGE,
+            skip: i * CARD_PAR_PAGE,
+            numPages,
+            currentPage: i + 1,
+          },
+        })
       })
     })
   })

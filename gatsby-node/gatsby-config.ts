@@ -189,7 +189,7 @@ export default {
       options: {
         fileName: `types/graphql-types.d.ts`,
         codegenDelay: 250,
-        codegen: false
+        codegen: false,
       },
     },
     'gatsby-plugin-sass',

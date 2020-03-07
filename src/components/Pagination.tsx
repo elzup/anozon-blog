@@ -6,6 +6,7 @@ import { button } from './common'
 type Props = {
   current: number
   last: number
+  prefix?: string
 }
 
 const Button = styled(Link)`
@@ -20,11 +21,8 @@ const pagePath = (n: number) => (n === 1 ? '/' : `/page/${n}`)
 type ButtonProps = {
   num: number
 }
-const PagingButton: React.FC<ButtonProps> = ({ num, children }) => (
-  <Button to={pagePath(num)}>{children}</Button>
-)
 
-function Pagination({ current, last }: Props) {
+function Pagination({ current, last, prefix = '' }: Props) {
   // const nums = range(Math.max(1, current - 2), Math.min(current + 2, last) + 1)
   const prevNum = current !== 1 && current - 1
   const nextNum = current !== last && current + 1
@@ -33,9 +31,9 @@ function Pagination({ current, last }: Props) {
 
   return (
     <Style>
-      {prevNum && <PagingButton num={prevNum}>{'<<'}</PagingButton>}
+      {prevNum && <Button to={prefix + pagePath(prevNum)}>{'<<'}</Button>}
       <span>{current}</span>
-      {nextNum && <PagingButton num={nextNum}>{'>>'}</PagingButton>}
+      {nextNum && <Button to={prefix + pagePath(nextNum)}>{'>>'}</Button>}
     </Style>
   )
 }
