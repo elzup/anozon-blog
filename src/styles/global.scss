@@ -70,6 +70,11 @@ main {
 pre[class*='language-'] {
   position: relative;
 
+  code {
+    font-size: 14.4px;
+    line-height: 1.8;
+  }
+
   &::before {
     position: absolute;
     top: 0;
