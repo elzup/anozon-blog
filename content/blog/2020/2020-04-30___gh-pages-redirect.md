@@ -70,6 +70,9 @@ plugins:
 </html>
 ```
 
-- `link rel=canonical` : 正規化設定
-- `meta http-equiv=refresh content=0;url=新しい URL` : 0 秒でリダイレクト
-- javascript で(も？) location = '新しい URL' によりページ遷移
+- `<link rel="canonical" href="URL"` : 正規化設定
+- `<meta http-equiv="refresh" content="0;url=URL"` : 0 秒で URL にリダイレクト
+- javascript で(も？) `location = 'URL'` によりページ遷移
+- 遷移しなかった場合のリンクとナビゲーションメッセージのレンダリング
+
+を行っています。
