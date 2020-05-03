@@ -41,7 +41,7 @@ TOP_TOKEN='Hello I am env variable!'
 
 Docker の実行では環境変数をそのまま `echo` してみます。
 
-```:title=Dockerfile
+```title=Dockerfile
 FROM debian:stretch-slim
 
 CMD echo $TOKEN
