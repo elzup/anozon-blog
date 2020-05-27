@@ -19,7 +19,7 @@ tags:
 sudo vim /etc/hosts
 ```
 
-```title=/etc/hosts
+```:title=/etc/hosts
 127.0.0.1 localhost.appname
 127.0.0.1 localhost.othername
 127.0.0.1 localhost.hoge
@@ -30,7 +30,7 @@ sudo vim /etc/hosts
 
 CRA (Create React App) や Next.js の起動スクリプト例。(起動時に自動で開く URL が変わるだけ？)
 
-```json title=package.json
+```json:title=package.json
 {
   "scripts": {
     "start": "HOST=localhost.appname react-scripts start", // CRA
