@@ -63,18 +63,15 @@ shell/
 <h3 id="docker-composeyml" style="position:relative;">docker-compose.yml</h3>
 <p>services.shell.environment に環境変数をパスしたいとします。
 変数 <code class="language-text">TOP_TOKEN</code> を <code class="language-text">.env</code> ファイルに記述します。</p>
-
-        <div class="gatsby-code-title">
-          <span>docker-compose.yml</span>
-        </div>
-       
-<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
-<span class="token key atrule">services</span><span class="token punctuation">:</span>
-<span class="token key atrule">shell</span><span class="token punctuation">:</span>
-<span class="token key atrule">build</span><span class="token punctuation">:</span> ./shell
-<span class="token key atrule">volumes</span><span class="token punctuation">:</span> <span class="token punctuation">-</span> ./shell<span class="token punctuation">:</span>/src
-<span class="token key atrule">image</span><span class="token punctuation">:</span> shell
-<span class="token key atrule">environment</span><span class="token punctuation">:</span> <span class="token punctuation">-</span> <span class="token string">'TOKEN=\${TOP_TOKEN}'</span></code></pre></div>
+<div class="gatsby-highlight" data-language="ymltitle=docker-compose.yml"><pre class="language-ymltitle=docker-compose.yml"><code class="language-ymltitle=docker-compose.yml">version: &#39;3&#39;
+services:
+  shell:
+    build: ./shell
+    volumes:
+      - ./shell:/src
+    image: shell
+    environment:
+      TOKEN: &#39;${TOP_TOKEN}&#39;</code></pre></div>
 <div class="gatsby-highlight" data-language=".env"><pre class="language-.env"><code class="language-.env">TOP_TOKEN=&#39;Hello I am env variable!&#39;</code></pre></div>
 <p>Docker の実行では環境変数をそのまま <code class="language-text">echo</code> してみます。</p>
 
