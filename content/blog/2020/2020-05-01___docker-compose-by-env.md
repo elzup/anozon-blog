@@ -25,14 +25,16 @@ shell/
 services.shell.environment に環境変数をパスしたいとします。
 変数 `TOP_TOKEN` を `.env` ファイルに記述します。
 
-```yml:title=docker-compose.yml
+```yml title=docker-compose.yml
 version: '3'
 services:
-shell:
-build: ./shell
-volumes: - ./shell:/src
-image: shell
-environment: - 'TOKEN=\${TOP_TOKEN}'
+  shell:
+    build: ./shell
+    volumes:
+      - ./shell:/src
+    image: shell
+    environment:
+      - 'TOKEN=\${TOP_TOKEN}'
 ```
 
 ```.env
