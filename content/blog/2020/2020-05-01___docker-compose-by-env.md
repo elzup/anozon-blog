@@ -34,7 +34,7 @@ services:
       - ./shell:/src
     image: shell
     environment:
-      - 'TOKEN=\${TOP_TOKEN}'
+      TOKEN: '${TOP_TOKEN}'
 ```
 
 ```.env
