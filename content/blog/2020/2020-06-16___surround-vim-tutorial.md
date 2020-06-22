@@ -28,6 +28,8 @@ Plug 'tpope/vim-surround'
 公式の Introduction にそって基本コマンドを紹介します。
 [vim\-surround/surround\.txt at master · tpope/vim\-surround](https://github.com/tpope/vim-surround/blob/master/doc/surround.txt)
 
+`oembed: https://www.youtube.com/watch?v=BxSkWfem7uI&feature=youtu.be`
+
 ### cs "change surround"
 
 既存の括弧の変更。カーソル位置の外側の括弧を変更します。
