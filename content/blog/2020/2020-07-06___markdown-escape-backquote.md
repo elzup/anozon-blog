@@ -29,7 +29,7 @@ console.log('hello')
 ````
 `````
 
-※この記事はマークダウンで書いているので更に ` ````` ` で囲っています。
+※この記事はマークダウンで書いているので更に ` ````` ` で囲っています。（[コード elzup/anozonbiyori@a7d62e3](https://github.com/elzup/anozonbiyori/commit/a7d62e39bebaf726cb2a8b248422debd70aafebc)）
 
 #### 補足
 
