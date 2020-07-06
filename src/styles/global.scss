@@ -111,6 +111,13 @@ pre[class*='language-'] {
     background: blue;
   }
 
+  &.language-md::before {
+    content: 'MD';
+    color: white;
+    background: black;
+  }
+
+
   &.language-css::before {
     content: 'CSS';
     color: white;
