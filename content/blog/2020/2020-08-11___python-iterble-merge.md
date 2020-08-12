@@ -60,3 +60,12 @@ def sort_merge_iter(f1, f2):
     sort_comp = lambda a, b: a < b
     return merge_iter(f1, f2, next_or_none, sort_comp)
 ```
+
+## 追記: コード 3
+
+`heapq` を使っても出来ました。
+
+```
+import heapq
+heapq.merge(f1, f2)
+```
