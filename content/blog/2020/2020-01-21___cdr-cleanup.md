@@ -1,5 +1,5 @@
 ---
-title: 【zsh】cdr の掃除をする
+title: 【zsh】なくなったディレクトリを anyframe-widget-cdr から消す
 date: 2020-01-21 17:00:00
 tags:
   - zsh
