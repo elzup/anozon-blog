@@ -15,10 +15,11 @@ ngrok の本来の使い方とは違いますが、http パケットキャプチ
 
 ## ngrok とは
 
-使い捨て URL (https) でローカルのネットワークを外部に公開できるサービス。
+[ngrok \- secure introspectable tunnels to localhost](https://ngrok.com/)
+
+使い捨て URL (https) でローカルのネットワークを外部に公開できるサービスです。
 
 `brew install ngrok` でも入れられるようになりました。
-[ngrok \- secure introspectable tunnels to localhost](https://ngrok.com/)
 
 セットアップ手順 [ngrok – documentation](https://ngrok.com/docs)
 
