@@ -16,8 +16,21 @@ Gist: [Next\.js with typescript minimum pages/\_document\.tsx, pages/\_app\.tsx]
 
 ```tsx
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 
-const App = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
+const App = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      {/* <link rel="shortcut icon" href="/favicon.png" key="shortcutIcon" /> */}
+      {/* <link rel="manifest" href="/manifest.json" /> */}
+    </Head>
+    <Component {...pageProps} />
+  </>
+)
 
 export default App
 ```
@@ -35,14 +48,7 @@ class Document extends NextDocument<Props> {
   render() {
     return (
       <Html {/* lang="ja" */} >
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          {/* <link rel="shortcut icon" href="/favicon.png" key="shortcutIcon" /> */}
-          {/* <link rel="manifest" href="/manifest.json" /> */}
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
@@ -54,3 +60,8 @@ class Document extends NextDocument<Props> {
 
 export default Document
 ```
+
+追記: `2020-11-03`
+
+Head 位置の変更が推奨されたので記事内のコードも更新しました。
+[next\.js/no\-document\-viewport\-meta\.md at master · vercel/next\.js](https://github.com/vercel/next.js/blob/master/errors/no-document-viewport-meta.md)
