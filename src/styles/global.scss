@@ -111,6 +111,12 @@ pre[class*='language-'] {
     background: blue;
   }
 
+  &.language-java::before {
+    content: 'Java';
+    color: white;
+    background: brown;
+  }
+
   &.language-md::before {
     content: 'MD';
     color: white;
