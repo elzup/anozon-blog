@@ -4,7 +4,7 @@ date: 2020-06-09 14:00:00
 tags:
   - Docker
   - Docker Compose
-  - java
+  - Java
 ---
 
 ## docker-compose.yml
