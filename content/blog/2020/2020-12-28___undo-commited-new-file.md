@@ -22,7 +22,7 @@ A   content/blog/2020/2020-12-28___undo-commited-new-file.md
 
 `2020-12-28___undo-commited-new-file.md` を間違えてコミットに含めてしまいました。
 
-```
+```sh
 $ git rm --cached content/blog/2020/2020-12-28___undo-commited-new-file.md
 $ git commit --amend
 $ git log --name-status # 確認
