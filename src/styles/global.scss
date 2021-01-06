@@ -50,8 +50,8 @@ main {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   color: black;
-  background: -webkit-gradient(0deg, #e5ffd1, #f4ffb9);
-  background: linear-gradient(0deg, #e5ffd1, #f4ffb9);
+  background: -webkit-gradient(0deg, #ffefd1, #ffe6b9);
+  background: linear-gradient(0deg, #ffefd1, #ffe6b9);
   font-size: 90%;
   border-radius: 0.2rem;
   padding: 0.1rem 0.3rem 0.2rem;
@@ -146,6 +146,7 @@ pre[class*='language-'] {
 .toc {
   border: dashed gray 1px;
   background: white;
+  border-radius: 4px;
   width: auto;
 
   >ul {
