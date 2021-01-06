@@ -75,6 +75,8 @@ function FadeChanger({ url }: Props) {
 
 Exit アニメーション終了後 `onExited={() => setCurrentUrl(url)` により `in={true}` になり Enter アニメーション(fade in)をする。
 
+(hooks 使って書きたい...。)
+
 ## 呼び出す側のコード
 
 ```tsx
