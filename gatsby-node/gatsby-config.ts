@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { BlogListBySlugQuery } from './../types/graphql-types.d'
+/* eslint-disable no-control-regex */
+
+import { BlogListBySlugQuery } from '../types/graphql-types.d'
 
 const siteMetadata = {
   title: `あのぞんブログ`,
@@ -7,6 +9,7 @@ const siteMetadata = {
   profile: 'JavaScript とアニメ好き Web エンジニア。',
   description: `フロントエンド中心のブログ`,
   siteUrl: `https://blog.anozon.me/`,
+  image: '',
   social: {
     twitter: `anozon`,
   },

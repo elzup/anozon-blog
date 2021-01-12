@@ -26,6 +26,7 @@ function Seo({
     { property: `og:title`, content: title },
     { property: `og:description`, content: metaDescription },
     { property: `og:type`, content: `website` },
+    // { property: `og:image`, content: data.site.siteMetadata.image },
     { name: `twitter:card`, content: `summary` },
     {
       name: `twitter:creator`,
@@ -58,6 +59,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        image
       }
     }
   }
