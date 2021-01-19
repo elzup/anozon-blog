@@ -28,7 +28,7 @@ clasp login
 **既存のプロジェクトの場合**
 
 ```
-clasp clone smartbooth-dummy --rootDir ./gas
+clasp clone name --rootDir ./gas
 ```
 
 **新規のプロジェクトの場合**
