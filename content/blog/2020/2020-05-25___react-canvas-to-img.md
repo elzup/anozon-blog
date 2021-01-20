@@ -100,22 +100,23 @@ useEffect(() => {
 
 フォーム側の setState する部分は以下です。
 
-````tsx
-      <h4>背景色</h4>
-      {['#f00', '#0f0', '#00f'].map(color => (
-        <button
-          key={color}
-          style={{ background: color }}
-          onClick={() => setBgColor(color)}
-        >
-          {color}
-        </button>
-      ))}
-      <h4>文字色</h4>
-      {['#f00', '#0f0', '#00f'].map(color => (
-        <button style={{ color }} onClick={() => setFoColor(color)}>
-          {color}
-        </button>
-      ))}
-      ```
-````
+```tsx
+<>
+  <h4>背景色</h4>
+  {['#f00', '#0f0', '#00f'].map((color) => (
+    <button
+      key={color}
+      style={{ background: color }}
+      onClick={() => setBgColor(color)}
+    >
+      {color}
+    </button>
+  ))}
+  <h4>文字色</h4>
+  {['#f00', '#0f0', '#00f'].map((color) => (
+    <button style={{ color }} onClick={() => setFoColor(color)}>
+      {color}
+    </button>
+  ))}
+</>
+```
