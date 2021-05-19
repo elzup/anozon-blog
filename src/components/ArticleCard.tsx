@@ -23,7 +23,7 @@ function ArticalCard({ title, tags, slug, date, excerpt }: Props) {
       <small>{date}</small>
       <p dangerouslySetInnerHTML={{ __html: excerpt }} />
 
-      <TagChips tags={tags.map(value => ({ value }))} />
+      <TagChips tags={tags.map((value) => ({ value }))} />
     </Style>
   )
 }

@@ -28,12 +28,11 @@ main {
   }
 }
 
-
 .gatsby-code-title {
   position: relative;
   height: 0.5em;
 
-  >span {
+  > span {
     display: inline;
     position: relative;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -46,7 +45,7 @@ main {
   }
 }
 
-:not(pre)>code[class*='language-'] {
+:not(pre) > code[class*='language-'] {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   color: black;
@@ -123,7 +122,6 @@ pre[class*='language-'] {
     background: black;
   }
 
-
   &.language-css::before {
     content: 'CSS';
     color: white;
@@ -150,7 +148,7 @@ pre[class*='language-'] {
   width: auto;
   margin-bottom: 18px;
 
-  >ul {
+  > ul {
     margin: 1rem 1.58rem;
 
     // >li {

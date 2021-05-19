@@ -29,8 +29,8 @@ function HatenaShareButton({ title, url, size = 48 }: Props) {
 }
 
 const Style = styled.div<{ size: number }>`
-  width: ${p => p.size}px;
-  height: ${p => p.size}px;
+  width: ${(p) => p.size}px;
+  height: ${(p) => p.size}px;
   background: #06a4de;
 
   a {
@@ -42,9 +42,9 @@ const Style = styled.div<{ size: number }>`
     text-align: center;
     background-image: none;
     img {
-      width: ${p => (p.size * 3) / 4}px;
-      height: ${p => (p.size * 3) / 4}px;
-      margin: ${p => (p.size - (p.size * 3) / 4) / 2}px;
+      width: ${(p) => (p.size * 3) / 4}px;
+      height: ${(p) => (p.size * 3) / 4}px;
+      margin: ${(p) => (p.size - (p.size * 3) / 4) / 2}px;
       box-shadow: none;
     }
   }

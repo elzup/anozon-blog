@@ -50,7 +50,7 @@ export const createPages: GatsbyNode['createPages'] = ({
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -91,7 +91,7 @@ export const createPages: GatsbyNode['createPages'] = ({
     // Create tag pages
     const tags = result.data.tags.group
 
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       const numPages = Math.ceil(tag.totalCount / CARD_PAR_PAGE)
 
       Array.from({ length: numPages }).forEach((_, i) => {

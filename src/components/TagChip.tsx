@@ -28,7 +28,7 @@ type GroupProps = { tags: Props[] }
 export function TagChipsComponent({ tags }: GroupProps) {
   return (
     <>
-      {tags.map(tag => (
+      {tags.map((tag) => (
         <TagChip key={tag.value} value={tag.value} count={tag.count} />
       ))}
     </>

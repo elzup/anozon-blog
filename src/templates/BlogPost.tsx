@@ -32,7 +32,7 @@ function BlogPostTemplate(props: Props) {
     <Layout location={props.location} title={siteTitle}>
       <SEO title={title} description={post.excerpt} />
       <h1>{title}</h1>
-      <TagChips tags={tags.map(value => ({ value }))} />
+      <TagChips tags={tags.map((value) => ({ value }))} />
       <p
         style={{
           ...scale(-1 / 5),
@@ -49,7 +49,7 @@ function BlogPostTemplate(props: Props) {
           marginBottom: rhythm(1),
         }}
       />
-      <TagChips tags={tags.map(value => ({ value }))} />
+      <TagChips tags={tags.map((value) => ({ value }))} />
       <ShareButtons title={title} siteTitle={siteTitle} url={url} />
       <Bio />
 

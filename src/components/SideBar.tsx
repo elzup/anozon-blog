@@ -16,7 +16,7 @@ function SideBar() {
           <div>
             <h4>タグ</h4>
             <TagChipsCol
-              tags={tags.map(v => ({
+              tags={tags.map((v) => ({
                 value: v.fieldValue,
                 count: v.totalCount,
               }))}

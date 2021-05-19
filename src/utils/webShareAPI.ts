@@ -24,7 +24,7 @@ export function share(props: ShareData) {
     .then(() => {
       console.log('Successful share')
     })
-    .catch(error => {
+    .catch((error) => {
       console.log('Error sharing', error)
     })
 }
