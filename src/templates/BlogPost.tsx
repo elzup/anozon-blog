@@ -1,15 +1,16 @@
+import { graphql, Link } from 'gatsby'
 import * as React from 'react'
-import { Link, graphql } from 'gatsby'
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import SEO from '../components/Seo'
-import { rhythm, scale } from '../utils/typography'
 import {
   BlogPostBySlugQuery,
   SitePageContext,
 } from '../../types/graphql-types.d'
-import { TagChips } from '../components/TagChip'
+import Bio from '../components/Bio'
+import CommentArea from '../components/CommentArea'
+import Layout from '../components/Layout'
+import SEO from '../components/Seo'
 import ShareButtons from '../components/ShareButtons'
+import { TagChips } from '../components/TagChip'
+import { rhythm, scale } from '../utils/typography'
 
 type Props = {
   location: Location
@@ -44,12 +45,9 @@ function BlogPostTemplate(props: Props) {
         {date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
+      <hr style={{ marginBottom: rhythm(1) }} />
       <TagChips tags={tags.map((value) => ({ value }))} />
+      <CommentArea />
       <ShareButtons title={title} siteTitle={siteTitle} url={url} />
       <Bio />
 
