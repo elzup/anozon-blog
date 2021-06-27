@@ -1,4 +1,14 @@
-$pc: 1024px;
+$pc: 992px;
+
+
+:root {
+  --bg-color: #f3edff;
+  --main-bg-color: white;
+}
+
+body {
+  background: var(--bg-color);
+}
 
 body,
 a {
@@ -7,10 +17,19 @@ a {
 }
 
 main {
+  background: var(--main-bg-color);
+  padding: 32px;
+  border-radius: 12px;;
+
   img {
     box-shadow: 0 0px 5px 5px #e6e6e6;
     max-width: 96%;
     margin: 0 2%;
+  }
+
+  h3 {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 4px;
   }
 
   @media only screen and (max-width: $pc) {

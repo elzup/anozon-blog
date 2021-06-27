@@ -42,15 +42,15 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr ${rhythm(10)};
   grid-gap: ${rhythm(1)};
-  @media only screen and (min-width: 900px) {
-    max-width: 1100px;
+  @media only screen and (min-width: 992px) {
+    max-width: 992px;
     grid-template-areas:
       'header header'
       'title title'
       'main side'
       'footer footer';
   }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 992px) {
     padding: ${rhythm(1)} ${rhythm(1 / 2)};
     grid-template-columns: 1fr;
     grid-gap: ${rhythm(0.5)};
