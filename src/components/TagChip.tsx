@@ -12,13 +12,12 @@ type Props = {
 
 const TagLink = styled(Link)`
   ${button}
-  border-radius: 2rem;
 `
 
 function TagChip({ value, count }: Props) {
   return (
     <TagLink to={`/tags/${kebabCase(value)}`}>
-      {value}
+      #{value}
       {count ? `(${count})` : ''}
     </TagLink>
   )

@@ -10,9 +10,8 @@ export const button = css`
   font-weight: 700;
   font-size: 0.66rem;
   white-space: nowrap;
-  border: 3px solid #28242f;
   line-height: 1.8;
-  padding: 0.1rem 0.5rem 0.05rem;
+  padding: 0.1rem;
   background-image: none;
   &:hover {
     background-image: linear-gradient(
