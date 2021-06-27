@@ -46,6 +46,7 @@ const Wrapper = styled.div`
     max-width: 1100px;
     grid-template-areas:
       'header header'
+      'title title'
       'main side'
       'footer footer';
   }
@@ -55,6 +56,7 @@ const Wrapper = styled.div`
     grid-gap: ${rhythm(0.5)};
     grid-template-areas:
       'header'
+      'title'
       'main'
       'side'
       'footer';
@@ -66,6 +68,10 @@ const Wrapper = styled.div`
     grid-area: main;
     overflow: hidden;
   }
+  .title {
+    text-align: center;
+    grid-area: title;
+  }
   aside {
     grid-area: side;
   }
@@ -74,25 +80,26 @@ const Wrapper = styled.div`
   }
 `
 
-const Layout: React.FC<{ location: Location; title: string }> = ({
-  location,
-  title,
-  children,
-}) => {
+const Layout: React.FC<{
+  location: Location
+  title: string
+  articleTitle?: string
+}> = ({ articleTitle = null, location, title, children }) => {
   // eslint-disable-next-line no-undef
 
   const rootPath = `/`
-  const header =
-    location.pathname === rootPath ? (
-      <LargeTitle title={title} />
-    ) : (
-      <SmallTitle title={title} />
-    )
+  const isTopPage = location.pathname === rootPath
+  const header = isTopPage ? (
+    <LargeTitle title={title} />
+  ) : (
+    <SmallTitle title={title} />
+  )
 
   return (
     <div>
       <Wrapper>
         <header>{header}</header>
+        <div className="title">{articleTitle && <h1>{articleTitle}</h1>}</div>
         <main>{children}</main>
         <aside>
           <Bio />
