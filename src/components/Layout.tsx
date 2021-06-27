@@ -1,15 +1,13 @@
-import * as React from 'react'
 import { Link } from 'gatsby'
+import * as React from 'react'
 import styled from 'styled-components'
-
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import Bio from './Bio'
 import SideBar from './SideBar'
 
 const LargeTitle = ({ title }: { title: string }) => (
   <h1
     style={{
-      ...scale(1.5),
       marginBottom: rhythm(1.5),
       marginTop: 0,
     }}

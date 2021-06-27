@@ -29,8 +29,12 @@ function ArticalCard({ title, tags, slug, date, excerpt }: Props) {
 }
 
 const Style = styled.div`
+  border-bottom: solid 1px #d5d5d5;
+  padding: 12px 0;
   h3 {
+    margin-top: ${rhythm(1 / 4)};
     margin-bottom: ${rhythm(1 / 4)};
+    border: none;
   }
 `
 

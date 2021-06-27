@@ -1,16 +1,14 @@
-import * as React from 'react'
 import { graphql } from 'gatsby'
-
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import SEO from '../components/Seo'
+import * as React from 'react'
 import {
   BlogListBySlugQuery,
   BlogListBySlugQueryVariables,
   SitePageContext,
 } from '../../types/graphql-types.d'
 import ArticalCard from '../components/ArticleCard'
+import Layout from '../components/Layout'
 import Pagination from '../components/Pagination'
+import SEO from '../components/Seo'
 
 type Props = {
   data: BlogListBySlugQuery
@@ -28,7 +26,6 @@ function BlogListTemplate({ data, location, pageContext }: Props) {
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
-      <Bio />
       {edges.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
 
