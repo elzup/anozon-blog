@@ -6,12 +6,7 @@ import Bio from './Bio'
 import SideBar from './SideBar'
 
 const LargeTitle = ({ title }: { title: string }) => (
-  <h1
-    style={{
-      marginBottom: rhythm(1.5),
-      marginTop: 0,
-    }}
-  >
+  <h1>
     <Link
       style={{ boxShadow: `none`, textDecoration: `none`, color: `inherit` }}
       to={`/`}

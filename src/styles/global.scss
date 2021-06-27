@@ -1,9 +1,20 @@
 $pc: 992px;
 
-
 :root {
   --bg-color: #f3edff;
   --main-bg-color: white;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  padding: 12px 20px;
+  width: 100%;
+  left: 0;
+  background: white;
+  h1, h3 {
+    margin: 0;
+  }
 }
 
 body {
@@ -19,12 +30,26 @@ a {
   text-shadow: none;
   background-image: none;
 }
+aside {
+  h4 {
+    margin: 0;
+  }
+  div {
+    background: var(--main-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+}
 
 main {
   background: var(--main-bg-color);
   padding: 32px;
-  border-radius: 12px;;
+  border-radius: 8px;
 
+  h1 {
+    margin: 0
+  }
   img {
     box-shadow: 0 0px 5px 5px #e6e6e6;
     max-width: 96%;

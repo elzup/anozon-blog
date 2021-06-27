@@ -25,7 +25,6 @@ function Bio({ fixed, author, profile, twitter }: Props) {
 }
 const Style = styled.div`
   display: flex;
-  margin-bottom: ${rhythm(2.5)};
   .gatsby-image-wrapper {
     margin-right: ${rhythm(1 / 2)};
     margin-bottom: 0;

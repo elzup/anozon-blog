@@ -11,6 +11,7 @@ import {
   TagSearchQueryVariables,
 } from '../../types/graphql-types.d'
 import Pagination from '../components/Pagination'
+import ArticalCard from '../components/ArticleCard'
 
 type Props = {
   location: Location
@@ -40,18 +41,14 @@ function TagPageTemplate({ data, pageContext, location }: Props) {
         const title = node.frontmatter.title || node.fields.slug
 
         return (
-          <div key={node.fields.slug}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: `none` }} to={`/${node.fields.slug}`}>
-                {title}
-              </Link>
-            </h3>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
+          <ArticalCard
+            key={node.fields.slug}
+            title={title}
+            slug={node.fields.slug}
+            excerpt={node.excerpt}
+            date={node.frontmatter.date}
+            tags={node.frontmatter.tags}
+          />
         )
       })}
       {PageBar}
@@ -85,6 +82,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "YYYY-MM-DD")
             title
+            tags
           }
         }
       }
