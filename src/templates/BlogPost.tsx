@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import * as React from 'react'
 import {
   BlogPostBySlugQuery,
@@ -22,7 +22,6 @@ function BlogPostTemplate(props: Props) {
   const post = props.data.markdownRemark
   const { siteUrl } = props.data.site.siteMetadata
   const siteTitle = props.data.site.siteMetadata.title
-  const { previous, next } = props.pageContext
 
   const { date, tags, title } = post.frontmatter
 
@@ -50,31 +49,6 @@ function BlogPostTemplate(props: Props) {
       <CommentArea />
       <ShareButtons title={title} siteTitle={siteTitle} url={url} />
       <Bio />
-
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={'/' + previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={'/' + next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
     </Layout>
   )
 }
