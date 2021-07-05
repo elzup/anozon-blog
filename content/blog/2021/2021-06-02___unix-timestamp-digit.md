@@ -2,7 +2,7 @@
 title: unix timestamp の桁数が増えるのはいつか
 date: 2021-06-02 13:00:00
 tags:
-  - node
+  - Node.js
   - unix
 ---
 
