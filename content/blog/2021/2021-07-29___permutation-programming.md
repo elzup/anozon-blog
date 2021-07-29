@@ -21,40 +21,52 @@ tags:
 | 組合わせ     | Combination                   | nCr  | `[0, 1]`                   |
 | 重複組合わせ | Combination with replacement  | nHr  | `[0, 0][0, 1][1, 1]`       |
 
-## もう少しだけ複雑な例
+### もう少しだけ複雑な例
 
-3 X 2
+#### 順列
 
-### 順列
+<sub>4</sub>P<sub>2</sub>(4 個の中から 2 個選んで並べる)
 
-<sub>3</sub>P<sub>2</sub>(3 個の中から 2 個選んで並べる)
+```
+AB AC AD BA BC BD CA CB CD DA DB DC
+[0, 0][0, 1][0, 2][0, 3][1, 0][1, 1][1, 2][1, 3][2, 0][2, 1][2, 2][2, 3][3, 0][3, 1][3, 2][3, 3]
+```
 
-`[0, 1][0, 2][1, 0][1, 2][2, 0][2, 1]`
-
-### 重複順列
+#### 重複順列
 
 <sub>n</sub>Π<sub>2</sub> で n 桁の bit 全探索になる。
-<sub>3</sub>Π<sub>2</sub>(重複ありで 3 個の中から 2 個選んで並べる)
+<sub>4</sub>Π<sub>2</sub>(重複ありで 4 個の中から 2 個選んで並べる)
 
-`[0, 0][0, 1][0, 2][1, 0][1, 1][1, 2][2, 0][2, 1][2, 2]`
+```
+AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
+[0, 1][0, 2][0, 3][1, 0][1, 2][1, 3][2, 0][2, 1][2, 3][3, 0][3, 1][3, 2]
+```
 
-### 組合わせ
+#### 組合わせ
 
-<sub>3</sub>C<sub>2</sub>(3 個の中から 2 個選ぶ)
+<sub>4</sub>C<sub>2</sub>(4 個の中から 2 個選ぶ)
 
-`[0, 1][0, 2][1, 2]`
+```
+AB AC AD BC BD CD
+[0, 1][0, 2][0, 3][1, 2][1, 3][2, 3]
+```
 
-### 重複組合わせ
+#### 重複組合わせ
 
-<sub>3</sub>H<sub>2</sub>(重複ありで 3 個の中から 2 個選ぶ)
+<sub>4</sub>H<sub>2</sub>(重複ありで 4 個の中から 2 個選ぶ)
 
-`[0, 0][0, 1][0, 2][1, 1][1, 2][2, 2]`
+```
+AA AB AC AD BB BC BD CC CD DD
+[0, 0][0, 1][0, 2][0, 3][1, 1][1, 2][1, 3][2, 2][2, 3][3, 3]
+```
 
 ## コード例
 
 ### Rust
 
 ```rust
+use itertools::{iproduct, Itertools};
+
 // permutation
 (0..3).permutations(2)
 // [0, 1][0, 2][1, 0][1, 2][2, 0][2, 1]
@@ -85,15 +97,15 @@ iproduct!(...(0..3).repeat(2))
 ```python
 import itertools
 
-itertools.product('ABCD', repeat=2)
-# AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
-
 itertools.permutations('ABCD', 2)
-# AB AC AD BA BC BD CA CB CD DA DB DC
+# AB AC BA BC CA CB
+
+itertools.product('ABCD', repeat=2)
+# AA AB AC BA BB BC CA CB CC
 
 itertools.combinations('ABCD', 2)
-# AB AC AD BC BD CD
+# AB AC BC
 
 itertools.combinations_with_replacement('ABCD', 2)
-# AA AB AC AD BB BC BD CC CD DD
+# AA AB AC BB BC CC
 ```
