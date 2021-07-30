@@ -3,6 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { rhythm } from '../utils/typography'
 import Bio from './Bio'
+import CustomMdxProvider from './markdown/wap-root-element'
 import SideBar from './SideBar'
 
 const LargeTitle = ({ title }: { title: string }) => (
@@ -36,7 +37,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr ${rhythm(10)};
   grid-gap: ${rhythm(1)};
   @media only screen and (min-width: 992px) {
-    max-width: 992px;
+    max-width: 1200px;
     grid-template-areas:
       'header header'
       'title title'

@@ -21,6 +21,10 @@ body {
   background: var(--bg-color);
 }
 
+h1 {
+  font-size: 33px;
+}
+
 body,
 a {
   font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo,
@@ -206,5 +210,11 @@ pre[class*='language-'] {
     //     /* h3 */
     //   }
     // }
+  }
+}
+
+@media only screen and (max-width: $pc) {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 0.888rem;
   }
 }
