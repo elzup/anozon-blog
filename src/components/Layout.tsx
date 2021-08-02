@@ -45,7 +45,7 @@ const Wrapper = styled.div`
       'footer footer';
   }
   @media only screen and (max-width: 992px) {
-    padding: ${rhythm(1)} ${rhythm(1 / 2)};
+    padding: ${rhythm(1)} 0px;
     grid-template-columns: 1fr;
     grid-gap: ${rhythm(0.5)};
     grid-template-areas:
@@ -54,6 +54,9 @@ const Wrapper = styled.div`
       'main'
       'side'
       'footer';
+    .title {
+      padding: 0 30px;
+    }
   }
   header {
     grid-area: header;
@@ -65,6 +68,8 @@ const Wrapper = styled.div`
   .title {
     text-align: center;
     grid-area: title;
+    max-width: 800px;
+    margin: 0 auto;
   }
   aside {
     grid-area: side;
