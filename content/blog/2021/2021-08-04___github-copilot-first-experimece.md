@@ -1,18 +1,19 @@
 ---
-title: GitHub Copilot 触ってみて1ヶ月なので所感
+title: GitHub Copilot はいい相棒になりそう
 date: 2021-08-04 00:00:00
 tags:
   - GitHub Copilot
   - review
 ---
 
+1 ヶ月目なので所感を書きます。  
 主に TypeScript を書いています。 初日から結構好感です。
 
 ```toc
 
 ```
 
-## 良さげな点
+## 良い点
 
 ### コメント書かなくてもよく効く
 
