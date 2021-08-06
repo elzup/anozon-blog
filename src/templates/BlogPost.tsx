@@ -48,7 +48,6 @@ function BlogPostTemplate(props: Props) {
       <TagChips tags={tags.map((value) => ({ value }))} />
       <CommentArea />
       <ShareButtons title={title} siteTitle={siteTitle} url={url} />
-      <Bio />
     </Layout>
   )
 }
