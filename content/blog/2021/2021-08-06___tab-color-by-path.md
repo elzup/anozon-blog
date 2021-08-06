@@ -9,9 +9,15 @@ tags:
 
 ディレクトリ移動時に自動でタブの色が変わるようにします。
 
-<!-- TODO -->
+移動時にディレクトリによって別のコマンドを実行する方法と、iTerm のタブ色を変える方法を組み合わせて実現します。
 
-```sh
+[任意のディレクトリ移動時にコマンドを実行する\(zsh\) \| あのぞんブログ](https://blog.anozon.me/chpwd-by-path)
+
+[iTerm tab\-color メモ \| あのぞんブログ](https://blog.anozon.me/iterm2-tab-color)
+
+[iTerm2 の tab のタイトルと色を動的にいじる \- Qiita](https://qiita.com/daicche/items/135d063444d152e63e1c)
+
+```sh:title=.zshrc
 autoload -Uz add-zsh-hook
 
 ## chpwd_tab_color

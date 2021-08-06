@@ -10,7 +10,9 @@ tags:
 
 移動後に実行する hook の登録には `add-zsh-hook` の `chpwd` を使用します。
 
-```sh
+.zshrc などで以下のように登録をしておきます。
+
+```sh:title=.zshrc
 function hoge() {
 	# run command
 }
@@ -36,4 +38,6 @@ chpwd_tab_color() {
 add-zsh-hook chpwd chpwd_tab_color
 ```
 
-TODO: 応用して iTerm2 でタブの色を変える例です。
+応用例として iTerm2 でタブの色を変える方法を別の記事で紹介します。
+
+[iTerm2 でディレクトリによってタブの色を変える \| あのぞんブログ](https://blog.anozon.me/tab-color-by-path)
