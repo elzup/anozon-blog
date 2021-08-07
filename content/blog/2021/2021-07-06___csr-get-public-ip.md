@@ -1,5 +1,5 @@
 ---
-title: CSR (ブラウザ側)で public ip を取得する
+title: ブラウザ javascript 側で global ip を取得する
 date: 2021-07-06 16:00:00
 tags:
   - JavaScript
