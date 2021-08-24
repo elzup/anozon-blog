@@ -4,9 +4,9 @@ import {
   BlogPostBySlugQuery,
   SitePageContext,
 } from '../../types/graphql-types.d'
-import Bio from '../components/Bio'
 import CommentArea from '../components/CommentArea'
 import Layout from '../components/Layout'
+import { renderAst } from '../components/markdown/renderAst'
 import SEO from '../components/Seo'
 import ShareButtons from '../components/ShareButtons'
 import { TagChips } from '../components/TagChip'
@@ -43,7 +43,7 @@ function BlogPostTemplate(props: Props) {
       >
         {date}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div>{renderAst(post.htmlAst)}</div>
       <hr style={{ marginBottom: rhythm(1) }} />
       <TagChips tags={tags.map((value) => ({ value }))} />
       <CommentArea />
@@ -66,7 +66,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      htmlAst
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
