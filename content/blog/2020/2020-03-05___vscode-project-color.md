@@ -5,6 +5,8 @@ tags:
   - CLI
   - VSCode
   - 作った
+type: tech
+published: true
 ---
 
 プロジェクトごとに VSCode の色を変える方法を見つけて最近利用しています。

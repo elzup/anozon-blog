@@ -4,6 +4,8 @@ date: 2020-02-26 21:00:00
 tags:
   - JavaScript
   - CodingChallange
+type: tech
+published: true
 ---
 
 JavaScript で ソースコード自身を出力するソースコード書いてみました。Qunie(クワイン)と言うそうです。

@@ -4,6 +4,8 @@ date: 2020-12-28 10:00:00
 tags:
   - git
   - Tips
+type: tech
+published: true
 ---
 
 ```sh

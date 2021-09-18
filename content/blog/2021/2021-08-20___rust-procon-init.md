@@ -5,6 +5,8 @@ tags:
   - Rust
   - 競技プログラミング
   - AtCoder
+type: tech
+published: true
 ---
 
 ```toc

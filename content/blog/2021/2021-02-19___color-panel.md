@@ -5,6 +5,8 @@ tags:
   - 作った
   - PWA
   - Mitelop
+type: tech
+published: true
 ---
 
 たまにモニターの焼け付きが気になって、グレイ色の背景のウィンドウを用意して確認することがあります。  

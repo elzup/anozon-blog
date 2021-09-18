@@ -3,6 +3,8 @@ title: .git/config からリモートリポジトリを変える
 date: 2020-05-03 17:00:00
 tags:
   - git
+type: tech
+published: true
 ---
 
 リモートリポジトリ先を変更(やリネーム)した際に .git/config から変える癖がついてしまったので整理もかねて。

@@ -3,6 +3,8 @@ title: js で文字列の先頭のn 行を削除する
 date: 2020-10-05 18:00:00
 tags:
   - JavaScript
+type: tech
+published: true
 ---
 
 ## コード 1

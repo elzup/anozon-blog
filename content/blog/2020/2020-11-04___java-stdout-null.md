@@ -3,6 +3,8 @@ title: java で標準出力を一旦オフにする
 date: 2020-11-04 11:00:00
 tags:
   - Java
+type: tech
+published: true
 ---
 
 java で標準出力を一時的にオフにする方法です。

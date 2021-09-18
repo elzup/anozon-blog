@@ -4,6 +4,8 @@ date: 2021-06-02 13:00:00
 tags:
   - Node.js
   - unix
+type: tech
+published: true
 ---
 
 ## 現在の桁数

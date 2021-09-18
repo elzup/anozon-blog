@@ -4,6 +4,8 @@ date: 2020-08-24 15:00:00
 tags:
   - Python
   - TypeScript
+type: tech
+published: true
 ---
 
 TypeScript の UnionType は以下のように定義できます。

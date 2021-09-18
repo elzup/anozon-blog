@@ -4,6 +4,8 @@ date: 2021-08-24 10:00:00
 tags:
   - Rust
   - Binary
+type: tech
+published: true
 ---
 
 usize で取得する関数です。

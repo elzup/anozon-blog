@@ -3,6 +3,8 @@ title: 【JavaScript】時刻指定で setTimeout するスニペット
 date: 2020-02-25 11:00:00
 tags:
   - JavaScript
+type: tech
+published: true
 ---
 
 ダッシュボードなど開きっぱなしにする Web 画面で特定の時間にイベントを発火させる方法をまとめました。

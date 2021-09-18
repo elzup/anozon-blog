@@ -3,6 +3,8 @@ title: Markdown でコードブロックの中にバックスラッシュ3つを
 date: 2020-07-06 12:00:00
 tags:
   - Markdown
+type: tech
+published: true
 ---
 
 Markdown の複数行コードブロックは普通以下のように書きます。

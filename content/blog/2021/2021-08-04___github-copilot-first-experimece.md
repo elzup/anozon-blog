@@ -4,6 +4,8 @@ date: 2021-08-04 00:00:00
 tags:
   - GitHub Copilot
   - review
+type: tech
+published: true
 ---
 
 1 ヶ月目なので所感を書きます。  

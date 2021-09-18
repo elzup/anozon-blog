@@ -3,6 +3,8 @@ title: vim の q マクロを保存して使いまわす
 date: 2021-01-13 13:00:00
 tags:
   - Vim
+type: tech
+published: true
 ---
 
 1 度作ったマクロを保存して、 vim を開き直したときも使いまわしたいときの方法。

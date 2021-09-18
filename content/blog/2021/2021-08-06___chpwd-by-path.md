@@ -4,6 +4,8 @@ date: 2021-08-06 15:00:00
 tags:
   - Shell
   - zsh
+type: tech
+published: true
 ---
 
 ## 移動時に実行するコマンドを登録する

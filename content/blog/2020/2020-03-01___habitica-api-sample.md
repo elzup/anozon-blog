@@ -6,6 +6,8 @@ tags:
   - Node.js
   - json
   - fx
+type: tech
+published: true
 ---
 
 この記事では Habitica API で日課の記録を取得する方法について紹介します。
@@ -73,9 +75,9 @@ node main.js | fx
 const { format } = require('fecha')
 
 const tasks = res.data.data
-const workout = tasks.find(v => /筋トレ/.exec(v.text))
+const workout = tasks.find((v) => /筋トレ/.exec(v.text))
 
-const times = workout.history.map(commit => format(commit.date, 'YYYY-MM-DD'))
+const times = workout.history.map((commit) => format(commit.date, 'YYYY-MM-DD'))
 // 後日 commit のタイムスタンプ
 console.log(times.join('\n'))
 ```
@@ -99,7 +101,7 @@ $ node main.js
 ということでかぶった場合は前日にするパッチを当てます。
 
 ```js
-const times = workout.history.map(commit => [
+const times = workout.history.map((commit) => [
   format(commit.date, 'YYYY-MM-DD'),
   commit.date,
 ])

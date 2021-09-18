@@ -5,6 +5,8 @@ tags:
   - React
   - TypeScript
   - CSS
+type: tech
+published: true
 ---
 
 メモリ付きの定規、ルーラーコンポーネントのサンプルです。

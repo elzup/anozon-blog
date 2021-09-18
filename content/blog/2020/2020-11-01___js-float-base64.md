@@ -5,6 +5,8 @@ tags:
   - JavaScript
   - Binary
   - Buffer
+type: tech
+published: true
 ---
 
 JavaScript で Buffer と他の型への変換する方法をまとめました。

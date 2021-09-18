@@ -3,6 +3,8 @@ title: Desktopのファイルを一掃する
 date: 2020-05-12 20:00:00
 tags:
   - ShellScript
+type: tech
+published: true
 ---
 
 `~/Desktop`や `~/Downloads` ディレクトリはよく散らかるので、「散らかってきたな〜」と思ったとにバックアップに移動するコマンドをまとめます。

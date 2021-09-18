@@ -6,6 +6,8 @@ tags:
   - TypeScript
   - JavaScript
   - React hooks
+type: tech
+published: true
 ---
 
 `fitty` はコンテナに合わせてテキストのフォントサイズをフィットしてくれるライブラリです。  

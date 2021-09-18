@@ -5,6 +5,8 @@ tags:
   - React
   - TypeScript
   - DiceBear Avatars
+type: tech
+published: true
 ---
 
 props で指定された URL が変わったら フェードアウト し、  

@@ -5,6 +5,8 @@ tags:
   - Shell
   - zsh
   - iTerm2
+type: tech
+published: true
 ---
 
 ディレクトリ移動時に自動でタブの色が変わるようにします。

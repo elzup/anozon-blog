@@ -4,6 +4,8 @@ date: 2020-02-08 15:00:00
 tags:
   - Next.js
   - TypeScript
+type: tech
+published: true
 ---
 
 この記事では Next.js with TypeScript で最小限の \_app.tsx, \_document.tsx について紹介します。

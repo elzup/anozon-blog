@@ -3,6 +3,8 @@ title: (プロジェクト毎に) VS Code の Window に色をつける
 date: 2021-07-18 23:00:00
 tags:
   - VSCode
+type: tech
+published: true
 ---
 
 VS Code のテーマを変えました。

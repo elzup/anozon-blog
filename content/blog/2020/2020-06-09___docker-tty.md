@@ -5,6 +5,8 @@ tags:
   - Docker
   - Docker Compose
   - Java
+type: tech
+published: true
 ---
 
 ## docker-compose.yml

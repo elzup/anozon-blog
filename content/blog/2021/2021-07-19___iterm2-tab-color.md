@@ -5,6 +5,8 @@ tags:
   - iTerm2
   - DevOps
   - zsh
+type: tech
+published: true
 ---
 
 ## `tab-color` コマンドを作っておく

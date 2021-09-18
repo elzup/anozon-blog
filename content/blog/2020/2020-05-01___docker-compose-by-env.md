@@ -4,6 +4,8 @@ date: 2020-05-01 18:00:00
 tags:
   - Docker Compose
   - Docker
+type: tech
+published: true
 ---
 
 ```toc

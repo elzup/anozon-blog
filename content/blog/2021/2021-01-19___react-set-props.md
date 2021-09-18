@@ -6,6 +6,8 @@ tags:
   - React
   - recompose
   - styled-components
+type: tech
+published: true
 ---
 
 React で特定の props を固定した特化コンポーネントを定義する方法をいくつかまとめました。

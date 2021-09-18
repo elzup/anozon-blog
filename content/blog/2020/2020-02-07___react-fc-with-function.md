@@ -4,6 +4,8 @@ date: 2020-02-07 12:00:00
 tags:
   - React
   - TypeScript
+type: tech
+published: true
 ---
 
 この記事では children を持つ Component を function で書くときの型定義する方法を説明します。
@@ -35,7 +37,7 @@ function DecorateFunc(props: Props) {
 
 /* children あり */
 // arrow function
-const DecorateConstHasChild: React.FC<Props> = props => {
+const DecorateConstHasChild: React.FC<Props> = (props) => {
   return <div>{props.children}</div>
 }
 

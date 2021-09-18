@@ -6,6 +6,8 @@ tags:
   - Node.js
   - CLI
   - GatsbyJS
+type: tech
+published: true
 ---
 
 この記事では PLOP について紹介します。
@@ -49,7 +51,7 @@ category: {{category}}
 **テンプレートで必要となる変数**, **ファイルのパス**が揃うように作ります。
 
 ```js:title=propfile.js
-const pad00 = num => String(num).padStart(2, '0')
+const pad00 = (num) => String(num).padStart(2, '0')
 const date = new Date()
 const year = date.getFullYear()
 const month = pad00(date.getMonth() + 1)
@@ -59,11 +61,11 @@ const datePrefix = `${year}-${month}-${day}`
 
 const categories = ['Other', 'Tech', 'BlogOps']
 
-module.exports = function(
+module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
   plop
 ) {
-  plop.setHelper('getKebabFirst', date => date.split('-')[0])
+  plop.setHelper('getKebabFirst', (date) => date.split('-')[0])
   plop.setHelper('hms', () => hms)
   plop.setGenerator('post', {
     description: 'Write new blog post',

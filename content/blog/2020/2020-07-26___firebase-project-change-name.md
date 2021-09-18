@@ -4,6 +4,8 @@ date: 2020-07-26 22:00:00
 tags:
   - Firebase
   - GCP
+type: tech
+published: true
 ---
 
 ```toc

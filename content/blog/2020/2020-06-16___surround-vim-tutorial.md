@@ -4,6 +4,8 @@ date: 2020-06-16 21:00:00
 tags:
   - Vim
   - Coding
+type: tech
+published: true
 ---
 
 ```toc

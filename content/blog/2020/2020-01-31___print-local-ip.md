@@ -3,6 +3,8 @@ title: Mac OS でIPアドレスを出力する方法いろいろ
 date: 2020-01-31 14:00:00
 tags:
   - ShellScript
+type: tech
+published: true
 ---
 
 この記事ではプライベート IP アドレスだけ出力する方法をまとめました。

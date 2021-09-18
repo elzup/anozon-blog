@@ -3,6 +3,8 @@ title: GitHub Pages から別のサイトに移行するときのリダイレク
 date: 2020-04-30 23:00:00
 tags:
   - GitHub Pages
+type: tech
+published: true
 ---
 
 ```toc

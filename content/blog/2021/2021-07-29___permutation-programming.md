@@ -8,6 +8,8 @@ tags:
   - Python
   - 高階関数
   - 競技プログラミング
+type: tech
+published: true
 ---
 
 順列を扱うための情報をまとめました。

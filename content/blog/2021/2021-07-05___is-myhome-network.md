@@ -4,6 +4,8 @@ date: 2021-07-05 15:00:00
 tags:
   - Node.js
   - Network
+type: tech
+published: true
 ---
 
 家のネットワーク上でだけ実行したいスクリプトがあったので、接続しているかチェックするコードを書きました。

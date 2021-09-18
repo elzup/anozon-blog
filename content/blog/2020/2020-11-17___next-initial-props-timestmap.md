@@ -5,6 +5,8 @@ tags:
   - Next.js
   - TypeScript
   - SSR
+type: tech
+published: true
 ---
 
 `next export` を実行した時のタイムスタンプをレンダリングしたいときの方法です。  

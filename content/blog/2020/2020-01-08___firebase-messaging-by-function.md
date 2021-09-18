@@ -5,6 +5,8 @@ tags:
   - Firebase
   - Firebase Cloud Messaging
   - GCP
+type: tech
+published: true
 ---
 
 Firebase Function から Cloud Messaging (FCM HTTP v1 API) を使って通知を送る方法のメモです。

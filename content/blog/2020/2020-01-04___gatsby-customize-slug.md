@@ -3,6 +3,8 @@ title: GatsbyJSで記事のURLをカスタマイズする
 date: 2020-01-04 23:03:38
 tags:
   - GatsbyJS
+type: tech
+published: true
 ---
 
 この記事では GatsbyJS で作るブログの **slug(URL のパス部分)** のカスタマイズ方法を紹介します。
@@ -68,7 +70,7 @@ URL は以下のようになっています。
 const SLUG_SEPARATOR = '___'
 
 // '2020/2020-01-04___gatsby-customize-slug' → 'gatsby-customize-slug'
-const getSlug = path => {
+const getSlug = (path) => {
   const [prefix, slug] = path.split(SLUG_SEPARATOR)
   return slug || path
 }

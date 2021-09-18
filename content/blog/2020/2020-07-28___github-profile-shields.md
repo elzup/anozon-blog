@@ -5,6 +5,8 @@ tags:
   - GitHub
   - Shields.io
   - Markdown
+type: tech
+published: true
 ---
 
 [elzup \(elzup\)](https://github.com/elzup)

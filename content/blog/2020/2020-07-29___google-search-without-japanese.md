@@ -4,6 +4,8 @@ date: 2020-07-29 17:00:00
 tags:
   - Search Skill
   - Tips
+type: tech
+published: true
 ---
 
 日本語設定で Google 検索を使ってると「日本語のページのみ表示する」というオプションがでてくることがあります。

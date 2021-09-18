@@ -3,6 +3,8 @@ title: Python で Array.find
 date: 2020-09-16 11:00:00
 tags:
   - Python
+type: tech
+published: true
 ---
 
 配列の中で条件に該当する１つ目を取り出す関数。

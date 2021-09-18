@@ -4,6 +4,8 @@ date: 2020-03-07 12:00:00
 tags:
   - git
   - BlogOps
+type: tech
+published: true
 ---
 
 git は `commit.template` でデフォルトのコミットメッセージの設定できます。

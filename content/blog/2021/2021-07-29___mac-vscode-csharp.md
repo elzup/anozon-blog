@@ -6,6 +6,8 @@ tags:
   - .NET
   - Cloud Function
   - GCP
+type: tech
+published: true
 ---
 
 ## VSCode の設定

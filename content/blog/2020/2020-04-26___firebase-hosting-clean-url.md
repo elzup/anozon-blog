@@ -4,6 +4,8 @@ date: 2020-04-26 21:00:00
 tags:
   - Tips
   - Firebase
+type: tech
+published: true
 ---
 
 ## cleanUrls を使う

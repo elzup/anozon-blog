@@ -4,6 +4,8 @@ date: 2020-04-29 14:00:00
 tags:
   - SpreadSheets
   - Excel
+type: tech
+published: true
 ---
 
 この記事では Excel やスプレッドシートでの方眼紙の作り方 について紹介します。

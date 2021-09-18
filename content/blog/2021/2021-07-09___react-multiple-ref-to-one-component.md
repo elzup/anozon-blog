@@ -4,6 +4,8 @@ date: 2021-07-09 17:00:00
 tags:
   - React hooks
   - TypeScript
+type: tech
+published: true
 ---
 
 同じ div に `useSize` と `useHover` の両方を使いたいとがあった。  

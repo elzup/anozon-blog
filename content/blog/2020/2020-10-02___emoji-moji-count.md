@@ -4,6 +4,8 @@ date: 2020-10-02 19:00:00
 tags:
   - JavaScript
   - TypeScript
+type: tech
+published: true
 ---
 
 ```toc

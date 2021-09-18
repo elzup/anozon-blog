@@ -5,6 +5,8 @@ tags:
   - CreateReactApp
   - Next.js
   - Idea
+type: tech
+published: true
 ---
 
 複数のアプリを同じ `localhost:3000` で開発すると切り替えるたびにキャッシュが競合するので `/etc/hosts` で変える案です。

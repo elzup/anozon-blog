@@ -3,6 +3,8 @@ title: java で標準出力を文字列として取得する
 date: 2020-11-20 17:00:00
 tags:
   - java
+type: tech
+published: true
 ---
 
 以前書いた、

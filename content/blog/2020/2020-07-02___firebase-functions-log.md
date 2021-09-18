@@ -4,6 +4,8 @@ date: 2020-07-02 16:00:00
 tags:
   - Firebase
   - Firebase Functions
+type: tech
+published: true
 ---
 
 Firebase Functions が Node 8 サポートを終了しログの仕様が少し変わりました。

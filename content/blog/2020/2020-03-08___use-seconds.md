@@ -4,6 +4,8 @@ date: 2020-03-08 18:00:00
 tags:
   - React hooks
   - 作った
+type: tech
+published: true
 ---
 
 `useSecounds` という react-hooks ライブラリ を作りました。

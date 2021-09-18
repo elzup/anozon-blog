@@ -5,6 +5,8 @@ tags:
   - Mitelop
   - Video
   - 作ったもの
+type: tech
+published: true
 ---
 
 Mitelop の 1 ツールとして追加しました。

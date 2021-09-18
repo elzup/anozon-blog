@@ -5,6 +5,8 @@ tags:
   - Vim
   - iTerm2
   - ssh
+type: tech
+published: true
 ---
 
 ## vim で mouse を off にする

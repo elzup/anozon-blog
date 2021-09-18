@@ -5,6 +5,8 @@ tags:
   - asciinema
   - Shell
   - Terminal
+type: tech
+published: true
 ---
 
 Terminal に特化した録画ができる asciinema 使ってみました。

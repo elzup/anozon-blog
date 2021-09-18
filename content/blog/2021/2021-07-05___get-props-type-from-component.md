@@ -4,6 +4,8 @@ date: 2021-07-05 11:00:00
 tags:
   - React
   - TypeScript
+type: tech
+published: true
 ---
 
 Storybook で props 型が必要だけど export したくなかったので。

@@ -5,6 +5,8 @@ tags:
   - React
   - GtiHub Actions
   - 作った
+type: tech
+published: true
 ---
 
 この記事では GitHub Actions の URL 1 つからバッジを生成するツールを作ったので紹介します。

@@ -5,6 +5,8 @@ tags:
   - GatsbyJS
   - TypeScript
   - GraphQL
+type: tech
+published: true
 ---
 
 GatsbyJS で書いているこのブログを Typescript 移行しました。

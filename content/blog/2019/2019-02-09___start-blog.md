@@ -4,6 +4,8 @@ date: 2019-02-09 19:10:20
 tags:
   - hexo
   - GitHub Pages
+type: tech
+published: true
 ---
 
 Hello world!. 新しくブログを立てました。

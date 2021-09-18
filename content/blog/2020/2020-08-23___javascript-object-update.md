@@ -3,6 +3,8 @@ title: JavaScript で Object の更新はどれが速いのか
 date: 2020-08-23 10:00:00
 tags:
   - JavaScript
+type: tech
+published: true
 ---
 
 スプレッド構文で書くのが面倒だったので検証しました。

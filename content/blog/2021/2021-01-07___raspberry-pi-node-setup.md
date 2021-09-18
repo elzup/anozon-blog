@@ -4,6 +4,8 @@ date: 2021-01-07 21:00:00
 tags:
   - Node.js
   - Raspberry Pi
+type: tech
+published: true
 ---
 
 Raspberry Pi に Node.js 入れる方法のメモです。

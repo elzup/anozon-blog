@@ -5,6 +5,8 @@ tags:
   - Clasp
   - GoogleAppScript
   - TypeScript
+type: tech
+published: true
 ---
 
 この記事では **Clasp** を使って GoogleAppScript のコードを手元で管理する方法を紹介します。

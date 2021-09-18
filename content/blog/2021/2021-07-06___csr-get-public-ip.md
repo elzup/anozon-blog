@@ -5,6 +5,8 @@ tags:
   - JavaScript
   - Networking
   - React
+type: tech
+published: true
 ---
 
 CSR (Client side rendering) でユーザの public ip を取得する方法です。

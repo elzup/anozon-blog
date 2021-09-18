@@ -3,6 +3,8 @@ title: Arrow function で generics にすると HTML タグとして認識され
 date: 2021-09-02 06:00:00
 tags:
   - TypeScript
+type: tech
+published: true
 ---
 
 エディタなどによってうまくハイライトされなかったときはこうする。

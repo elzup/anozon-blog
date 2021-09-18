@@ -5,6 +5,8 @@ tags:
   - zsh
   - ShellScript
   - DevOps
+type: tech
+published: true
 ---
 
 この記事では cdr から不要なディレクトリを削除する方法を紹介します。

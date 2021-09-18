@@ -3,6 +3,8 @@ title: Python で 2つの Iterable をマージしてループする
 date: 2020-08-11 18:00:00
 tags:
   - Python
+type: tech
+published: true
 ---
 
 巨大なソート済み csv ファイルをソートしながらマージする事があったので。

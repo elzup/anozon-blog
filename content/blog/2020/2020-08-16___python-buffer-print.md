@@ -4,6 +4,8 @@ date: 2020-08-16 19:00:00
 tags:
   - Python
   - Systemd
+type: tech
+published: true
 ---
 
 Python スクリプトでリアルタイムにログが出力されないときの対処法。

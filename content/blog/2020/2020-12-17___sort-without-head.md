@@ -5,6 +5,8 @@ tags:
   - JavaScript
   - TypeScript
   - Tips
+type: tech
+published: true
 ---
 
 js で配列の 2 行目以降のみをソートする方法のメモです。

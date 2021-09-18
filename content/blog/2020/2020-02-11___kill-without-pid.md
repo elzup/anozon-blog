@@ -6,6 +6,8 @@ tags:
   - ShellScript
   - Mac OS
   - Alfred
+type: tech
+published: true
 ---
 
 `ps -ef |grep NAME` で PID を確認する方法は面倒です。また、`pkill` や `killall` コマンドは間違ったプロセスを強制終了してしまうリスクがあります。

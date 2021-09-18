@@ -3,6 +3,8 @@ title: アロー関数とfunction それぞれの Type Guard 書き方
 date: 2021-01-04 23:00:00
 tags:
   - TypeScript
+type: tech
+published: true
 ---
 
 この記事では アロー関数で Type Guard について紹介します。

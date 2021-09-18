@@ -6,6 +6,8 @@ tags:
   - GitHub Pages
   - Podcast
   - Anchor
+type: tech
+published: true
 ---
 
 ## podcast 始めました

@@ -4,6 +4,8 @@ date: 2020-02-08 13:00:00
 tags:
   - launchd
   - Mac
+type: tech
+published: true
 ---
 
 毎朝チェックしたいページがあるのですが、毎日開くのは面倒です。

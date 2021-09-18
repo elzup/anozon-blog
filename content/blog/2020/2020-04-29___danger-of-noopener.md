@@ -4,6 +4,8 @@ date: 2020-04-29 21:00:00
 tags:
   - Security
   - HTML
+type: tech
+published: true
 ---
 
 この記事では rel=noopener&quot;をつけないとどんなことができるのかをデモで示します。
