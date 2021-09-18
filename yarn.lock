@@ -1526,7 +1526,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.7.6":
+"@babel/runtime@^7.15.4", "@babel/runtime@^7.7.6":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -8863,6 +8863,13 @@ gatsby-page-utils@^0.4.0:
     glob "^7.1.6"
     lodash "^4.17.20"
     micromatch "^4.0.2"
+
+gatsby-plugin-canonical-urls@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-3.14.0.tgz#f268cc2d243f45534714eae98cac7fc6d5f44276"
+  integrity sha512-xEyNK5dlJtKKce2KUtt5gTjYevC6hKZAPevQhy1Dk2zuvk7N1Fbh6gxT1Vv0p9DJyt/7xbzHz2tYpP+Q9X/Wlg==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
 
 gatsby-plugin-catch-links@^2.5.0:
   version "2.8.0"
