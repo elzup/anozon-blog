@@ -11,10 +11,6 @@ published: true
 「自前の API にリクエストは届いてるけどなにか不具合が起きている」「リクエストをダンプする環境をすぐに用意するのはダルい」とき用。
 ngrok の本来の使い方とは違いますが、http パケットキャプチャができます。
 
-```toc
-
-```
-
 ## ngrok とは
 
 [ngrok \- secure introspectable tunnels to localhost](https://ngrok.com/)

@@ -2,16 +2,14 @@
 title: Gatsby のブログを zenn に連携する
 date: 2021-09-18 16:00:00
 topics:
-  - a
   - Markdown
-published
+  - Gatsby
+  - Zenn
+published: true
 ---
 
 この記事では Gatsby のブログを zenn に連携する について紹介します。
 
-```toc
-
-```
 
 ## 既存記事の Markdown メタデータを zenn に合わせる
 

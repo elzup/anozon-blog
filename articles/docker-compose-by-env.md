@@ -8,10 +8,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 ## .env ファイルを使う
 
 サンプルコード: [elzup\-sandbox/docker\-scratch](https://github.com/elzup-sandbox/docker-scratch)

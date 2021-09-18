@@ -11,10 +11,6 @@ published: true
 
 JavaScript で Buffer と他の型への変換する方法をまとめました。
 
-```toc
-
-```
-
 repl も公開しています。
 [Repl\.it \- buffer](https://repl.it/@anozon/buffer#index.js)
 

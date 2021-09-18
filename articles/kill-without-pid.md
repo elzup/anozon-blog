@@ -13,10 +13,6 @@ published: true
 `ps -ef |grep NAME` で PID を確認する方法は面倒です。また、`pkill` や `killall` コマンドは間違ったプロセスを強制終了してしまうリスクがあります。
 この記事ではオススメのアプリケーションを kill する方法をいくつか紹介します。
 
-```toc
-
-```
-
 ## fkill CLI
 
 sindresorhus が作っている `fkill` というコマンドを使うと便利です。

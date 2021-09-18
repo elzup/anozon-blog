@@ -14,10 +14,6 @@ published: true
 
 [DEMO \- CodeSandbox](https://codesandbox.io/s/use-seconds-example-w875w)
 
-```toc
-
-```
-
 ## useSecounds の特徴
 
 - 長時間使用しても .000 (コンマ 0 ミリ秒) のタイミングで更新する

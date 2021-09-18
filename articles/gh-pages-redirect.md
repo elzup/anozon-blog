@@ -7,10 +7,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 ## 概要
 
 GitHub Pages から別のホスティングへ移行したとき、

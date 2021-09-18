@@ -13,10 +13,6 @@ js で配列の 2 行目以降のみをソートする方法のメモです。
 
 repl: https://repl.it/@anozon/sortbody#index.ts
 
-```toc
-
-```
-
 ## ソート対象の配列
 
 ```ts

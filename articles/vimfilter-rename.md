@@ -10,10 +10,6 @@ published: true
 vimfiler の rename 機能が便利で、複数ファイルを自由自在にリネームできます。
 [Shougo/vimfiler\.vim: Powerful file explorer implemented by Vim script](https://github.com/Shougo/vimfiler.vim)
 
-```toc
-
-```
-
 ## やってみる
 
 ![before-rename-files.png](https://elzup-image-storage.s3.amazonaws.com/blog/before-rename-files.png)

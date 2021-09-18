@@ -12,10 +12,6 @@ published: true
 この記事では React (と TypeScript で) canvas から画像生成する方法を紹介します。
 文字描画や色変更をサンプルに説明していきます。
 
-```toc
-
-```
-
 ## React で Canvas を使うベースのコード
 
 ```tsx

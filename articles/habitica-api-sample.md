@@ -16,10 +16,6 @@ Habitica は日課管理ツールです。
 
 [Habitica \- Gamify Your Life](https://habitica.com/)
 
-```toc
-
-```
-
 ## token を取得する
 
 ![](https://elzup-image-storage.s3.amazonaws.com/blog/Habitica_-_Gamify_Your_Life.png)

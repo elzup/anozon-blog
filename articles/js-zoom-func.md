@@ -7,10 +7,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 ![](https://elzup-image-storage.s3.amazonaws.com/blog/zoome-rect.png)
 
 図の外側四角 (`sx, sy, ex, ey`) と選択点(`ox, oy`)と拡大率から 内側の四角(`nsx, nsy, nex, ney`)を求める関数です。

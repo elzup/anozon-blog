@@ -11,10 +11,6 @@ published: true
 毎朝チェックしたいページがあるのですが、毎日開くのは面倒です。
 この記事では毎朝読むページを自動で開かせる方法について紹介します。
 
-```toc
-
-```
-
 ## スクリプトを準備する
 
 コード: [add morning newspaper · elzup/Brewfile@eb690e2](https://github.com/elzup/Brewfile/commit/eb690e2c127958b3b616c7550f4f37fc81c1dc22)

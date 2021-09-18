@@ -8,10 +8,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 ## アプリ
 
 [文字頻度カウント\(絵文字対応\)](https://tools.anozon.me/char-counter)

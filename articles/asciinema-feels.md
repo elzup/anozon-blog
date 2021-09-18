@@ -13,10 +13,6 @@ Terminal に特化した録画ができる asciinema 使ってみました。
 
 [asciinema \- Record and share your terminal sessions, the right way](https://asciinema.org/)
 
-```toc
-
-```
-
 ## 録画してみる
 
 保存するファイル名を `.cat` を指定して録画開始します。
