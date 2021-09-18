@@ -33,7 +33,7 @@ function SideBar() {
 const bioQuery = graphql`
   query SideBar {
     allMarkdownRemark(
-      filter: { frontmatter: { status: { ne: "draft" } } }
+      filter: { frontmatter: { published: { eq: true } } }
       limit: 2000
     ) {
       topics: group(field: frontmatter___topics) {

@@ -20,7 +20,7 @@ export type SiteMetaData = typeof siteMetadata
 const feedsQuery = `
 {
   posts: allMarkdownRemark(
-    filter: { frontmatter: { status: { ne: "draft" } } },
+    filter: { frontmatter: { published: { eq: true } } },
     sort: { order: DESC, fields: [frontmatter___date] },
   ) {
     edges {

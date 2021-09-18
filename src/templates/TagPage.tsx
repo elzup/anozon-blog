@@ -69,7 +69,7 @@ export const pageQuery = graphql`
     pages: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: { topics: { in: [$tag] }, status: { ne: "draft" } }
+        frontmatter: { topics: { in: [$tag] }, published: { eq: true } }
       }
       limit: $limit
       skip: $skip

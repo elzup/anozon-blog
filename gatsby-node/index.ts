@@ -24,7 +24,7 @@ export const createPages: GatsbyNode['createPages'] = ({
   return graphql<QueryResult>(`
     query CreatePage {
       posts: allMarkdownRemark(
-        filter: { frontmatter: { status: { ne: "draft" } } }
+        filter: { frontmatter: { published: { eq: true } } }
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
@@ -41,7 +41,7 @@ export const createPages: GatsbyNode['createPages'] = ({
         }
       }
       topics: allMarkdownRemark(
-        filter: { frontmatter: { status: { ne: "draft" } } }
+        filter: { frontmatter: { published: { eq: true } } }
         limit: 2000
       ) {
         group(field: frontmatter___topics) {

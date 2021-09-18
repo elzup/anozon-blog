@@ -58,7 +58,7 @@ export const pageQuery = graphql`
       }
     }
     posts: allMarkdownRemark(
-      filter: { frontmatter: { status: { ne: "draft" } } }
+      filter: { frontmatter: { published: { eq: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
