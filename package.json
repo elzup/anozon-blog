@@ -71,7 +71,8 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "start": "yarn run develop",
-    "export:zenn": "node export_zenn.js",
+    "zenn:export": "node export_zenn.js",
+    "zenn": "yarn zenn:export && (cd out_zenn && npx zenn)",
     "serve": "gatsby serve",
     "lint": "eslint --ext .ts,.tsx,.js .",
     "deploy": "yarn build && gh-pages -d public -b gh-pages",
@@ -92,7 +93,8 @@
     "textlint": "^11.7.6",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-ja-technical-writing": "^4.0.1",
-    "ts-node": "^9.0.0"
+    "ts-node": "^9.0.0",
+    "zenn-cli": "^0.1.95"
   },
   "husky": {
     "hooks": {
