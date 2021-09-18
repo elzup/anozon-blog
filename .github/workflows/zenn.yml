@@ -1,0 +1,27 @@
+name: Zenn Sync
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: Build
+        run: yarn zenn:export
+      # https://github.com/s0/git-publish-subdir-action
+      - name: Push to build branch
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: self
+          BRANCH: zenn
+          FOLDER: out_zenn
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
