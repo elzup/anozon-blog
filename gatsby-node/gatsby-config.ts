@@ -41,7 +41,6 @@ export default {
   siteMetadata,
   plugins: [
     'gatsby-plugin-catch-links',
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -54,12 +53,6 @@ export default {
       options: {
         path: `${__dirname}/../content/assets`,
         name: `assets`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-canonical-urls`,
-      options: {
-        siteUrl: `https://zenn.dev/anozon/`,
       },
     },
     {
@@ -182,6 +175,12 @@ export default {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://zenn.dev/anozon/articles`,
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
