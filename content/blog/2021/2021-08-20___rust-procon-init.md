@@ -1,7 +1,7 @@
 ---
 title: Rust で競プロ環境整えたメモ
 date: 2021-08-20 22:00:00
-tags:
+topics:
   - Rust
   - 競技プログラミング
   - AtCoder

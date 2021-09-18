@@ -1,8 +1,8 @@
 ---
 title: docker-compose.yml に環境変数を渡す
 date: 2020-05-01 18:00:00
-tags:
-  - Docker Compose
+topics:
+  - DockerCompose
   - Docker
 type: tech
 published: true

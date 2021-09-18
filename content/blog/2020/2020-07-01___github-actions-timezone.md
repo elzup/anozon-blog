@@ -1,8 +1,8 @@
 ---
 title: テストで TimeZone を固定する
 date: 2020-07-01 15:00:00
-tags:
-  - GitHub Actions
+topics:
+  - GitHubActions
   - test
 type: tech
 published: true

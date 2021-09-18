@@ -1,7 +1,7 @@
 ---
 title: java で標準出力を一旦オフにする
 date: 2020-11-04 11:00:00
-tags:
+topics:
   - Java
 type: tech
 published: true

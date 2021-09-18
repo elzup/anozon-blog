@@ -1,7 +1,7 @@
 ---
 title: localhost.{appname}:3000 で開発してブラウザキャッシュを活用する案
 date: 2020-05-26 03:00:00
-tags:
+topics:
   - CreateReactApp
   - Next.js
   - Idea

@@ -1,8 +1,8 @@
 ---
 title: useSecounds という時計用 hooks を作った
 date: 2020-03-08 18:00:00
-tags:
-  - React hooks
+topics:
+  - ReactHooks
   - 作った
 type: tech
 published: true
@@ -10,7 +10,7 @@ published: true
 
 `useSecounds` という react-hooks ライブラリ を作りました。
 
-[elzup/use\-seconds: Seconds interval time for React hooks](https://github.com/elzup/use-seconds)
+[elzup/use\-seconds: Seconds interval time for ReactHooks](https://github.com/elzup/use-seconds)
 
 [DEMO \- CodeSandbox](https://codesandbox.io/s/use-seconds-example-w875w)
 
@@ -41,7 +41,7 @@ published: true
 
 最初オブジェクトで実装していたのですが、[返り値についての記事](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)を読んで配列にしました。
 
-[Writing Your Own React Hooks, the Return Value \- DEV Community 👩‍💻👨‍💻](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)
+[Writing Your Own ReactHooks, the Return Value \- DEV Community 👩‍💻👨‍💻](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)
 
 命名できる利点が挙げられています。
 

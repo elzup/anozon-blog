@@ -1,11 +1,11 @@
 ---
 title: React で特定の props を固定した特化コンポーネントを定義する
 date: 2021-01-19 20:00:00
-tags:
+topics:
   - TypeScript
   - React
   - recompose
-  - styled-components
+  - styledcomponents
 type: tech
 published: true
 ---

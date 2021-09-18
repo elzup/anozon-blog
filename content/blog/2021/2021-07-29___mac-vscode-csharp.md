@@ -1,10 +1,10 @@
 ---
 title: MacOS Big Sur と VSCode で C# 開発メモ
 date: 2021-07-29 11:00:00
-tags:
-  - C#
-  - .NET
-  - Cloud Function
+topics:
+  - CSharp
+  - dotnet
+  - CloudFunction
   - GCP
 type: tech
 published: true

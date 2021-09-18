@@ -1,8 +1,8 @@
 ---
 title: React で複数の ref を 1つのコンポーネントにセットする
 date: 2021-07-09 17:00:00
-tags:
-  - React hooks
+topics:
+  - ReactHooks
   - TypeScript
 type: tech
 published: true

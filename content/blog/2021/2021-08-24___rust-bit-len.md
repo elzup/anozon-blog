@@ -1,7 +1,7 @@
 ---
 title: Rust で2進数にしたときの桁数を求める
 date: 2021-08-24 10:00:00
-tags:
+topics:
   - Rust
   - Binary
 type: tech

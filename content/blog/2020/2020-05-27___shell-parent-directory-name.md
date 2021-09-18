@@ -1,7 +1,7 @@
 ---
 title: 1つ上のディレクトリ名をとるShellコマンド
 date: 2020-05-27 20:00:00
-tags:
+topics:
   - ShellScript
 type: tech
 published: true

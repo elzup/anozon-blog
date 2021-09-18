@@ -1,7 +1,7 @@
 ---
 title: iTerm tab-color メモ
 date: 2021-07-19 10:00:00
-tags:
+topics:
   - iTerm2
   - DevOps
   - zsh

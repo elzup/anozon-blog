@@ -1,8 +1,8 @@
 ---
 title: javascript で Habitica API を使って日課の記録を取得する
 date: 2020-03-01 15:00:00
-tags:
-  - Habitica API
+topics:
+  - HabiticaAPI
   - Node.js
   - json
   - fx

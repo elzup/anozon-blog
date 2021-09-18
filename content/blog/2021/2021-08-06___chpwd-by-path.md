@@ -1,7 +1,7 @@
 ---
 title: 任意のディレクトリ移動時にコマンドを実行する(zsh)
 date: 2021-08-06 15:00:00
-tags:
+topics:
   - Shell
   - zsh
 type: tech

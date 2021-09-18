@@ -1,9 +1,9 @@
 ---
 title: Firebase Function 内から Cloud Messaging で通知を投げる最小コード
 date: 2020-01-08 23:03:38
-tags:
+topics:
   - Firebase
-  - Firebase Cloud Messaging
+  - CloudMessaging
   - GCP
 type: tech
 published: true

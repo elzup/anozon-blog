@@ -1,7 +1,7 @@
 ---
 title: manifest.json から VSCode でプロジェクトごとに色をつける
 date: 2020-03-05 11:00:00
-tags:
+topics:
   - CLI
   - VSCode
   - 作った

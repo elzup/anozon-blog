@@ -1,7 +1,7 @@
 ---
 title: Arrow function で generics にすると HTML タグとして認識されてしまうときの tips
 date: 2021-09-02 06:00:00
-tags:
+topics:
   - TypeScript
 type: tech
 published: true

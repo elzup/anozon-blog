@@ -1,7 +1,7 @@
 ---
 title: Excelやスプレッドシートで方眼紙を作る方法
 date: 2020-04-29 14:00:00
-tags:
+topics:
   - SpreadSheets
   - Excel
 type: tech

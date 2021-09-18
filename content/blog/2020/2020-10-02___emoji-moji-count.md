@@ -1,7 +1,7 @@
 ---
 title: 絵文字を含めて文字数カウントするWebアプリ作った
 date: 2020-10-02 19:00:00
-tags:
+topics:
   - JavaScript
   - TypeScript
 type: tech

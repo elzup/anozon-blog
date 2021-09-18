@@ -1,7 +1,7 @@
 ---
 title: vim でディレクトリ内のファイルを一括リネームする
 date: 2020-02-19 15:00:00
-tags:
+topics:
   - Vim
 type: tech
 published: true

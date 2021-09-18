@@ -1,7 +1,7 @@
 ---
 title: 【JavaScript】ズームしたときの座標を求める関数
 date: 2021-02-13 17:00:00
-tags:
+topics:
   - JavaScript
 type: tech
 published: true

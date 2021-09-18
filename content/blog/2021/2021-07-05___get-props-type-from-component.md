@@ -1,7 +1,7 @@
 ---
 title: component から props の型を取得する
 date: 2021-07-05 11:00:00
-tags:
+topics:
   - React
   - TypeScript
 type: tech

@@ -1,7 +1,7 @@
 ---
 title: 【Clasp】GoogleAppScript のコードをローカルで開発する
 date: 2020-01-21 14:00:00
-tags:
+topics:
   - Clasp
   - GoogleAppScript
   - TypeScript

@@ -1,7 +1,7 @@
 ---
 title: .git/config からリモートリポジトリを変える
 date: 2020-05-03 17:00:00
-tags:
+topics:
   - git
 type: tech
 published: true

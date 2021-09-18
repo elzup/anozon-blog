@@ -1,7 +1,7 @@
 ---
 title: surround.vim 入門【vim中級者向け】
 date: 2020-06-16 21:00:00
-tags:
+topics:
   - Vim
   - Coding
 type: tech

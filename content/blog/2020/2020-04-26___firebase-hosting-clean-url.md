@@ -1,7 +1,7 @@
 ---
 title: Firebase Hosting の URL で .html を省略する設定
 date: 2020-04-26 21:00:00
-tags:
+topics:
   - Tips
   - Firebase
 type: tech

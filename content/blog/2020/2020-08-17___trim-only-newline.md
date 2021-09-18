@@ -1,7 +1,7 @@
 ---
 title: js の trim で前後の改行のみ取り除く(空白は保持する)
 date: 2020-08-17 17:00:00
-tags:
+topics:
   - JavaScript
 type: tech
 published: true

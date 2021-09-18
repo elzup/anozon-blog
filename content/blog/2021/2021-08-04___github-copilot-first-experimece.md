@@ -1,7 +1,7 @@
 ---
 title: GitHub Copilot はいい相棒になりそう
 date: 2021-08-04 00:00:00
-tags:
+topics:
   - GitHub Copilot
   - review
 type: tech

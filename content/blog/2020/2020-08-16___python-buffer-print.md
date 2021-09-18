@@ -1,7 +1,7 @@
 ---
 title: Python で Systemd や nohup を使っていてログがリアルタイムに出力されないとき
 date: 2020-08-16 19:00:00
-tags:
+topics:
   - Python
   - Systemd
 type: tech

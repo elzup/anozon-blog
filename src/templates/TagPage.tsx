@@ -26,7 +26,7 @@ function TagPageTemplate({ data, pageContext, location }: Props) {
 
   const PageBar = (
     <Pagination
-      prefix={`/tags/${kebabCase(tag)}`}
+      prefix={`/topics/${kebabCase(tag)}`}
       current={pageContext.currentPage || 1}
       last={pageContext.numPages || 1}
     />
@@ -47,7 +47,7 @@ function TagPageTemplate({ data, pageContext, location }: Props) {
             slug={node.fields.slug}
             excerpt={node.excerpt}
             date={node.frontmatter.date}
-            tags={node.frontmatter.tags}
+            topics={node.frontmatter.topics}
           />
         )
       })}
@@ -68,7 +68,9 @@ export const pageQuery = graphql`
     }
     pages: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] }, status: { ne: "draft" } } }
+      filter: {
+        frontmatter: { topics: { in: [$tag] }, status: { ne: "draft" } }
+      }
       limit: $limit
       skip: $skip
     ) {
@@ -82,7 +84,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "YYYY-MM-DD")
             title
-            tags
+            topics
           }
         }
       }

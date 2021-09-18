@@ -1,7 +1,7 @@
 ---
 title: Terminal の録画ができる asciinema 使ってみた
 date: 2021-07-29 10:00:00
-tags:
+topics:
   - asciinema
   - Shell
   - Terminal

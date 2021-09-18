@@ -1,7 +1,7 @@
 ---
 title: 【JavaScript】時刻指定で setTimeout するスニペット
 date: 2020-02-25 11:00:00
-tags:
+topics:
   - JavaScript
 type: tech
 published: true

@@ -1,7 +1,7 @@
 ---
 title: GatsbyJSでコードブロックを作成する
 date: 2020-01-05 23:03:38
-tags:
+topics:
   - GatsbyJS
 type: tech
 published: true

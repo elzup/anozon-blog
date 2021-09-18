@@ -1,10 +1,10 @@
 ---
 title: React で URL props が変わったら fade アニメーションで 背景を変える
 date: 2020-12-29 16:00:00
-tags:
+topics:
   - React
   - TypeScript
-  - DiceBear Avatars
+  - DiceBearAvatars
 type: tech
 published: true
 ---

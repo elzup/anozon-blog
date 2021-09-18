@@ -1,7 +1,7 @@
 ---
 title: Buffer と float、整数、他エンコードとの相互変換【Javascript】
 date: 2020-11-01 17:00:00
-tags:
+topics:
   - JavaScript
   - Binary
   - Buffer

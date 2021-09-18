@@ -8,15 +8,15 @@ function SideBar() {
     <StaticQuery
       query={bioQuery}
       render={(data: SideBarQuery) => {
-        const { tags } = data.allMarkdownRemark
+        const { topics } = data.allMarkdownRemark
 
-        tags.sort((a, b) => b.totalCount - a.totalCount)
+        topics.sort((a, b) => b.totalCount - a.totalCount)
 
         return (
           <div>
             <h4>タグ</h4>
             <TagChipsCol
-              tags={tags
+              topics={topics
                 .filter((v) => v.totalCount > 1)
                 .map((v) => ({
                   value: v.fieldValue,
@@ -36,7 +36,7 @@ const bioQuery = graphql`
       filter: { frontmatter: { status: { ne: "draft" } } }
       limit: 2000
     ) {
-      tags: group(field: frontmatter___tags) {
+      topics: group(field: frontmatter___topics) {
         fieldValue
         totalCount
       }

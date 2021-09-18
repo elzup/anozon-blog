@@ -1,7 +1,7 @@
 ---
 title: 【JavaScriptクワイン】プログラムと同じ文字列を出力するプログラム書いた
 date: 2020-02-26 21:00:00
-tags:
+topics:
   - JavaScript
   - CodingChallange
 type: tech

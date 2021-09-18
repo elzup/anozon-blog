@@ -1,9 +1,9 @@
 ---
 title: Firebase Functions の console.log をまとめる
 date: 2020-07-02 16:00:00
-tags:
+topics:
   - Firebase
-  - Firebase Functions
+  - FirebaseFunctions
 type: tech
 published: true
 ---

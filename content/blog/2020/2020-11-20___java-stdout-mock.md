@@ -1,7 +1,7 @@
 ---
 title: java で標準出力を文字列として取得する
 date: 2020-11-20 17:00:00
-tags:
+topics:
   - java
 type: tech
 published: true

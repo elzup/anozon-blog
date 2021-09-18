@@ -1,7 +1,7 @@
 ---
 title: Firebase Project の複製や ID 変更
 date: 2020-07-26 22:00:00
-tags:
+topics:
   - Firebase
   - GCP
 type: tech

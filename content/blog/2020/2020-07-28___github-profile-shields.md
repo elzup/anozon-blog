@@ -1,7 +1,7 @@
 ---
 title: GitHub Profile README に Shields.io Badge並べた
 date: 2020-07-28 13:00:00
-tags:
+topics:
   - GitHub
   - Shields.io
   - Markdown

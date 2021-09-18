@@ -1,7 +1,7 @@
 ---
 title: 間違えて一緒にコミットしちゃった新規ファイルだけコミットを取り消す
 date: 2020-12-28 10:00:00
-tags:
+topics:
   - git
   - Tips
 type: tech

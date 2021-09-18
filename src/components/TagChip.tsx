@@ -16,18 +16,18 @@ const TagLink = styled(Link)`
 
 function TagChip({ value, count }: Props) {
   return (
-    <TagLink to={`/tags/${kebabCase(value)}`}>
+    <TagLink to={`/topics/${kebabCase(value)}`}>
       #{value}
       {count ? `(${count})` : ''}
     </TagLink>
   )
 }
 
-type GroupProps = { tags: Props[] }
-export function TagChipsComponent({ tags }: GroupProps) {
+type GroupProps = { topics: Props[] }
+export function TagChipsComponent({ topics }: GroupProps) {
   return (
     <>
-      {tags.map((tag) => (
+      {topics.map((tag) => (
         <TagChip key={tag.value} value={tag.value} count={tag.count} />
       ))}
     </>

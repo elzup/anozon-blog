@@ -1,8 +1,8 @@
 ---
 title: Google検索で英語のページのみヒットさせる方法
 date: 2020-07-29 17:00:00
-tags:
-  - Search Skill
+topics:
+  - SearchSkill
   - Tips
 type: tech
 published: true

@@ -1,7 +1,7 @@
 ---
 title: iTerm2 でディレクトリによってタブの色を変える
 date: 2021-08-06 16:00:00
-tags:
+topics:
   - Shell
   - zsh
   - iTerm2

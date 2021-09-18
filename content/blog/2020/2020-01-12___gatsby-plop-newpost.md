@@ -1,7 +1,7 @@
 ---
 title: 【PLOP CLI】新しいファイルをテンプレートから生成するCLI
 date: 2020-01-12
-tags:
+topics:
   - PLOP
   - Node.js
   - CLI
@@ -33,7 +33,7 @@ markdown でメタ情報含めて定義しました。
 ---
 title: {{title}}
 date: {{date}} {{hms}}
-tags:
+topics:
 - a
 - b
 category: {{category}}
@@ -121,7 +121,7 @@ yarn plop
 ---
 title: 【PLOP】GatsbyJSで新しい記事をテンプレートから作成する
 date: 2020-01-13 20:00:00
-tags:
+topics:
 - a
 - b
 category: BlogOps

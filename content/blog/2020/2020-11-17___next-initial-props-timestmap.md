@@ -1,7 +1,7 @@
 ---
 title: Next.js export 実行時のタイムスタンプをコンポーネントで使う
 date: 2020-11-17 14:00:00
-tags:
+topics:
   - Next.js
   - TypeScript
   - SSR

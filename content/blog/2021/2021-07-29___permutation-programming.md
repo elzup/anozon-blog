@@ -1,7 +1,7 @@
 ---
 title: 組み合わせ・順列プログラミングそれぞれまとめ nPr nCr nHr nΠr
 date: 2021-07-29 21:00:00
-tags:
+topics:
   - 数学
   - Array
   - Rust

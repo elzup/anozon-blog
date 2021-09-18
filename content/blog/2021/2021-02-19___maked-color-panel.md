@@ -1,7 +1,7 @@
 ---
 title: 単色パネル表示するだけのツール作った
 date: 2021-02-19 10:00:00
-tags:
+topics:
   - 作った
   - PWA
   - Mitelop

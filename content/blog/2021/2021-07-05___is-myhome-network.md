@@ -1,7 +1,7 @@
 ---
 title: Node.js で家のネットワークかどうかチェックする
 date: 2021-07-05 15:00:00
-tags:
+topics:
   - Node.js
   - Network
 type: tech

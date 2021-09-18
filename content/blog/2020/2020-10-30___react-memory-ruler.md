@@ -1,7 +1,7 @@
 ---
 title: React と display grid でメモリ付き定規
 date: 2020-10-30 12:00:00
-tags:
+topics:
   - React
   - TypeScript
   - CSS

@@ -1,7 +1,7 @@
 ---
 title: アロー関数とfunction それぞれの Type Guard 書き方
 date: 2021-01-04 23:00:00
-tags:
+topics:
   - TypeScript
 type: tech
 published: true

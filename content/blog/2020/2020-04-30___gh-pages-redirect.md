@@ -1,8 +1,8 @@
 ---
 title: GitHub Pages から別のサイトに移行するときのリダイレクト設定
 date: 2020-04-30 23:00:00
-tags:
-  - GitHub Pages
+topics:
+  - GitHubPages
 type: tech
 published: true
 ---

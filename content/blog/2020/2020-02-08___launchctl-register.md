@@ -1,7 +1,7 @@
 ---
 title: Mac の launchctl 毎朝で読むページを自動で開かせる
 date: 2020-02-08 13:00:00
-tags:
+topics:
   - launchd
   - Mac
 type: tech

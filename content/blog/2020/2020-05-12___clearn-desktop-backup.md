@@ -1,7 +1,7 @@
 ---
 title: Desktopのファイルを一掃する
 date: 2020-05-12 20:00:00
-tags:
+topics:
   - ShellScript
 type: tech
 published: true

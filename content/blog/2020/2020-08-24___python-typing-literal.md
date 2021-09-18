@@ -1,7 +1,7 @@
 ---
 title: Python で TypeScript の UnionType を使う
 date: 2020-08-24 15:00:00
-tags:
+topics:
   - Python
   - TypeScript
 type: tech

@@ -1,7 +1,7 @@
 ---
 title: js で先頭以外(n行目以降)をソートする
 date: 2020-12-17 11:00:00
-tags:
+topics:
   - JavaScript
   - TypeScript
   - Tips

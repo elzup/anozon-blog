@@ -1,7 +1,7 @@
 ---
 title: 5層 ReactComponent と TypeScript でカウンター書いてみる
 date: 2020-01-21 11:00:00
-tags:
+topics:
   - React
   - TypeScript
   - Redux

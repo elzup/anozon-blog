@@ -1,7 +1,7 @@
 ---
 title: ssh 接続先の vim でマウスの選択範囲をコピーする
 date: 2021-01-13 13:00:00
-tags:
+topics:
   - Vim
   - iTerm2
   - ssh

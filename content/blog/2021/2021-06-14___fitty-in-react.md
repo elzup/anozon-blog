@@ -1,11 +1,11 @@
 ---
 title: fitty を React で使う useFitty hook
 date: 2021-06-14 18:00:00
-tags:
+topics:
   - fitty
   - TypeScript
   - JavaScript
-  - React hooks
+  - ReactHooks
 type: tech
 published: true
 ---

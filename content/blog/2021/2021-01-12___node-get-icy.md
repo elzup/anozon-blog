@@ -1,7 +1,7 @@
 ---
 title: node.js で Streaming の メタデータを取得する
 date: 2021-01-12 14:00:00
-tags:
+topics:
   - Node.js
   - icy
   - Streaming

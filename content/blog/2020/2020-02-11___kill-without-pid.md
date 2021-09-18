@@ -1,10 +1,10 @@
 ---
 title: PID を使わずにアプリケーションを kill する方法
 date: 2020-02-11 10:00:00
-tags:
+topics:
   - CLI
   - ShellScript
-  - Mac OS
+  - MacOS
   - Alfred
 type: tech
 published: true

@@ -1,7 +1,7 @@
 ---
 title: GatsbyJS を Typescript に移行した際の Type 付け
 date: 2020-01-09 11:12:20
-tags:
+topics:
   - GatsbyJS
   - TypeScript
   - GraphQL

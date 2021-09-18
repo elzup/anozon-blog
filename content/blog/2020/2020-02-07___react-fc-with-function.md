@@ -1,7 +1,7 @@
 ---
 title: children を持つ Component を normal function で書くときの型定義
 date: 2020-02-07 12:00:00
-tags:
+topics:
   - React
   - TypeScript
 type: tech

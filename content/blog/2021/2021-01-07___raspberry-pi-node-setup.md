@@ -1,9 +1,9 @@
 ---
 title: Raspberry Pi に Node.js セットアップ
 date: 2021-01-07 21:00:00
-tags:
+topics:
   - Node.js
-  - Raspberry Pi
+  - RaspberryPi
 type: tech
 published: true
 ---

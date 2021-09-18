@@ -1,7 +1,7 @@
 ---
 title: gitリポジトリごとにデフォルトのコミットメッセージを設定する
 date: 2020-03-07 12:00:00
-tags:
+topics:
   - git
   - BlogOps
 type: tech

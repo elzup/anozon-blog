@@ -1,7 +1,7 @@
 ---
 title: GatsbyJS のコードブロックに言語バッジをつける方法
 date: 2020-01-22 12:00:00
-tags:
+topics:
   - GatsbyJS
   - CSS
 type: tech

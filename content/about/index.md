@@ -1,7 +1,7 @@
 ---
 title: このブログについて
 date: '2019-02-10 17:37:29'
-tags:
+topics:
   - GatsbyJS
 type: tech
 published: true

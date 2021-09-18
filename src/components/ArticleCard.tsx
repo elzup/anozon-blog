@@ -5,14 +5,14 @@ import { rhythm } from '../utils/typography'
 import { TagChips } from './TagChip'
 
 type Props = {
-  tags: string[]
+  topics: string[]
   slug: string
   title: string
   date: string
   excerpt: string
 }
 
-function ArticalCard({ title, tags, slug, date, excerpt }: Props) {
+function ArticalCard({ title, topics, slug, date, excerpt }: Props) {
   return (
     <Style>
       <h3>
@@ -23,7 +23,7 @@ function ArticalCard({ title, tags, slug, date, excerpt }: Props) {
       <small>{date}</small>
       <p dangerouslySetInnerHTML={{ __html: excerpt }} />
 
-      <TagChips tags={tags.map((value) => ({ value }))} />
+      <TagChips topics={topics.map((value) => ({ value }))} />
     </Style>
   )
 }

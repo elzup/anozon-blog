@@ -1,7 +1,7 @@
 ---
 title: 【zsh】なくなったディレクトリを anyframe-widget-cdr から消す
 date: 2020-01-21 17:00:00
-tags:
+topics:
   - zsh
   - ShellScript
   - DevOps

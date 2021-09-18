@@ -1,7 +1,7 @@
 ---
 title: Python で Array.find
 date: 2020-09-16 11:00:00
-tags:
+topics:
   - Python
 type: tech
 published: true

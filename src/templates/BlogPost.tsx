@@ -23,7 +23,7 @@ function BlogPostTemplate(props: Props) {
   const { siteUrl } = props.data.site.siteMetadata
   const siteTitle = props.data.site.siteMetadata.title
 
-  const { date, tags, title } = post.frontmatter
+  const { date, topics, title } = post.frontmatter
 
   const slug = props.pageContext.slug || ''
   const url = `${siteUrl}/${slug}`
@@ -31,7 +31,7 @@ function BlogPostTemplate(props: Props) {
   return (
     <Layout location={props.location} title={siteTitle} articleTitle={title}>
       <SEO title={title} description={post.excerpt} />
-      <TagChips tags={tags.map((value) => ({ value }))} />
+      <TagChips topics={topics.map((value) => ({ value }))} />
 
       <p
         style={{
@@ -45,7 +45,7 @@ function BlogPostTemplate(props: Props) {
       </p>
       <div>{renderAst(post.htmlAst)}</div>
       <hr style={{ marginBottom: rhythm(1) }} />
-      <TagChips tags={tags.map((value) => ({ value }))} />
+      <TagChips topics={topics.map((value) => ({ value }))} />
       <CommentArea />
       <ShareButtons title={title} siteTitle={siteTitle} url={url} />
     </Layout>
@@ -70,7 +70,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
-        tags
+        topics
       }
     }
   }

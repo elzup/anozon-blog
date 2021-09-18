@@ -1,11 +1,12 @@
 ---
 title: styled-components の keyframes で ts-styled-plugin のエラーが出る
 date: 2021-05-19 18:00:00
-tags:
+topics:
   - VSCode
   - TypeScript
-  - styled-components
-status: no draft
+  - styledcomponents
+type: tech
+published: true
 ---
 
 css animation の `100%` や `0%` などのキーワードに対して `ts-styled-plugin` のエラーが出たので対処しました。
@@ -43,7 +44,7 @@ VSCode の プラグイン [vscode-styled-components](https://github.com/styled-
   "plugins": [
     {
       "name": "typescript-styled-plugin",
-      "tags": ["styled"]
+      "topics": ["styled"]
     }
   ]
 }

@@ -1,7 +1,7 @@
 ---
 title: Python で 2つの Iterable をマージしてループする
 date: 2020-08-11 18:00:00
-tags:
+topics:
   - Python
 type: tech
 published: true

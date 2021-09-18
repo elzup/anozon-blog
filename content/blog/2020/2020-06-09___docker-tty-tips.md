@@ -1,9 +1,9 @@
 ---
 title: Docker 止めずに立ち上げるだけする【tty】
 date: 2020-06-09 14:00:00
-tags:
+topics:
   - Docker
-  - Docker Compose
+  - DockerCompose
   - Java
 type: tech
 published: true

@@ -1,7 +1,7 @@
 ---
 title: GatsbyJSで記事のURLをカスタマイズする
 date: 2020-01-04 23:03:38
-tags:
+topics:
   - GatsbyJS
 type: tech
 published: true

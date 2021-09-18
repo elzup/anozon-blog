@@ -7,10 +7,10 @@ import kebabCase from 'lodash/kebabCase'
 // import { CreatePageQuery } from "./types/graphql-types.d"
 
 const SLUG_SEPARATOR = '___'
-// TODO: fix tags/:hoge/pages/:num
+// TODO: fix topics/:hoge/pages/:num
 const CARD_PAR_PAGE = 50
 
-type QueryResult = { posts: { edges: any[] }; tags: { group: any[] } }
+type QueryResult = { posts: { edges: any[] }; topics: { group: any[] } }
 
 export const createPages: GatsbyNode['createPages'] = ({
   graphql,
@@ -40,11 +40,11 @@ export const createPages: GatsbyNode['createPages'] = ({
           }
         }
       }
-      tags: allMarkdownRemark(
+      topics: allMarkdownRemark(
         filter: { frontmatter: { status: { ne: "draft" } } }
         limit: 2000
       ) {
-        group(field: frontmatter___tags) {
+        group(field: frontmatter___topics) {
           fieldValue
           totalCount
         }
@@ -89,15 +89,15 @@ export const createPages: GatsbyNode['createPages'] = ({
     })
 
     // Create tag pages
-    const tags = result.data.tags.group
+    const topics = result.data.topics.group
 
-    tags.forEach((tag) => {
+    topics.forEach((tag) => {
       const numPages = Math.ceil(tag.totalCount / CARD_PAR_PAGE)
 
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
           path:
-            `/tags/${kebabCase(tag.fieldValue)}/` +
+            `/topics/${kebabCase(tag.fieldValue)}/` +
             (i === 0 ? '' : `/page/${i + 1}`),
           component: tagTemplate,
           context: {

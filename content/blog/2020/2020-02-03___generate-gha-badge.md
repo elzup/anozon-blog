@@ -1,9 +1,9 @@
 ---
 title: 【ボツネタ】GitHub Actions の URL 1 つからバッジを生成するツール作った
 date: 2020-02-03 21:00:00
-tags:
+topics:
   - React
-  - GtiHub Actions
+  - GtiHubActions
   - 作った
 type: tech
 published: true

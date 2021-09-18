@@ -36,7 +36,7 @@ function BlogListTemplate({ data, location, pageContext }: Props) {
             slug={node.fields.slug}
             excerpt={node.excerpt}
             date={node.frontmatter.date}
-            tags={node.frontmatter.tags}
+            topics={node.frontmatter.topics}
           />
         )
       })}
@@ -73,7 +73,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "YYYY-MM-DD")
             title
-            tags
+            topics
           }
         }
       }

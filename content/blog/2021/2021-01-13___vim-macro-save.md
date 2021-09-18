@@ -1,7 +1,7 @@
 ---
 title: vim の q マクロを保存して使いまわす
 date: 2021-01-13 13:00:00
-tags:
+topics:
   - Vim
 type: tech
 published: true

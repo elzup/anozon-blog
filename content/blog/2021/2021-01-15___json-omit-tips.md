@@ -1,7 +1,7 @@
 ---
 title: jq コマンドで json の特定のフィールドを削る・抽出する
 date: 2021-01-15 19:00:00
-tags:
+topics:
   - json
   - jq
   - ShellScript

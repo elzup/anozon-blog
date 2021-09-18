@@ -1,7 +1,7 @@
 ---
 title: React で canvas から画像生成する最小コード
 date: 2020-05-25 10:00:00
-tags:
+topics:
   - React
   - TypeScript
   - canvas

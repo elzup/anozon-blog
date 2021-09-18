@@ -1,7 +1,7 @@
 ---
 title: ブラウザ javascript 側で global ip を取得する
 date: 2021-07-06 16:00:00
-tags:
+topics:
   - JavaScript
   - Networking
   - React
@@ -22,7 +22,7 @@ const data = await res.json()
 console.log(data.ip)
 ```
 
-## React hooks の例
+## ReactHooks の例
 
 Code: [tools/global\-ip\.tsx at master · elzup/tools](https://github.com/elzup/tools/blob/master/src/pages/global-ip.tsx)
 
