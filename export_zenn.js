@@ -1,4 +1,5 @@
 const fs = require('fs').promises
+const { execSync, spawnSync } = require('child_process')
 
 const FROM_DIR = 'content/blog'
 const OUT_DIR = 'out_zenn/articles'
@@ -28,6 +29,11 @@ async function main() {
   for (const filePath of files) {
     const targetPath = `${OUT_DIR}/${toSlugFilename(filePath)}`
     await fs.copyFile(filePath, targetPath)
+
+    // NOTE: zenn で diff コードブロックがうまく効かない
+    spawnSync('gsed', ['-i', '-e', 's/^```diff.*/```/g', targetPath])
+
+    // spawnSync(`gsed`, ['-i', '-e', 's/^```toc\\n*```//g', targetPath])
   }
 }
 main().then(() => console.log('fin'))
