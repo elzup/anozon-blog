@@ -71,6 +71,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "start": "yarn run develop",
+    "export:zenn": "node export_zenn.js",
     "serve": "gatsby serve",
     "lint": "eslint --ext .ts,.tsx,.js .",
     "deploy": "yarn build && gh-pages -d public -b gh-pages",
