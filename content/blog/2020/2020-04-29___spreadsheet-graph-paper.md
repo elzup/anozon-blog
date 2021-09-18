@@ -10,10 +10,6 @@ published: true
 
 この記事では Excel やスプレッドシートでの方眼紙の作り方 について紹介します。
 
-```toc
-
-```
-
 ## Google SpreadSheet で作る
 
 1. cmd + A: 全選択。

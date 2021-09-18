@@ -10,10 +10,6 @@ published: true
 
 この記事では rel=noopener&quot;をつけないとどんなことができるのかをデモで示します。
 
-```toc
-
-```
-
 ## noopener の攻撃デモ
 
 リンク: https://tools.anozon.me/noopener

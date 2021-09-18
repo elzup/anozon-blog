@@ -10,10 +10,6 @@ published: true
 
 家のネットワーク上でだけ実行したいスクリプトがあったので、接続しているかチェックするコードを書きました。
 
-```toc
-
-```
-
 ## network (npm) を使う
 
 [tomas/network: The missing network utilities in Node\.js\.](https://github.com/tomas/network)

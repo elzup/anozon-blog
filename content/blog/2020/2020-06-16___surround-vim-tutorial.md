@@ -8,10 +8,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 公式リポジトリ https://github.com/tpope/vim-surround
 
 ## why

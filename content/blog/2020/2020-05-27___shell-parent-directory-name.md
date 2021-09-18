@@ -7,10 +7,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 ## 1 つ上のディレクトリ path をとる
 
 ```sh

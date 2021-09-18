@@ -11,10 +11,6 @@ published: true
 
 ## 目次
 
-```toc
-
-```
-
 ## ローカル IP
 
 ### ifconfig を使う

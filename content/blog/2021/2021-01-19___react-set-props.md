@@ -12,10 +12,6 @@ published: true
 
 React で特定の props を固定した特化コンポーネントを定義する方法をいくつかまとめました。
 
-```toc
-
-```
-
 DEMO です。
 [react\-set\-props \- CodeSandbox](https://codesandbox.io/s/react-set-props-w690b)
 

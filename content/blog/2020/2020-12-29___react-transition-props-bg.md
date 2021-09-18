@@ -13,10 +13,6 @@ props で指定された URL が変わったら フェードアウト し、
 新しい URL 画像で フェードイン しながら表示するコンポーネントを作りました。
 `react-transition-group` を使います。
 
-```toc
-
-```
-
 ## デモ
 
 <iframe src="https://codesandbox.io/embed/react-animation-background-image-jznjc?fontsize=14&hidenavigation=1&theme=dark&view=preview"

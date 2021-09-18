@@ -9,10 +9,6 @@ type: tech
 published: true
 ---
 
-```toc
-
-```
-
 `atcoder-cli` のおかげで快適に参加できるようになりました。
 
 [tanakh/cargo\-atcoder: Cargo subcommand for AtCoder](https://github.com/tanakh/cargo-atcoder)
