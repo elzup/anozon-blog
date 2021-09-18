@@ -1,17 +1,15 @@
-import * as React from 'react'
-import { Link, graphql } from 'gatsby'
-
+import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import Layout from '../components/Layout'
-import SEO from '../components/Seo'
-import { rhythm } from '../utils/typography'
+import * as React from 'react'
 import {
   SitePageContext,
   TagSearchQuery,
   TagSearchQueryVariables,
 } from '../../types/graphql-types.d'
-import Pagination from '../components/Pagination'
 import ArticalCard from '../components/ArticleCard'
+import Layout from '../components/Layout'
+import Pagination from '../components/Pagination'
+import SEO from '../components/Seo'
 
 type Props = {
   location: Location
