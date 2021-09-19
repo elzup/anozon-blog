@@ -1,0 +1,34 @@
+---
+title: 1px の画像データURLメモ
+date: 2021-01-06 18:00:00
+topics:
+  - HTML
+  - 個人開発
+type: tech
+emoji: 🔳
+published: true
+---
+
+1px 画像 の データ URL を並べておきます。
+
+#### 黒 `#000000` `black`
+
+```
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2NgYGD4DwABBAEAcCBlCwAAAABJRU5ErkJggg==
+```
+
+#### 白 `#ffffff` `WHITE`
+
+```
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2P4////fwAJ+wP9BUNFygAAAABJRU5ErkJggg==
+```
+
+#### 透明 `rgba(0, 0, 0, 0)` `TRANSPARENT`
+
+```
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=
+```
+
+ついでジェネレーターアプリ化しておいたのでどうぞ。
+
+[1px data url generator](https://tools.anozon.me/1px)
