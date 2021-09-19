@@ -2,10 +2,11 @@
 title: 単色パネル表示するだけのツール作った
 date: 2021-02-19 10:00:00
 topics:
-  - 作った
+  - 個人開発
   - PWA
   - Mitelop
 type: tech
+emoji: 🎨
 published: true
 ---
 

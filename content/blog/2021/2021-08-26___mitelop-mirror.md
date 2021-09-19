@@ -4,8 +4,9 @@ date: 2021-08-26 15:00:00
 topics:
   - Mitelop
   - Video
-  - 作ったもの
+  - 個人開発
 type: tech
+emoji: 🪞
 published: true
 ---
 

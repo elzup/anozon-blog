@@ -3,8 +3,9 @@ title: useSecounds という時計用 hooks を作った
 date: 2020-03-08 18:00:00
 topics:
   - ReactHooks
-  - 作った
+  - 個人開発
 type: tech
+emoji: ⏳
 published: true
 ---
 

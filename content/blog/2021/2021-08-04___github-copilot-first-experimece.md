@@ -1,6 +1,7 @@
 ---
 title: GitHub Copilot はいい相棒になりそう
 date: 2021-08-04 00:00:00
+emoji: 🤖
 topics:
   - GitHub Copilot
   - review
@@ -8,7 +9,7 @@ type: tech
 published: true
 ---
 
-1 ヶ月目なので所感を書きます。  
+7 月から使い始めて 1 ヶ月目で所感を書きます。 (`2021-08-04`)
 主に TypeScript を書いています。 初日から結構好感です。
 
 ## 良い点

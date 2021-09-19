@@ -5,7 +5,7 @@ topics:
   - Markdown
   - Gatsby
   - Zenn
-published: false
+published: true
 ---
 
 この記事では Gatsby のブログを zenn に連携する について紹介します。
