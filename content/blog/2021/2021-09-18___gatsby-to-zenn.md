@@ -7,7 +7,7 @@ topics:
   - Zenn
 emoji: 🚚
 type: tech
-published: false
+published: true
 ---
 
 ## Zenn に対応する
