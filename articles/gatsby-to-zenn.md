@@ -15,6 +15,8 @@ published: true
 個人ブログ(Gatsby のブログ)から Zenn にマルチポストする設定をしました。  
 `canonical_url` は Zenn に向けています。
 
+成果物リポジトリ [elzup/anozon\-blog](https://github.com/elzup/anozon-blog)
+
 週 1 以上書くというペースを心がけて気づいたら 91 記事も書いていました。
 Zenn エディタやフォーマットの恩恵や Zenn でのフィードバックを受けて記事を書くモチベをさらにあげたいです。
 
