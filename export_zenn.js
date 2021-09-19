@@ -1,4 +1,5 @@
-const fs = require('fs').promises
+const fs = require('fs')
+const { copyFile, mkdir, rmdir, readdir } = fs.promises
 const { spawnSync } = require('child_process')
 
 const FROM_DIR = 'content/blog'
@@ -17,7 +18,7 @@ const readdirRecursiveEnt = async (dir, ent) => {
 }
 
 const readdirRecursive = async (dir) => {
-  const ents = await fs.readdir(dir, { withFileTypes: true })
+  const ents = await readdir(dir, { withFileTypes: true })
   return (await Promise.all(ents.map((ent) => readdirRecursiveEnt(dir, ent))))
     .filter(Boolean)
     .flat()
@@ -25,15 +26,15 @@ const readdirRecursive = async (dir) => {
 
 const toSlugFilename = (path) => path.split('___')[1]
 async function main() {
-  await fs.rmdir(OUT_DIR, { recursive: true })
-  await fs.mkdir(OUT_ARTICLES_DIR, { recursive: true })
-  await fs.mkdir(OUT_BOOKS_DIR, { recursive: true })
-  await fs.close(await fs.open(`${OUT_BOOKS_DIR}/.gitkeep`, 'w'))
+  await rmdir(OUT_DIR, { recursive: true })
+  await mkdir(OUT_ARTICLES_DIR, { recursive: true })
+  await mkdir(OUT_BOOKS_DIR, { recursive: true })
+  fs.closeSync(fs.openSync(`${OUT_BOOKS_DIR}/.gitkeep`, 'w'))
 
   const files = await readdirRecursive(FROM_DIR)
   for (const filePath of files) {
     const targetPath = `${OUT_ARTICLES_DIR}/${toSlugFilename(filePath)}`
-    await fs.copyFile(filePath, targetPath)
+    await copyFile(filePath, targetPath)
 
     // NOTE: zenn で diff コードブロックがうまく効かない
     spawnSync('gsed', ['-i', '-e', 's/^```diff.*/```/g', targetPath])
