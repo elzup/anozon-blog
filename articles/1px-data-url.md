@@ -3,8 +3,9 @@ title: 1px の画像データURLメモ
 date: 2021-01-06 18:00:00
 topics:
   - HTML
-  - 作った
+  - 個人開発
 type: tech
+emoji: 🔳
 published: true
 ---
 

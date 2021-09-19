@@ -4,7 +4,8 @@ date: 2020-03-05 11:00:00
 topics:
   - CLI
   - VSCode
-  - 作った
+  - 個人開発
+emoji: 🎨
 type: tech
 published: true
 ---
