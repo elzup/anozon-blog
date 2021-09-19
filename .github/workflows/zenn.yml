@@ -14,12 +14,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - name: install
-        run: yarn install
-      - name: Build
-        run: yarn zenn:export
-      # https://github.com/s0/git-publish-subdir-action
       - name: Push to build branch
         uses: s0/git-publish-subdir-action@master
         env:
