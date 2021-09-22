@@ -35,7 +35,7 @@ Zenn 側での設定はほぼボタン 1 つでできるので省きます。
 ./content/blog/2021/2021-09-18___blog-title.md
 ```
 
-Zenn では以下の構造に決まっています。 `zen-cli` で `zen-init` して生成されます。とてもシンプルです。
+Zenn では以下の構造に決まっています。 `zenn-cli` で `zenn-init` して生成されます。とてもシンプルです。
 
 ```
 /articles
@@ -162,7 +162,7 @@ JSON parse Error みたいなのが出てしまいました。
 
 ## Zenn cli preview 編集関係
 
-Zenn でのプレビューは npm scripts に追加すると `yarn zen` ですぐ見れます。
+Zenn でのプレビューは npm scripts に追加すると `yarn zenn` ですぐ見れます。
 
 ```title=package.json
     "zenn": "yarn zenn:export && (cd out_zenn && npx zenn)",
@@ -190,4 +190,4 @@ books だけ web で書きたさがあったりします。
 ## 感想
 
 基本今までイマイチだなあと思っていた仕様を対応する形になったので良かったです。
-zen の ローカル preview のエラーがめっちゃわかりやすくてリッチな体験でした。
+Zenn の ローカル preview のエラーがめっちゃわかりやすくてリッチな体験でした。
