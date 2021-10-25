@@ -21,6 +21,8 @@ published: true
 `useKeyPress` `useKeyPressEvent` を使うことで取ることが出来ます。
 
 ```tsx
+import { useKeyPress } from 'react-use'
+
 const Component = () => {
   const [pressed, e] = useKeyPress('a')
 
@@ -30,13 +32,15 @@ const Component = () => {
     } else {
       // 離したとき
     }
-  }, [pressed])
+  }, [pressed]) // 切り替わった時
 }
 ```
 
 または、
 
 ```tsx
+import { useKeyPressEvent } from 'react-use'
+
 useKeyPressEvent(
   'a',
   (e) => {
@@ -53,6 +57,8 @@ useKeyPressEvent(
 第一引数の KeyFilter に `() => true` を指定するとすべてのキーについてイベントを取れます。
 
 ```tsx
+import { useKeyPressEvent } from 'react-use'
+
 const Component = () => {
   useKeyPressEvent(
     () => true,
@@ -76,9 +82,10 @@ https://github.com/streamich/react-use/blob/6f894599f150c60f314650994327f0743ad4
 ## すべてのキーの長押しを取る
 
 カスタムフックで拡張します。
+以下のフックで各キーの押し離しのイベントが取れます。
 
 ```tsx
-export const noop = () => {}
+const noop = () => {}
 const nonFilter = () => true
 const mapReducer = (
   v: Record<string, boolean>,
@@ -111,9 +118,18 @@ export const useKeyPressAll = (
   )
   return { downs }
 }
-```
 
-このフックで各キーの押し離しのイベントが取れます。
+const Component = () => {
+  useKeyPressAll(
+    (e) => {
+      // 押されたとき
+    },
+    (e) => {
+      // 離したとき
+    }
+  )
+}
+```
 
 <!-- ## 特定のフォーカスされているコンポーネントでの使い方
 
@@ -129,9 +145,8 @@ https://github.com/donavon/use-event-listener/blob/develop/types/index.d.ts -->
 const updateQueue = <T>(arr: T[], size: number, item: T) =>
   [...arr, item].slice(-size)
 
-export const useQueue = <T>(size: number, initArr: T[] = []) => {
-  return useReducer((v: T[], item: T) => updateQueue(v, size, item), initArr)
-}
+export const useQueue = <T>(size: number, initArr: T[] = []) =>
+  useReducer((v: T[], item: T) => updateQueue(v, size, item), initArr)
 
 export const useKeyQueue = () => {
   const [downQueue, setDownQueue] = useQueue<string>(10)
