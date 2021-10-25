@@ -58,7 +58,9 @@ data-styled.g11[id="ShareButtons__Style-sc-1w6e51d-0"]{content:"dCuNJb,"}/*!sc*/
 <!-- -->
 <h2 id="1-回だけ発火するようにキーの長押しのはじめと終わりを取る">(1 回だけ発火するように)キーの長押しのはじめと終わりを取る</h2>
 <p><code class="language-text">useKeyPress</code> <code class="language-text">useKeyPressEvent</code> を使うことで取ることが出来ます。</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useKeyPress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;react-use&#x27;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>pressed<span class="token punctuation">,</span> e<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useKeyPress</span><span class="token punctuation">(</span><span class="token string">&#x27;a&#x27;</span><span class="token punctuation">)</span>
 
   <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -67,10 +69,12 @@ data-styled.g11[id="ShareButtons__Style-sc-1w6e51d-0"]{content:"dCuNJb,"}/*!sc*/
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
       <span class="token comment">// 離したとき</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>pressed<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>pressed<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 切り替わった時</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>または、</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token function">useKeyPressEvent</span><span class="token punctuation">(</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useKeyPressEvent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;react-use&#x27;</span>
+
+<span class="token function">useKeyPressEvent</span><span class="token punctuation">(</span>
   <span class="token string">&#x27;a&#x27;</span><span class="token punctuation">,</span>
   <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token comment">// 押したとき</span>
@@ -81,7 +85,9 @@ data-styled.g11[id="ShareButtons__Style-sc-1w6e51d-0"]{content:"dCuNJb,"}/*!sc*/
 <span class="token punctuation">)</span></code></pre></div>
 <h2 id="すべてのキーのイベントを取る">すべてのキーのイベントを取る</h2>
 <p>第一引数の KeyFilter に <code class="language-text">() =&gt; true</code> を指定するとすべてのキーについてイベントを取れます。</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useKeyPressEvent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;react-use&#x27;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token function">useKeyPressEvent</span><span class="token punctuation">(</span>
     <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -98,8 +104,9 @@ ondown は何かしらのキーが押されてから、最初に何かしらの�
 <code class="language-text">react-use</code> の <code class="language-text">useKeyPressEvent</code> は呼び出し毎に 1 つの key(<code class="language-text">key|KeyFilter</code>)の状態管理しかしません(実装が間違っているわけではなく仕様です)。</p>
 <p><div class="Link__LinkBox-sc-11kgigh-0 hPolfE"><p>https://github.com/streamich/react-use/blob/6f894599f150c60f314650994327f0743ad435d2/src/useKeyPressEvent.ts#L5</p><a href="https://github.com/streamich/react-use/blob/6f894599f150c60f314650994327f0743ad435d2/src/useKeyPressEvent.ts#L5">https://github.com/streamich/react-use/blob/6f894599f150c60f314650994327f0743ad435d2/src/useKeyPressEvent.ts#L5</a></div></p>
 <h2 id="すべてのキーの長押しを取る">すべてのキーの長押しを取る</h2>
-<p>カスタムフックで拡張します。</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">noop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<p>カスタムフックで拡張します。
+以下のフックで各キーの押し離しのイベントが取れます。</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">noop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">const</span> <span class="token function-variable function">nonFilter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">true</span>
 <span class="token keyword">const</span> <span class="token function-variable function">mapReducer</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
   <span class="token parameter">v<span class="token operator">:</span> Record<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> boolean<span class="token operator">&gt;</span><span class="token punctuation">,</span>
@@ -131,17 +138,26 @@ ondown は何かしらのキーが押されてから、最初に何かしらの�
     <span class="token punctuation">{</span> event<span class="token operator">:</span> <span class="token string">&#x27;keyup&#x27;</span> <span class="token punctuation">}</span>
   <span class="token punctuation">)</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span> downs <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">useKeyPressAll</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 押されたとき</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 離したとき</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>このフックで各キーの押し離しのイベントが取れます。</p>
 <!-- -->
 <h2 id="他の-usekeyhook-拡張例">他の useKeyHook 拡張例</h2>
 <h3 id="直近の入力シーケンス">直近の入力シーケンス</h3>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> updateQueue <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">T</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">(arr: T[], size: number, item: T) =&gt;
   [...arr, item].slice(-size)
 
-export const useQueue = </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">T</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">(size: number, initArr: T[] = []) =&gt; </span><span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token function">useReducer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> item<span class="token operator">:</span> <span class="token constant">T</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">updateQueue</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> size<span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">,</span> initArr<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token plain-text">
+export const useQueue = </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">T</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">(size: number, initArr: T[] = []) =&gt;
+  useReducer((v: T[], item: T) =&gt; updateQueue(v, size, item), initArr)
 
 export const useKeyQueue = () =&gt; </span><span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>downQueue<span class="token punctuation">,</span> setDownQueue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useQueue</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
