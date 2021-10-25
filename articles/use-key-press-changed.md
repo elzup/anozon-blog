@@ -6,6 +6,7 @@ topics:
   - TypeScript
   - ReactHooks
 type: tech
+emoji: ⌨️
 published: true
 ---
 
