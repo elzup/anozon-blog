@@ -99,12 +99,18 @@ export const useKeyPressAll = (
   keydownAll: Handler = noop
 ) => {
   const [downs, set] = useReducer(mapReducer, {} as Record<string, boolean>)
+  const downsRef = useRef(downs)
+
+  useEffect(() => {
+    downsRef.current = downs
+  }, [downs])
 
   useKey(
     nonFilter,
     (e) => {
       keydownAll(e)
-      if (!downs[e.key]) keydown(e)
+
+      if (!downsRef.current[e.key]) keydown(e)
       set({ key: e.key, down: true })
     },
     { event: 'keydown' }
@@ -112,7 +118,7 @@ export const useKeyPressAll = (
   useKey(
     nonFilter,
     (e) => {
-      if (downs[e.key]) keyup(e)
+      if (downsRef.current[e.key]) keyup(e)
       set({ key: e.key, down: false })
     },
     { event: 'keyup' }
