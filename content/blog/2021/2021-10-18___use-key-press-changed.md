@@ -198,40 +198,35 @@ const KeyDemo = () => {
 
 ### 特定の DOM のキーイベント
 
-特定の DOM へフォーカス時のみイベントを取る例です。
-ref を使い設定できるようにします。
+特定の DOM へフォーカス時のみイベントを取る例です。ref を使い設定できるようにします。
+`useKey` の `options: { target }` 指定がうまく動かなかったので、  
+`rocks` の `useKeyRef` を使う例を書きました。
+
+フォーカスしない要素 (input 以外の div など) では `tabIndex={-1}` の指定が必要です。
 
 ```tsx
-export const useRefKey = <T extends HTMLElement>(
-  keydown: Handler = noop,
-  keyup: Handler = noop
-) => {
-  const ref = useRef<T>(null)
+import { useKeyRef } from 'rooks'
 
-  useKey(() => true, keydown, { event: 'keyup', target: ref.current })
-  useKey(() => true, keyup, { event: 'keyup', target: ref.current })
-  useEffect(() => {
-    if (!ref.current) return
-    ref.current.setAttribute('tabIndex', '-1')
-  }, [ref.current])
-  return ref
-}
-```
-
-```tsx
+const allKeys = `qwertyuiop[]asdfghjkl;'zxcvbnm,./`.split('')
 const KeyDemo = () => {
-  const [press, setPress] = useState<string>('leaved')
-  const ref = useRefKey<HTMLDivElement>(
-    ({ key }) => setPress(key),
-    () => 'leaved'
+  const ref = useKeyRef(
+    allKeys,
+    (e) => {
+      if (e.type === 'keydown') {
+        // on down
+      } else if (e.type === 'keyup') {
+        // on up
+      }
+    },
+    { eventTypes: ['keydown', 'keyup'] }
   )
 
   return (
     <div>
-      <div ref={ref} style={{ border: 'solid 1px' }}>
+      <div ref={ref} tabIndex={-1}>
         ref area
-        <p>{press}</p>
       </div>
+      <input ref={ref}>ref area</input>
     </div>
   )
 }
