@@ -23,7 +23,7 @@ emoji: 🪑
 [SwitchBot 人感センサー](https://www.switchbot.jp/products/motion-sensor)
 これを机から立ち上がっていないと検知されない位置に調整して設置しました。
 
-Node.js で実装してたのですが、Node-RED Only のパターンでも実装してみました。a
+Node.js で実装してたのですが、Node-RED Only のパターンでも実装してみました。
 ともに以下の環境変数が設定してある前提で書いています。
 
 ```
@@ -286,11 +286,11 @@ _メリット_
 - 停止・再開が容易
 - ログが見れる
 - 現在の Store を (コンテキストデータタブで) 確認できる
-  - <img alt="コンテキストデータ" width="300" src="https://elzup-image-storage.s3.amazonaws.com/blog/nodered-context-window.png" />
+  - ![コンテキストデータ](https://elzup-image-storage.s3.amazonaws.com/blog/nodered-context-window.png)
 - 定期実行のサービス化が容易
 
 _デメリット_(まだ勉強中)
 
-- コーディング環境がない
+- コーディング環境が厳しい
 
 これを機に個人用 Node-RED サーバーを立てたので活用していきたいです。
