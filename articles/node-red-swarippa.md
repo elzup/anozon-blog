@@ -10,6 +10,9 @@ published: true
 emoji: 🪑
 ---
 
+この記事は Node-RED Advent Calendar 2021 の 4 日目の記事です。
+[Node\-RED のカレンダー \| Advent Calendar 2021 \- Qiita](https://qiita.com/advent-calendar/2021/node-red)
+
 リモートワークで一日中座って作業すると生活習慣病が気になります。そこで、Node-RED で座りっぱなしを検知して運動を促すシステムを作ってみました。
 
 ![人感センサ](https://elzup-image-storage.s3.amazonaws.com/blog/sb-motion-sensor.jpg)
