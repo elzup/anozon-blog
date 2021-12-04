@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { copyFile, mkdir, rmdir, readdir } = fs.promises
+const { copyFile, mkdir, rm, readdir } = fs.promises
 const { spawnSync } = require('child_process')
 
 const FROM_DIR = 'content/blog'
@@ -26,7 +26,7 @@ const readdirRecursive = async (dir) => {
 
 const toSlugFilename = (path) => path.split('___')[1]
 async function main() {
-  await rmdir(OUT_DIR, { recursive: true })
+  await rm(OUT_DIR, { recursive: true, force: true })
   await mkdir(OUT_ARTICLES_DIR, { recursive: true })
   await mkdir(OUT_BOOKS_DIR, { recursive: true })
   fs.closeSync(fs.openSync(`${OUT_BOOKS_DIR}/.gitkeep`, 'w'))
