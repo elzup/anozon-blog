@@ -2,7 +2,7 @@
 title: Switchbot人感センサで座りっぱなし防止アラートを作る
 date: 2021-12-04 09:00:00
 topics:
-  - Node-RED
+  - NodeRED
   - TypeScript
   - ローコード
 type: tech
@@ -12,13 +12,16 @@ emoji: 🪑
 
 リモートワークで一日中座って作業すると生活習慣病が気になります。そこで、Node-RED で座りっぱなしを検知して運動を促すシステムを作ってみました。
 
+![人感センサ](https://elzup-image-storage.s3.amazonaws.com/blog/sb-motion-sensor.jpg)
+![座りっぱSlack通知](https://elzup-image-storage.s3.amazonaws.com/blog/suwarippa-slack-notice.png)
+
+通知が来たらスクワットやストレッチをしています。
+
 ## 準備
 
 動きの検知は SwitchBot 人感センサ(Motion Sensor)を使います。
+[SwitchBot 人感センサー](https://www.switchbot.jp/products/motion-sensor)
 これを机から立ち上がっていないと検知されない位置に調整して設置しました。
-
-![人感センサ](https://elzup-image-storage.s3.amazonaws.com/blog/sb-motion-sensor.jpg)
-![座りっぱSlack通知](https://elzup-image-storage.s3.amazonaws.com/blog/suwarippa-slack-notice.png)
 
 Node.js で実装してたのですが、Node-RED Only のパターンでも実装してみました。a
 ともに以下の環境変数が設定してある前提で書いています。
@@ -34,7 +37,8 @@ export SLACK_URL=""
 
 ## Node.js だけで実装する版
 
-成果物リポジトリ: [elzup/switchbot\-suwarippa\-alert: Detect no motion time by using Switch Bot Motion Sensor](https://github.com/elzup/switchbot-suwarippa-alert)
+成果物リポジトリ  
+[elzup/switchbot\-suwarippa\-alert: Detect no motion time by using Switch Bot Motion Sensor](https://github.com/elzup/switchbot-suwarippa-alert)
 
 ### SwitchBot API を叩く部分
 
@@ -201,12 +205,13 @@ export const reducer = (
 
 ![Suwarippa Node-RED](https://elzup-image-storage.s3.amazonaws.com/blog/suwarippa-nodered.png)
 
+[Gist: flow file 座りっぱなし検知アラート](https://gist.github.com/elzup/6f9a2bd5e7c1a75ec0ff17c61be5ebc6)
+
 ### ロジック部分
 
 check notice Function Node の中身です。
 
-<details>
-  <summary>前半: reducer の TypeScript を JavaScript に変換しただけです</summary>
+:::details 前半(reducer の TypeScript を JavaScript に変換しただけです)
 
 ```js
 const SUSPEND_DETECT_TIME = 30 * 60 * 1000
@@ -234,7 +239,7 @@ const initialState = {
 }
 ```
 
-</details>
+:::
 
 後半: プロセス部分の while ループの中を置き換えてます。
 
@@ -262,9 +267,14 @@ URL などのプロパティの動的生成にはテンプレートを使いま�
 
 #### 定期実行
 
-10 秒おきに実行などのトリガーノードを作成できます。
-9 時から 21 時までのみ実行するスケジュール設定も簡単にできるようになってました。
+n 秒おきに実行するトリガーノードを作成できます。  
+9 時から 21 時までのみ実行するなどスケジュール設定も簡単にできるようになってました。
 ですが、その場合単位が「分」になってしまうので今回は使えませんでした。惜しいです。
+
+#### リクエストの構築について
+
+request ノード だけでは HTTP Header などの設定ができません。  
+基本的に request ノード の手前で funcsion ノードや change ノードを使ってリクエスト msg を構築します。
 
 ### Node-RED で実装した感想
 
@@ -282,3 +292,5 @@ _メリット_
 _デメリット_(まだ勉強中)
 
 - コーディング環境がない
+
+これを機に個人用 Node-RED サーバーを立てたので活用していきたいです。
