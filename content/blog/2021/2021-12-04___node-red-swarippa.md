@@ -287,7 +287,7 @@ _メリット_
 
 - Input 先 output 先 ノードの変更(つけ外し、複数に拡張など)が容易
 - 停止・再開が容易
-- ログが見れる
+- ログが見られる
 - 現在の Store を (コンテキストデータタブで) 確認できる
   - ![コンテキストデータ](https://elzup-image-storage.s3.amazonaws.com/blog/nodered-context-window.png)
 - 定期実行のサービス化が容易
