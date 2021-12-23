@@ -1,5 +1,5 @@
 ---
-title: リンクを全部 target&#x3D;_blank にするブックマークレット
+title: リンクを全部 target=_blank にするブックマークレット
 date: 2021-12-10 14:00:00
 topics:
   - Bookmarklet
