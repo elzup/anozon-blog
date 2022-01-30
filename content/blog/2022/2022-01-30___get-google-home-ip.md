@@ -1,5 +1,5 @@
 ---
-title: ネットワーク内の Google Home Mini のIPアドレスを取得する
+title: Node.js で Google Home Mini のIPアドレスを取得する
 date: 2022-01-30 12:00:00
 topics:
   - Google Home
@@ -9,6 +9,10 @@ type: tech
 published: true
 emoji: 🔈
 ---
+
+ネットワーク内の Google Home Mini のアドレスを取得します。
+
+[agnat/node_mdns: mdns/zeroconf/bonjour service discovery add\-on for node\.js](https://github.com/agnat/node_mdns)
 
 ## コード
 
@@ -76,7 +80,41 @@ export async function getGoogleHomeIp() {
 }
 ```
 
-```js
-const ip = await getGoogleHomeIp()
-console.log(ip)
+### mdns.Service type
+
+`service` では他に以下の情報も取れます。
+
+```
+{
+  interfaceIndex: 6,
+  type: ServiceType {
+    name: 'googlecast',
+    protocol: 'tcp',
+    subtypes: [],
+    fullyQualified: true
+  },
+  replyDomain: 'local.',
+  flags: 2,
+  name: 'Google-Nest-Mini-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+  networkInterface: 'en0',
+  fullname: 'Google-Nest-Mini-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF._googlecast._tcp.local.',
+  host: 'ffffffffffffffffffffffffffffffffffff.local.',
+  port: 8009,
+  rawTxtRecord: <Buffer ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ... 156 more bytes>,
+  txtRecord: {
+    id: 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+    cd: 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+    rm: 'FFFFFFFFFFFFFFFF',
+    ve: '05',
+    md: 'Google Nest Mini',
+    ic: '/setup/icon.png',
+    fn: 'ダイニング ルーム',
+    ca: '000000',
+    st: '0',
+    bs: 'FFFFFFFFFFFF',
+    nf: '1',
+    rs: ''
+  },
+  addresses: [ '192.168.11.5' ]
+}
 ```
