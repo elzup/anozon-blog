@@ -84,7 +84,7 @@ export async function getGoogleHomeIp() {
 
 `service` では他に以下の情報も取れます。
 
-```
+```js
 {
   interfaceIndex: 6,
   type: ServiceType {
@@ -99,7 +99,7 @@ export async function getGoogleHomeIp() {
   networkInterface: 'en0',
   fullname: 'Google-Nest-Mini-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF._googlecast._tcp.local.',
   host: 'ffffffffffffffffffffffffffffffffffff.local.',
-  port: 8009,
+  port: 0,
   rawTxtRecord: <Buffer ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ... 156 more bytes>,
   txtRecord: {
     id: 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
@@ -115,6 +115,6 @@ export async function getGoogleHomeIp() {
     nf: '1',
     rs: ''
   },
-  addresses: [ '192.168.11.5' ]
+  addresses: [ '0.0.0.0' ]
 }
 ```
