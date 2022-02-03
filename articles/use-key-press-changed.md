@@ -138,11 +138,10 @@ const Component = () => {
 }
 ```
 
-<!-- ## 特定のフォーカスされているコンポーネントでの使い方
-
-`useEventListener` というものも作れるが型定義が複雑になる
-https://github.com/foray1010/use-typed-event-listener/blob/master/src/index.ts
-https://github.com/donavon/use-event-listener/blob/develop/types/index.d.ts -->
+<!-- ## 特定のフォーカスされているコンポーネントでの使い方 -->
+<!-- `useEventListener` というものも作れるが型定義が複雑になる -->
+<!-- https://github.com/foray1010/use-typed-event-listener/blob/master/src/index.ts -->
+<!-- https://github.com/donavon/use-event-listener/blob/develop/types/index.d.ts -->
 
 ## 他の useKeyHook 拡張例
 
