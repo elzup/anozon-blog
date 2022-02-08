@@ -1,11 +1,12 @@
 ---
-title: テストで TimeZone を固定する
+title: GitHub Actions の jest で TimeZone を固定する
 date: 2020-07-01 15:00:00
 topics:
   - GitHubActions
   - test
 type: tech
 published: true
+emoji: 🕛
 ---
 
 日時の文字列をテストに使っているとき GitHub Actions でつまずいたのでメモ。
