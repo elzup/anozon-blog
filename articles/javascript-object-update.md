@@ -45,17 +45,17 @@ function updateObjSpread(obj, key1, key2, v) {
   }
 }
 
-// Object.assign でクローンして代入
-function updateObjCloneObjectAssign(obj, key1, key2, v) {
-  const newObj = Object.assign({}, obj)
+// スプレッド構文でクローンして代入
+function updateObjCloneSpread(obj, key1, key2, v) {
+  const newObj = { ...obj }
 
   newObj[key1][key2] = v
   return newObj
 }
 
-// スプレッド構文でクローンして代入
-function updateObjCloneSpread(obj, key1, key2, v) {
-  const newObj = { ...obj }
+// Object.assign でクローンして代入
+function updateObjCloneObjectAssign(obj, key1, key2, v) {
+  const newObj = Object.assign({}, obj)
 
   newObj[key1][key2] = v
   return newObj
