@@ -14,7 +14,7 @@ emoji: 🪝‍
 
 DEMO: [minimum\-use\-context\-config \- CodeSandbox](https://codesandbox.io/s/minimum-use-context-config-bhzn6m?file=/src/index.tsx)
 
-## useContext はわりと
+## コード
 
 ```tsx
 import React, { createContext, useContext, useEffect, useState } from 'react'
