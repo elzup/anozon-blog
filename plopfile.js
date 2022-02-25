@@ -8,12 +8,18 @@ const day = pad00(date.getDate())
 const hms = `${pad00(date.getHours())}:00:00`
 const datePrefix = `${year}-${month}-${day}`
 
+const path = `content/blog/{{getKebabFirst date}}/{{date}}___{{id}}.md`
+
 module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
   plop
 ) {
   plop.setHelper('getKebabFirst', (date) => date.split('-')[0])
   plop.setHelper('hms', () => hms)
+  plop.setActionType(
+    'generated',
+    (answers, config) => `./${plop.renderString(config.path, answers)}`
+  )
   plop.setGenerator('post', {
     description: 'Write new blog post',
     prompts: [
@@ -48,11 +54,8 @@ module.exports = function (
       },
     ],
     actions: [
-      {
-        type: 'add',
-        path: `content/blog/{{getKebabFirst date}}/{{date}}___{{id}}.md`,
-        templateFile: 'templates/post.hbs',
-      },
+      { type: 'add', path, templateFile: 'templates/post.hbs' },
+      { type: 'generated', path },
     ],
   })
 }
