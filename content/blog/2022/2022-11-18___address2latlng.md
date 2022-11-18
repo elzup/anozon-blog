@@ -9,7 +9,7 @@ published: true
 emoji: 🌎
 ---
 
-## コード
+## 準備
 
 `node-geocoder` を使います。
 
@@ -20,6 +20,8 @@ emoji: 🌎
 [API キーを使用して認証する  \|  Google Cloud](https://cloud.google.com/docs/authentication/api-keys?hl=ja)
 
 ## コード
+
+`getGeoCodes(addressList: string[])` 関数
 
 ```js
 const NodeGeocoder = require('node-geocoder')
