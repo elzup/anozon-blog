@@ -25,7 +25,7 @@ GGG
 ```
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 IN_FILE=target.txt
 
 LINE_BGN=$(sed -n '/BBB/=' $IN_FILE)
@@ -48,7 +48,7 @@ EEE
 ## pipe で取り出す
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 DATA1="AAA\nBBB\nCCC\nDDD\nEEE\nFFF\nGGG\n"
 
