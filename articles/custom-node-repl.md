@@ -1,5 +1,5 @@
 ---
-title: 便利にカスタマイズした Node の REPL を起動する
+title: 便利にカスタマイズした Node REPL を起動する
 date: 2022-12-23 18:00:00
 topics:
   - node
@@ -31,7 +31,7 @@ Object.defineProperty(r.context, '_', {
 r.context.kit = kit
 ```
 
-```
+```sh
 > node index.js
 anozon node repl (^•ω•^)
 node> _.range(5)
@@ -44,7 +44,7 @@ node> _.range(5)
 
 コマンド名(例 `anode`)を `package.json` にセットアップし、グローバルにインストールします。
 
-```json
+```json:title=package.json
 {
   "description": "personal custom node REPL",
   "main": "index.js",
