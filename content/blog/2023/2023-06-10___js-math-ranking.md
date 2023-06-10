@@ -15,7 +15,7 @@ emoji: 📊
 
 ## 調査方法
 
-GitHub のソースコード検索の API を使いました。 language が JavaScript と TypeScript のコードに絞り込んでいます。
+GitHub のソースコード検索 API を使いました。 `language` が `JavaScript` と `TypeScript` のコードで絞り込んでいます。
 
 コード: https://github.com/elzup/HowUsedCodeList
 
