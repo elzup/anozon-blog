@@ -21,11 +21,10 @@ GitHub のソースコード検索 API を使いました。 `language` が `Jav
 
 ## Math 関数とフィールドの使用頻度
 
-<div style="display: flex;">
-  <img style="width: 50%;" src="https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-math-bar.png" />
-  <img style="width: 50%;" src="https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-math-pie.png" />
-</div>
+![how used math func js](https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-math-bar.png)
+![how used math func js](https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-math-pie.png)
 
+math
 `dumped at 2023/6/10`
 
 | code         | count  |
@@ -76,10 +75,8 @@ GitHub のソースコード検索 API を使いました。 `language` が `Jav
 
 ## Object 関数とフィールドの使用頻度
 
-<div style="display: flex;">
-  <img style="width: 50%;" src="https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-obj-bar.png" />
-  <img style="width: 50%;" src="https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-obj-pie.png" />
-</div>
+![how used obj func js](https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-obj-bar.png)
+![how used obj func js](https://elzup-image-storage.s3.amazonaws.com/blog/how-used-code-obj-pie.png)
 
 dumped at 2023/5/22
 
