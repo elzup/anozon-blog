@@ -50,7 +50,7 @@ Chrome を開いて Google に問い合わせていた。が、
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">GitHub copilot <a href="https://t.co/qXVXiw5ZPA">pic.twitter.com/qXVXiw5ZPA</a></p>&mdash; あのぞん🌏.tsx (@anozon) <a href="https://twitter.com/anozon/status/1415270080615632896?ref_src=twsrc%5Etfw">July 14, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-### Randam 要素
+### Random 要素
 
 コードとか文章とか URL とかを気まぐれにガチャできる。息抜きに雑学を得れたりして良さそう。
 
