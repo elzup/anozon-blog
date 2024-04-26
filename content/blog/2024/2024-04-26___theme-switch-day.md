@@ -15,21 +15,23 @@ emoji: 🌈
 
 VSCode の設定ファイル `setting.json` に以下のように設定を書きます。
 
-```
-  // "workbench.colorTheme": "Fluffy Dark Theme", // @theme-auto-change Mon
-  // "workbench.colorTheme": "Amethyst Dark", // @theme-auto-change Tue
-  // "workbench.colorTheme": "Abyss", // @theme-auto-change Wed
-  // "workbench.colorTheme": "Fluffy Dark Theme", // @theme-auto-change Thu
-   "workbench.colorTheme": "GitHub Dark Default", // @theme-auto-change Fri
+```json5
+{
+  // "workbench.colorTheme": "Fluffy Dark Theme",            // @theme-auto-change Mon
+  // "workbench.colorTheme": "Amethyst Dark",                // @theme-auto-change Tue
+  // "workbench.colorTheme": "Abyss",                        // @theme-auto-change Wed
+  // "workbench.colorTheme": "Fluffy Dark Theme",            // @theme-auto-change Thu
+  'workbench.colorTheme': 'GitHub Dark Default', // @theme-auto-change Fri
   // "workbench.colorTheme": "Hackpot Batman vs Joker Dark", // @theme-auto-change Sat
-  // "workbench.colorTheme": "Hackpot Darker Knight", // @theme-auto-change Sun
+  // "workbench.colorTheme": "Hackpot Darker Knight",        // @theme-auto-change Sun
   // "workbench.colorTheme": "Hackpot Garden Of Atlantis",
+}
 ```
 
 以下のスクリプトを実行すると、今日の曜日に合わせてコメントアウトされているテーマの設定を有効にします。  
 変数 `$HOME/Library/Application Support/Code/User/settings.json` は OS によって変えてください。
 
-```
+```sh
 #!/usr/bin/env bash
 
 FILE_PATH="$HOME/Library/Application Support/Code/User/settings.json"
