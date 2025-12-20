@@ -10,7 +10,6 @@ published: true
 ---
 
 ## vim で mouse を off にする
-(vim の機能の方のマウス選択が邪魔をしているのでオフにする)
 
 ```vim
 :set mouse=
@@ -19,5 +18,3 @@ published: true
 ## iTerm2 の設定
 
 ![](https://elzup-image-storage.s3.amazonaws.com/blog/iterm-clipboard-option.png)
-
-これでターミナルの時と同じように、マウスでドラッグした範囲をクリックでコピーできるようになる
