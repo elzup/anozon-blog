@@ -12,6 +12,8 @@ emoji: 🔡
 
 この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 1日目の記事です。
 
+個人的な好みを交えて紹介します。
+
 
 ```javascript
 // JavaScript - 分割代入 + スプレッド合成 (while版)
@@ -62,6 +64,9 @@ console.log(binarySearch([1, 3, 5, 7, 9], 5)); // 2
 const obj = { key1: value1, key2: value2 }
 type ObjType = { key1: Type1; key2: Type2 } // TS
 ```
+JSON ライクに書ける。
+
+key はダブルクウォートが基本不要。
 
 ### アロー関数
 ```
@@ -75,6 +80,8 @@ function binarySearch(arr, target) { ... } // this がある
 const sum = (a, b) => a + b
 const merge = (obj1, obj2) => ({ ...obj1, ...obj2 }) 
 ```
+
+とても短くかけて好きな部分。
 
 ### 分割代入・スプレッド構文・オブジェクト合成
 
@@ -92,6 +99,8 @@ const { a: alpha, b: beta } = obj
 const area = ({ left: l, right: r }) => {}
 const { size: { w, h: height }} = rect
 ```
+
+これも柔軟に書けるので好きな部分。
 
 ### Nullish coalescing
 `??`
