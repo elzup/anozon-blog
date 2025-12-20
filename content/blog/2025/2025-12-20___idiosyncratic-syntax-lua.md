@@ -1,0 +1,151 @@
+---
+title: "各言語特有っぽい構文: Lua"
+date: 2025-12-20 00:00:00
+topics:
+  - Lua
+  - プログラミング言語
+type: tech
+published: true
+emoji: 🔡
+---
+
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 20日目の記事です。
+
+
+```lua
+-- Lua - テーブル + メタテーブル + コルーチン
+function binarySearch(arr, target)
+    local left, right = 1, #arr
+
+    while left <= right do
+        local mid = math.floor((left + right) / 2)
+        local value = arr[mid]
+
+        if value == target then
+            return mid
+        elseif value < target then
+            left = mid + 1
+        else
+            right = mid - 1
+        end
+    end
+    return nil
+end
+
+local arr = {1, 3, 5, 7, 9}
+print(binarySearch(arr, 5) or -1)  -- 3 (Luaは1始まり)
+```
+
+## ピックアップ構文
+
+### テーブル
+```lua
+-- 配列として
+local arr = {1, 2, 3, 4, 5}
+print(arr[1])  -- 1 (1始まり!)
+print(#arr)    -- 5 (長さ)
+
+-- 連想配列として
+local person = {
+    name = "Alice",
+    age = 30,
+    ["key with space"] = "value"
+}
+print(person.name)  -- Alice
+print(person["age"])  -- 30
+
+-- 混合
+local mixed = {1, 2, 3, name = "test"}
+```
+
+### メタテーブル
+```lua
+-- オブジェクト指向風
+local Vector = {}
+Vector.__index = Vector
+
+function Vector.new(x, y)
+    return setmetatable({x = x, y = y}, Vector)
+end
+
+function Vector:length()
+    return math.sqrt(self.x^2 + self.y^2)
+end
+
+-- 演算子オーバーロード
+function Vector.__add(a, b)
+    return Vector.new(a.x + b.x, a.y + b.y)
+end
+
+local v1 = Vector.new(3, 4)
+print(v1:length())  -- 5
+```
+
+### 複数戻り値
+```lua
+-- 複数の値を返す
+function minmax(arr)
+    local min, max = arr[1], arr[1]
+    for _, v in ipairs(arr) do
+        if v < min then min = v end
+        if v > max then max = v end
+    end
+    return min, max
+end
+
+local min, max = minmax({3, 1, 4, 1, 5})
+print(min, max)  -- 1 5
+```
+
+### コルーチン
+```lua
+-- 協調的マルチタスク
+local co = coroutine.create(function()
+    for i = 1, 3 do
+        print("coroutine:", i)
+        coroutine.yield(i)
+    end
+end)
+
+coroutine.resume(co)  -- coroutine: 1
+coroutine.resume(co)  -- coroutine: 2
+
+-- ジェネレータ風
+function range(n)
+    return coroutine.wrap(function()
+        for i = 1, n do
+            coroutine.yield(i)
+        end
+    end)
+end
+
+for i in range(5) do print(i) end
+```
+
+### 演算子 `and` / `or` / `not`
+```lua
+-- 短絡評価でデフォルト値
+local name = user_name or "anonymous"
+
+-- 三項演算子風
+local result = condition and "yes" or "no"
+
+-- nil チェック
+if value ~= nil then
+    -- nil でない
+end
+```
+
+### 可変長引数
+```lua
+function sum(...)
+    local args = {...}
+    local total = 0
+    for _, v in ipairs(args) do
+        total = total + v
+    end
+    return total
+end
+
+print(sum(1, 2, 3, 4, 5))  -- 15
+```
