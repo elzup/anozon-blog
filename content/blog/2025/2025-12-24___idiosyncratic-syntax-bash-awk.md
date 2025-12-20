@@ -6,11 +6,13 @@ topics:
   - AWK
   - プログラミング言語
 type: tech
-published: true
+published: false
 emoji: 🔡
 ---
 
 この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 24日目の記事です。
+
+個人的な好みを交えて紹介します。
 
 
 ```bash
