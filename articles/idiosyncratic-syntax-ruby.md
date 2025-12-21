@@ -1,18 +1,17 @@
 ---
-title: "各言語特有っぽい構文: Ruby"
+title: '各言語特有っぽい構文: Ruby'
 date: 2025-12-03 00:00:00
 topics:
   - Ruby
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 3日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 3 日目の記事です。
 
 個人的な好みを交えて紹介します。
-
 
 ```ruby
 def binary_search(arr, target)
@@ -34,6 +33,7 @@ p binary_search([1, 3, 5, 7, 9], 5)  # 2
 ## ピックアップ構文
 
 ### 暗黙の return
+
 ```ruby
 # 最後の式が自動的に返り値になる
 def double(x)
@@ -61,6 +61,7 @@ end
 ```
 
 ### メモ化 `||=`
+
 ```ruby
 # 初回のみ計算してキャッシュ
 def expensive_value
@@ -87,7 +88,10 @@ def fibonacci(n)
 end
 ```
 
+Ruby または Rails でよく見るパターンだ。
+
 ### ブロック構文
+
 ```ruby
 # do...end または { }
 [1, 2, 3].each do |x|
@@ -105,7 +109,10 @@ end
 with_logging { puts "hello" }
 ```
 
+多言語のジェネレータの `yield` と別物。呼び出しは Swift の trailing closure に似ている
+
 ### 宇宙船演算子 `<=>`
+
 ```ruby
 # 比較して -1, 0, 1 を返す
 5 <=> 3   # 1
@@ -120,7 +127,10 @@ when 1 then "a > b"
 end
 ```
 
+compare interface に対して便利なもの。 js でいう `Math.sign(a - b)` のような処理
+
 ### Safe navigation `&.`
+
 ```ruby
 # nilの場合はnilを返す
 arr.bsearch_index { |x| x >= 5 }&.then { |i| i * 2 }
@@ -130,7 +140,10 @@ result = arr.bsearch_index { |x| x >= 5 }
 result.nil? ? nil : result.then { |i| i * 2 }
 ```
 
+TypeScript などの `?.` に相当。
+
 ### then（yield_self）
+
 ```ruby
 # 値をブロックに渡して変換
 5.then { |x| x * 2 }  # 10
@@ -139,7 +152,10 @@ result.nil? ? nil : result.then { |i| i * 2 }
 "hello".then { |s| s.upcase }.then { |s| s.reverse }  # "OLLEH"
 ```
 
+Pipe と同様で使いやすい場面ありそう
+
 ### Symbol to proc `&:`
+
 ```ruby
 # メソッド名をシンボルで渡す
 [1, 2, 3].map(&:to_s)  # ["1", "2", "3"]
@@ -148,7 +164,10 @@ result.nil? ? nil : result.then { |i| i * 2 }
 [1, 2, 3].map { |x| x.to_s }
 ```
 
+メタプログラミング感を強く感じる。
+
 ### bsearch / bsearch_index
+
 ```ruby
 # 組み込みの二分探索
 arr = [1, 3, 5, 7, 9]
