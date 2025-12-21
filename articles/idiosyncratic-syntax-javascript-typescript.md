@@ -14,6 +14,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```javascript
 // JavaScript - 分割代入 + スプレッド合成 (while版)

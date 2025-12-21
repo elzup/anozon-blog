@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```zig
 // Zig - comptime + オプショナル + エラーユニオン
@@ -45,6 +47,9 @@ pub fn main() void {
 ## ピックアップ構文
 
 ### comptime (コンパイル時評価)
+
+コンパイル時にコードを実行し、型やパラメータを決定できる。
+
 ```zig
 // コンパイル時に実行される
 fn factorial(comptime n: u64) u64 {
@@ -60,6 +65,9 @@ fn max(comptime T: type, a: T, b: T) T {
 ```
 
 ### オプショナル型
+
+nullを許容する型を?Tで表現し、orelseやif文でアンラップできる。
+
 ```zig
 // ?T は null を許容
 var value: ?i32 = 42;
@@ -78,6 +86,9 @@ const y = value.?;
 ```
 
 ### エラーユニオン
+
+エラーまたは値を返す!T型で、明示的なエラーハンドリングを強制できる。
+
 ```zig
 // !T はエラーまたは値
 fn divide(a: i32, b: i32) !i32 {
@@ -96,6 +107,9 @@ const result = divide(10, 0) catch |err| {
 ```
 
 ### 飽和演算子
+
+オーバーフローせずに上限・下限で飽和する演算子。
+
 ```zig
 // オーバーフローしない演算
 const a: u8 = 250;
@@ -107,6 +121,9 @@ const d = a +% 10;   // 4 (オーバーフロー)
 ```
 
 ### defer と errdefer
+
+スコープ終了時、またはエラー時のみ実行される処理を定義できる。
+
 ```zig
 // スコープ終了時に実行
 const file = try std.fs.cwd().openFile("test.txt", .{});
@@ -119,6 +136,9 @@ try useResource(resource);
 ```
 
 ### ペイロードキャプチャ
+
+while、if、switchで値を取り出しながら分岐できる。
+
 ```zig
 // while, if, switch でペイロードを取得
 while (iterator.next()) |item| {

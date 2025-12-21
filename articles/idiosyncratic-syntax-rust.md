@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```rust
 // Rust - パターンマッチング + Result/Option + イテレータ
@@ -39,6 +41,9 @@ fn main() {
 ## ピックアップ構文
 
 ### パターンマッチング
+
+match式やif letで値の構造に基づいた分岐ができる。
+
 ```rust
 // match式
 match value {
@@ -59,6 +64,9 @@ let Some(x) = optional else { return };
 ```
 
 ### Option と Result
+
+値の有無やエラーを型安全に扱うための列挙型。
+
 ```rust
 // Option: 値があるかもしれない
 let opt: Option<i32> = Some(42);
@@ -73,6 +81,9 @@ result?;  // Err なら早期リターン
 ```
 
 ### 所有権とライフタイム
+
+メモリ安全性を保証するための所有権システムと参照の有効期間管理。
+
 ```rust
 // 所有権の移動
 let s1 = String::from("hello");
@@ -89,6 +100,9 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 ```
 
 ### イテレータとクロージャ
+
+遅延評価されるイテレータチェーンと無名関数の機能。
+
 ```rust
 // イテレータチェーン
 let sum: i32 = (1..=10)
@@ -106,6 +120,9 @@ let f = move || println!("{}", s);
 ```
 
 ### マクロ
+
+コンパイル時にコードを生成する宣言的マクロ。
+
 ```rust
 // 宣言的マクロ
 macro_rules! vec {
@@ -125,6 +142,9 @@ vec![1, 2, 3];
 ```
 
 ### トレイト境界
+
+ジェネリック型に対して必要な機能を制約として指定できる。
+
 ```rust
 // ジェネリクスの制約
 fn print_debug<T: std::fmt::Debug>(value: T) {

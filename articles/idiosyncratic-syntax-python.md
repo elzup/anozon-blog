@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 ```python
 def binary_search(arr: list, target) -> int:
     left, right = 0, len(arr) - 1

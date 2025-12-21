@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```racket
 #lang racket
@@ -36,6 +38,9 @@ emoji: 🔡
 ## ピックアップ構文
 
 ### match（パターンマッチング）
+
+値やデータ構造のパターンに基づいて分岐処理ができる。
+
 ```racket
 ;; 値のマッチ
 (match value
@@ -57,6 +62,9 @@ emoji: 🔡
 ```
 
 ### マクロ
+
+コンパイル時に構文を変換して新しい言語構造を作成できる。
+
 ```racket
 ;; define-syntax-rule で簡単なマクロ
 (define-syntax-rule (swap! a b)
@@ -77,6 +85,9 @@ emoji: 🔡
 ```
 
 ### 名前付きlet
+
+let式に名前を付けて、その名前で再帰的に呼び出せる。
+
 ```racket
 ;; ループをlet + 再帰で表現
 (let loop ([i 0] [sum 0])
@@ -94,6 +105,9 @@ emoji: 🔡
 ```
 
 ### 継続
+
+プログラムの実行状態を保存し、任意の時点に戻ることができる。
+
 ```racket
 ;; call/cc (call-with-current-continuation)
 (define (find-first pred lst)
@@ -115,6 +129,9 @@ emoji: 🔡
 ```
 
 ### コントラクト
+
+関数や構造体に型や値の制約を定義して実行時にチェックできる。
+
 ```racket
 ;; 関数の契約
 (define/contract (safe-div a b)
@@ -128,6 +145,9 @@ emoji: 🔡
 ```
 
 ### シーケンス
+
+様々なデータ構造を統一的なインターフェースで反復処理できる。
+
 ```racket
 ;; for ループと組み合わせ
 (for/list ([x (in-range 5)]

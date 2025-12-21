@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```scala
 // Scala - パターンマッチ + Option + 中置記法
@@ -41,6 +43,9 @@ def binarySearch[T: Ordering](arr: IndexedSeq[T], target: T): Option[Int] = {
 ## ピックアップ構文
 
 ### パターンマッチング
+
+match式で型や値に基づいた強力な分岐ができる。
+
 ```scala
 // match式
 val result = value match {
@@ -60,6 +65,9 @@ person match {
 ```
 
 ### Option
+
+値の有無をSomeとNoneで型安全に表現できる。
+
 ```scala
 // Some または None
 val opt: Option[Int] = Some(42)
@@ -81,6 +89,9 @@ for {
 ```
 
 ### for内包表記
+
+複数のコレクションを組み合わせて新しいコレクションを生成できる。
+
 ```scala
 // リスト内包
 val doubled = for (x <- 1 to 10 if x % 2 == 0) yield x * 2
@@ -100,6 +111,9 @@ for {
 ```
 
 ### 中置記法
+
+1つの引数を持つメソッドを中置記法で呼び出せる。
+
 ```scala
 // メソッドを中置で呼ぶ
 1 to 10        // 1.to(10)
@@ -114,6 +128,9 @@ Vec(1, 2) + Vec(3, 4)  // Vec(4, 6)
 ```
 
 ### implicit (given/using in Scala 3)
+
+暗黙的にパラメータを渡したり、型クラスのインスタンスを定義できる。
+
 ```scala
 // 暗黙の引数
 def sort[T](list: List[T])(implicit ord: Ordering[T]) = list.sorted
@@ -127,6 +144,9 @@ given Ordering[Person] with
 ```
 
 ### 拡張メソッド (Scala 3)
+
+既存の型に新しいメソッドを追加できる。
+
 ```scala
 extension (s: String)
   def greet: String = s"Hello, $s!"

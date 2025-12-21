@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```dart
 // Dart - Null安全 + カスケード記法 + 拡張メソッド
@@ -44,6 +46,9 @@ void main() {
 ## ピックアップ構文
 
 ### Null安全
+
+型システムでnullを明示的に扱い、null参照エラーを防げる。
+
 ```dart
 // Null許容型
 String? name;  // nullを許容
@@ -63,6 +68,9 @@ String s = nullableString!;
 ```
 
 ### カスケード記法 `..`
+
+同じオブジェクトに対して連続してメソッドやプロパティ操作ができる。
+
 ```dart
 // オブジェクトに連続操作
 final list = <int>[]
@@ -82,6 +90,9 @@ list?..add(1)..add(2);
 ```
 
 ### パターンマッチング (Dart 3)
+
+switch式やif-caseで値の構造に基づいた分岐ができる。
+
 ```dart
 // switch式
 final description = switch (value) {
@@ -101,6 +112,9 @@ var (left, right) = (0, 10);
 ```
 
 ### 拡張メソッド
+
+既存のクラスを変更せずに新しいメソッドを追加できる。
+
 ```dart
 // 既存クラスにメソッドを追加
 extension StringExtension on String {
@@ -113,6 +127,9 @@ extension StringExtension on String {
 ```
 
 ### コレクション操作
+
+スプレッド演算子やコレクションif/forでコレクションを簡潔に操作できる。
+
 ```dart
 // スプレッド演算子
 final combined = [...list1, ...list2];
@@ -132,6 +149,9 @@ final result = numbers
 ```
 
 ### 名前付き引数とデフォルト値
+
+引数に名前を付けたり、デフォルト値を設定できる。
+
 ```dart
 // 名前付き引数 (中括弧)
 void greet({required String name, String greeting = "Hello"}) {
