@@ -1,5 +1,5 @@
 ---
-title: "各言語特有っぽい構文: Java"
+title: '各言語特有っぽい構文: Java'
 date: 2025-12-06 00:00:00
 topics:
   - Java
@@ -9,10 +9,11 @@ published: false
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 6日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 6 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
 
 ```java
 // Java - ジェネリクス + Optional + Stream
@@ -51,6 +52,9 @@ public class BinarySearch {
 ## ピックアップ構文
 
 ### var（ローカル変数型推論）
+
+型を自動推論してローカル変数を宣言できる機能。
+
 ```java
 // Java 10+
 var list = new ArrayList<String>();
@@ -60,7 +64,12 @@ var map = Map.of("key", "value");
 list.forEach((var item) -> System.out.println(item));
 ```
 
-### switch式 (Java 14+)
+Java 特有の冗長な記述を減らせて画期的。
+
+### switch 式 (Java 14+)
+
+値を返すことができる式として使える switch 文。
+
 ```java
 // 式として値を返せる
 String result = switch (day) {
@@ -81,6 +90,9 @@ int numLetters = switch (day) {
 ```
 
 ### Optional
+
+null 安全な値のラッパーで、値が存在しない可能性を明示的に扱える。
+
 ```java
 // null安全な値のラッパー
 Optional<String> opt = Optional.ofNullable(getValue());
@@ -94,6 +106,9 @@ OptionalInt.of(42).orElse(-1);
 ```
 
 ### Stream API
+
+関数型スタイルでコレクションを操作できる API。
+
 ```java
 // 関数型スタイルのコレクション処理
 List<Integer> doubled = list.stream()
@@ -107,6 +122,9 @@ list.parallelStream()
 ```
 
 ### メソッド参照 `::`
+
+メソッドやコンストラクタをラムダ式の省略形として参照できる。
+
 ```java
 // ラムダの省略形
 list.forEach(System.out::println);
@@ -118,7 +136,10 @@ list.forEach(x -> System.out.println(x));
 list.stream().map(String::new);
 ```
 
-### 関数型インターフェース (SAM変換)
+### 関数型インターフェース (SAM 変換)
+
+抽象メソッドが 1 つのインターフェースをラムダ式で実装できる。
+
 ```java
 // 抽象メソッドが1つのインターフェースはラムダで書ける
 @FunctionalInterface
@@ -153,7 +174,12 @@ Runnable task = () -> System.out.println("Hello");
 Callable<Integer> compute = () -> 42;
 ```
 
+この簡略化のインパクトはすごかった。
+
 ### Record (Java 16+)
+
+イミュータブルなデータクラスを簡潔に定義できる。
+
 ```java
 // イミュータブルなデータクラス
 record Point(int x, int y) {}
@@ -188,7 +214,11 @@ if (obj instanceof Point(int x, int y)) {
 }
 ```
 
+イミュータブルで良い。
+
 ### スクリプトモード (Java 21+)
+
+クラス宣言なしでトップレベルにコードを記述できるスクリプト風の実行モード。
 
 ```java
 // Unnamed Classes - クラス宣言不要
@@ -210,3 +240,5 @@ void main() {
     System.out.println(greet("Java"));
 }
 ```
+
+こんなのあったんですね。
