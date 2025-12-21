@@ -1,5 +1,5 @@
 ---
-title: "各言語特有っぽい構文: Zig"
+title: '各言語特有っぽい構文: Zig'
 date: 2025-12-13 00:00:00
 topics:
   - Zig
@@ -9,12 +9,11 @@ published: false
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 13日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 13 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```zig
 // Zig - comptime + オプショナル + エラーユニオン
@@ -66,7 +65,7 @@ fn max(comptime T: type, a: T, b: T) T {
 
 ### オプショナル型
 
-nullを許容する型を?Tで表現し、orelseやif文でアンラップできる。
+null を許容する型を?T で表現し、orelse や if 文でアンラップできる。
 
 ```zig
 // ?T は null を許容
@@ -85,9 +84,11 @@ if (value) |v| {
 const y = value.?;
 ```
 
+orelse や orerror という演算子があるのが面白い。
+
 ### エラーユニオン
 
-エラーまたは値を返す!T型で、明示的なエラーハンドリングを強制できる。
+エラーまたは値を返す!T 型で、明示的なエラーハンドリングを強制できる。
 
 ```zig
 // !T はエラーまたは値
@@ -120,6 +121,8 @@ const c = a -| 255;  // 飽和減算: 0
 const d = a +% 10;   // 4 (オーバーフロー)
 ```
 
+minmax 相当ですが安全で便利そう。
+
 ### defer と errdefer
 
 スコープ終了時、またはエラー時のみ実行される処理を定義できる。
@@ -137,7 +140,7 @@ try useResource(resource);
 
 ### ペイロードキャプチャ
 
-while、if、switchで値を取り出しながら分岐できる。
+while、if、switch で値を取り出しながら分岐できる。
 
 ```zig
 // while, if, switch でペイロードを取得
@@ -149,4 +152,13 @@ while (iterator.next()) |item| {
 if (optional_ptr) |*ptr| {
     ptr.* = 42;  // 値を変更
 }
+
+if ((fetchValue()) |err| {
+    std.debug.print("error: {}\n", .{err});
+    return;
+}) |value| {
+    std.debug.print("value: {}\n", .{value});
+}
 ```
+
+JS の promise の `then` を面白い書き方できる。
