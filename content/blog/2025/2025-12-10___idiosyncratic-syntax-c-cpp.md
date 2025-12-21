@@ -1,21 +1,20 @@
 ---
-title: "各言語特有っぽい構文: C/C++"
+title: '各言語特有っぽい構文: C/C++'
 date: 2025-12-10 00:00:00
 topics:
   - C
   - C++
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 10日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 10 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```c
 // C - ポインタ演算 + マクロ + 三項演算子
@@ -76,11 +75,53 @@ int main() {
 
 ```c
 int arr[] = {1, 2, 3, 4, 5};
-int *p = arr;       // 配列の先頭
-*(p + 2)            // arr[2] と同じ
-p[2]                // これも同じ
-p++                 // 次の要素へ
-mid - arr           // インデックスを計算
+int *p = arr;    // 配列名はポインタに変換される
+
+p       // 0x1000（アドレス）
+*p      // 1（先頭の値）
+
+// アドレス計算（型のサイズ分だけ移動）
+p + 2     // 0x1008（int=4byte × 2 進む）
+*(p + 2)  // 3（デリファレンスで値取得）
+p[2]      // 3（*(p+2) の糖衣構文）
+
+// ポインタの移動
+p++;  // p が arr[1] を指すようになる
+*p    // 2
+
+// ポインタ同士の引き算 → 要素数の差
+int *mid = arr + 2;
+mid - arr  // 2（インデックスを計算）
+```
+
+複雑なアルゴリズム処理だと使ったほうが良い実装できそうだけど(メモリ節約などもできそう)だけど C 以外から入る人にとっては直感的ではないし危なそうだなと思う。
+
+### 参照 `&` (C++)
+
+ポインタの安全版。null になれず、再代入もできない。
+
+```cpp
+// 値渡し - コピーが発生（遅い）
+void process(std::vector<int> v);
+
+// 参照渡し - コピーなし（高速）
+void process(const std::vector<int>& v);
+
+// 値を変更したい場合
+void increment(int& n) { n++; }
+```
+
+破壊的操作以外にも、高速化やメモリ節約のために使われる。
+
+### std::vector (C++)
+
+可変長配列。C の配列より安全で便利。
+
+```cpp
+std::vector<int> v = {1, 2, 3};
+v.push_back(4);     // 末尾に追加
+v.size();           // 要素数
+v[0];               // アクセス
 ```
 
 ### マクロ (C/C++)
@@ -99,52 +140,30 @@ mid - arr           // インデックスを計算
 #define LOG(fmt, ...) printf("[LOG] " fmt "\n", ##__VA_ARGS__)
 ```
 
-### 構造化束縛 (C++17)
+テキスト置き換えなので何でもできる。だが型安全性がない。  
+定数は `constexpr` を使うし、活用されているか知らない。  
+競技プログラミングでは見かけた。
 
-タプルや構造体を複数の変数に分解して代入できる。
+### 演算子オーバーロード (C++)
 
-```cpp
-// ペアの分解
-auto [left, right] = std::make_pair(0, 10);
-
-// 構造体の分解
-struct Point { int x, y; };
-auto [x, y] = Point{1, 2};
-
-// mapのイテレーション
-for (const auto& [key, value] : map) {
-    std::cout << key << ": " << value << '\n';
-}
-```
-
-### 三方比較演算子 (C++20)
-
-宇宙船演算子（<=>）で大小・等価の比較を一度に行える。
+ユーザー定義型に対して演算子の振る舞いを定義できる。
 
 ```cpp
-// <=> は -1, 0, 1 相当を返す
-auto result = a <=> b;
-if (result < 0)  { /* a < b */ }
-if (result == 0) { /* a == b */ }
-if (result > 0)  { /* a > b */ }
+struct Point {
+    int x, y;
 
-// autoでデフォルト生成
-auto operator<=>(const Point&) const = default;
-```
+    // 加算演算子
+    Point operator+(const Point& other) const {
+        return {x + other.x, y + other.y};
+    }
 
-### std::optional (C++17)
+    // 三方比較演算子 (C++20) - これだけで ==, !=, <, <=, >, >= が全て使える
+    auto operator<=>(const Point&) const = default;
+};
 
-値が存在しない可能性を型安全に表現できる。
-
-```cpp
-std::optional<int> find_value();
-
-auto result = find_value();
-if (result.has_value()) {
-    std::cout << *result;
-}
-// または
-std::cout << result.value_or(-1);
+Point a{1, 2}, b{3, 4};
+Point c = a + b;  // {4, 6}
+a < b;            // true (x, y の順で比較)
 ```
 
 ### ラムダ式 (C++11+)
