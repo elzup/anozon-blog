@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```elixir
 # Elixir - パイプ演算子 + パターンマッチ + ガード
@@ -53,6 +55,9 @@ IO.puts Search2.binary_search([1, 3, 5, 7, 9], 5)  # 2
 ## ピックアップ構文
 
 ### パイプ演算子 `|>`
+
+左の結果を右の関数の第一引数に渡せる。
+
 ```elixir
 # 左の結果を右の第一引数に
 "hello world"
@@ -66,6 +71,9 @@ Enum.reverse(String.split(String.upcase("hello world")))
 ```
 
 ### パターンマッチング
+
+関数の引数やcase式でデータ構造を分解してマッチングできる。
+
 ```elixir
 # 関数の引数でマッチ
 def greet(%{name: name}), do: "Hello, #{name}!"
@@ -84,6 +92,9 @@ end
 ```
 
 ### ガード節
+
+when句で関数やパターンマッチに条件を追加できる。
+
 ```elixir
 # when でガード条件
 def abs(n) when n < 0, do: -n
@@ -103,6 +114,9 @@ end
 ```
 
 ### with式
+
+複数のパターンマッチを連鎖させて、エラーハンドリングを簡潔に書ける。
+
 ```elixir
 # 複数のパターンマッチを連鎖
 with {:ok, user} <- fetch_user(id),
@@ -115,6 +129,9 @@ end
 ```
 
 ### 無名関数
+
+fnやキャプチャ演算子&で無名関数を定義できる。
+
 ```elixir
 # fn で定義
 add = fn a, b -> a + b end
@@ -129,6 +146,9 @@ Enum.map([1, 2, 3], &String.to_string/1)
 ```
 
 ### シギル
+
+~記号で始まる特殊なリテラル記法で、文字列や正規表現などを表現できる。
+
 ```elixir
 ~s(文字列 "引用符" も使える)
 ~r/正規表現/i

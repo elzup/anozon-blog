@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```ocaml
 (* OCaml - パターンマッチ + パイプ演算子 + オプション型 *)
@@ -38,6 +40,9 @@ let () =
 ## ピックアップ構文
 
 ### パターンマッチング
+
+match式やfunction構文で値の構造に基づいた分岐ができる。
+
 ```ocaml
 (* match式 *)
 let describe = function
@@ -56,6 +61,9 @@ let fst (x, _) = x
 ```
 
 ### パイプ演算子 `|>`
+
+左の値を右の関数の第一引数として渡せる。
+
 ```ocaml
 (* 左から右へデータを流す *)
 [1; 2; 3; 4; 5]
@@ -68,6 +76,9 @@ x |> f |> g  (* = g (f x) *)
 ```
 
 ### オプション型
+
+値が存在しない可能性をSomeとNoneで表現できる。
+
 ```ocaml
 (* Some または None *)
 let safe_div a b =
@@ -85,6 +96,9 @@ Option.bind (Some 5) (fun x -> Some (x * 2))
 ```
 
 ### ラベル付き引数とオプション引数
+
+引数に名前を付けたり、デフォルト値を持つオプション引数を定義できる。
+
 ```ocaml
 (* ラベル付き引数 ~name *)
 let greet ~name ~greeting = greeting ^ ", " ^ name ^ "!"
@@ -97,6 +111,9 @@ let _ = greet ~greeting:"Hi" "Bob" (* "Hi, Bob!" *)
 ```
 
 ### let式とlet-in
+
+ローカルバインディングや再帰関数を定義できる。
+
 ```ocaml
 (* ローカルバインディング *)
 let x = 1 in
@@ -113,6 +130,9 @@ and odd n = n <> 0 && even (n - 1)
 ```
 
 ### ファンクタ
+
+モジュールを引数に取り、新しいモジュールを生成する高階モジュール。
+
 ```ocaml
 (* モジュールを引数に取るモジュール *)
 module type OrderedType = sig

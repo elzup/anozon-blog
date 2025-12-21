@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 ```php
 <?php
 function binarySearch(array $arr, mixed $target): int {

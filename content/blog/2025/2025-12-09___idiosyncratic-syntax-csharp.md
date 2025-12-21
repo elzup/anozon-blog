@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```csharp
 // C# - パターンマッチング + switch式 + null許容型
@@ -50,6 +52,9 @@ class Program
 ## ピックアップ構文
 
 ### switch式 (C# 8.0+)
+
+値を返す式として使えるswitch文。
+
 ```csharp
 // 式として値を返す
 var result = value switch
@@ -72,6 +77,9 @@ var quadrant = (x, y) switch
 ```
 
 ### パターンマッチング
+
+型やプロパティの値に基づいてパターンマッチングができる。
+
 ```csharp
 // 型パターン
 if (obj is string s) { Console.WriteLine(s.Length); }
@@ -84,6 +92,9 @@ if (arr is [var first, .., var last]) { }
 ```
 
 ### null許容型とnull合体演算子
+
+nullを許容する型とnull時のデフォルト値を提供する演算子。
+
 ```csharp
 // null許容値型
 int? value = null;
@@ -98,6 +109,9 @@ arr?[0]?.ToString();
 ```
 
 ### タプルと分解
+
+複数の値をグループ化して返したり、変数に分解代入できる。
+
 ```csharp
 // タプルリテラル
 var point = (x: 10, y: 20);
@@ -112,6 +126,9 @@ public void Deconstruct(out int x, out int y) => (x, y) = (X, Y);
 ```
 
 ### LINQ
+
+統合されたクエリ構文でコレクションやデータソースを操作できる。
+
 ```csharp
 // クエリ構文
 var result = from x in numbers
@@ -126,6 +143,9 @@ var result = numbers
 ```
 
 ### ラムダ式と式形式メンバー
+
+簡潔にラムダ式やメソッド・プロパティを式形式で定義できる。
+
 ```csharp
 // ラムダ
 Func<int, int> square = x => x * x;
@@ -138,6 +158,9 @@ public string Name => $"{FirstName} {LastName}";
 ```
 
 ### 拡張メソッド
+
+既存のクラスを変更せずに新しいメソッドを追加できる。
+
 ```csharp
 // 既存のクラスにメソッドを追加（クラス変更不要）
 public static class StringExtensions

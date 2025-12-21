@@ -13,6 +13,8 @@ emoji: 🔡
 
 個人的な好みを交えて紹介します。
 
+二分探索のサンプルコード
+
 
 ```go
 // Go - 多値返却 + 名前付き戻り値 + defer
@@ -48,6 +50,9 @@ func main() {
 ## ピックアップ構文
 
 ### 多値返却
+
+関数から複数の値を同時に返すことができる。
+
 ```go
 // 複数の値を返す
 func divide(a, b int) (int, error) {
@@ -67,6 +72,9 @@ result, _ := divide(10, 2)
 ```
 
 ### 名前付き戻り値
+
+戻り値に名前を付けて、naked returnで返せる。
+
 ```go
 // 戻り値に名前を付ける
 func split(sum int) (x, y int) {
@@ -77,6 +85,9 @@ func split(sum int) (x, y int) {
 ```
 
 ### 短縮変数宣言 `:=`
+
+型推論で変数の宣言と代入を同時に行える。
+
 ```go
 // 型推論で宣言と代入
 x := 10
@@ -92,6 +103,9 @@ for i := 0; i < 10; i++ { }
 ```
 
 ### defer
+
+関数終了時に必ず実行される処理を登録できる。
+
 ```go
 // 関数終了時に実行
 func readFile(path string) ([]byte, error) {
@@ -111,6 +125,9 @@ defer fmt.Println("2")
 ```
 
 ### goroutine と channel
+
+軽量な並行処理とゴルーチン間の通信機能。
+
 ```go
 // 並行処理
 go func() {
@@ -134,6 +151,9 @@ default:
 ```
 
 ### interface
+
+暗黙的にインターフェースを実装し、型アサーションで型を判定できる。
+
 ```go
 // 暗黙的な実装
 type Reader interface {
