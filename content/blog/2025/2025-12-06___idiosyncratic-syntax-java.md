@@ -5,7 +5,7 @@ topics:
   - Java
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
