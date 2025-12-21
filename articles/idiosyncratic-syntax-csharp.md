@@ -1,20 +1,19 @@
 ---
-title: "各言語特有っぽい構文: C#"
+title: '各言語特有っぽい構文: C#'
 date: 2025-12-09 00:00:00
 topics:
   - C#
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 9日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 9 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```csharp
 // C# - パターンマッチング + switch式 + null許容型
@@ -51,9 +50,9 @@ class Program
 
 ## ピックアップ構文
 
-### switch式 (C# 8.0+)
+### switch 式 (C# 8.0+)
 
-値を返す式として使えるswitch文。
+値を返す式として使える switch 文。
 
 ```csharp
 // 式として値を返す
@@ -91,9 +90,67 @@ if (person is { Name: "Alice", Age: > 18 }) { }
 if (arr is [var first, .., var last]) { }
 ```
 
-### null許容型とnull合体演算子
+### LINQ
 
-nullを許容する型とnull時のデフォルト値を提供する演算子。
+統合されたクエリ構文でコレクションやデータソースを操作できる。
+
+```csharp
+// クエリ構文
+var result = from x in numbers
+             where x > 0
+             select x * 2;
+
+// メソッド構文
+var result = numbers
+    .Where(x => x > 0)
+    .Select(x => x * 2)
+    .ToList();
+```
+
+とてもスマートに書けて良い。ラムダを渡す必要もない。
+
+### ラムダ式と式形式メンバー
+
+簡潔にラムダ式やメソッド・プロパティを式形式で定義できる。
+
+```csharp
+// ラムダ
+Func<int, int> square = x => x * x;
+
+// 式形式メソッド
+public int Double(int x) => x * 2;
+
+// 式形式プロパティ
+public string Name => $"{FirstName} {LastName}";
+```
+
+メソッドでも代入文なしに書けるのは特徴的。
+
+### 拡張メソッド
+
+既存のクラスを変更せずに新しいメソッドを追加できる。
+
+```csharp
+// 既存のクラスにメソッドを追加（クラス変更不要）
+public static class StringExtensions
+{
+    // this キーワードで対象の型を指定
+    public static bool IsNullOrEmpty(this string? s) => string.IsNullOrEmpty(s);
+    public static string Reverse(this string s) => new(s.Reverse().ToArray());
+}
+
+// 使用：インスタンスメソッドのように呼べる
+"hello".Reverse();        // "olleh"
+string? s = null;
+s.IsNullOrEmpty();        // true
+
+// LINQも拡張メソッドで実装されている
+numbers.Where(x => x > 0);  // IEnumerable<T> への拡張
+```
+
+### null 許容型と null 合体演算子
+
+null を許容する型と null 時のデフォルト値を提供する演算子。
 
 ```csharp
 // null許容値型
@@ -120,61 +177,4 @@ Console.WriteLine(point.x);
 // 分解代入
 var (left, right) = (0, arr.Length - 1);
 (left, right) = (right, left);  // スワップ
-
-// Deconstruct メソッド
-public void Deconstruct(out int x, out int y) => (x, y) = (X, Y);
-```
-
-### LINQ
-
-統合されたクエリ構文でコレクションやデータソースを操作できる。
-
-```csharp
-// クエリ構文
-var result = from x in numbers
-             where x > 0
-             select x * 2;
-
-// メソッド構文
-var result = numbers
-    .Where(x => x > 0)
-    .Select(x => x * 2)
-    .ToList();
-```
-
-### ラムダ式と式形式メンバー
-
-簡潔にラムダ式やメソッド・プロパティを式形式で定義できる。
-
-```csharp
-// ラムダ
-Func<int, int> square = x => x * x;
-
-// 式形式メソッド
-public int Double(int x) => x * 2;
-
-// 式形式プロパティ
-public string Name => $"{FirstName} {LastName}";
-```
-
-### 拡張メソッド
-
-既存のクラスを変更せずに新しいメソッドを追加できる。
-
-```csharp
-// 既存のクラスにメソッドを追加（クラス変更不要）
-public static class StringExtensions
-{
-    // this キーワードで対象の型を指定
-    public static bool IsNullOrEmpty(this string? s) => string.IsNullOrEmpty(s);
-    public static string Reverse(this string s) => new(s.Reverse().ToArray());
-}
-
-// 使用：インスタンスメソッドのように呼べる
-"hello".Reverse();        // "olleh"
-string? s = null;
-s.IsNullOrEmpty();        // true
-
-// LINQも拡張メソッドで実装されている
-numbers.Where(x => x > 0);  // IEnumerable<T> への拡張
 ```

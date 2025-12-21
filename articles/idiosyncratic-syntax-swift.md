@@ -1,20 +1,19 @@
 ---
-title: "各言語特有っぽい構文: Swift"
+title: '各言語特有っぽい構文: Swift'
 date: 2025-12-08 00:00:00
 topics:
   - Swift
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 8日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 8 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```swift
 // Swift - guard + where句 + オプショナルチェーン
@@ -39,7 +38,7 @@ print(binarySearch(arr, target: 5) ?? -1)  // 2
 
 ## ピックアップ構文
 
-### guard文
+### guard 文
 
 早期リターンで条件を明示的にチェックし、スコープ外で変数を使える。
 
@@ -58,7 +57,7 @@ guard let x = optX, let y = optY, x > y else {
 }
 ```
 
-### switch + where句
+### switch + where 句
 
 パターンマッチングと追加の条件を組み合わせた分岐。
 
@@ -137,6 +136,8 @@ UIView.animate(withDuration: 0.3) {
 }
 ```
 
+自分はとても好きなやつ。
+
 ### $0, $1 (暗黙の引数名)
 
 クロージャの引数を短縮して記述できる暗黙的な引数名。
@@ -166,6 +167,8 @@ func readFile() {
 defer { print("1") }
 defer { print("2") }  // 出力: 2, 1
 ```
+
+一瞬可読性が下がる気がしたが、リソース管理などのクリーンアップをまとめて書けるのは良さそう。
 
 ### willSet / didSet (プロパティオブザーバー)
 
@@ -215,9 +218,9 @@ var body: some View {
 }
 ```
 
-### @resultBuilder (DSLビルダー)
+### @resultBuilder (DSL ビルダー)
 
-宣言的なDSL（Domain Specific Language）を構築できる機能。
+宣言的な DSL（Domain Specific Language）を構築できる機能。
 
 ```swift
 // SwiftUIのView構築で使用
@@ -231,3 +234,5 @@ var body: some View {
     }  // 配列でもクロージャでもない宣言的構文
 }
 ```
+
+とても面白い機能。

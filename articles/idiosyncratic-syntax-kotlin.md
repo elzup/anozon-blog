@@ -1,20 +1,19 @@
 ---
-title: "各言語特有っぽい構文: Kotlin"
+title: '各言語特有っぽい構文: Kotlin'
 date: 2025-12-07 00:00:00
 topics:
   - Kotlin
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 7日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 7 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```kotlin
 // Kotlin - when式 + 分解宣言 + スコープ関数
@@ -42,9 +41,9 @@ fun main() {
 
 ## ピックアップ構文
 
-### when式
+### when 式
 
-switch文より強力なパターンマッチングを持つ分岐式。
+switch 文より強力なパターンマッチングを持つ分岐式。
 
 ```kotlin
 // switch文の強力な代替
@@ -64,9 +63,23 @@ when {
 }
 ```
 
+### bit 演算子
+
+```
+(0b1010 ushr 1) // 論理右シフト
+(0b1010 shl 1)  // 左シフト
+(0b1010 inv())  // ビット反転
+(0b1010 and 0b1100) // AND
+(0b1010 or 0b1100)  // OR
+(0b1010 xor 0b1100) // XOR
+```
+
+シフト系も用意されている。  
+トップレベル関数が多い。
+
 ### 分解宣言
 
-PairやData Classの値を複数の変数に一度に代入できる。
+Pair や Data Class の値を複数の変数に一度に代入できる。
 
 ```kotlin
 // Pairやdata classの分解
@@ -78,6 +91,8 @@ for ((key, value) in map) {
     println("$key: $value")
 }
 ```
+
+`.entries` や 拡張 for に相当する。
 
 ### スコープ関数
 
@@ -117,9 +132,9 @@ fun String.addExclamation() = this + "!"
 fun <T> List<T>.secondOrNull(): T? = getOrNull(1)
 ```
 
-### Elvis演算子 `?:`
+### Elvis 演算子 `?:`
 
-nullの場合にデフォルト値を提供する演算子。
+null の場合にデフォルト値を提供する演算子。
 
 ```kotlin
 // null時のデフォルト値
@@ -130,7 +145,7 @@ val value = getValue() ?: return
 val length = str?.length ?: throw IllegalArgumentException()
 ```
 
-### infix関数
+### infix 関数
 
 中置記法で呼び出せる関数を定義できる。
 
@@ -144,3 +159,5 @@ infix fun Int.times(str: String) = str.repeat(this)
 1 until 10     // 1..9
 list zip other // ペアのリスト
 ```
+
+Ruby にもあった気がするが他言語ではあまり馴染みがない。
