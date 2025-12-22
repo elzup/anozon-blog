@@ -2,7 +2,7 @@
 title: '各言語特有っぽい構文: C#'
 date: 2025-12-09 00:00:00
 topics:
-  - C#
+  - CSharp
   - プログラミング言語
 type: tech
 published: true
