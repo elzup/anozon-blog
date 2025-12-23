@@ -1,5 +1,5 @@
 ---
-title: "各言語特有っぽい構文: OCaml"
+title: '各言語特有っぽい構文: OCaml'
 date: 2025-12-15 00:00:00
 topics:
   - OCaml
@@ -9,12 +9,12 @@ published: false
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 15日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 15 日目の記事です。
 
-個人的な好みを交えて紹介します。
+個人的な好みを交えて紹介します。  
+OCamel に関しては未経験で初心者視点です。
 
 二分探索のサンプルコード
-
 
 ```ocaml
 (* OCaml - パターンマッチ + パイプ演算子 + オプション型 *)
@@ -37,97 +37,9 @@ let () =
   |> print_int  (* 2 *)
 ```
 
+だいぶ Haskell に似ているレイアウトでかける。
+
 ## ピックアップ構文
-
-### パターンマッチング
-
-match式やfunction構文で値の構造に基づいた分岐ができる。
-
-```ocaml
-(* match式 *)
-let describe = function
-  | 0 -> "zero"
-  | 1 -> "one"
-  | n when n < 0 -> "negative"
-  | _ -> "other"
-
-(* リストパターン *)
-let rec sum = function
-  | [] -> 0
-  | x :: xs -> x + sum xs
-
-(* タプルパターン *)
-let fst (x, _) = x
-```
-
-### パイプ演算子 `|>`
-
-左の値を右の関数の第一引数として渡せる。
-
-```ocaml
-(* 左から右へデータを流す *)
-[1; 2; 3; 4; 5]
-|> List.filter (fun x -> x mod 2 = 0)
-|> List.map (fun x -> x * 2)
-|> List.fold_left (+) 0  (* 12 *)
-
-(* 関数適用の逆順 *)
-x |> f |> g  (* = g (f x) *)
-```
-
-### オプション型
-
-値が存在しない可能性をSomeとNoneで表現できる。
-
-```ocaml
-(* Some または None *)
-let safe_div a b =
-  if b = 0 then None else Some (a / b)
-
-(* パターンマッチで処理 *)
-match safe_div 10 2 with
-| Some x -> print_int x
-| None -> print_string "error"
-
-(* Option モジュール *)
-Option.map (fun x -> x * 2) (Some 5)  (* Some 10 *)
-Option.value ~default:0 (Some 5)      (* 5 *)
-Option.bind (Some 5) (fun x -> Some (x * 2))
-```
-
-### ラベル付き引数とオプション引数
-
-引数に名前を付けたり、デフォルト値を持つオプション引数を定義できる。
-
-```ocaml
-(* ラベル付き引数 ~name *)
-let greet ~name ~greeting = greeting ^ ", " ^ name ^ "!"
-let _ = greet ~name:"Alice" ~greeting:"Hello"
-
-(* オプション引数 ?name *)
-let greet ?(greeting="Hello") name = greeting ^ ", " ^ name ^ "!"
-let _ = greet "Alice"              (* "Hello, Alice!" *)
-let _ = greet ~greeting:"Hi" "Bob" (* "Hi, Bob!" *)
-```
-
-### let式とlet-in
-
-ローカルバインディングや再帰関数を定義できる。
-
-```ocaml
-(* ローカルバインディング *)
-let x = 1 in
-let y = 2 in
-x + y
-
-(* 再帰関数 *)
-let rec factorial n =
-  if n <= 1 then 1 else n * factorial (n - 1)
-
-(* 相互再帰 *)
-let rec even n = n = 0 || odd (n - 1)
-and odd n = n <> 0 && even (n - 1)
-```
 
 ### ファンクタ
 
@@ -148,4 +60,122 @@ module MakeSet (Ord : OrderedType) = struct
 end
 
 module IntSet = MakeSet(Int)
+```
+
+ジェネリクスのモジュール版のような機能。
+
+### ラベル付き引数とオプション引数
+
+引数に名前を付けたり、デフォルト値を持つオプション引数を定義できる。
+
+```ocaml
+(* ラベル付き引数 ~name *)
+let greet ~name ~greeting = greeting ^ ", " ^ name ^ "!"
+let _ = greet ~name:"Alice" ~greeting:"Hello"
+
+(* オプション引数 ?name *)
+let greet ?(greeting="Hello") name = greeting ^ ", " ^ name ^ "!"
+let _ = greet "Alice"              (* "Hello, Alice!" *)
+let _ = greet ~greeting:"Hi" "Bob" (* "Hi, Bob!" *)
+```
+
+### コメント構文 `(* ... *)`
+
+ネスト可能なブロックコメント。
+
+```ocaml
+(* 単一行コメント *)
+
+(* 複数行
+   コメント *)
+
+(* ネストも可能
+   (* 内側のコメント *)
+   外側に戻る *)
+
+(* コードをコメントアウトするとき便利
+let x = (* 一時的に無効化 *) 1
+*)
+```
+
+見たことない記号の組み合わせを使っている。
+ネスト可能なのが特殊だ。
+
+### パイプ演算子 `|>`
+
+左の値を右の関数の第一引数として渡せる。
+
+```ocaml
+(* 左から右へデータを流す *)
+[1; 2; 3; 4; 5]
+|> List.filter (fun x -> x mod 2 = 0)
+|> List.map (fun x -> x * 2)
+|> List.fold_left (+) 0  (* 12 *)
+
+(* 関数適用の逆順 *)
+x |> f |> g  (* = g (f x) *)
+```
+
+F# や Elixir にも広まった。
+
+### let 式と let-in
+
+ローカルバインディングや再帰関数を定義できる。
+
+```ocaml
+(* ローカルバインディング *)
+let x = 1 in
+let y = 2 in
+x + y
+
+(* 再帰関数 *)
+let rec factorial n =
+  if n <= 1 then 1 else n * factorial (n - 1)
+
+(* 相互再帰 *)
+let rec even n = n = 0 || odd (n - 1)
+and odd n = n <> 0 && even (n - 1)
+```
+
+相互再帰の短絡評価は馴染みがないと不思議に見える。
+
+### パターンマッチング
+
+match 式や function 構文で値の構造に基づいた分岐ができる。
+
+```ocaml
+(* match式 *)
+let describe = function
+  | 0 -> "zero"
+  | 1 -> "one"
+  | n when n < 0 -> "negative"
+  | _ -> "other"
+
+(* リストパターン *)
+let rec sum = function
+  | [] -> 0
+  | x :: xs -> x + sum xs
+
+(* タプルパターン *)
+let fst (x, _) = x
+```
+
+### オプション型
+
+値が存在しない可能性を Some と None で表現できる。
+
+```ocaml
+(* Some または None *)
+let safe_div a b =
+  if b = 0 then None else Some (a / b)
+
+(* パターンマッチで処理 *)
+match safe_div 10 2 with
+| Some x -> print_int x
+| None -> print_string "error"
+
+(* Option モジュール *)
+Option.map (fun x -> x * 2) (Some 5)  (* Some 10 *)
+Option.value ~default:0 (Some 5)      (* 5 *)
+Option.bind (Some 5) (fun x -> Some (x * 2))
 ```
