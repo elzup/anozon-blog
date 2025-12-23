@@ -111,7 +111,7 @@ end
 with_logging { puts "hello" }
 ```
 
-多言語のジェネレータの `yield` と別物。呼び出しは Swift の trailing closure に似ている
+他言語のジェネレータの `yield` と別物。呼び出しは Swift の trailing closure に似ている
 
 ### 宇宙船演算子 `<=>`
 
