@@ -35,6 +35,99 @@ main = print $ fromMaybe (-1) $ binarySearch [1, 3, 5, 7, 9] 5  -- 2
 
 ## ピックアップ構文
 
+### 関数合成 `.`
+
+複数の関数を合成して新しい関数を作成できる。
+
+```haskell
+-- 関数を合成
+-- (f . g) x = f (g x)
+
+-- 例
+doubleNegate = negate . (*2)
+doubleNegate 3  -- -6
+
+-- パイプライン風に（右から左へ実行）
+process = reverse . map toUpper . filter isAlpha
+```
+
+数式のように、これ以上なくシンプルに関数合成が書ける。
+
+### ポイントフリースタイル
+
+引数を明示せずに関数を合成して定義するスタイル。
+
+```haskell
+-- 引数を省略
+sum' = foldr (+) 0
+double = map (*2)
+lengths = map length
+
+-- 同等の明示的記述
+sum' xs = foldr (+) 0 xs
+double xs = map (*2) xs
+```
+
+ちょっと可読性が下がりそう。
+
+### do 記法
+
+モナドの連鎖を命令型風に記述できる構文糖衣。
+
+```haskell
+-- モナドを順次実行
+main :: IO ()
+main = do
+  putStrLn "What's your name?"
+  name <- getLine
+  putStrLn $ "Hello, " ++ name ++ "!"
+
+-- Maybeモナド
+safeDivide :: Int -> Int -> Maybe Int
+safeDivide _ 0 = Nothing
+safeDivide a b = Just (a `div` b)
+
+calculate :: Maybe Int
+calculate = do
+  x <- safeDivide 10 2
+  y <- safeDivide x 2
+  return (x + y)
+
+-- 同等の明示的記述
+calculate' :: Maybe Int
+calculate' =
+  safeDivide 10 2 >>= \x ->
+  safeDivide x 2 >>= \y ->
+  return (x + y)
+```
+
+命令型言語のようにもかける。
+
+### 末尾再帰と where
+
+Haskell にはループがなく、繰り返しは再帰で表現する。`where` で内部関数を定義し、引数で状態を持ち回す。
+
+```haskell
+-- 二分探索: go が末尾再帰のヘルパー関数
+binarySearch arr target = go 0 (length arr - 1)
+  where
+    go left right
+      | left > right = Nothing
+      | otherwise = case compare (arr !! mid) target of
+          EQ -> Just mid
+          LT -> go (mid + 1) right  -- 新しい値で再帰
+          GT -> go left (mid - 1)
+      where mid = (left + right) `div` 2
+
+-- 階乗: アキュムレータパターン
+factorial n = go n 1
+  where
+    go 0 acc = acc
+    go n acc = go (n - 1) (n * acc)
+```
+
+末尾再帰はコンパイラがループに最適化する。
+
 ### ガード
 
 関数定義で条件分岐をガード節として記述できる。
@@ -76,61 +169,6 @@ describe x = case x of
   Nothing -> "No value"
 ```
 
-### 関数合成 `.`
-
-複数の関数を合成して新しい関数を作成できる。
-
-```haskell
--- 関数を合成
-f . g = \x -> f (g x)
-
--- 例
-doubleNegate = negate . (*2)
-doubleNegate 3  -- -6
-
--- パイプライン風に
-process = reverse . map toUpper . filter isAlpha
-```
-
-### ポイントフリースタイル
-
-引数を明示せずに関数を合成して定義するスタイル。
-
-```haskell
--- 引数を省略
-sum' = foldr (+) 0
-double = map (*2)
-lengths = map length
-
--- 同等の明示的記述
-sum' xs = foldr (+) 0 xs
-double xs = map (*2) xs
-```
-
-### do 記法
-
-モナドの連鎖を命令型風に記述できる構文糖衣。
-
-```haskell
--- モナドを順次実行
-main :: IO ()
-main = do
-  putStrLn "What's your name?"
-  name <- getLine
-  putStrLn $ "Hello, " ++ name ++ "!"
-
--- Maybeモナド
-safeDivide :: Int -> Int -> Maybe Int
-safeDivide _ 0 = Nothing
-safeDivide a b = Just (a `div` b)
-
-calculate :: Maybe Int
-calculate = do
-  x <- safeDivide 10 2
-  y <- safeDivide x 2
-  return (x + y)
-```
-
 ### リスト内包表記
 
 条件付きでリストを生成する簡潔な記法。
@@ -143,6 +181,8 @@ calculate = do
 [(x, y) | x <- [1,2,3], y <- ['a','b']]
 -- [(1,'a'),(1,'b'),(2,'a'),(2,'b'),(3,'a'),(3,'b')]
 ```
+
+なぜか Python にもあるやつ。
 
 ### 中置記法とバッククォート
 
@@ -158,4 +198,4 @@ calculate = do
 map (*2) [1,2,3]  -- [2,4,6]
 ```
 
-前置記法にできるのが面白い。
+前置記法にできるのが珍しくて面白い。
