@@ -1,5 +1,5 @@
 ---
-title: "各言語特有っぽい構文: Haskell"
+title: '各言語特有っぽい構文: Haskell'
 date: 2025-12-14 00:00:00
 topics:
   - Haskell
@@ -9,12 +9,11 @@ published: false
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 14日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 14 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```haskell
 -- Haskell - ガード + パターンマッチ + モナド
@@ -58,7 +57,7 @@ grade score
 
 ### パターンマッチング
 
-関数の引数やcase式でデータ構造を分解してマッチングできる。
+関数の引数や case 式でデータ構造を分解してマッチングできる。
 
 ```haskell
 -- リストパターン
@@ -108,7 +107,7 @@ sum' xs = foldr (+) 0 xs
 double xs = map (*2) xs
 ```
 
-### do記法
+### do 記法
 
 モナドの連鎖を命令型風に記述できる構文糖衣。
 
@@ -158,3 +157,5 @@ calculate = do
 (+) 1 2  -- 3
 map (*2) [1,2,3]  -- [2,4,6]
 ```
+
+前置記法にできるのが面白い。
