@@ -1,22 +1,21 @@
 ---
-title: "各言語特有っぽい構文: Lua"
+title: '各言語特有っぽい構文: Lua'
 date: 2025-12-20 00:00:00
 topics:
   - Lua
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 20日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 20 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
 
 言語の特徴をあえて使い実装している。
-
 
 ```lua
 -- Lua - テーブル + メタテーブル + コルーチン
@@ -41,6 +40,9 @@ end
 local arr = {1, 3, 5, 7, 9}
 print(binarySearch(arr, 5) or -1)  -- 3 (Luaは1始まり)
 ```
+
+軽量なのでゲーム組み込み用途でも有名。テーブル一つで何でも表現するミニマルな設計思想。
+ミニマルすぎて今では珍しい構文は少ない。
 
 ## ピックアップ構文
 
@@ -67,6 +69,8 @@ print(person["age"])  -- 30
 local mixed = {1, 2, 3, name = "test"}
 ```
 
+1 始まりやテーブルという構造しかないのは特徴的。テーブルは PHP の連想配列に似ている。
+
 ### メタテーブル
 
 テーブルの動作をカスタマイズし、オブジェクト指向や演算子オーバーロードを実現できる。
@@ -91,25 +95,6 @@ end
 
 local v1 = Vector.new(3, 4)
 print(v1:length())  -- 5
-```
-
-### 複数戻り値
-
-関数から複数の値を同時に返すことができる。
-
-```lua
--- 複数の値を返す
-function minmax(arr)
-    local min, max = arr[1], arr[1]
-    for _, v in ipairs(arr) do
-        if v < min then min = v end
-        if v > max then max = v end
-    end
-    return min, max
-end
-
-local min, max = minmax({3, 1, 4, 1, 5})
-print(min, max)  -- 1 5
 ```
 
 ### コルーチン
@@ -156,6 +141,8 @@ if value ~= nil then
     -- nil でない
 end
 ```
+
+`and`/`or` で三項演算子を再現する書き方は Lua イディオム。`~=` も独特。
 
 ### 可変長引数
 
