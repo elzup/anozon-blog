@@ -15,6 +15,8 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```java
 // Java - ジェネリクス + Optional + Stream
 import java.util.*;
