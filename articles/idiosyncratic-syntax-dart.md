@@ -1,15 +1,15 @@
 ---
-title: "各言語特有っぽい構文: Dart"
+title: '各言語特有っぽい構文: Dart'
 date: 2025-12-21 00:00:00
 topics:
   - Dart
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 21日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 21 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
@@ -17,9 +17,7 @@ emoji: 🔡
 
 言語の特徴をあえて使い実装している。
 
-
 ```dart
-// Dart - Null安全 + カスケード記法 + 拡張メソッド
 int? binarySearch<T extends Comparable>(List<T> arr, T target) {
   var (left, right) = (0, arr.length - 1);
 
@@ -45,29 +43,9 @@ void main() {
 }
 ```
 
+Flutter でお馴染み。Java や C# の良いところを取り入れつつモダンな構文。
+
 ## ピックアップ構文
-
-### Null安全
-
-型システムでnullを明示的に扱い、null参照エラーを防げる。
-
-```dart
-// Null許容型
-String? name;  // nullを許容
-String name = "Alice";  // nullは不可
-
-// Null合体演算子
-String displayName = name ?? "anonymous";
-
-// Null条件アクセス
-int? length = name?.length;
-
-// Null合体代入
-name ??= "default";
-
-// 強制アンラップ
-String s = nullableString!;
-```
 
 ### カスケード記法 `..`
 
@@ -87,13 +65,48 @@ final query = StringBuilder()
   ..write('* ')
   ..write('FROM users');
 
+// 以下と同等
+final query = StringBuilder();
+query.write('SELECT ');
+query.write('* ');
+query.write('FROM users');
+
+
 // null条件カスケード
 list?..add(1)..add(2);
 ```
 
+戻り値に関わらずメソッドチェーンっぽく書ける。面白い。
+
+### コレクション操作
+
+スプレッド演算子やコレクション if/for でコレクションを簡潔に操作できる。
+
+```dart
+// スプレッド演算子
+final combined = [...list1, ...list2];
+
+// コレクション if/for
+final list = [
+  'a',
+  if (condition) 'b',
+  for (var i in items) i.toUpperCase(),
+];
+
+// メソッドチェーン
+[1, -2, 3, -4, 5]
+    .where((n) => n > 0)
+    .map((n) => n * 2)
+    .toList();
+```
+
+リテラル内で if/for が使えるのは珍しい。
+JS の `['a', ...(condition ? ['b'] : [])]` が `['a', if (condition) 'b']` で書ける。
+JSX の `{condition && <div/>}` 同様、宣言的 UI 記述向けの構文。
+
 ### パターンマッチング (Dart 3)
 
-switch式やif-caseで値の構造に基づいた分岐ができる。
+switch 式や if-case で値の構造に基づいた分岐ができる。
 
 ```dart
 // switch式
@@ -113,42 +126,7 @@ if (json case {'name': String name, 'age': int age}) {
 var (left, right) = (0, 10);
 ```
 
-### 拡張メソッド
-
-既存のクラスを変更せずに新しいメソッドを追加できる。
-
-```dart
-// 既存クラスにメソッドを追加
-extension StringExtension on String {
-  String get reversed => split('').reversed.join();
-  String times(int n) => this * n;
-}
-
-"hello".reversed;  // "olleh"
-"ab".times(3);     // "ababab"
-```
-
-### コレクション操作
-
-スプレッド演算子やコレクションif/forでコレクションを簡潔に操作できる。
-
-```dart
-// スプレッド演算子
-final combined = [...list1, ...list2];
-
-// コレクション if/for
-final list = [
-  'a',
-  if (condition) 'b',
-  for (var i in items) i.toUpperCase(),
-];
-
-// メソッドチェーン
-final result = numbers
-    .where((n) => n > 0)
-    .map((n) => n * 2)
-    .toList();
-```
+Dart 3 で一気に表現力が上がった。`case` でガードも書ける。
 
 ### 名前付き引数とデフォルト値
 
@@ -166,3 +144,5 @@ void log(String message, [String? prefix]) {
   print('${prefix ?? "LOG"}: $message');
 }
 ```
+
+独特な構文。Python などのキーワード引数や TypeScript の オブジェクト形式の引数とは違う考え方。
