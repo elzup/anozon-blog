@@ -1,20 +1,20 @@
 ---
-title: "各言語特有っぽい構文: Elixir"
+title: '各言語特有っぽい構文: Elixir'
 date: 2025-12-17 00:00:00
 topics:
   - Elixir
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 17日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 17 日目の記事です。
 
 個人的な好みを交えて紹介します。
+Elixir は勉強中なので、入門的な内容です。
 
 二分探索のサンプルコード
-
 
 ```elixir
 # Elixir - パイプ演算子 + パターンマッチ + ガード
@@ -36,20 +36,7 @@ defmodule Search do
   end
 end
 
-# より簡潔な実装
-defmodule Search2 do
-  def binary_search(arr, target) do
-    arr
-    |> Enum.with_index()
-    |> Enum.find(fn {v, _} -> v == target end)
-    |> case do
-      {_, idx} -> idx
-      nil -> -1
-    end
-  end
-end
-
-IO.puts Search2.binary_search([1, 3, 5, 7, 9], 5)  # 2
+IO.puts Search.binary_search([1, 3, 5, 7, 9], 5)  # 2
 ```
 
 ## ピックアップ構文
@@ -70,30 +57,77 @@ IO.puts Search2.binary_search([1, 3, 5, 7, 9], 5)  # 2
 Enum.reverse(String.split(String.upcase("hello world")))
 ```
 
-### パターンマッチング
+パイプは F#発祥だが、Elixir が普及に貢献した印象がある。
 
-関数の引数やcase式でデータ構造を分解してマッチングできる。
+### with 式
+
+複数のパターンマッチを連鎖させて、エラーハンドリングを簡潔に書ける。
 
 ```elixir
-# 関数の引数でマッチ
-def greet(%{name: name}), do: "Hello, #{name}!"
-def greet(_), do: "Hello, stranger!"
-
-# case式
-case value do
-  {:ok, result} -> result
-  {:error, reason} -> raise reason
-  _ -> :unknown
+# 複数のパターンマッチを連鎖
+with {:ok, user} <- fetch_user(id),
+     {:ok, posts} <- fetch_posts(user),
+     {:ok, comments} <- fetch_comments(posts) do
+  {:ok, %{user: user, posts: posts, comments: comments}}
+else
+  {:error, reason} -> {:error, reason}
 end
+```
 
-# リストパターン
-[head | tail] = [1, 2, 3]
-# head = 1, tail = [2, 3]
+### シギル
+
+~記号で始まる特殊なリテラル記法で、文字列や正規表現などを表現できる。
+
+```elixir
+~s(文字列 "引用符" も使える)
+~r/正規表現/i
+~w(word list here)           # ["word", "list", "here"]
+~w(atoms list here)a         # [:atoms, :list, :here]
+~D[2024-01-01]               # Date
+~T[12:00:00]                 # Time
+```
+
+特殊な記法である。シギルをユーザー定義できてとても拡張性の高い仕組み。
+
+### プロセス
+
+軽量プロセスを spawn で生成し、send/receive でメッセージをやり取りできる。
+
+```elixir
+# プロセス生成
+pid = spawn(fn ->
+  receive do
+    {:hello, msg} -> IO.puts("Received: #{msg}")
+  end
+end)
+
+# メッセージ送信
+send(pid, {:hello, "world"})
+
+# 自分自身の PID
+self()
+```
+
+### キャプチャ演算子 `&`
+
+関数を簡潔に参照・定義できる。
+
+```elixir
+# 短縮記法
+double = &(&1 * 2)
+double.(5)  # 10
+
+# 関数参照
+Enum.map([1, 2, 3], &String.to_string/1)
+
+# 複数引数
+add = &(&1 + &2)
+add.(1, 2)  # 3
 ```
 
 ### ガード節
 
-when句で関数やパターンマッチに条件を追加できる。
+when 句で関数やパターンマッチに条件を追加できる。
 
 ```elixir
 # when でガード条件
@@ -113,47 +147,25 @@ case value do
 end
 ```
 
-### with式
+### パターンマッチング
 
-複数のパターンマッチを連鎖させて、エラーハンドリングを簡潔に書ける。
+関数の引数や case 式でデータ構造を分解してマッチングできる。
 
 ```elixir
-# 複数のパターンマッチを連鎖
-with {:ok, user} <- fetch_user(id),
-     {:ok, posts} <- fetch_posts(user),
-     {:ok, comments} <- fetch_comments(posts) do
-  {:ok, %{user: user, posts: posts, comments: comments}}
-else
-  {:error, reason} -> {:error, reason}
+# 関数の引数でマッチ
+def greet(%{name: name}), do: "Hello, #{name}!"
+def greet(_), do: "Hello, stranger!"
+
+# case式
+case value do
+  {:ok, result} -> result
+  {:error, reason} -> raise reason
+  _ -> :unknown
 end
+
+# リストパターン
+[head | tail] = [1, 2, 3]
+# head = 1, tail = [2, 3]
 ```
 
-### 無名関数
-
-fnやキャプチャ演算子&で無名関数を定義できる。
-
-```elixir
-# fn で定義
-add = fn a, b -> a + b end
-add.(1, 2)  # 3
-
-# キャプチャ演算子 &
-double = &(&1 * 2)
-double.(5)  # 10
-
-# 関数参照
-Enum.map([1, 2, 3], &String.to_string/1)
-```
-
-### シギル
-
-~記号で始まる特殊なリテラル記法で、文字列や正規表現などを表現できる。
-
-```elixir
-~s(文字列 "引用符" も使える)
-~r/正規表現/i
-~w(word list here)           # ["word", "list", "here"]
-~w(atoms list here)a         # [:atoms, :list, :here]
-~D[2024-01-01]               # Date
-~T[12:00:00]                 # Time
-```
+Erlang 由来。多くの関数型言語にある。

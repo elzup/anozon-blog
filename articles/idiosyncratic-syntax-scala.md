@@ -1,20 +1,20 @@
 ---
-title: "各言語特有っぽい構文: Scala"
+title: '各言語特有っぽい構文: Scala'
 date: 2025-12-16 00:00:00
 topics:
   - Scala
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 16日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 16 日目の記事です。
 
-個人的な好みを交えて紹介します。
+個人的な好みを交えて紹介します。  
+Scala は勉強中なので、入門的な内容です。
 
 二分探索のサンプルコード
-
 
 ```scala
 // Scala - パターンマッチ + Option + 中置記法
@@ -42,53 +42,25 @@ def binarySearch[T: Ordering](arr: IndexedSeq[T], target: T): Option[Int] = {
 
 ## ピックアップ構文
 
-### パターンマッチング
+### implicit parameter (given/using in Scala 3)
 
-match式で型や値に基づいた強力な分岐ができる。
-
-```scala
-// match式
-val result = value match {
-  case 0 => "zero"
-  case 1 | 2 => "one or two"
-  case n if n < 0 => s"negative: $n"
-  case _ => "other"
-}
-
-// case class の分解
-case class Person(name: String, age: Int)
-person match {
-  case Person("Alice", age) => s"Alice is $age"
-  case Person(name, age) if age >= 18 => s"$name is adult"
-  case _ => "unknown"
-}
-```
-
-### Option
-
-値の有無をSomeとNoneで型安全に表現できる。
+暗黙的にパラメータを渡したり、型クラスのインスタンスを定義できる。
 
 ```scala
-// Some または None
-val opt: Option[Int] = Some(42)
+// 暗黙の引数
+def sort[T](list: List[T])(implicit ord: Ordering[T]) = list.sorted
 
-// パターンマッチ
-opt match {
-  case Some(x) => println(x)
-  case None => println("empty")
-}
+// Scala 3
+def sort[T](list: List[T])(using ord: Ordering[T]) = list.sorted
 
-// メソッドチェーン
-opt.map(_ * 2).filter(_ > 50).getOrElse(0)
-
-// for内包表記
-for {
-  x <- Some(10)
-  y <- Some(20)
-} yield x + y  // Some(30)
+// 型クラスインスタンス
+given Ordering[Person] with
+  def compare(a: Person, b: Person) = a.age - b.age
 ```
 
-### for内包表記
+便利だがコードが追いにくくなりそう。
+
+### for 内包表記
 
 複数のコレクションを組み合わせて新しいコレクションを生成できる。
 
@@ -110,9 +82,24 @@ for {
 } yield a + b
 ```
 
+### 拡張メソッド (Scala 3)
+
+既存の型に新しいメソッドを追加できる。
+
+```scala
+extension (s: String)
+  def greet: String = s"Hello, $s!"
+  def times(n: Int): String = s * n
+
+"World".greet      // "Hello, World!"
+"ab".times(3)      // "ababab"
+```
+
+簡潔に書けて良い。
+
 ### 中置記法
 
-1つの引数を持つメソッドを中置記法で呼び出せる。
+1 つの引数を持つメソッドを中置記法で呼び出せる。
 
 ```scala
 // メソッドを中置で呼ぶ
@@ -127,31 +114,50 @@ case class Vec(x: Int, y: Int) {
 Vec(1, 2) + Vec(3, 4)  // Vec(4, 6)
 ```
 
-### implicit (given/using in Scala 3)
+### パターンマッチング
 
-暗黙的にパラメータを渡したり、型クラスのインスタンスを定義できる。
+match 式で型や値に基づいた強力な分岐ができる。
 
 ```scala
-// 暗黙の引数
-def sort[T](list: List[T])(implicit ord: Ordering[T]) = list.sorted
+// match式
+val result = value match {
+  case 0 => "zero"
+  case 1 | 2 => "one or two"
+  case n if n < 0 => s"negative: $n"
+  case _ => "other"
+}
 
-// Scala 3
-def sort[T](list: List[T])(using ord: Ordering[T]) = list.sorted
-
-// 型クラスインスタンス
-given Ordering[Person] with
-  def compare(a: Person, b: Person) = a.age - b.age
+// case class の分解
+case class Person(name: String, age: Int)
+person match {
+  case Person("Alice", age) => s"Alice is $age"
+  case Person(name, age) if age >= 18 => s"$name is adult"
+  case _ => "unknown"
+}
 ```
 
-### 拡張メソッド (Scala 3)
+パターンマッチの表現が他の言語より豊富な気がする。
 
-既存の型に新しいメソッドを追加できる。
+### Option
+
+値の有無を Some と None で型安全に表現できる。
 
 ```scala
-extension (s: String)
-  def greet: String = s"Hello, $s!"
-  def times(n: Int): String = s * n
+// Some または None
+val opt: Option[Int] = Some(42)
 
-"World".greet      // "Hello, World!"
-"ab".times(3)      // "ababab"
+// パターンマッチ
+opt match {
+  case Some(x) => println(x)
+  case None => println("empty")
+}
+
+// メソッドチェーン
+opt.map(_ * 2).filter(_ > 50).getOrElse(0)
+
+// for内包表記
+for {
+  x <- Some(10)
+  y <- Some(20)
+} yield x + y  // Some(30)
 ```

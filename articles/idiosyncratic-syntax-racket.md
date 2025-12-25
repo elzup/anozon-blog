@@ -1,20 +1,19 @@
 ---
-title: "各言語特有っぽい構文: Racket"
+title: '各言語特有っぽい構文: Racket'
 date: 2025-12-19 00:00:00
 topics:
   - Racket
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 19日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 19 日目の記事です。
 
 個人的な好みを交えて紹介します。
 
 二分探索のサンプルコード
-
 
 ```racket
 #lang racket
@@ -35,7 +34,69 @@ emoji: 🔡
 (displayln (or (binary-search #(1 3 5 7 9) 5) -1))  ;; 2
 ```
 
+cond や演算子から、 Clojure よりも伝統的な Lisp 系の雰囲気が強い。
+
 ## ピックアップ構文
+
+### マクロ
+
+コンパイル時に構文を変換して新しい言語構造を作成できる。Racket のマクロシステムは非常に強力で、新しい言語を作ることも可能。
+
+```racket
+;; define-syntax-rule で簡単なマクロ
+(define-syntax-rule (swap! a b)
+  (let ([tmp a])
+    (set! a b)
+    (set! b tmp)))
+
+;; syntax-case でより複雑なマクロ
+(define-syntax (when stx)
+  (syntax-case stx ()
+    [(_ test body ...)
+     #'(if test (begin body ...) (void))]))
+
+;; パターン変数
+(define-syntax-rule (for/sum ([var seq]) body ...)
+  (for/fold ([sum 0]) ([var seq])
+    (+ sum (begin body ...))))
+```
+
+### 継続
+
+「この後の処理」を関数として取り出し、好きなタイミングで呼び出せる。Scheme/Racket 特有の機能。
+
+```racket
+;; call/cc (call-with-current-continuation)
+(define saved #f)
+
+;; 「□ + 1」の □ に値を入れる処理を k として取り出す
+(+ 1 (call/cc (λ (k)
+                (set! saved k)  ; k を保存
+                10)))           ; → 11（最初は 10 + 1）
+
+;; 保存した k を後から呼ぶ
+(saved 100)  ; → 101（100 + 1）
+(saved 200)  ; → 201（200 + 1）何度でも呼べる
+```
+
+イメージしにくいが特殊な機能。
+高階関数ともジェネレーターとも違い、処理の流れ自体を値として保存・再利用できる。
+
+### コントラクト
+
+関数や構造体に型や値の制約を定義して実行時にチェックできる。Racket の標準機能として充実している。
+
+```racket
+;; 関数の契約
+(define/contract (safe-div a b)
+  (-> number? (and/c number? (not/c zero?)) number?)
+  (/ a b))
+
+;; 構造体のコントラクト
+(struct/contract point
+  ([x number?]
+   [y number?]))
+```
 
 ### match（パターンマッチング）
 
@@ -61,32 +122,9 @@ emoji: 🔡
   [(point x y) (sqrt (+ (* x x) (* y y)))])
 ```
 
-### マクロ
+### 名前付き let
 
-コンパイル時に構文を変換して新しい言語構造を作成できる。
-
-```racket
-;; define-syntax-rule で簡単なマクロ
-(define-syntax-rule (swap! a b)
-  (let ([tmp a])
-    (set! a b)
-    (set! b tmp)))
-
-;; syntax-case でより複雑なマクロ
-(define-syntax (when stx)
-  (syntax-case stx ()
-    [(_ test body ...)
-     #'(if test (begin body ...) (void))]))
-
-;; パターン変数
-(define-syntax-rule (for/sum ([var seq]) body ...)
-  (for/fold ([sum 0]) ([var seq])
-    (+ sum (begin body ...))))
-```
-
-### 名前付きlet
-
-let式に名前を付けて、その名前で再帰的に呼び出せる。
+let 式に名前を付けて、その名前で再帰的に呼び出せる。Scheme 系に共通の機能。
 
 ```racket
 ;; ループをlet + 再帰で表現
@@ -102,46 +140,6 @@ let式に名前を付けて、その名前で再帰的に呼び出せる。
   (match lst
     ['() (reverse acc)]
     [(cons x xs) (loop xs (cons (* x 2) acc))]))
-```
-
-### 継続
-
-プログラムの実行状態を保存し、任意の時点に戻ることができる。
-
-```racket
-;; call/cc (call-with-current-continuation)
-(define (find-first pred lst)
-  (call/cc
-   (λ (return)
-     (for-each (λ (x) (when (pred x) (return x))) lst)
-     #f)))
-
-(find-first even? '(1 3 5 6 7))  ;; 6
-
-;; 早期リターン
-(define (search arr target)
-  (call/cc
-   (λ (return)
-     (for ([i (in-range (vector-length arr))])
-       (when (= (vector-ref arr i) target)
-         (return i)))
-     -1)))
-```
-
-### コントラクト
-
-関数や構造体に型や値の制約を定義して実行時にチェックできる。
-
-```racket
-;; 関数の契約
-(define/contract (safe-div a b)
-  (-> number? (and/c number? (not/c zero?)) number?)
-  (/ a b))
-
-;; 構造体のコントラクト
-(struct/contract point
-  ([x number?]
-   [y number?]))
 ```
 
 ### シーケンス
@@ -160,4 +158,15 @@ let式に名前を付けて、その名前で再帰的に呼び出せる。
 (in-list '(a b c))
 (in-vector #(1 2 3))
 (in-string "hello")
+```
+
+`for/list` や `for*/list`、zip や 組み合わせ の書き方として独特で面白い。
+
+### λ（ラムダ）
+
+無名関数を作る。`lambda` と同じ意味。
+
+```racket
+(lambda (x) (+ x 1))  ; 無名関数
+(λ (x) (+ x 1))       ; λ でも OK
 ```

@@ -1,20 +1,20 @@
 ---
-title: "各言語特有っぽい構文: Clojure"
+title: '各言語特有っぽい構文: Clojure'
 date: 2025-12-18 00:00:00
 topics:
   - Clojure
   - プログラミング言語
 type: tech
-published: false
+published: true
 emoji: 🔡
 ---
 
-この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 18日目の記事です。
+この記事は[プログラミング言語の特有構文 Advent Calendar 2025](https://adventar.org/calendars/12640) 18 日目の記事です。
 
 個人的な好みを交えて紹介します。
+Clojure は勉強中なので、入門的な内容です。
 
 二分探索のサンプルコード
-
 
 ```clojure
 ;; Clojure - スレッディングマクロ + 分配束縛 + 遅延シーケンス
@@ -29,11 +29,12 @@ emoji: 🔡
           (< value target) (recur (inc mid) right)
           :else (recur left (dec mid)))))))
 
-(->> [1 3 5 7 9]
-     (#(binary-search % 5))
-     (or -1)
-     println)  ;; 2
+(-> (binary-search [1 3 5 7 9] 5)
+    (or -1)
+    println)  ;; 2
 ```
+
+すべてをリスト構文で表現するのが Lisp 系言語の特徴。
 
 ## ピックアップ構文
 
@@ -59,11 +60,16 @@ emoji: 🔡
 (some-> user :address :city clojure.string/upper-case)
 ```
 
+両方あるの便利。
+
 ### 分配束縛 (Destructuring)
 
 データ構造を分解して複数の変数に同時に束縛できる。
 
 ```clojure
+;; 基本の束縛
+(let [x 1 y 2] (+ x y))  ;; 3
+
 ;; ベクタの分配
 (let [[a b & rest] [1 2 3 4 5]]
   {:a a :b b :rest rest})
@@ -73,12 +79,17 @@ emoji: 🔡
 (let [{:keys [name age]} {:name "Alice" :age 30}]
   (str name " is " age))
 ;; "Alice is 30"
+;; (let [{name :name age :age} {:name "Alice" :age 30}] と同等
 
 ;; デフォルト値
 (let [{:keys [x y] :or {x 0 y 0}} {:x 5}]
   [x y])
 ;; [5 0]
 ```
+
+JavaScript とコロンの位置もエイリアス指定も逆になる。  
+js: `(({ name: n, age: a }) => {})({ name: "Alice", age: 30 })`  
+clojure: `(let [{ n :name a :age} {:name "Alice" :age 30}] )`
 
 ### 遅延シーケンス
 
