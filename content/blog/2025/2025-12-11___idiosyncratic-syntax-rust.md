@@ -15,6 +15,8 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```rust
 // Rust - パターンマッチング + Result/Option + イテレータ
 use std::cmp::Ordering::*;

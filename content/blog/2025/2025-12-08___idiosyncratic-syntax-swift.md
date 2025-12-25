@@ -15,6 +15,8 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```swift
 // Swift - guard + where句 + オプショナルチェーン
 func binarySearch<T: Comparable>(_ arr: [T], target: T) -> Int? {

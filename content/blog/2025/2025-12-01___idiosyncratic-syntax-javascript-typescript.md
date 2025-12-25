@@ -16,6 +16,7 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
 
 ```javascript
 // JavaScript - 分割代入 + スプレッド合成 (while版)
