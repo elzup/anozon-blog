@@ -15,6 +15,8 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```php
 <?php
 function binarySearch(array $arr, mixed $target): int {

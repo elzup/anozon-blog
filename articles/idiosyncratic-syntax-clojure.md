@@ -16,6 +16,8 @@ Clojure は勉強中なので、入門的な内容です。
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```clojure
 ;; Clojure - スレッディングマクロ + 分配束縛 + 遅延シーケンス
 (defn binary-search [arr target]

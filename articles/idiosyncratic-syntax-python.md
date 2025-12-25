@@ -15,6 +15,8 @@ emoji: 🔡
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```python
 def binary_search(arr: list, target) -> int:
     left, right = 0, len(arr) - 1

@@ -16,6 +16,8 @@ Scala は勉強中なので、入門的な内容です。
 
 二分探索のサンプルコード
 
+言語の特徴をあえて使い実装している。
+
 ```scala
 // Scala - パターンマッチ + Option + 中置記法
 def binarySearch[T: Ordering](arr: IndexedSeq[T], target: T): Option[Int] = {
