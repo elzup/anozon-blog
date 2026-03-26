@@ -200,6 +200,11 @@ export default {
         codegen: true,
       },
     },
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        implementation: require('sass'),
+      },
+    },
   ],
 }
