@@ -5,25 +5,26 @@ import { rhythm } from '../utils/typography'
 import Bio from './Bio'
 import SideBar from './SideBar'
 
+const TitleLink = styled(Link)`
+  box-shadow: none;
+  text-decoration: none;
+  color: #2d2252;
+  background-image: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #6b4ecf;
+  }
+`
+
 const LargeTitle = ({ title }: { title: string }) => (
-  <h1>
-    <Link
-      style={{ boxShadow: `none`, textDecoration: `none`, color: `inherit` }}
-      to={`/`}
-    >
-      {title}
-    </Link>
+  <h1 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
+    <TitleLink to={`/`}>{title}</TitleLink>
   </h1>
 )
 
 const SmallTitle = ({ title }: { title: string }) => (
-  <h3 style={{ fontFamily: `Montserrat, sans-serif`, marginTop: 0 }}>
-    <Link
-      style={{ boxShadow: `none`, textDecoration: `none`, color: `inherit` }}
-      to={`/`}
-    >
-      {title}
-    </Link>
+  <h3 style={{ fontFamily: `Montserrat, sans-serif`, marginTop: 0, marginBottom: 0, fontSize: '1rem' }}>
+    <TitleLink to={`/`}>{title}</TitleLink>
   </h3>
 )
 
@@ -78,6 +79,16 @@ const Wrapper = styled.div`
   }
 `
 
+const Footer = styled.footer`
+  text-align: center;
+  padding: 24px 0;
+  font-size: 0.8rem;
+  color: #8e82a6;
+  span {
+    opacity: 0.8;
+  }
+`
+
 const Layout: React.FC<{
   location: Location
   title: string
@@ -103,9 +114,9 @@ const Layout: React.FC<{
           <Bio />
           <SideBar />
         </aside>
-        <footer>
-          © {new Date().getFullYear()} あのぞんびより All Rights Reserved
-        </footer>
+        <Footer>
+          <span>© {new Date().getFullYear()} あのぞんびより</span>
+        </Footer>
       </Wrapper>
     </div>
   )

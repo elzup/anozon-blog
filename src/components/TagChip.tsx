@@ -37,18 +37,14 @@ export function TagChipsComponent({ topics }: GroupProps) {
 const TagChipsStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
-  a:not(:first-child) {
-    margin-left: 4px;
-  }
+  gap: 6px;
 `
 
 const TagChipsColStyle = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  a:not(:first-child) {
-    margin-top: 4px;
-  }
+  gap: 6px;
 `
 
 export const TagChips = (props: GroupProps) => (

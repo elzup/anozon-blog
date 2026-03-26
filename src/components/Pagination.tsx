@@ -11,9 +11,8 @@ type Props = {
 
 const Button = styled(Link)`
   ${button}
-  border-radius: 4px;
-  padding: 0 16px;
-  margin: 0 2px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
 `
 
 const pagePath = (n: number) => (n === 1 ? '/' : `/page/${n}`)
@@ -40,17 +39,22 @@ function Pagination({ current, last, prefix = '' }: Props) {
 
 const Style = styled.div`
   display: flex;
-  margin-top: 8px;
-  justify-content: flex-end;
+  margin-top: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   > span {
     ${button}
-    border-radius: 4px;
-    margin: 0 2px;
-    color: #937caf;
-    border-color: #937caf;
+    color: white;
+    background: #6b4ecf;
+    border-color: #6b4ecf;
+    font-weight: 700;
     &:hover {
-      color: #937caf;
-      border-color: #937caf;
+      color: white;
+      background: #6b4ecf;
+      border-color: #6b4ecf;
+      transform: none;
+      box-shadow: none;
     }
   }
 `

@@ -25,13 +25,38 @@ function Bio({ fixed, author, profile, twitter }: Props) {
 }
 const Style = styled.div`
   display: flex;
+  align-items: center;
+  gap: 12px;
   .gatsby-image-wrapper {
-    margin-right: ${rhythm(1 / 2)};
     margin-bottom: 0;
-    min-width: 50px;
+    min-width: 56px;
     border-radius: 100%;
+    box-shadow: 0 2px 12px rgba(91, 74, 138, 0.2);
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: rotate(8deg) scale(1.1);
+    }
     > img {
       border-radius: 50%;
+    }
+  }
+  p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
+  }
+  strong {
+    color: #2d2252;
+  }
+  a {
+    color: #6b4ecf;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+    &:hover {
+      border-bottom-color: #6b4ecf;
     }
   }
 `
