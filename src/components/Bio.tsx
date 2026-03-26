@@ -18,7 +18,7 @@ function Bio({ fixed, author, profile, twitter }: Props) {
       <Image fixed={fixed} alt={author} />
       <p>
         <strong>{author}</strong> {profile}
-        <a href={`https://twitter.com/${twitter}`}>Twitter</a>
+        <a href={`https://x.com/${twitter}`}>X</a>
       </p>
     </Style>
   )

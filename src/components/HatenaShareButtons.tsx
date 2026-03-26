@@ -32,20 +32,22 @@ const Style = styled.div<{ size: number }>`
   width: ${(p) => p.size}px;
   height: ${(p) => p.size}px;
   background: #06a4de;
+  border-radius: 50%;
 
   a {
-    font-family: Verdana;
-    font-weight: bold;
-    font-size: 2rem;
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     text-decoration: none;
-    text-align: center;
     background-image: none;
     img {
       width: ${(p) => (p.size * 3) / 4}px;
       height: ${(p) => (p.size * 3) / 4}px;
-      margin: ${(p) => (p.size - (p.size * 3) / 4) / 2}px;
-      box-shadow: none;
+      margin: 0;
+      box-shadow: none !important;
+      border-radius: 0;
     }
   }
 `
